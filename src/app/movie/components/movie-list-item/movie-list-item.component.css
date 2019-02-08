@@ -1,0 +1,16 @@
+.card{
+    margin:10px;
+    width:212px;
+    display: inline-block;
+    vertical-align: text-top;
+    padding:5px;
+}
+.card-body{
+    padding:1px;
+}
+.card-text{
+    min-height: 80px; 
+    height:auto !important; 
+    height: 80px;
+    font-size:0.75em;
+}
