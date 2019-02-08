@@ -1,0 +1,5 @@
+<div class="text-danger">
+    <small *ngIf="field.errors?.required">{{fieldName}} required</small>
+    <small *ngIf="field.errors?.minlength">{{fieldName}} minlength</small>
+    <small *ngIf="field.errors?.forbiddenEmail">{{fieldName}} forbiddenEmail</small>
+</div>

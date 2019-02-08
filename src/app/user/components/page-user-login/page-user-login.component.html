@@ -1,0 +1,52 @@
+<form
+    [formGroup]="loginFormGroup"
+    (ngSubmit)="onSubmit()"
+>
+    <p
+        class="alert alert-danger"
+        *ngIf="authError"
+    >
+        {{authError}}
+    </p>
+    <div class="form-group">
+        <label>
+            Email
+            <sup class="text-danger">*</sup>
+        </label>
+        <input
+            type="text"
+            class="form-control"
+            formControlName="email"
+            [class.is-invalid]="validateField('email')"
+        >
+        <app-field-error
+            [formGroupRef]="loginFormGroup"
+            fieldName="email"
+            *ngIf="validateField('email')"
+        ></app-field-error>
+    </div>
+    <div class="form-group">
+        <label>
+            Password
+            <sup class="text-danger">*</sup>
+        </label>
+        <input
+            type="text"
+            class="form-control"
+            formControlName="password"
+            [class.is-invalid]="validateField('password')"
+        >
+        <app-field-error
+            [formGroupRef]="loginFormGroup"
+            fieldName="password"
+            *ngIf="validateField('password')"
+        ></app-field-error>
+    </div>
+    <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="loginFormGroup.invalid"
+    >
+        Login
+    </button>
+</form>

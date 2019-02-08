@@ -1,0 +1,118 @@
+<pre class="row">{{userRegistrationForm.value | json}}</pre>
+<div class="row">
+  <p>
+    If you have a account
+    <a routerLink="/user/login">Try login</a>
+  </p>
+</div>
+<form
+#userRegistrationForm="ngForm"
+(ngSubmit)="submit(userRegistrationForm.value)"
+>
+    <div class="form-group">
+        <label for="name">
+            Name
+            <sup class="text-danger">*</sup>
+        </label>
+        <input
+            #username="ngModel"
+            [(ngModel)]="userModel.username"
+            required
+            type="name"
+            class="form-control"
+            id="username"
+            name="username"
+            [class.is-invalid]="username.invalid && username.touched"
+            maxlength="10"
+            minlength="3"
+        >
+        <div class="text-denger" *ngIf="username.touched">
+          <small class="text-danger" *ngIf="username.errors?.required">
+              Name field is required
+          </small>
+          <small class="text-danger" *ngIf="username.errors?.minlength">
+              Username length is to small
+          </small>
+          <small class="text-danger" *ngIf="username.errors?.maxlength">
+              Username length is to big
+          </small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email">
+            Email
+            <sup class="text-danger">*</sup>
+        </label>
+        <input
+            #email="ngModel"
+            [(ngModel)]="userModel.email"
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            aria-describedby="emailHelp"
+            required
+        >
+        <small class="text-danger" *ngIf="email.invalid && email.touched">
+            Email field is required
+        </small>
+    </div>
+    <div class="form-group">
+        <label for="password">
+            Password
+            <sup class="text-danger">*</sup>
+        </label>
+        <input
+            #password="ngModel"
+            [(ngModel)]="userModel.password"
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            required
+        >
+        <small
+            class="text-danger"
+            *ngIf="password.invalid && password.touched"
+        >
+            Password field is required
+        </small>
+    </div>
+    <div class="form-group">
+        <label for="sex">
+            Sex
+            <sup class="text-danger">*</sup>
+        </label>
+        <select
+            #sex="ngModel"
+            [(ngModel)]="userModel.sex"
+            class="form-control"
+            id="sex"
+            name="sex"
+            required
+        >
+            <option value>-- select --</option>
+            <option value="w">Woman</option>
+            <option value="m">Men</option>
+        </select>
+        <small
+            class="text-danger"
+            *ngIf="sex.invalid && sex.touched"
+        >
+            Sex field is required
+        </small>
+    </div>
+    <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="userRegistrationForm.valid"
+    >
+        Submit
+    </button>
+    <button
+        type="reset"
+        class="btn btn-danger"
+    >
+        Reset
+    </button>
+</form>
