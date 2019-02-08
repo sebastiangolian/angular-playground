@@ -4,7 +4,6 @@ import { AppComponent } from './app.component';
 import { ContactComponent } from '../contact/contact.component';
 import { MenuComponent } from '../menu/menu.component';
 import { HomeComponent } from '../home/home.component';
-import { UserMenuComponent } from '../user-menu/user-menu.component';
 import { SearchFormComponent } from '../search-form/search-form.component';
 
 describe('AppComponent', () => {
@@ -18,8 +17,7 @@ describe('AppComponent', () => {
         ContactComponent,
         MenuComponent,
         HomeComponent,
-        SearchFormComponent,
-        UserMenuComponent
+        SearchFormComponent
       ],
     }).compileComponents();
   }));

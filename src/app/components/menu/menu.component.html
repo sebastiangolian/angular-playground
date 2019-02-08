@@ -1,34 +1,58 @@
-<nav class="py-2">
-  <ul class="nav">
-      <li class="nav-item">
-          <a
-              class="btn btn-secondary"
-              routerLink=""
-              routerLinkActive="btn-success"
-              [routerLinkActiveOptions]="{ exact: true }"
-          >
-              Home
-          </a>
-      </li>
-      <li class="nav-item">
+<div id="header"
+    class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-dark text-white border-bottom shadow">
+    <h5 class="my-0 mr-md-auto"><a href="#">angular-playground</a></h5>
+    <nav class="my-2 my-md-0 mr-md-3">
         <a
-            class="btn btn-secondary"
+            class="p-2 text-primary"
+            routerLink="home"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+        >
+            Home
+        </a>
+        <a
+            class="p-2 text-primary"
             routerLink="movies"
-            routerLinkActive="btn-success"
+            routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
         >
             Movies
         </a>
-    </li>
-      <li class="nav-item">
-          <a
-              class="btn btn-secondary"
-              routerLink="contact"
-              routerLinkActive="btn-success"
-              [routerLinkActiveOptions]="{ exact: true }"
-          >
-              Contact
-          </a>
-      </li>
-  </ul>
-</nav>
+        <a
+            class="p-2 text-primary"
+            routerLink="contact"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+        >
+        Contact
+        </a>
+        <a
+            *ngIf="userIsLogged"
+            class="btn btn-outline-light"
+            routerLink="user/logout"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+        >
+            Sign out
+        </a>
+        <a
+            *ngIf="!userIsLogged"
+            class="btn btn-outline-light"
+            routerLink="user/login"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+        >
+            Sign in
+        </a>
+        <a
+            *ngIf="!userIsLogged"
+            class="btn btn-outline-light"
+            routerLink="user/register"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+        >
+            Register
+        </a>
+    </nav>
+    <div *ngIf="userIsLogged" class="my-0"><app-search-form></app-search-form></div>
+</div>
