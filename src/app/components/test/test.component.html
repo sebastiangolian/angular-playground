@@ -1,3 +1,8 @@
-<p>
-  TEST PAGE
-</p>
+<h1>{{title}}</h1>
+<h2>My favorite hero is: {{defaultHero}}</h2>
+<p>List heroes:</p>
+<ul>
+  <li *ngFor="let hero of heroes">
+    {{ hero }}
+  </li>
+</ul>
