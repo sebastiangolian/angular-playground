@@ -16,6 +16,10 @@ const routes: Routes = [
     path: 'test',
     component: TestComponent
   },
+  {
+    path: 'post',
+    loadChildren: './post/post.module#PostModule',
+  },
 ];
 
 @NgModule({
