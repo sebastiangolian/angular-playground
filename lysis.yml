@@ -1,0 +1,12 @@
+apis:
+  http://api-platform.golian.hekko24.pl/public/api:
+    basePath: 'backend'
+    hydraPrefix: 'hydra:'
+    generators:
+      lysis-typescript-classes-generator:
+        dir: 'backend-classes'
+      lysis-restangular-services-generator:
+        dir: 'services'
+      lysis-angular-form-validators-generator:
+        dir: 'forms'
+        classPath: '../backend-classes'

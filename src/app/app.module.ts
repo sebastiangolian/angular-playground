@@ -9,7 +9,6 @@ import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './components/footer/footer.component';
 import { TestComponent } from './components/test/test.component';
-import { PostModule } from './post/post.module';
 
 @NgModule({
   declarations: [
@@ -22,10 +21,13 @@ import { PostModule } from './post/post.module';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule,
-    PostModule
+    AppRoutingModule
   ],
-  providers: [{provide: APP_BASE_HREF, useValue: '/'}],
-  bootstrap: [AppComponent],
+  providers: [
+    { provide: APP_BASE_HREF, useValue: '/'}
+  ],
+  bootstrap: [
+    AppComponent
+  ],
 })
 export class AppModule { }
