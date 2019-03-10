@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/post.service';
-import { Posts } from '../../interfaces/posts';
-
 
 @Component({
   selector: 'app-post-list',
@@ -13,8 +11,10 @@ export class PostListComponent implements OnInit {
   public posts: any = null;
   constructor(private postService: PostService) { }
 
-  async ngOnInit() {
-      this.posts = await this.postService.fetchPosts();
-      console.log(this.posts);
+  ngOnInit() {
+    this.postService.getPosts().subscribe((data) => {
+      this.posts = data["hydra:member"];
+      console.log(data);
+    });
   }
 }
