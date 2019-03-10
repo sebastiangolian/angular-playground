@@ -9,19 +9,29 @@ import { PostService } from '../../services/post.service';
 export class PostListComponent implements OnInit {
 
   public posts: any = null;
+  public firstPage: string = "public/api/posts?page=2";
+  public prevPage: string = "";
+  public nextPage: string = "";
+  public lastPage: string = "";
+
   constructor(private postService: PostService) { }
 
-  // ngOnInit() {
-  //   this.postService.getPosts().subscribe((data) => {
-  //     this.posts = data["hydra:member"];
-  //     console.log(data);
-  //   });
-  // }
+  public getPaginationLinks(response) {
+    console.log(response);
+    this.firstPage = response["hydra:view"]["hydra:first"];
+    this.lastPage = response["hydra:view"]["hydra:last"];
+    this.prevPage = response["hydra:view"]["hydra:previous"];
+    this.nextPage = response["hydra:view"]["hydra:next"];
+    console.log("this.firstPage",this.firstPage);
+    console.log("this.lastPage",this.lastPage);
+    console.log("this.prevPage",this.prevPage);
+    console.log("this.nextPage",this.nextPage);
+  }
 
   ngOnInit() {
-    this.postService.getPosts(this.postService.nextPage).subscribe((response)=>{
-        this.posts = response["hydra:member"];
-        //console.log(response);    
+    this.postService.getPosts(this.firstPage).subscribe((response)=>{
+        this.getPaginationLinks(response);
+        this.posts = response["hydra:member"];  
     });
   }
 }
