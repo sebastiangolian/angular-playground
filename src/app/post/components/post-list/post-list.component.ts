@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PostService } from '../../services/post.service';
 
 @Component({
@@ -9,10 +9,14 @@ import { PostService } from '../../services/post.service';
 export class PostListComponent implements OnInit {
 
   public posts: any = null;
-  public firstPage: string = "public/api/posts?page=2";
+  public firstPage: string = "public/api/posts?page=1";
   public prevPage: string = "";
   public nextPage: string = "";
   public lastPage: string = "";
+
+  @Input() collectionSize : number = 100;
+  @Input() pageSize  : number = 30;
+  @Input() page : number = 1;
 
   constructor(private postService: PostService) { }
 
@@ -33,5 +37,9 @@ export class PostListComponent implements OnInit {
         this.getPaginationLinks(response);
         this.posts = response["hydra:member"];  
     });
+  }
+
+  changePage() {
+    this.page = this.page + 1;
   }
 }
