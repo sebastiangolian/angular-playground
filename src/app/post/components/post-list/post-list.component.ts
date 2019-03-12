@@ -9,37 +9,70 @@ import { PostService } from '../../services/post.service';
 export class PostListComponent implements OnInit {
 
   public posts: any = null;
-  public firstPage: string = "public/api/posts?page=1";
+  public firstPage: string = "";
+  public currentPage: string = "/public/api/posts?page=1";
   public prevPage: string = "";
   public nextPage: string = "";
   public lastPage: string = "";
+  public disabledPrev: boolean = true;
+  public disabledNext: boolean = false;
 
-  @Input() collectionSize : number = 100;
-  @Input() pageSize  : number = 30;
-  @Input() page : number = 1;
+  @Input() page: string = "";
 
   constructor(private postService: PostService) { }
 
   public getPaginationLinks(response) {
-    console.log(response);
     this.firstPage = response["hydra:view"]["hydra:first"];
     this.lastPage = response["hydra:view"]["hydra:last"];
     this.prevPage = response["hydra:view"]["hydra:previous"];
     this.nextPage = response["hydra:view"]["hydra:next"];
-    console.log("this.firstPage",this.firstPage);
-    console.log("this.lastPage",this.lastPage);
-    console.log("this.prevPage",this.prevPage);
-    console.log("this.nextPage",this.nextPage);
+
+    if(this.prevPage != undefined) {
+      this.disabledPrev = false;
+    } else {
+      this.disabledPrev = true;
+    }
+
+    if(this.nextPage != undefined) {
+      this.disabledNext = false;
+    } else {
+      this.disabledNext = true;
+    }
   }
 
   ngOnInit() {
-    this.postService.getPosts(this.firstPage).subscribe((response)=>{
-        this.getPaginationLinks(response);
-        this.posts = response["hydra:member"];  
+    this.getPosts();
+    this.page = this.currentPage;
+  }
+
+  getPosts(): void {
+    this.postService.getPosts(this.currentPage).subscribe((response) => {
+      this.getPaginationLinks(response);
+      this.posts = response["hydra:member"];
     });
   }
 
-  changePage() {
-    this.page = this.page + 1;
+  toFirstPage(): void {
+    this.currentPage = this.firstPage;
+    this.page = this.firstPage;
+    this.getPosts();
+  }
+
+  toPrevPage(): void {
+    this.currentPage = this.prevPage;
+    this.page = this.prevPage;
+    this.getPosts();
+  }
+
+  toNextPage(): void {
+    this.currentPage = this.nextPage;
+    this.page = this.nextPage;
+    this.getPosts();
+  }
+
+  toLastPage(): void {
+    this.currentPage = this.lastPage;
+    this.page = this.lastPage;
+    this.getPosts();
   }
 }

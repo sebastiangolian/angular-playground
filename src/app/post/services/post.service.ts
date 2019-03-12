@@ -8,7 +8,7 @@ import { Post } from '../interfaces/post';
 
 export class PostService {
 
-  apiUrl: string = "http://api-platform.golian.hekko24.pl/";
+  apiUrl: string = "http://api-platform.golian.hekko24.pl";
 
   constructor(private http: HttpClient) { }
 
