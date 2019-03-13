@@ -1,8 +1,2 @@
-<button class="btn btn-primary" (click)="toFirstPage()">First</button>
-<button class="btn btn-primary" [disabled]=disabledPrev (click)="toPrevPage()">Prev</button>
-<button class="btn btn-primary" [disabled]=disabledNext (click)="toNextPage()">Next</button>
-<button class="btn btn-primary" (click)="toLastPage()">Last</button>
-
-<p>Page: {{page}}</p>
-
+<app-pagination [response]="response" (refresh)="getPosts($event)"></app-pagination>
 <app-post-item *ngFor="let post of posts" [post]="post"></app-post-item>
