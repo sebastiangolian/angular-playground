@@ -15,4 +15,8 @@ export class PostService {
   public getPosts(url: string) {
     return this.http.get<Post[]>(this.apiUrl + url);
   }
+
+  public addPost(response: string) {
+    return this.http.post<Post[]>(this.apiUrl + "/public/api/posts",response);
+  }
 }

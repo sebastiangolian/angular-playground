@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostModel } from '../../models/post.model';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { PostService } from '../../services/post.service';
 
 @Component({
   selector: 'app-post-create',
@@ -9,14 +11,16 @@ import { PostModel } from '../../models/post.model';
 export class PostCreateComponent implements OnInit {
 
   model:PostModel = new PostModel(0,"","");
-
-  constructor() { }
+  postCreateForm: FormGroup;
+  constructor(private postService: PostService) { }
 
   ngOnInit() {
+   
   }
 
   submit(data: any) {
-    console.log(data);
+    this.postService.addPost(data).subscribe((response) => {
+      console.log(response);
+    });
   }
-
 }
