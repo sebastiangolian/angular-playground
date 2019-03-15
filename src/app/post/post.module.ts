@@ -7,12 +7,14 @@ import { PostItemComponent } from './components/post-item/post-item.component';
 import { SharedModule } from '../shared/shared.module';
 import { PostCreateComponent } from './components/post-create/post-create.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PostDetailComponent } from './components/post-detail/post-detail.component';
 
 @NgModule({
   declarations: [
     PostListComponent,
     PostItemComponent,
-    PostCreateComponent
+    PostCreateComponent,
+    PostDetailComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
   ],
   exports: [
-    PostListComponent
+    PostListComponent,
+    PostDetailComponent
   ]
 })
 export class PostModule { }

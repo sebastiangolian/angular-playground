@@ -11,7 +11,7 @@ import { PostService } from '../../services/post.service';
 export class PostCreateComponent implements OnInit {
 
   model:PostModel = new PostModel(0,"","");
-  postCreateForm: FormGroup;
+  
   constructor(private postService: PostService) { }
 
   ngOnInit() {

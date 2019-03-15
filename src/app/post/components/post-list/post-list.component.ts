@@ -9,8 +9,8 @@ import { Post } from '../../interfaces/post';
 })
 export class PostListComponent implements OnInit {
 
-  public posts: string = null;
-  public response: Post[] = null;
+  public posts: Post[] = null;
+  public response: string = null;
 
   constructor(private postService: PostService) { }
 

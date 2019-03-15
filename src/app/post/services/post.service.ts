@@ -13,10 +13,14 @@ export class PostService {
   constructor(private http: HttpClient) { }
 
   public getPosts(url: string) {
-    return this.http.get<Post[]>(this.apiUrl + url);
+    return this.http.get<string>(this.apiUrl + url);
+  }
+
+  public getPost(id: string) {
+    return this.http.get<Post>(this.apiUrl + "/public/api/posts/" + id);
   }
 
   public addPost(response: string) {
-    return this.http.post<Post[]>(this.apiUrl + "/public/api/posts",response);
+    return this.http.post<Post>(this.apiUrl + "/public/api/posts", response);
   }
 }
