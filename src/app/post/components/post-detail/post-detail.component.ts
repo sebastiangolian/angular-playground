@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Location} from '@angular/common';
 import { PostService } from '../../services/post.service';
 import { Post } from '../../interfaces/post';
 
@@ -11,7 +12,7 @@ import { Post } from '../../interfaces/post';
 export class PostDetailComponent implements OnInit {
 
   public post: Post = null;
-  constructor(private route: ActivatedRoute, private postService: PostService) { }
+  constructor(private route: ActivatedRoute, private postService: PostService, public location: Location) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');

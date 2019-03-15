@@ -1,4 +1,7 @@
 <!-- <app-post-item [post]='post'></app-post-item> -->
 <div *ngIf="post">
-{{post.id}} {{post.title}}
+    <h2>Post id: {{post.id}}</h2>
+    <p>Title: {{post.title}}</p>
+    <p>{{post.body}}</p>
+    <button class="btn btn-primary" (click)="location.back()">Back</button>
 </div> 
