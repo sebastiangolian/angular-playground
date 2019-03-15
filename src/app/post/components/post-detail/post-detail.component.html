@@ -1,1 +1,4 @@
-<app-post-item [post]='post'></app-post-item>
+<!-- <app-post-item [post]='post'></app-post-item> -->
+<div *ngIf="post">
+{{post.id}} {{post.title}}
+</div> 
