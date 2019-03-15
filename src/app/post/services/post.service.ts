@@ -27,4 +27,8 @@ export class PostService {
   public updatePost(id: string, response: string) {
     return this.http.put<Post>(this.apiUrl + "/public/api/posts/" + id, response);
   }
+
+  public deletePost(post: Post) {
+    return this.http.delete<Post>(this.apiUrl + "/public/api/posts/" + post.id);
+  }
 }

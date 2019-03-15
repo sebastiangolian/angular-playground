@@ -2,4 +2,5 @@
     {{post.id}} 
     <a [routerLink]="'/post/' + post.id">{{post.title}}</a>
     <a class="btn btn-primary btn-sm" [routerLink]="'/post/update/' + post.id">Update</a>
+    <button class="btn btn-danger btn-sm" title="remove post" (click)="delete(post)">Delete</button>
 </p>

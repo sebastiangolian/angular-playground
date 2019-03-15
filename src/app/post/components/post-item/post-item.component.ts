@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Post } from '../../interfaces/post';
+import { PostService } from '../../services/post.service';
 
 @Component({
   selector: 'app-post-item',
@@ -9,9 +10,16 @@ import { Post } from '../../interfaces/post';
 export class PostItemComponent implements OnInit {
 
   @Input() post: Post = null;
-  constructor() { }
+  @Output() refresh: EventEmitter<string> = new EventEmitter();
+  
+  constructor(private postService: PostService) { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  delete(post: Post){
+    this.postService.deletePost(post).subscribe(() => {
+      this.refresh.emit();
+    });
   }
 
 }
