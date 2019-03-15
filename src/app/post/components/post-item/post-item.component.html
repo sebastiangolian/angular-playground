@@ -1,1 +1,5 @@
-<p>{{post.id}}. <a [routerLink]="'/post/' + post.id">{{post.title}}</a></p>
+<p>
+    {{post.id}} 
+    <a [routerLink]="'/post/' + post.id">{{post.title}}</a>
+    <a class="btn btn-primary btn-sm" [routerLink]="'/post/update/' + post.id">Update</a>
+</p>

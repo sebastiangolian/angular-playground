@@ -23,4 +23,8 @@ export class PostService {
   public addPost(response: string) {
     return this.http.post<Post>(this.apiUrl + "/public/api/posts", response);
   }
+
+  public updatePost(id: string, response: string) {
+    return this.http.put<Post>(this.apiUrl + "/public/api/posts/" + id, response);
+  }
 }

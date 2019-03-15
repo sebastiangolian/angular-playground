@@ -8,13 +8,17 @@ import { SharedModule } from '../shared/shared.module';
 import { PostCreateComponent } from './components/post-create/post-create.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
+import { PostFormComponent } from './components/post-form/post-form.component';
+import { PostUpdateComponent } from './components/post-update/post-update.component';
 
 @NgModule({
   declarations: [
     PostListComponent,
     PostItemComponent,
     PostCreateComponent,
-    PostDetailComponent
+    PostDetailComponent,
+    PostFormComponent,
+    PostUpdateComponent
   ],
   imports: [
     CommonModule,

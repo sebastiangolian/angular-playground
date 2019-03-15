@@ -10,17 +10,11 @@ import { PostService } from '../../services/post.service';
 })
 export class PostCreateComponent implements OnInit {
 
-  model:PostModel = new PostModel(0,"","");
+  post:PostModel = new PostModel(0,"","");
   
   constructor(private postService: PostService) { }
 
   ngOnInit() {
    
-  }
-
-  submit(data: any) {
-    this.postService.addPost(data).subscribe((response) => {
-      console.log(response);
-    });
   }
 }
