@@ -16,6 +16,7 @@ export class PostUpdateComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
+    this.post.id = Number(id);
     this.getPost(id);
   }
 
@@ -24,5 +25,4 @@ export class PostUpdateComponent implements OnInit {
       this.post = response;
     });
   }
-
 }

@@ -24,4 +24,10 @@ export class PostListComponent implements OnInit {
       this.posts = response["hydra:member"];
     });
   }
+
+  delete(post: Post){
+    this.postService.deletePost(post).subscribe(() => {
+      this.ngOnInit();
+    });
+  }
 }
