@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { Post } from '../../interfaces/post';
-import { HydraPartialCollectionView } from '../../interfaces/hydra-partial-collection-view';
+import { HydraPartialCollectionView } from '../../../hydra-api/interfaces/hydra-partial-collection-view';
 
 @Component({
   selector: 'app-post-list',

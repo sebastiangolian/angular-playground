@@ -1,6 +1,6 @@
 import { Post } from './post';
-import { HydraCollection } from './hydra-collection';
-import { HydraPartialCollectionView } from './hydra-partial-collection-view';
+import { HydraCollection } from '../../hydra-api/interfaces/hydra-collection';
+import { HydraPartialCollectionView } from '../../hydra-api/interfaces/hydra-partial-collection-view';
 
 export interface PostCollection extends HydraCollection{
     '@context': string;

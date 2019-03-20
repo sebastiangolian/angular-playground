@@ -1,4 +1,4 @@
-import { Hydra } from './hydra';
+import { Hydra } from '../../hydra-api/interfaces/hydra';
 
 export interface Post extends Hydra{
     '@id': string;

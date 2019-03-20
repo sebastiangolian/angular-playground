@@ -1,5 +1,5 @@
-import { Hydra } from './hydra';
 import { HydraPartialCollectionView } from './hydra-partial-collection-view';
+import { Hydra } from './hydra';
 
 export interface HydraCollection extends Hydra  {
     '@context': string;

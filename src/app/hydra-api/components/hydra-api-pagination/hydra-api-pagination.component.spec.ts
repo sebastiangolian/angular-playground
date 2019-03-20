@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PaginationComponent } from './pagination.component';
+import { HydraApiPaginationComponent } from './hydra-api-pagination.component';
 
-describe('PaginationComponent', () => {
-  let component: PaginationComponent;
-  let fixture: ComponentFixture<PaginationComponent>;
+describe('HydraApiPaginationComponent', () => {
+  let component: HydraApiPaginationComponent;
+  let fixture: ComponentFixture<HydraApiPaginationComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PaginationComponent ]
+      declarations: [ HydraApiPaginationComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PaginationComponent);
+    fixture = TestBed.createComponent(HydraApiPaginationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
