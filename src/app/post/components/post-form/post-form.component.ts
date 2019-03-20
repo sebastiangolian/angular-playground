@@ -11,17 +11,14 @@ import { Router } from '@angular/router';
 export class PostFormComponent implements OnInit {
 
   @Input() model: Post = null;
-  id: number = null;
 
   constructor(private postService: PostService, private router: Router) { }
 
-  ngOnInit() {
-    this.id = this.model.id;
-  }
+  ngOnInit() {}
 
   submit(data: any) {
-    if(this.id != null){
-      this.postService.updatePost(this.id,data).subscribe((response) => {});
+    if(this.model.id != null){
+      this.postService.updatePost(this.model.id,data).subscribe((response) => {});
     } 
     else {
       this.postService.addPost(data).subscribe((response) => {});

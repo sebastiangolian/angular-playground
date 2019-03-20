@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PostUpdateComponent implements OnInit {
 
-  post:PostModel = new PostModel(0,"","");
+  post:PostModel = new PostModel();
   
   constructor(private postService: PostService, private route: ActivatedRoute) { }
 

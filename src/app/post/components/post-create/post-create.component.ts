@@ -10,7 +10,7 @@ import { PostService } from '../../services/post.service';
 })
 export class PostCreateComponent implements OnInit {
 
-  post:PostModel = new PostModel(0,"","");
+  post:PostModel = new PostModel();
   
   constructor(private postService: PostService) { }
 

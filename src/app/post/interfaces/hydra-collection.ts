@@ -1,12 +1,11 @@
-import { Post } from './post';
-import { HydraCollection } from './hydra-collection';
+import { Hydra } from './hydra';
 import { HydraPartialCollectionView } from './hydra-partial-collection-view';
 
-export interface Posts extends HydraCollection{
+export interface HydraCollection extends Hydra  {
     '@context': string;
     '@id': string;
     '@type': string;
-    'hydra:member': Post[];
+    'hydra:member': Hydra[];
     'hydra:totalItems': number;
     'hydra:view': HydraPartialCollectionView;
 }

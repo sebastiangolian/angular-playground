@@ -1,9 +1,11 @@
 import { Post } from '../interfaces/post';
 
 export class PostModel implements Post {
-    constructor(
-      public id: number,
-      public title: string,
-      public body: string,
-    ) { }
-  }
+  '@id': string;
+  '@type': string;
+  id: number;
+  title: string;
+  body: string;
+
+  constructor() { }
+}

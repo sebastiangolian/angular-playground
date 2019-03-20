@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { Post } from '../../interfaces/post';
+import { Posts } from '../../interfaces/posts';
 
 @Component({
   selector: 'app-post-list',
@@ -10,7 +11,7 @@ import { Post } from '../../interfaces/post';
 export class PostListComponent implements OnInit {
 
   public posts: Post[] = null;
-  public response: string = null;
+  public response: Posts = null;
 
   constructor(private postService: PostService) { }
 
