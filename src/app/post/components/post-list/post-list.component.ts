@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { Post } from '../../interfaces/post';
-import { Posts } from '../../interfaces/posts';
+import { HydraPartialCollectionView } from '../../interfaces/hydra-partial-collection-view';
 
 @Component({
   selector: 'app-post-list',
@@ -11,7 +11,7 @@ import { Posts } from '../../interfaces/posts';
 export class PostListComponent implements OnInit {
 
   public posts: Post[] = null;
-  public response: Posts = null;
+  public hydraViewCollection: HydraPartialCollectionView = null;
 
   constructor(private postService: PostService) { }
 
@@ -21,7 +21,7 @@ export class PostListComponent implements OnInit {
 
   getPosts(url: string): void {
     this.postService.getPosts(url).subscribe((response) => {
-      this.response = response;
+      this.hydraViewCollection = response["hydra:view"];
       this.posts = response["hydra:member"];
     });
   }

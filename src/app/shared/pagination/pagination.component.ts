@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { HydraPartialCollectionView } from 'src/app/post/interfaces/hydra-partial-collection-view';
 
 @Component({
   selector: 'app-pagination',
@@ -16,24 +17,24 @@ export class PaginationComponent implements OnChanges {
   public prevStatus: boolean = true;
   public nextStatus: boolean = false;
 
-  @Input() response: string = "";
+  @Input() hydraViewCollection: HydraPartialCollectionView;
   @Output() refresh: EventEmitter<string> = new EventEmitter();
 
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges) {
-    if(changes.response){
-      this.getPaginationLinks(this.response);
+    if(changes.hydraViewCollection){
+      this.getPaginationLinks(this.hydraViewCollection);
     }
   }
 
-  public getPaginationLinks(response: any) {
-    if(response)
+  public getPaginationLinks(hydraViewCollection: HydraPartialCollectionView) {
+    if(hydraViewCollection)
     {
-      this.firstPageUrl = response["hydra:view"]["hydra:first"];
-      this.lastPageUrl = response["hydra:view"]["hydra:last"];
-      this.prevPageUrl = response["hydra:view"]["hydra:previous"];
-      this.nextPageUrl = response["hydra:view"]["hydra:next"];
+      this.firstPageUrl = hydraViewCollection["hydra:first"];
+      this.lastPageUrl = hydraViewCollection["hydra:last"];
+      this.prevPageUrl = hydraViewCollection["hydra:previous"];
+      this.nextPageUrl = hydraViewCollection["hydra:next"];
   
       if(this.prevPageUrl) {
         this.prevStatus = false;
