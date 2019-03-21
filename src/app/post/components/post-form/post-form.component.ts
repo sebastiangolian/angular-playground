@@ -16,12 +16,12 @@ export class PostFormComponent implements OnInit {
 
   ngOnInit() {}
 
-  submit(data: any) {
+  submit(post: Post) {
     if(this.model.id != null){
-      this.postService.updatePost(this.model.id,data).subscribe((response) => {});
+      this.postService.updatePost(this.model.id,post).subscribe((response) => {});
     } 
     else {
-      this.postService.addPost(data).subscribe((response) => {});
+      this.postService.addPost(post).subscribe((response) => {});
     }
     this.router.navigate(['/post']);
   }

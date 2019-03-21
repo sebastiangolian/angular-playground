@@ -26,13 +26,13 @@ export class PostService {
       .pipe(catchError(this.handleError<Post>('getPost')));
   }
 
-  public addPost(response: string): Observable<Post> {
-    return this.http.post<Post>(this.apiUrl + "/public/api/posts", response)
+  public addPost(post: Post): Observable<Post> {
+    return this.http.post<Post>(this.apiUrl + "/public/api/posts", post)
       .pipe(catchError(this.handleError<Post>('addPost')));
   }
 
-  public updatePost(id: number, response: string): Observable<Post> {
-    return this.http.put<Post>(this.apiUrl + "/public/api/posts/" + id, response)
+  public updatePost(id: number, post: Post): Observable<Post> {
+    return this.http.put<Post>(this.apiUrl + "/public/api/posts/" + id, post)
       .pipe(catchError(this.handleError<Post>('updatePost')));
   }
 
