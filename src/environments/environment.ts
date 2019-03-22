@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  moviesURL: '/assets/movies.json'
+  apiUrl: 'http://api-platform.golian.hekko24.pl'
 };
 
 /*
