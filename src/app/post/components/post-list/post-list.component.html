@@ -8,6 +8,11 @@
     </thead>
     <tbody>
         <!-- <app-post-item *ngFor="let post of posts" (refresh)="ngOnInit()" [post]="post"></app-post-item> -->
+        <tr>
+            <th><input #id name="id" class="form-control" size="5" (keydown.enter)="onEnter(id.name,id.value)"></th>
+            <th><input #title name="title" class="form-control" size="5" (keydown.enter)="onEnter(title.name,title.value)"></th>
+            <th></th>
+        </tr>
         <tr *ngFor="let post of posts">
             <th>{{ post.id }}</th>
             <th><a [routerLink]="'/post/' + post.id">{{post.title}}</a></th>

@@ -12,6 +12,7 @@ export class PostListComponent implements OnInit {
 
   public posts: Post[] = null;
   public hydraViewCollection: HydraPartialCollectionView = null;
+  private filterMap: Map<string, string> = new Map();
 
   constructor(private postService: PostService) { }
 
@@ -26,9 +27,32 @@ export class PostListComponent implements OnInit {
     });
   }
 
-  delete(post: Post){
+  delete(post: Post) {
     this.postService.deletePost(post).subscribe(() => {
       this.ngOnInit();
     });
+  }
+
+  onEnter(name: string, value: string): void {
+    this.filterMap.set(name, value);
+    this.getPosts("/public/api/posts" + this.generateFilter());
+  }
+
+  private generateFilter() : string
+  {
+    let filter: string = "";
+    this.filterMap.forEach((value, key) => {
+      if (value != "") {
+        if (filter == "") {
+          filter += "?";
+        }
+        else {
+          filter += "&";
+        }
+
+        filter += key + "=" + value;
+      }
+    })
+    return filter;
   }
 }
