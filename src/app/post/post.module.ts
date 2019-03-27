@@ -10,6 +10,7 @@ import { PostDetailComponent } from './components/post-detail/post-detail.compon
 import { PostFormComponent } from './components/post-form/post-form.component';
 import { PostUpdateComponent } from './components/post-update/post-update.component';
 import { HydraApiModule } from '../hydra-api/hydra-api.module';
+import { CommentModule } from '../comment/comment.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { HydraApiModule } from '../hydra-api/hydra-api.module';
     HydraApiModule,
     FormsModule,
     ReactiveFormsModule,
+    CommentModule
   ],
   exports: [
     PostListComponent,
