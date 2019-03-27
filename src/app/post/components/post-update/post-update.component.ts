@@ -21,7 +21,7 @@ export class PostUpdateComponent implements OnInit {
   }
 
   getPost(id: string): void {
-    this.postService.getPost(id).subscribe((response) => {
+    this.postService.get(id).subscribe((response) => {
       this.post = response;
     });
   }

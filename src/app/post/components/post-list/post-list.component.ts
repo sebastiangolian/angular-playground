@@ -21,14 +21,14 @@ export class PostListComponent implements OnInit {
   }
 
   getPosts(url: string): void {
-    this.postService.getPosts(url).subscribe((response) => {
+    this.postService.getAll(url).subscribe((response) => {
       this.hydraViewCollection = response["hydra:view"];
       this.posts = response["hydra:member"];
     });
   }
 
   delete(post: Post) {
-    this.postService.deletePost(post).subscribe(() => {
+    this.postService.delete(post).subscribe(() => {
       this.ngOnInit();
     });
   }

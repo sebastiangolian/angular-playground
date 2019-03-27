@@ -13,33 +13,33 @@ import { environment } from 'src/environments/environment';
 
 export class PostService {
 
-  apiPostUrl: string = environment.apiUrl + "/public/api/posts/";
+  apiUrl: string = environment.apiUrl + "/public/api/posts/";
 
   constructor(private http: HttpClient) { }
 
-  public getPosts(url: string): Observable<PostCollection> {
+  public getAll(url: string): Observable<PostCollection> {
     return this.http.get<PostCollection>(environment.apiUrl + url)
-      .pipe(catchError(this.handleError<PostCollection>('getPost'))); 
+      .pipe(catchError(this.handleError<PostCollection>('getAll'))); 
   }
 
-  public getPost(id: string): Observable<Post> {
-    return this.http.get<Post>(this.apiPostUrl + id)
-      .pipe(catchError(this.handleError<Post>('getPost')));
+  public get(id: string): Observable<Post> {
+    return this.http.get<Post>(this.apiUrl + id)
+      .pipe(catchError(this.handleError<Post>('get')));
   }
 
-  public addPost(post: Post): Observable<Post> {
-    return this.http.post<Post>(this.apiPostUrl, post)
-      .pipe(catchError(this.handleError<Post>('addPost')));
+  public add(post: Post): Observable<Post> {
+    return this.http.post<Post>(this.apiUrl, post)
+      .pipe(catchError(this.handleError<Post>('add')));
   }
 
-  public updatePost(id: number, post: Post): Observable<Post> {
-    return this.http.put<Post>(this.apiPostUrl + id, post)
-      .pipe(catchError(this.handleError<Post>('updatePost')));
+  public update(id: number, post: Post): Observable<Post> {
+    return this.http.put<Post>(this.apiUrl + id, post)
+      .pipe(catchError(this.handleError<Post>('update')));
   }
 
-  public deletePost(post: Post): Observable<Post> {
-    return this.http.delete<Post>(this.apiPostUrl + post.id)
-      .pipe(catchError(this.handleError<Post>('deletePost')));
+  public delete(post: Post): Observable<Post> {
+    return this.http.delete<Post>(this.apiUrl + post.id)
+      .pipe(catchError(this.handleError<Post>('delete')));
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

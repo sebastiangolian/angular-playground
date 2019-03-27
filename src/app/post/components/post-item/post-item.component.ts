@@ -17,7 +17,7 @@ export class PostItemComponent implements OnInit {
   ngOnInit() {}
 
   delete(post: Post){
-    this.postService.deletePost(post).subscribe(() => {
+    this.postService.delete(post).subscribe(() => {
       this.refresh.emit();
     });
   }

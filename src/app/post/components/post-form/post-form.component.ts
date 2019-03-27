@@ -18,10 +18,10 @@ export class PostFormComponent implements OnInit {
 
   submit(post: Post) {
     if(this.model.id != null){
-      this.postService.updatePost(this.model.id,post).subscribe((response) => {});
+      this.postService.update(this.model.id,post).subscribe((response) => {});
     } 
     else {
-      this.postService.addPost(post).subscribe((response) => {});
+      this.postService.add(post).subscribe((response) => {});
     }
     this.router.navigate(['/post']);
   }
