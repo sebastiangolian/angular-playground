@@ -1,6 +1,6 @@
-import { Hydra } from '../../hydra-api/interfaces/hydra';
+import { Comment } from '../interfaces/comment';
 
-export interface Comment extends Hydra {
+export class CommentModel implements Comment {
     '@id': string;
     '@type': string;
     id: number;
@@ -8,4 +8,6 @@ export interface Comment extends Hydra {
     email: string;
     body: string;
     post: string;
+
+    constructor() { }
 }
