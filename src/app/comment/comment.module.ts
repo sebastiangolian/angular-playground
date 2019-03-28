@@ -4,12 +4,13 @@ import { CommentByPostComponent } from './components/comment-by-post/comment-by-
 import { CommentItemComponent } from './components/comment-item/comment-item.component';
 import { CommentFormComponent } from './components/comment-form/comment-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommentCreateComponent } from './components/comment-create/comment-create.component';
 
 @NgModule({
   declarations: [
     CommentByPostComponent, 
     CommentItemComponent, 
-    CommentFormComponent
+    CommentFormComponent, CommentCreateComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   exports: [
     CommentByPostComponent,
-    CommentFormComponent
+    CommentFormComponent,
+    CommentCreateComponent
   ]
 })
 export class CommentModule { }

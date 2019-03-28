@@ -14,7 +14,7 @@ export class CommentFormComponent implements OnInit {
   constructor(private commentService: CommentService) { }
 
   @Input() post: Post = null;
-  model: Comment = null;
+  @Input() model: Comment = null;
 
   ngOnInit() {
     this.model = new CommentModel();
