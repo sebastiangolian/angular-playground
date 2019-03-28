@@ -1,3 +1,1 @@
-<p *ngFor="let comment of comments">
-  <span>{{ comment.body }}</span>
-</p>
+<app-comment-item *ngFor="let comment of comments" [comment]="comment"></app-comment-item>
