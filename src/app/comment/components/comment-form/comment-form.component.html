@@ -1,0 +1,68 @@
+<form #commentCreateForm="ngForm" (ngSubmit)="submit(commentCreateForm.value)">
+  <!-- NAME -->
+  <div class="form-group">
+    <label for="name">
+      Name
+      <sup class="text-danger">*</sup>
+    </label>
+    <input id="name" name="name" class="form-control" [(ngModel)]="model.name" #name="ngModel"
+      [class.is-invalid]="name.invalid && name.touched" minlength="3" maxlength="20" required>
+    <div class="text-danger" *ngIf="name.touched">
+      <small class="text-danger" *ngIf="name?.errors?.required">
+        Name field is required
+      </small>
+      <small class="text-danger" *ngIf="name?.errors?.minlength">
+        Name length is to small
+      </small>
+      <small class="text-danger" *ngIf="name?.errors?.maxlength">
+        Name length is to big
+      </small>
+    </div>
+  </div>
+  <!-- EMAIL -->
+  <div class="form-group">
+    <label for="email">
+      Email
+      <sup class="text-danger">*</sup>
+    </label>
+    <input id="email" name="email" class="form-control" [(ngModel)]="model.email" #email="ngModel"
+      [class.is-invalid]="email.invalid && email.touched" minlength="3" maxlength="20" required>
+    <div class="text-danger" *ngIf="email.touched">
+      <small class="text-danger" *ngIf="email?.errors?.required">
+        Email field is required
+      </small>
+      <small class="text-danger" *ngIf="email?.errors?.minlength">
+        Email length is to small
+      </small>
+      <small class="text-danger" *ngIf="email?.errors?.maxlength">
+        Email length is to big
+      </small>
+    </div>
+  </div>
+  <!-- BODY -->
+  <div class="form-group">
+    <label for="name">
+      Body
+      <sup class="text-danger">*</sup>
+    </label>
+    <input #body="ngModel" [(ngModel)]="model.body" required type="name" class="form-control" id="body" name="body"
+      [class.is-invalid]="body.invalid && body.touched" maxlength="50" minlength="3">
+    <div class="text-danger" *ngIf="body.touched">
+      <small class="text-danger" *ngIf="body?.errors?.required">
+        Body field is required
+      </small>
+      <small class="text-danger" *ngIf="body?.errors?.minlength">
+        Body length is to small
+      </small>
+      <small class="text-danger" *ngIf="body?.errors?.maxlength">
+        Body length is to big
+      </small>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!commentCreateForm.valid">
+    Submit
+  </button>
+  <button type="reset" class="btn btn-danger">
+    Reset
+  </button>
+</form>
