@@ -1,4 +1,4 @@
-<form #commentCreateForm="ngForm" (ngSubmit)="submit(commentCreateForm.value)">
+<form #commentCreateForm="ngForm" (ngSubmit)="submit(commentCreateForm.value)" *ngIf="!isSubmit">
   <!-- NAME -->
   <div class="form-group">
     <label for="name">
@@ -63,3 +63,7 @@
     Add
   </button>
 </form>
+
+<div class="alert alert-success" role="alert" *ngIf="isSubmit">
+  Thanks for comment
+</div>

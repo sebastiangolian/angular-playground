@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CommentService } from '../../services/comment.service';
 import { Post } from 'src/app/post/interfaces/post';
 import { Comment } from '../../interfaces/comment';
@@ -15,6 +15,8 @@ export class CommentFormComponent implements OnInit {
 
   @Input() post: Post = null;
   @Input() model: Comment = null;
+  @Output() refresh: EventEmitter<string> = new EventEmitter();
+  isSubmit:boolean = false;
 
   ngOnInit() {
     this.model = new CommentModel();
@@ -22,6 +24,9 @@ export class CommentFormComponent implements OnInit {
   }
 
   submit(comment: Comment) {
-    this.commentService.add(comment).subscribe((response) => {});
+    this.commentService.add(comment).subscribe((response) => {
+      this.isSubmit = true;
+      this.refresh.emit();
+    });
   }
 }
