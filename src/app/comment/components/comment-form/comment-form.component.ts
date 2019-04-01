@@ -20,10 +20,11 @@ export class CommentFormComponent implements OnInit {
 
   ngOnInit() {
     this.model = new CommentModel();
-    this.model.post = this.post["@id"];
+    //this.model.post = this.post["@id"];
   }
 
   submit(comment: Comment) {
+    comment.post = this.post["@id"];
     this.commentService.add(comment).subscribe((response) => {
       this.isSubmit = true;
       this.refresh.emit();

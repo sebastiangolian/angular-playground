@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CommentModel } from '../../models/comment.model';
 import { Post } from 'src/app/post/interfaces/post';
 
@@ -10,11 +10,17 @@ import { Post } from 'src/app/post/interfaces/post';
 export class CommentCreateComponent implements OnInit {
 
   @Input() post: Post = null;
+  @Output() refresh: EventEmitter<string> = new EventEmitter();
   comment:CommentModel = new CommentModel();
-
+  
   constructor() { }
 
   ngOnInit() {
+
   }
 
+  refreshAction()
+  {
+    this.refresh.emit();
+  }
 }

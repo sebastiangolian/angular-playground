@@ -17,11 +17,17 @@ export class PostDetailComponent implements OnInit {
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     this.getPost(id);
+    console.log("PostDetailComponent");
   }
 
   getPost(id: string): void {
     this.postService.get(id).subscribe((response) => {
       this.post = response;
     });
+  }
+
+  refresh()
+  {
+    this.ngOnInit();
   }
 }
