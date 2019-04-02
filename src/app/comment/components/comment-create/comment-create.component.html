@@ -3,6 +3,6 @@
         Add comment
     </div>
     <div class="card-body">
-        <app-comment-form [post]='post' [model]='comment' (refresh)="refreshAction($event)"></app-comment-form>
+        <app-comment-form [post]='post' [model]='comment' (refresh)="refreshEmit()"></app-comment-form>
     </div>
 </div>

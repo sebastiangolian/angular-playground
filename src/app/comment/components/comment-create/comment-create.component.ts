@@ -19,7 +19,7 @@ export class CommentCreateComponent implements OnInit {
 
   }
 
-  refreshAction()
+  refreshEmit()
   {
     this.refresh.emit();
   }

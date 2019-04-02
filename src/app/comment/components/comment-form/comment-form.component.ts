@@ -20,7 +20,6 @@ export class CommentFormComponent implements OnInit {
 
   ngOnInit() {
     this.model = new CommentModel();
-    //this.model.post = this.post["@id"];
   }
 
   submit(comment: Comment) {
