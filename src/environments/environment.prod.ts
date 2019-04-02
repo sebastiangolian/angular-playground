@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  moviesURL: '/angular-playground/assets/movies.json'
+  apiUrl: 'http://api-platform.golian.hekko24.pl'
 };
