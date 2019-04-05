@@ -20,6 +20,10 @@ const routes: Routes = [
     path: 'post',
     loadChildren: './post/post.module#PostModule',
   },
+  {
+    path: 'car',
+    loadChildren: './car/car.module#CarModule',
+  },
 ];
 
 @NgModule({

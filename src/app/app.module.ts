@@ -18,7 +18,7 @@ import { NgxPaginationModule} from 'ngx-pagination';
     MenuComponent,
     HomeComponent,
     FooterComponent,
-    TestComponent
+    TestComponent,
   ],
   imports: [
     BrowserModule,
