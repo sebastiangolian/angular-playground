@@ -21,9 +21,14 @@ export class CommentService {
       .pipe(catchError(this.handleError<CommentCollection>('getAll'))); 
   }
 
-  public add(post: Comment): Observable<Comment> {
-    return this.http.post<Comment>(this.apiUrl, post)
+  public add(comment: Comment): Observable<Comment> {
+    return this.http.post<Comment>(this.apiUrl, comment)
       .pipe(catchError(this.handleError<Comment>('add')));
+  }
+
+  public delete(comment: Comment): Observable<Comment> {
+    return this.http.delete<Comment>(this.apiUrl + comment.id)
+      .pipe(catchError(this.handleError<Comment>('delete')));
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
