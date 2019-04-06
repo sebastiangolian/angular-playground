@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import { Car } from '../../interfaces/car.interface';
 
 @Component({
@@ -7,24 +7,14 @@ import { Car } from '../../interfaces/car.interface';
   styleUrls: ['./car-item-on-push.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CarItemOnPushComponent implements OnInit {
+export class CarItemOnPushComponent {
 
   @Input() public car: Car;
-  @Output() private toggleActive: EventEmitter<Car>;
+  @Output() private toggleActive: EventEmitter<Car> = new EventEmitter<Car>();
 
-  constructor() {
-    this.toggleActive = new EventEmitter<Car>();
-  }
-
-  ngOnInit() {
-  }
+  constructor() {}
 
   onToggleActive(event) {
     this.toggleActive.emit(this.car);
   }
-
-  changeCarCost() {
-    this.car.cost += 5;
-}
-
 }
