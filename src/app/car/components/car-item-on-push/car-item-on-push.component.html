@@ -1,0 +1,6 @@
+<div class="car-container">
+  <div class="name">{{car.name + ' (' + car.type + ')'}}</div>
+  <div class="cost">{{car.cost}}</div>
+  <button (click)="onToggleActive($event)" *ngIf="!car.active">Actived</button>
+  <button (click)="changeCarCost()">Change Cost</button>
+</div>
