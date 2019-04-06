@@ -11,8 +11,8 @@ export class CarListComponent implements OnInit {
   cars: Array<CarModel> = Array<CarModel>();
   
   constructor() { 
-    this.cars.push(new CarModel("Honda","sedan"));
-    this.cars.push(new CarModel("Seat","hatchback"));
+    this.cars.push(new CarModel(1,"Honda","sedan",1999,true));
+    this.cars.push(new CarModel(2,"Seat","hatchback",999,false));
   }
 
   ngOnInit() {

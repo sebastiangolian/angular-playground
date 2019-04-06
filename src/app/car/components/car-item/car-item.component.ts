@@ -10,10 +10,17 @@ import { Car } from '../../interfaces/car.interface';
 export class CarItemComponent implements OnInit {
 
   @Input() car: Car = null;
+  public carCostClasses;
 
   constructor() { }
 
   ngOnInit() {
+    this.carCostClasses = {
+      "positive": this.car.active,
+      "negative": !this.car.active,
+      "large-cost": Math.abs(this.car.cost) > 1000,
+      "little-cost": Math.abs(this.car.cost) < 1001,
+    };
   }
 
 }

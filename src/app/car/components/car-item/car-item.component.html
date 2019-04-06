@@ -1,2 +1,11 @@
 <p>{{car.id}}-{{car.name}}-{{car.type}}-{{car.cost}}-{{car.active}}</p>
+
+<div [class.active]="car.active" [class.negative]="!car.active">Active: {{car.active}}</div>
+<div class="cost" [ngClass]="carCostClasses">{{car.cost}}</div>
+
+<div [ngSwitch]="car.cost">
+    <p *ngSwitchCase="999">Little cost</p>
+    <p *ngSwitchCase="1999">Hard cost</p>
+    <p *ngSwitchDefault>Very hard cost</p>
+</div>
         

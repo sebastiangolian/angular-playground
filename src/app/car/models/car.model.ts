@@ -7,11 +7,11 @@ export class CarModel implements Car {
     cost: number;
     active: boolean;
 
-    constructor(name:string, type:string) { 
-        this.id = 1;
+    constructor(id:number, name:string, type:string, cost:number, active:boolean) { 
+        this.id = id;
         this.name = name;
         this.type = type;
-        this.cost = 0;
-        this.active = true;
+        this.cost = cost;
+        this.active = active;
     }
 }
