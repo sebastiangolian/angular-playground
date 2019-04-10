@@ -4,13 +4,12 @@ import { Car } from '../../interfaces/car.interface';
 @Component({
   selector: 'app-car-item',
   templateUrl: './car-item.component.html',
-  styleUrls: ['./car-item.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./car-item.component.css']
 })
 export class CarItemComponent implements OnInit {
 
   @Input() car: Car = null;
-  public carCostClasses;
+  public carCostClasses: object;
   private counter: number = 1;
 
   constructor() { }
@@ -24,25 +23,11 @@ export class CarItemComponent implements OnInit {
     };
   }
 
-  onToggleActive(car: Car) {
-    this.car.cost +=1;
-    this.car.active = !this.car.active;
-    if(this.car.active)
-    {
-      this.car.active = false;
-    }
-    else
-    {
-      this.car.active = true;
-    }
+  toggleActive(car: Car) {
+    car.active = !car.active;
   }
 
-  // changeStockObject() {
-  //   this.car = new Car('Test Stock Company - ' + this.counter++, 'TSC', 85, 80);
-  // }
-
-  changeStockPrice() {
+  changeCost() {
     this.car.cost += 10;
-}
-
+  }
 }
