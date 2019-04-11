@@ -4,4 +4,6 @@ export interface Car {
     type: string;
     cost: number;
     active: boolean;
+
+    toString():string;
 }

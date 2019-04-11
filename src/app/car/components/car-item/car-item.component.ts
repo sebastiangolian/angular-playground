@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { Car } from '../../interfaces/car.interface';
 
 @Component({
@@ -9,18 +9,13 @@ import { Car } from '../../interfaces/car.interface';
 export class CarItemComponent implements OnInit {
 
   @Input() car: Car = null;
-  public carCostClasses: object;
-  private counter: number = 1;
+  @Output() setted: EventEmitter<string> = new EventEmitter();
+  public carCostClasses: any;
 
   constructor() { }
 
   ngOnInit() {
-    this.carCostClasses = {
-      "positive": this.car.active,
-      "negative": !this.car.active,
-      "large-cost": Math.abs(this.car.cost) > 1000,
-      "little-cost": Math.abs(this.car.cost) < 1001,
-    };
+    this.setCarCostClasses();
   }
 
   toggleActive(car: Car) {
@@ -28,6 +23,30 @@ export class CarItemComponent implements OnInit {
   }
 
   changeCost() {
-    this.car.cost += 10;
+    if (this.checkActive()) {
+      this.car.cost += 1000;
+      this.setCarCostClasses();
+    }
+  }
+
+  set() {
+    if (this.checkActive())
+      this.setted.emit(this.car.toString());
+  }
+
+  setCarCostClasses() {
+    this.carCostClasses = {
+      "text-success": this.car.cost <= 1000,
+      "text-danger": this.car.cost >= 3000
+    };
+  }
+
+  checkActive(): boolean {
+    if (this.car.active) {
+      return true;
+    } else {
+      alert("This car is not active");
+      return false;
+    }
   }
 }

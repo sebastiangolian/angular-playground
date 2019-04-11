@@ -14,4 +14,9 @@ export class CarModel implements Car {
         this.cost = cost;
         this.active = active;
     }
+
+    toString():string
+    {
+        return this.id + "-" + this.name + "-" + this.type + "-" + this.cost + "-" + this.active;
+    }
 }
