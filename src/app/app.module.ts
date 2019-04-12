@@ -11,6 +11,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { TestComponent } from './components/test/test.component';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule} from 'ngx-pagination';
+import { ProductModule } from './product/product.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { NgxPaginationModule} from 'ngx-pagination';
     HttpClientModule,
     AppRoutingModule,
     NgbModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ProductModule
   ],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/'}

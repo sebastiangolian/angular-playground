@@ -1,0 +1,19 @@
+.product-item {
+  border: 1px solid silver;
+  border-radius: 5px;
+  padding: 10px;
+  display: inline-block;
+  margin:5px;
+}
+
+.product-item .details {
+  text-align: center;
+}
+
+.product-item.sale {
+  background-color:#FFC44F;
+}
+
+.btn{
+  margin:5px;
+}
