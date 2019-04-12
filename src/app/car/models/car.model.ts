@@ -4,8 +4,8 @@ export class CarModel implements Car {
     id: number;
     name: string;
     type: string;
-    cost: number;
-    active: boolean;
+    cost: number = 0;
+    active: boolean = true;
 
     constructor(id:number, name:string, type:string, cost:number, active:boolean) { 
         this.id = id;

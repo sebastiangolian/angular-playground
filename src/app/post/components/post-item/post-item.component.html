@@ -1,4 +1,4 @@
-<tr>
+<tr *ngIf="post">
     <td>{{post.id}}</td>
     <td><a [routerLink]="'/post/' + post.id">{{post.title}}</a></td>
     <td>

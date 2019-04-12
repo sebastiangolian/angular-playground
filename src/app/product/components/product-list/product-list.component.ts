@@ -20,5 +20,4 @@ export class ProductListComponent {
     });
     product.quantityInCart += change.changeInQuantity;
   }
-
 }

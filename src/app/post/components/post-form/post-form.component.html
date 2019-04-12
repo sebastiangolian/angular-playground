@@ -1,7 +1,7 @@
-<pre class="row">Form.value: {{postCreateForm.value | json}}</pre>
-<pre class="row">{{postCreateForm.errors | json}}</pre>
-<pre class="row">Form.status: {{postCreateForm.status }}</pre>
-<form #postCreateForm="ngForm" (ngSubmit)="submit(postCreateForm.value)">
+<form #postCreateForm="ngForm" (ngSubmit)="submit(postCreateForm.value)" *ngIf="model">
+  <pre class="row">Form.value: {{postCreateForm.value | json}}</pre>
+  <pre class="row">{{postCreateForm.errors | json}}</pre>
+  <pre class="row">Form.status: {{postCreateForm.status }}</pre>
   <div class="form-group">
     <!-- TITLE -->
     <label for="name">

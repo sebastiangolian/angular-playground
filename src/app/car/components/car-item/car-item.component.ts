@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { Car } from '../../interfaces/car.interface';
+import { CarModel } from '../../models/car.model';
 
 @Component({
   selector: 'app-car-item',
@@ -8,7 +9,7 @@ import { Car } from '../../interfaces/car.interface';
 })
 export class CarItemComponent implements OnInit {
 
-  @Input() car: Car = null;
+  @Input() car: CarModel = null;
   @Output() setted: EventEmitter<string> = new EventEmitter();
   public carCostClasses: any;
 
@@ -35,10 +36,12 @@ export class CarItemComponent implements OnInit {
   }
 
   setCarCostClasses() {
-    this.carCostClasses = {
-      "text-success": this.car.cost <= 1000,
-      "text-danger": this.car.cost >= 3000
-    };
+    if (this.car) {
+      this.carCostClasses = {
+        "text-success": this.car.cost <= 1000,
+        "text-danger": this.car.cost >= 3000
+      };
+    }
   }
 
   checkActive(): boolean {

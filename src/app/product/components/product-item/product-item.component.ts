@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Product } from '../../interfaces/product';
 import { ProductQuantityChange } from '../../interfaces/product-quantity-change';
 
@@ -14,14 +14,13 @@ export class ProductItemComponent {
 
   constructor() { }
 
-  incrementInCart() {
-    this.quantityChange.emit({product: this.product, changeInQuantity: 1});
+  addToCart() {
+    this.quantityChange.emit({ product: this.product, changeInQuantity: 1 });
   }
 
-  decrementInCart() {
+  removeFromCart() {
     if (this.product.quantityInCart > 0) {
-      this.quantityChange.emit({product: this.product, changeInQuantity: -1});
+      this.quantityChange.emit({ product: this.product, changeInQuantity: -1 });
     }
   }
-
 }

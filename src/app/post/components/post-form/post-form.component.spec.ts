@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PostFormComponent } from './post-form.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('PostFormComponent', () => {
   let component: PostFormComponent;
@@ -8,7 +11,15 @@ describe('PostFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PostFormComponent ]
+      declarations: [ 
+        PostFormComponent 
+      ],
+      imports: [
+        ReactiveFormsModule,
+        FormsModule,
+        HttpClientModule,
+        RouterTestingModule
+      ]
     })
     .compileComponents();
   }));

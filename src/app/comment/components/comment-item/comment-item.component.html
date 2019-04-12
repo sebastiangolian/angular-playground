@@ -1,4 +1,4 @@
-<div class="card mt-2">
+<div class="card mt-2" *ngIf="comment">
     <div class="card-header">
         {{comment.name}} - {{comment.email}}
         <span class="float-right hand" (click)="delete(comment)">X</span>

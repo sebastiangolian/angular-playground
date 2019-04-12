@@ -20,7 +20,9 @@ export class CommentByPostComponent implements OnInit {
   constructor(private commentService: CommentService) { }
 
   ngOnInit() {
-    this.getComments("/public/api/comments?post="+this.post.id);
+    if(this.post) {
+      this.getComments("/public/api/comments?post="+this.post.id);
+    }
   }
 
   getComments(url: string): void {

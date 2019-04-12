@@ -1,15 +1,17 @@
-<div>Car: {{car.toString()}}</div>
-<div [class.text-success]="car.active" [class.text-danger]="!car.active">Status: {{car.active}}</div>
-<div [ngClass]="carCostClasses">Cost value: {{car.cost}}$</div>
+<div *ngIf="car">
+    <div>Car: {{car.toString()}}</div>
+    <div [class.text-success]="car.active" [class.text-danger]="!car.active">Status: {{car.active}}</div>
+    <div [ngClass]="carCostClasses">Cost value: {{car.cost}}$</div>
 
-<div [ngSwitch]="car.cost">
-    <p *ngSwitchCase="1000" class="text-success">Cost: Little</p>
-    <p *ngSwitchCase="2000" class="text-primary">Cost: Hard</p>
-    <p *ngSwitchDefault class="text-danger">Cost: Very hard</p>
+    <div [ngSwitch]="car.cost">
+        <p *ngSwitchCase="1000" class="text-success">Cost: Little</p>
+        <p *ngSwitchCase="2000" class="text-primary">Cost: Hard</p>
+        <p *ngSwitchDefault class="text-danger">Cost: Very hard</p>
+    </div>
+
+    <button class="btn btn-primary btn-sm" (click)="toggleActive(car)">Toogle active</button>
+    <button class="btn btn-primary btn-sm" (click)="changeCost()">Change cost</button>
+    <button class="btn btn-primary btn-sm" (click)="set()">Set current</button>
+
+    <hr />
 </div>
-
-<button class="btn btn-primary btn-sm" (click)="toggleActive(car)">Toogle active</button>
-<button class="btn btn-primary btn-sm" (click)="changeCost()">Change cost</button>
-<button class="btn btn-primary btn-sm" (click)="set()">Set current</button>
-
-<hr />

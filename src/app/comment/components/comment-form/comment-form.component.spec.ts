@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CommentFormComponent } from './comment-form.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('CommentFormComponent', () => {
   let component: CommentFormComponent;
@@ -8,7 +11,15 @@ describe('CommentFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CommentFormComponent ]
+      declarations: [ 
+        CommentFormComponent 
+      ],
+      imports: [
+        ReactiveFormsModule,
+        FormsModule,
+        HttpClientModule,
+        RouterTestingModule
+      ]
     })
     .compileComponents();
   }));
