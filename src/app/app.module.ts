@@ -12,6 +12,7 @@ import { TestComponent } from './components/test/test.component';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule} from 'ngx-pagination';
 import { ProductModule } from './product/product.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ProductModule } from './product/product.module';
     AppRoutingModule,
     NgbModule,
     NgxPaginationModule,
-    ProductModule
+    ProductModule,
+    FormsModule
   ],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/'}
