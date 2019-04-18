@@ -26,7 +26,8 @@ export class CarCreateComponent{
   public createCar(carForm: NgForm) {
     console.log('Creating car ', carForm);
     if (carForm.valid) {
-      console.log('Creating car ', carForm.value);
+      console.log('Car', carForm.value.car);
+      console.log('Confirmation', carForm.value.confirm);
     } else {
       console.error('Car form is in an invalid state');
     }
