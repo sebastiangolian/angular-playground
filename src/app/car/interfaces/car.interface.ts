@@ -2,7 +2,8 @@ export interface Car {
     id: number;
     name: string;
     type: string;
-    cost: number;
+    price: number;
+    previousPrice: number; 
     active: boolean;
 
     toString():string;

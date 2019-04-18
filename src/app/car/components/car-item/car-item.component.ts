@@ -11,22 +11,22 @@ export class CarItemComponent implements OnInit {
 
   @Input() car: CarModel = null;
   @Output() setted: EventEmitter<string> = new EventEmitter();
-  public carCostClasses: any;
+  public carPriceClasses: any;
 
   constructor() { }
 
   ngOnInit() {
-    this.setCarCostClasses();
+    this.setCarPriceClasses();
   }
 
   toggleActive(car: Car) {
     car.active = !car.active;
   }
 
-  changeCost() {
+  changePrice() {
     if (this.checkActive()) {
-      this.car.cost += 1000;
-      this.setCarCostClasses();
+      this.car.price += 1000;
+      this.setCarPriceClasses();
     }
   }
 
@@ -35,11 +35,11 @@ export class CarItemComponent implements OnInit {
       this.setted.emit(this.car.toString());
   }
 
-  setCarCostClasses() {
+  setCarPriceClasses() {
     if (this.car) {
-      this.carCostClasses = {
-        "text-success": this.car.cost <= 1000,
-        "text-danger": this.car.cost >= 3000
+      this.carPriceClasses = {
+        "text-success": this.car.price <= 1000,
+        "text-danger": this.car.price >= 3000
       };
     }
   }
