@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Car } from '../../interfaces/car.interface';
 import { CarModel } from '../../models/car.model';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-car-create',
@@ -22,7 +23,12 @@ export class CarCreateComponent{
     this.car.previousPrice = price;
   }
 
-  public createCar() {
-    console.log('Creating car ', this.car);
+  public createCar(carForm: NgForm) {
+    console.log('Creating car ', carForm);
+    if (carForm.valid) {
+      console.log('Creating car ', carForm.value);
+    } else {
+      console.error('Car form is in an invalid state');
+    }
   }
 }
