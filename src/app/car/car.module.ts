@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     CarListComponent,
     CarItemComponent,
-    CarCreateComponent
+    CarCreateComponent,
   ],
   imports: [
     CommonModule,

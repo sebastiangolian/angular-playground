@@ -13,6 +13,7 @@ import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule} from 'ngx-pagination';
 import { ProductModule } from './product/product.module';
 import { FormsModule } from '@angular/forms';
+import { ProfileModule } from './profile/profile.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FormsModule } from '@angular/forms';
     NgbModule,
     NgxPaginationModule,
     ProductModule,
-    FormsModule
+    FormsModule,
+    ProfileModule
   ],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/'}

@@ -28,6 +28,10 @@ const routes: Routes = [
     path: 'product',
     loadChildren: './product/product.module#ProductModule',
   },
+  {
+    path: 'profile',
+    loadChildren: './profile/profile.module#ProfileModule',
+  },
 ];
 
 @NgModule({
