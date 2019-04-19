@@ -1,5 +1,4 @@
 <h2>Create Car</h2>
-
 <h3>Form values {{carForm.value | json}}</h3>
 <h3>Car values: {{car | json}}</h3>
 <h3>Data has been confirmed: {{confirmed}}</h3>
@@ -11,8 +10,8 @@
         Name
         <sup class="text-danger">*</sup>
       </label>
-      <input class="form-control" type="text" placeholder="Car Name" required name="name" [(ngModel)]="car.name"
-        minlength="2" required #name="ngModel">
+      <input class="form-control" type="text" placeholder="Car Name" name="name" [(ngModel)]="car.name" #name="ngModel"
+        minlength="2" required>
       <div *ngIf="name.dirty && name.invalid">
         <div *ngIf="name?.errors.required">Car name is required</div>
         <div *ngIf="name?.errors.minlength">Car name must be atleast of length 2</div>
