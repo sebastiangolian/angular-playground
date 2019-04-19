@@ -9,7 +9,7 @@ import { CarModel } from '../../models/car.model';
 export class CarListComponent implements OnInit {
 
   cars: Array<CarModel> = Array<CarModel>();
-  currentCar:string = "";
+  currentCar:CarModel;
   counter: number = 0;
   
   constructor() { 
@@ -20,8 +20,8 @@ export class CarListComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSet(str:string) {
-    this.currentCar = str;
+  onSet(car:CarModel) {
+    this.currentCar = car;
     this.counter++;
   }
 }

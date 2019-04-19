@@ -1,5 +1,5 @@
 <h1>Cars <a class="btn btn-primary btn-sm float-right mr-5" [routerLink]="'/car/create/'">Add new</a></h1>
-<h2>Current car: {{currentCar}}</h2>
+<h2 *ngIf="currentCar">Current car: {{currentCar.toString()}}</h2>
 <h2>Setted counter: {{counter}}</h2>
 <hr />
 

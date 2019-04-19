@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CarCreateComponent } from './car-create.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 describe('CarCreateComponent', () => {
   let component: CarCreateComponent;
@@ -8,7 +9,11 @@ describe('CarCreateComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CarCreateComponent ]
+      declarations: [ CarCreateComponent ],
+      imports: [
+        ReactiveFormsModule,
+        FormsModule
+      ]
     })
     .compileComponents();
   }));

@@ -10,7 +10,7 @@ import { CarModel } from '../../models/car.model';
 export class CarItemComponent implements OnInit {
 
   @Input() car: CarModel = null;
-  @Output() setted: EventEmitter<string> = new EventEmitter();
+  @Output() setted: EventEmitter<CarModel> = new EventEmitter();
   public carPriceClasses: any;
 
   constructor() { }
@@ -32,7 +32,7 @@ export class CarItemComponent implements OnInit {
 
   set() {
     if (this.checkActive())
-      this.setted.emit(this.car.toString());
+      this.setted.emit(this.car);
   }
 
   setCarPriceClasses() {
