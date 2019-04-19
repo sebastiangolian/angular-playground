@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ProfileCreateReactiveComponent } from './components/profile-create-reactive/profile-create-reactive.component';
+import { ProfileFormReactiveComponent } from './components/profile-form-reactive/profile-form-reactive.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ProfileCreateReactiveComponent
+    component: ProfileFormReactiveComponent
   },
 ];
 
