@@ -1,0 +1,84 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+    <h1>profile-form-template-driven</h1>
+  
+    <div class="form-group">
+      <label>First Name:</label>
+      <input class="form-control" formControlName="firstName">
+      <div *ngIf="!!f.firstName.invalid && (!!f.firstName.dirty || !!f.firstName.touched)" class="text-danger">
+        <div *ngIf="!!f.firstName.errors.required">Required</div>
+        <div *ngIf="!!f.firstName.errors.minlength">Min 3 characters long.</div>  
+        <div *ngIf="!!f.firstName.errors.maxlength">Max 25 characters long.</div>  
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label>Last Name:</label>
+      <input formControlName="lastName" class="form-control">
+      <div *ngIf="!!f.lastName.invalid && (!!f.lastName.dirty || !!f.lastName.touched)" class="text-danger">
+        <div *ngIf="!!f.lastName.errors.required">Required</div>
+        <div *ngIf="!!f.lastName.errors.minlength">Min 3 characters long.</div>  
+        <div *ngIf="!!f.lastName.errors.maxlength">Max 25 characters long.</div>  
+      </div>
+    </div>
+  
+    <div formGroupName="address">
+      <h2>Address</h2>
+  
+      <div class="form-group">
+        <label>Street:</label>
+        <input formControlName="street" class="form-control">
+        <div *ngIf="!!f.address.controls.street.invalid && (!!f.address.controls.street.dirty || !!f.address.controls.street.touched)" class="text-danger">
+          <div *ngIf="!!f.address.controls.street.errors.required">Required</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+      <label>City:</label>
+        <input formControlName="city" class="form-control">
+        <div *ngIf="!!f.address.controls.city.invalid && (!!f.address.controls.city.dirty || !!f.address.controls.city.touched)" class="text-danger">
+          <div *ngIf="!!f.address.controls.city.errors.required">Required</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label>State:</label>
+        <input formControlName="state" class="form-control">
+        <div *ngIf="!!f.address.controls.state.invalid && (!!f.address.controls.state.dirty || !!f.address.controls.state.touched)" class="text-danger">
+          <div *ngIf="!!f.address.controls.state.errors.required">Required</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label>Zip Code:</label>
+        <input formControlName="zip" class="form-control">
+        <div *ngIf="!!f.address.controls.zip.invalid && (!!f.address.controls.zip.dirty || !!f.address.controls.zip.touched)" class="text-danger">
+          <div *ngIf="!!f.address.controls.zip.errors.required">Required</div>
+        </div>
+      </div>
+    </div>
+  
+    <div formArrayName="aliases">
+      <h2>Aliases
+          <button class="btn btn-primary btn-sm" type="button" (click)="addAlias()">Add Alias</button>
+      </h2> 
+      
+      <div *ngFor="let address of aliases.controls; let i=index">
+        <div class="form-group">
+          <label>Alias:</label>
+          <input [formControlName]="i" class="form-control">
+        </div>
+      </div>
+    </div>
+  
+    <p>Form status: {{ profileForm.status }}</p>
+    <p>Form value: {{ profileForm.value | json }}</p>
+  
+    <p>
+      <button type="submit" class="btn btn-primary" [disabled]="!profileForm.valid">Submit</button>
+      <button type="button" class="btn btn-info" (click)="addDefault()">Add default</button>
+      <button type="reset" class="btn btn-info">Reset</button>
+    </p>
+  </form>
+  
+  

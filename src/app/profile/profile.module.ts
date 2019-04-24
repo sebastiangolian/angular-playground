@@ -4,10 +4,14 @@ import { CommonModule } from '@angular/common';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileFormReactiveComponent } from './components/profile-form-reactive/profile-form-reactive.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProfileFormTemplateDrivenComponent } from './components/profile-form-template-driven/profile-form-template-driven.component';
+import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
-    ProfileFormReactiveComponent
+    ProfileFormReactiveComponent,
+    ProfileFormTemplateDrivenComponent,
+    ProfilePageComponent
   ],
   imports: [
     CommonModule,
