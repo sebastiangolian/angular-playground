@@ -1,7 +1,7 @@
 # angular-playground
 This angular playground
 
-## Test app
+## Test app 
 [angular-playground](https://sebastiangolian.github.io/angular-playground)
 
 ## Getting started
