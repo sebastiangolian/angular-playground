@@ -1,84 +1,84 @@
-<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+<form name="form" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm">
 
     <h1>profile-form-template-driven</h1>
   
     <div class="form-group">
-      <label>First Name:</label>
-      <input class="form-control" formControlName="firstName">
-      <div *ngIf="!!f.firstName.invalid && (!!f.firstName.dirty || !!f.firstName.touched)" class="text-danger">
-        <div *ngIf="!!f.firstName.errors.required">Required</div>
-        <div *ngIf="!!f.firstName.errors.minlength">Min 3 characters long.</div>  
-        <div *ngIf="!!f.firstName.errors.maxlength">Max 25 characters long.</div>  
+      <label>Login:</label>
+      <input type="text" class="form-control" name="login" [(ngModel)]="model.login" #login="ngModel"
+        [class.is-invalid]="login.invalid && login.touched"
+        minlength="3" maxlength="25" pattern="[a-zA-Z ]*" required>
+      <div *ngIf="login.touched && login.invalid" class="text-danger">
+          <div *ngIf="!!login.errors.required">Login is required</div>
+          <div *ngIf="!!login.errors.minlength">Login is too short</div>
+          <div *ngIf="!!login.errors.maxlength">Login is too lenght</div>
+          <div *ngIf="!!login.errors.pattern">In login can you use only letter</div>
       </div>
     </div>
-  
+
     <div class="form-group">
-      <label>Last Name:</label>
-      <input formControlName="lastName" class="form-control">
-      <div *ngIf="!!f.lastName.invalid && (!!f.lastName.dirty || !!f.lastName.touched)" class="text-danger">
-        <div *ngIf="!!f.lastName.errors.required">Required</div>
-        <div *ngIf="!!f.lastName.errors.minlength">Min 3 characters long.</div>  
-        <div *ngIf="!!f.lastName.errors.maxlength">Max 25 characters long.</div>  
+      <label>Email:</label>
+      <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel"
+        [class.is-invalid]="email.invalid && email.touched"
+        email required>
+      <div *ngIf="email.touched && email.invalid" class="text-danger">
+          <div *ngIf="!!email.errors.required">Login is required</div>
+          <div *ngIf="!!email.errors.email">You must use email format example@example.com</div>
       </div>
     </div>
   
-    <div formGroupName="address">
+    <div ngModelGroup="address">
       <h2>Address</h2>
   
       <div class="form-group">
-        <label>Street:</label>
-        <input formControlName="street" class="form-control">
-        <div *ngIf="!!f.address.controls.street.invalid && (!!f.address.controls.street.dirty || !!f.address.controls.street.touched)" class="text-danger">
-          <div *ngIf="!!f.address.controls.street.errors.required">Required</div>
-        </div>
-      </div>
-  
-      <div class="form-group">
-      <label>City:</label>
-        <input formControlName="city" class="form-control">
-        <div *ngIf="!!f.address.controls.city.invalid && (!!f.address.controls.city.dirty || !!f.address.controls.city.touched)" class="text-danger">
-          <div *ngIf="!!f.address.controls.city.errors.required">Required</div>
-        </div>
-      </div>
-  
-      <div class="form-group">
-        <label>State:</label>
-        <input formControlName="state" class="form-control">
-        <div *ngIf="!!f.address.controls.state.invalid && (!!f.address.controls.state.dirty || !!f.address.controls.state.touched)" class="text-danger">
-          <div *ngIf="!!f.address.controls.state.errors.required">Required</div>
+        <label>City:</label>
+        <input type="text" class="form-control" name="city" [(ngModel)]="model.city" #city="ngModel" 
+        [class.is-invalid]="city.invalid && city.touched"
+        required>
+        <div *ngIf="city.touched && city.invalid" class="text-danger">
+          <div *ngIf="!!city.errors.required">City is required</div>
         </div>
       </div>
   
       <div class="form-group">
         <label>Zip Code:</label>
-        <input formControlName="zip" class="form-control">
-        <div *ngIf="!!f.address.controls.zip.invalid && (!!f.address.controls.zip.dirty || !!f.address.controls.zip.touched)" class="text-danger">
-          <div *ngIf="!!f.address.controls.zip.errors.required">Required</div>
+        <input type="text" class="form-control" name="zipcode" [(ngModel)]="model.zipcode" #zipcode="ngModel" 
+          [class.is-invalid]="zipcode.invalid && zipcode.touched"
+          minlength="6" maxlength="6" pattern="[0-9]{2}[\-]?[0-9]{3}" required>
+        <div *ngIf="zipcode.touched && zipcode.invalid" class="text-danger">
+          <div *ngIf="!!zipcode.errors.required">Zip code is required</div>
+          <div *ngIf="!!zipcode.errors.minlength">Zip code is too short</div>
+          <div *ngIf="!!zipcode.errors.maxlength">Zip code is too lenght</div>
+          <div *ngIf="!!zipcode.errors.pattern">Zip code must be in 00-000 format</div>
         </div>
       </div>
     </div>
   
-    <div formArrayName="aliases">
+    <div ngModelGroup="aliases">
       <h2>Aliases
-          <button class="btn btn-primary btn-sm" type="button" (click)="addAlias()">Add Alias</button>
+        <button class="btn btn-primary btn-sm" type="button" (click)="aliases.push('')">Add Alias</button>
       </h2> 
       
-      <div *ngFor="let address of aliases.controls; let i=index">
+      <div *ngFor="let alias of aliases; let i = index">
         <div class="form-group">
           <label>Alias:</label>
-          <input [formControlName]="i" class="form-control">
+          <input name="{{i}}" class="form-control" [(ngModel)]="alias[i]" #alias="ngModel" 
+            [class.is-invalid]="!!alias.invalid && !!alias.touched"
+            minlength="3" maxlength="10" required>
+          <div *ngIf="!!alias.touched && !!alias.invalid" class="text-danger">
+            <div *ngIf="!!alias.errors.required">Alias is required</div>
+            <div *ngIf="!!alias.errors.minlength">Alias is too short</div>
+            <div *ngIf="!!alias.errors.maxlength">Alias is too lenght</div>
+          </div>
         </div>
       </div>
     </div>
   
-    <p>Form status: {{ profileForm.status }}</p>
-    <p>Form value: {{ profileForm.value | json }}</p>
+    <p>Form status: {{ f.status }}</p>
+    <p>Form value: {{ f.value | json }}</p>
   
     <p>
-      <button type="submit" class="btn btn-primary" [disabled]="!profileForm.valid">Submit</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
       <button type="button" class="btn btn-info" (click)="addDefault()">Add default</button>
       <button type="reset" class="btn btn-info">Reset</button>
     </p>
   </form>
-  
-  
