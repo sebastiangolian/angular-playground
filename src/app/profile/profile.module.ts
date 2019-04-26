@@ -6,12 +6,14 @@ import { ProfileFormReactiveComponent } from './components/profile-form-reactive
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileFormTemplateDrivenComponent } from './components/profile-form-template-driven/profile-form-template-driven.component';
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
+import { ProfileFormTemplateDrivenModelComponent } from './components/profile-form-template-driven-model/profile-form-template-driven-model.component';
 
 @NgModule({
   declarations: [
     ProfileFormReactiveComponent,
     ProfileFormTemplateDrivenComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    ProfileFormTemplateDrivenModelComponent
   ],
   imports: [
     CommonModule,
