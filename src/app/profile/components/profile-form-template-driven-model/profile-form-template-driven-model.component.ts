@@ -24,7 +24,6 @@ export class ProfileFormTemplateDrivenModelComponent {
   }
 }
 
-
 export class Profile
 {
   login: string = "";

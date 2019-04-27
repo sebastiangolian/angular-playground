@@ -21,9 +21,56 @@
         [class.is-invalid]="email.invalid && email.touched"
         email required>
       <div *ngIf="email.touched && email.invalid" class="text-danger">
-          <div *ngIf="!!email.errors.required">Login is required</div>
-          <div *ngIf="!!email.errors.email">You must use email format example@example.com</div>
+        <div *ngIf="!!email.errors.required">Login is required</div>
+        <div *ngIf="!!email.errors.email">You must use email format example@example.com</div>
       </div>
+    </div>
+
+    <div class="form-group">
+      <label>Description:</label>
+      <textarea rows="4" cols="50" class="form-control" name="description" [(ngModel)]="model.description" #description="ngModel"
+        [class.is-invalid]="description.invalid && description.touched"
+        minlength="3" maxlength="1024"></textarea>
+      <div *ngIf="description.touched && description.invalid" class="text-danger">
+        <div *ngIf="!!description.errors.minlength">Description is too short</div>
+        <div *ngIf="!!description.errors.maxlength">Description is too lenght</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <select class="form-control custom-select" name="age" [(ngModel)]="model.age" #age="ngModel" 
+        required>
+        <option value="">-- select age --</option>
+        <option value="18">under 18</option>
+        <option value="30">19 - 30</option>
+        <option value="31">above 31</option>
+      </select>
+      <div *ngIf="age.touched && age.invalid" class="text-danger">
+        <div *ngIf="!!age.errors.required">Age is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="custom-control custom-radio">
+        <input type="radio" class="custom-control-input" id="sex[woman]" value="woman" name="sex" [(ngModel)]="model.sex" #sex="ngModel" 
+        required>
+        <label class="custom-control-label" for="sex[woman]">Woman</label>
+      </div>
+      <div class="custom-control custom-radio">
+        <input type="radio" class="custom-control-input" id="sex[men]" value="men" name="sex" [(ngModel)]="model.sex" #sex="ngModel"
+        required>
+        <label class="custom-control-label" for="sex[men]">Men</label>
+      </div>
+      <div *ngIf="!!sex.invalid" class="text-danger">
+        <div *ngIf="!!sex.errors.required">Sex is required</div>
+      </div>
+    </div>
+
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" name="active" [(ngModel)]="model.active" #active="ngModel">
+      <label class="form-check-label">
+        Active
+      </label>
     </div>
   
     <div ngModelGroup="address">

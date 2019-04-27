@@ -11,6 +11,10 @@ export class ProfileFormTemplateDrivenComponent {
   model: any = {};
   aliases: Array<String> = new Array<String>();
 
+  constructor() { 
+    this.model.age = "";
+  }
+
   public addDefault(): void {
     this.model.login = 'testlogin';
     this.model.email = 'test@email.com';
