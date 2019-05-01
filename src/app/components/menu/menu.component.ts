@@ -9,10 +9,8 @@ import { Router } from '@angular/router';
 export class MenuComponent implements OnInit {
 
   userIsLogged = false;
-  constructor(
-    private router: Router
-  ) { }
 
-  ngOnInit() {
-  }
+  constructor(private router: Router) { }
+
+  ngOnInit() {}
 }

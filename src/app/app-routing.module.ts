@@ -40,9 +40,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    useHash: true
-  })],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule { 
+  public routes: Routes;
+
+  constructor() { 
+    this.routes = routes;
+  }
+}
