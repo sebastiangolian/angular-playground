@@ -14,6 +14,7 @@ import { NgxPaginationModule} from 'ngx-pagination';
 import { ProductModule } from './product/product.module';
 import { FormsModule } from '@angular/forms';
 import { ProfileModule } from './profile/profile.module';
+import { GameComponent } from './components/game/game.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ProfileModule } from './profile/profile.module';
     HomeComponent,
     FooterComponent,
     TestComponent,
+    GameComponent,
   ],
   imports: [
     BrowserModule,
