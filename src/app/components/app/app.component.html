@@ -1,6 +1,9 @@
 <app-menu></app-menu>
 <div class="container">
     <div id="content" class="pt-5 pb-1 mx-auto">
+        <div *ngIf="messageService.message" class="alert alert-primary" role="alert">
+            {{messageService.message}}
+        </div>
         <router-outlet></router-outlet>     
     </div>
     <app-footer></app-footer>    
