@@ -60,7 +60,8 @@
 
   <div formArrayName="aliases">
     <h2>Aliases
-        <button class="btn btn-primary btn-sm" type="button" (click)="addAlias()">Add Alias</button>
+      <button class="btn btn-primary btn-sm" type="button" (click)="addAlias()">Add Alias</button>
+      <button class="btn btn-primary btn-sm" type="button" (click)="removeAlias()">Remove Alias</button>
     </h2> 
     
     <div *ngFor="let address of aliases.controls; let i=index">

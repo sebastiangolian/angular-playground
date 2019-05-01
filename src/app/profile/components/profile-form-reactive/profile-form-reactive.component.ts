@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, assertPlatform } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -32,6 +32,18 @@ export class ProfileFormReactiveComponent {
 
   public addAlias(): void {
     this.aliases.push(this.fb.control(''));
+  }
+
+  public removeAlias(): void {
+    if(this.aliases.length > 0)
+    {
+      this.aliases.removeAt(this.aliases.length-1);
+    }
+    else
+    {
+      alert("No item to delete.")
+    }
+    
   }
 
   public addDefault(): void {

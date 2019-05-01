@@ -56,6 +56,7 @@
   <div ngModelGroup="aliases">
     <h2>Aliases
       <button class="btn btn-primary btn-sm" type="button" (click)="aliases.push('')">Add Alias</button>
+      <button class="btn btn-primary btn-sm" type="button" (click)="aliases.pop()">Remove Alias</button>
     </h2> 
     
     <div *ngFor="let alias of aliases; let i = index">
