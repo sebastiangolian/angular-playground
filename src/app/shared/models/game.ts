@@ -8,4 +8,8 @@ export class GameModel {
         this.title = title;
         this.price = price;
     }
+
+    public toString(): string {
+        return this.id + "-" + this.title + "-" + this.price;
+    }
 }
