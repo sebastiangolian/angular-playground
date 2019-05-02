@@ -11,9 +11,9 @@ export class GameObservableService {
 
   constructor() {
     this.games = [
-      new GameModel(1, 'FIFA', 100),
-      new GameModel(2, 'PES', 150),
-      new GameModel(3, 'WOT', 0)
+      {id: 1, title: 'FIFA', price: 100},
+      {id: 2, title: 'PES', price: 150},
+      {id: 3, title: 'WOT', price: 0}
     ];
   }
 
@@ -21,12 +21,10 @@ export class GameObservableService {
     return of(this.games);
   }
 
-  createStock(game: GameModel): Observable<any> {
-    let foundGame = this.games.find(each => each.id === game.id);
-    if (foundGame) {
-      return of({msg: 'Game with id ' + game.id + ' already exists'});
-    }
-    this.games.push(game);
-    return of({msg: 'Game with id ' + game.id + ' successfully created'});;
+  createGame(game: GameModel): Observable<any> {
+    let gameClone = Object.assign({}, game);
+    gameClone.id = this.games.length + 1;
+    this.games.push(gameClone);
+    return of(gameClone);
   }
 }

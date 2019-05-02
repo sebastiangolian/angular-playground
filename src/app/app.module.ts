@@ -15,6 +15,7 @@ import { ProductModule } from './product/product.module';
 import { FormsModule } from '@angular/forms';
 import { ProfileModule } from './profile/profile.module';
 import { GameComponent } from './components/game/game.component';
+import { GameObservableComponent } from './components/game-observable/game-observable.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { GameComponent } from './components/game/game.component';
     FooterComponent,
     TestComponent,
     GameComponent,
+    GameObservableComponent,
   ],
   imports: [
     BrowserModule,
