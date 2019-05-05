@@ -1,4 +1,6 @@
-export class GameModel {
+import { Game } from '../interfaces/game.interface';
+
+export class GameModel implements Game {
     id: number = 0;
     title: string = "";
     price: number = 0;
