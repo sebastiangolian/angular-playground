@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { MessageService } from 'src/app/shared/services/message.service';
 import { NgForm } from '@angular/forms';
-import { GameModel } from 'src/app/shared/models/game';
-import { GameObservableService } from 'src/app/shared/services/game-observable.service.';
+import { GameObservableService } from 'src/app/game/services/game-observable.service.';
 import { Observable } from 'rxjs';
+import { GameModel } from '../../models/game';
 
 @Component({
   selector: 'app-game-observable',

@@ -14,8 +14,7 @@ import { NgxPaginationModule} from 'ngx-pagination';
 import { ProductModule } from './product/product.module';
 import { FormsModule } from '@angular/forms';
 import { ProfileModule } from './profile/profile.module';
-import { GameComponent } from './components/game/game.component';
-import { GameObservableComponent } from './components/game-observable/game-observable.component';
+import { GameModule } from './game/game.module';
 
 @NgModule({
   declarations: [
@@ -23,9 +22,7 @@ import { GameObservableComponent } from './components/game-observable/game-obser
     MenuComponent,
     HomeComponent,
     FooterComponent,
-    TestComponent,
-    GameComponent,
-    GameObservableComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +32,8 @@ import { GameObservableComponent } from './components/game-observable/game-obser
     NgxPaginationModule,
     ProductModule,
     FormsModule,
-    ProfileModule
+    ProfileModule,
+    GameModule
   ],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/'}

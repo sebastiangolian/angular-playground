@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { GameModel } from 'src/app/shared/models/game';
-import { GameService } from 'src/app/shared/services/game.service';
+import { GameService } from 'src/app/game/services/game.service';
 import { NgForm } from '@angular/forms';
 import { MessageService } from 'src/app/shared/services/message.service';
+import { GameModel } from '../../models/game';
 
 @Component({
   selector: 'app-game',
