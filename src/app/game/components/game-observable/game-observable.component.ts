@@ -32,7 +32,7 @@ export class GameObservableComponent {
             this.messageService.message = err.msg;
           });
     } else {
-      console.error('Stock form is in an invalid state');
+      console.error('Game form is in an invalid state');
     }
   }
 }

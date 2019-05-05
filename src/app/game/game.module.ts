@@ -5,23 +5,20 @@ import { GameComponent } from './components/game/game.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GameSimpleComponent } from './components/game-simple/game-simple.component';
 import { GameObservableComponent } from './components/game-observable/game-observable.component';
+import { GameApiComponent } from './components/game-api/game-api.component';
 
 @NgModule({
   declarations: [
     GameComponent,
     GameSimpleComponent,
-    GameObservableComponent
+    GameObservableComponent,
+    GameApiComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     GameRoutingModule
-  ],
-  exports: [
-    GameComponent,
-    GameSimpleComponent,
-    GameObservableComponent
   ]
 })
 export class GameModule { }
