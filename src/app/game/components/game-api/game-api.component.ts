@@ -25,10 +25,11 @@ export class GameApiComponent implements OnInit {
 
   onSubmit(f:NgForm) {
     if (f.valid) {
+      this.games$.subscribe(result => {this.model.id = result.length + 1});
       this.gameService.create(this.model)
           .subscribe((result: any) => {
             this.messageService.message = result.msg;
-            this.model =  new GameModel();
+            this.model = new GameModel();
             f.reset();
           }, (err) => {
             this.messageService.message = err.msg;
