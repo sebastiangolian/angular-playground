@@ -1,7 +1,17 @@
-<h1>game-observable</h1>
-<li *ngFor="let game of games$  | async">{{ game.id }}-{{game.title}}-{{game.price}}</li>
+<h1>game-simple</h1>
+<li *ngFor="let game of games">{{ game.toString() }}</li>
 
 <form name="form" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm">
+
+  <div class="form-group">
+      <label>Id:</label>
+      <input type="text" class="form-control" name="id" [(ngModel)]="model.id" #id="ngModel"
+        [class.is-invalid]="id.invalid && id.touched" pattern="[0-9]*" required>
+      <div *ngIf="id.touched && id.invalid" class="text-danger">
+        <div *ngIf="!!id.errors.required">id is required</div>
+        <div *ngIf="!!id.errors.pattern">In id can you use only number</div>
+      </div>
+    </div>
 
   <div class="form-group">
     <label>Title:</label>

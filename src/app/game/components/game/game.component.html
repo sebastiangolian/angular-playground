@@ -1,43 +1,5 @@
-<li *ngFor="let game of games">{{ game.toString() }}</li>
+<h1>GAME MODULE</h1>
 
-<form name="form" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm">
-
-  <div class="form-group">
-      <label>Id:</label>
-      <input type="text" class="form-control" name="id" [(ngModel)]="model.id" #id="ngModel"
-        [class.is-invalid]="id.invalid && id.touched" pattern="[0-9]*" required>
-      <div *ngIf="id.touched && id.invalid" class="text-danger">
-        <div *ngIf="!!id.errors.required">id is required</div>
-        <div *ngIf="!!id.errors.pattern">In id can you use only number</div>
-      </div>
-    </div>
-
-  <div class="form-group">
-    <label>Title:</label>
-    <input type="text" class="form-control" name="title" [(ngModel)]="model.title" #title="ngModel"
-      [class.is-invalid]="title.invalid && title.touched" minlength="3" maxlength="255" pattern="[a-zA-Z ]*" required>
-    <div *ngIf="title.touched && title.invalid" class="text-danger">
-      <div *ngIf="!!title.errors.required">Title is required</div>
-      <div *ngIf="!!title.errors.minlength">Title is too short</div>
-      <div *ngIf="!!title.errors.maxlength">Title is too lenght</div>
-      <div *ngIf="!!title.errors.pattern">In title can you use only letter</div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label>Price:</label>
-    <input type="text" class="form-control" name="price" [(ngModel)]="model.price" #price="ngModel"
-      [class.is-invalid]="price.invalid && price.touched" required>
-    <div *ngIf="price.touched && price.invalid" class="text-danger">
-      <div *ngIf="!!price.errors.required">Price is required</div>
-    </div>
-  </div>
-
-  <p>Form status: {{ f.status }}</p>
-  <p>Form value: {{ f.value | json }}</p>
-
-  <p>
-    <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Add</button>
-    <button type="reset" class="btn btn-info">Reset</button>
-  </p>
-</form>
+<h3>Enabled component</h3>
+<a [routerLink]="'/game/game-simple'">game-simple</a><br />
+<a [routerLink]="'/game/game-observable'">game-observable</a><br />

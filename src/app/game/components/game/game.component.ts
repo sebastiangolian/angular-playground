@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GameService } from 'src/app/game/services/game.service';
-import { NgForm } from '@angular/forms';
-import { MessageService } from 'src/app/shared/services/message.service';
-import { GameModel } from '../../models/game';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-game',
@@ -10,18 +7,12 @@ import { GameModel } from '../../models/game';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
-
-  public games: GameModel[];
-  public model: GameModel = new GameModel();
-
-  constructor(private gameService: GameService, public messageService: MessageService) { }
-
-  ngOnInit() {
-    this.games = this.gameService.getGames();
+  routes: any;
+  
+  constructor(private router: Router) {
+    this.routes = this.router.config;
   }
 
-  onSubmit(f:NgForm) {
-    this.gameService.createGame(this.model);
-    this.messageService.message = "Added new game."
+  ngOnInit() {
   }
 }
