@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "scripts": {
     "start": "ng serve --open",
+    "start-api": "node api/index.js",
+    "start-with-api": "concurrently \"node api/index.js\" \"npm:start",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -22,6 +24,7 @@
     "@angular/router": "~7.2.0",
     "@ng-bootstrap/ng-bootstrap": "^4.1.0",
     "bootstrap": "^4.3.1",
+    "concurrently": "^4.1.0",
     "core-js": "^2.5.4",
     "jquery": "^3.3.1",
     "ng2-validation": "^4.2.0",

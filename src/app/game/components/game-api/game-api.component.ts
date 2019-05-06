@@ -20,23 +20,25 @@ export class GameApiComponent implements OnInit {
 
   ngOnInit() {
     this.games$ = this.gameService.get();
-    console.log(this.games$);
   }
 
-  onSubmit(f:NgForm) {
+  onSubmit(f: NgForm) {
     if (f.valid) {
-      this.games$.subscribe(result => {this.model.id = result.length + 1});
-      this.gameService.create(this.model)
+      this.games$.subscribe((result: Game[]) => {
+        this.model.id = result.length + 1;
+        this.gameService
+          .create(this.model)
           .subscribe((result: any) => {
             this.messageService.message = result.msg;
             this.model = new GameModel();
             f.reset();
+            this.games$ = this.gameService.get();
           }, (err) => {
             this.messageService.message = err.msg;
           });
+      });
     } else {
       console.error('Game form is in an invalid state');
     }
   }
-
 }
