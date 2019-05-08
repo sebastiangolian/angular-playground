@@ -35,7 +35,14 @@ router.post('/', (req, res) => {
     return res.status(400).json({msg: 'Game with id ' + game.id + ' already exists'});
   }
 
-  game.id = games.length + 1;
+  if(games.length == 0) {
+    game.id = 1;
+  }
+  else
+  {
+    game.id = games[games.length - 1].id + 1;
+  }
+
   games.push(game);
   return res.status(200).json({msg: 'Game with id ' + game.id + ' successfully created'});
 });

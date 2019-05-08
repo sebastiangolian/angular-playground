@@ -2,9 +2,10 @@
 <li *ngFor="let game of games$  | async">
   {{ game.id }}-{{game.title}}-{{game.price}}
   <button (click)="onClickUpdate(game.id)">Update</button>
+  <button (click)="onDelete(game.id)">Delete</button>
 </li>
 
-<form name="form" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm">
+<form *ngIf="model" name="form" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm">
 
   <div class="form-group">
     <label>Title:</label>
@@ -33,8 +34,8 @@
 
   <p>
     <button type="submit" class="btn btn-primary" [disabled]="!f.valid">
-      <span *ngIf="model.id == 0">Add</span> 
-      <span *ngIf="model.id != 0">Update</span> 
+      <span *ngIf="!model.id">Add</span> 
+      <span *ngIf="model.id">Update</span> 
     </button>
     <button class="btn btn-info" (click)="onReset(f)">Reset</button>
   </p>

@@ -16,7 +16,7 @@ export class GameApiComponent implements OnInit {
   public games$: Observable<Game[]>;
   public model: GameModel = new GameModel();
 
-  constructor(private gameService: GameApiService, public messageService: MessageService) { }
+  constructor(private gameService: GameApiService, public messageService: MessageService) {}
 
   ngOnInit() {
     this.games$ = this.gameService.get();
@@ -28,14 +28,22 @@ export class GameApiComponent implements OnInit {
       .getOne(gameId)
       .subscribe((game:Game)=> {
         this.model = game;
-        this.messageService.message = 'Update game with id: ' + this.model.id;
+        this.messageService.message = 'Game with id ' + this.model.id + ' is currently update';
       })
-    
+  }
+
+  onDelete(gameId:number) {
+    this.gameService
+      .delete(gameId)
+      .subscribe((game:any)=> {
+        this.messageService.message = 'Game with id ' + gameId + ' is deleted';
+        this.games$ = this.gameService.get();
+      })
   }
 
   onSubmit(f: NgForm) {
     if (f.valid) {
-      if(this.model.id == 0) {
+      if(this.model.id == null) {
         this.create(f);
       } else {
         this.update(f);
@@ -46,9 +54,14 @@ export class GameApiComponent implements OnInit {
   }
 
   onReset(f: NgForm) {
-    f.reset();
-    this.model.id = 0;
+    this.reset(f);
     this.messageService.message = 'Form reset';
+  }
+
+  private reset(f: NgForm){
+    f.reset();
+    this.model = new GameModel();
+    this.games$ = this.gameService.get();
   }
 
   private create(f: NgForm){
@@ -57,8 +70,7 @@ export class GameApiComponent implements OnInit {
       .subscribe((result: any) => {
         this.messageService.message = result.msg;
         this.model = new GameModel();
-        f.reset();
-        this.games$ = this.gameService.get();
+        this.reset(f);
       }, (err) => {
         this.messageService.message = err.msg;
       });
@@ -70,8 +82,7 @@ export class GameApiComponent implements OnInit {
       .subscribe((result: any) => {
         this.messageService.message = result.msg;
         this.model = new GameModel();
-        f.reset();
-        this.games$ = this.gameService.get();
+        this.reset(f);
       }, (err) => {
         this.messageService.message = err.msg;
       });

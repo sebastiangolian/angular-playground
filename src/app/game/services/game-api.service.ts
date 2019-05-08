@@ -45,6 +45,14 @@ export class GameApiService {
         catchError(this.handleError<Game>('update'))
       ); 
   }
+  
+  delete(id:number): Observable<any> {
+    return this.http
+      .delete(this.url + '/api/games/' + id)
+      .pipe(
+        catchError(this.handleError<Game>('delete'))
+      ); 
+  }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: Error): Observable<T> => {
