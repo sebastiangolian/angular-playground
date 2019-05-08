@@ -15,13 +15,27 @@ export class GameApiService {
   constructor(private http: HttpClient, private messageService: MessageService) {}
 
   get() : Observable<Game[]> {
-    return this.http.get<Game[]>(this.url + '/api/games')
-      .pipe(catchError(this.handleError<Game[]>('get'))); 
+    return this.http
+      .get<Game[]>(this.url + '/api/games')
+      .pipe(
+        catchError(this.handleError<Game[]>('get'))
+      ); 
   }
 
   create(game: Game): Observable<any> {
-    return this.http.post(this.url + '/api/games', game)
-      .pipe(catchError(this.handleError<Game>('create'))); 
+    return this.http
+      .post(this.url + '/api/games', game)
+      .pipe(
+        catchError(this.handleError<Game>('create'))
+      ); 
+  }
+
+  update(game: Game): Observable<any> {
+    return this.http
+      .patch(this.url + '/api/games', game)
+      .pipe(
+        catchError(this.handleError<Game>('update'))
+      ); 
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

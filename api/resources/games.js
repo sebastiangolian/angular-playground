@@ -11,8 +11,7 @@ const games = [
 router.get('/', (req, res) => {
   var query = (req.query['q'] || '').toLowerCase();
   if (query) {
-    const foundGames = games.filter(
-      (game) => game.name.toLowerCase().indexOf(query) != -1);
+    const foundGames = games.filter((game) => game.name.toLowerCase().indexOf(query) != -1);
     return res.status(200).json(foundGames);
   }
   return res.status(200).json(games);
@@ -35,6 +34,8 @@ router.post('/', (req, res) => {
   if (foundGame) {
     return res.status(400).json({msg: 'Game with id ' + game.id + ' already exists'});
   }
+
+  game.id = games.length + 1;
   games.push(game);
   return res.status(200).json({msg: 'Game with id ' + game.id + ' successfully created'});
 });
