@@ -1,5 +1,8 @@
 <h1>game-api</h1>
-<li *ngFor="let game of games$  | async">{{ game.id }}-{{game.title}}-{{game.price}}</li>
+<li *ngFor="let game of games$  | async">
+  {{ game.id }}-{{game.title}}-{{game.price}}
+  <button (click)="onClickUpdate(game.id)">Update</button>
+</li>
 
 <form name="form" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm">
 
@@ -26,9 +29,13 @@
 
   <p>Form status: {{ f.status }}</p>
   <p>Form value: {{ f.value | json }}</p>
+  <p>Model: {{ model | json }}</p>
 
   <p>
-    <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Add</button>
-    <button type="reset" class="btn btn-info">Reset</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!f.valid">
+      <span *ngIf="model.id == 0">Add</span> 
+      <span *ngIf="model.id != 0">Update</span> 
+    </button>
+    <button class="btn btn-info" (click)="onReset(f)">Reset</button>
   </p>
 </form>

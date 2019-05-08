@@ -22,6 +22,14 @@ export class GameApiService {
       ); 
   }
 
+  getOne(id:number) : Observable<Game> {
+    return this.http
+      .get<any>(this.url + '/api/games/' + id)
+      .pipe(
+        catchError(this.handleError<Game[]>('get'))
+      ); 
+  }
+
   create(game: Game): Observable<any> {
     return this.http
       .post(this.url + '/api/games', game)
@@ -32,7 +40,7 @@ export class GameApiService {
 
   update(game: Game): Observable<any> {
     return this.http
-      .patch(this.url + '/api/games', game)
+      .patch(this.url + '/api/games/' + game.id, game)
       .pipe(
         catchError(this.handleError<Game>('update'))
       ); 

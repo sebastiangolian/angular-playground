@@ -22,20 +22,58 @@ export class GameApiComponent implements OnInit {
     this.games$ = this.gameService.get();
   }
 
+  onClickUpdate(gameId:number)
+  {
+    this.gameService
+      .getOne(gameId)
+      .subscribe((game:Game)=> {
+        this.model = game;
+        this.messageService.message = 'Update game with id: ' + this.model.id;
+      })
+    
+  }
+
   onSubmit(f: NgForm) {
     if (f.valid) {
-      this.gameService
-        .create(this.model)
-        .subscribe((result: any) => {
-          this.messageService.message = result.msg;
-          this.model = new GameModel();
-          f.reset();
-          this.games$ = this.gameService.get();
-        }, (err) => {
-          this.messageService.message = err.msg;
-        });
+      if(this.model.id == 0) {
+        this.create(f);
+      } else {
+        this.update(f);
+      }
     } else {
-      console.error('Game form is in an invalid state');
+      this.messageService.message = 'Error in form state.';
     }
+  }
+
+  onReset(f: NgForm) {
+    f.reset();
+    this.model.id = 0;
+    this.messageService.message = 'Form reset';
+  }
+
+  private create(f: NgForm){
+    this.gameService
+      .create(this.model)
+      .subscribe((result: any) => {
+        this.messageService.message = result.msg;
+        this.model = new GameModel();
+        f.reset();
+        this.games$ = this.gameService.get();
+      }, (err) => {
+        this.messageService.message = err.msg;
+      });
+  }
+
+  private update(f: NgForm){
+    this.gameService
+      .update(this.model)
+      .subscribe((result: any) => {
+        this.messageService.message = result.msg;
+        this.model = new GameModel();
+        f.reset();
+        this.games$ = this.gameService.get();
+      }, (err) => {
+        this.messageService.message = err.msg;
+      });
   }
 }
