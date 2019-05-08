@@ -2,62 +2,33 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Game } from '../interfaces/game.interface';
-import { catchError } from 'rxjs/operators';
-import { MessageService } from 'src/app/shared/services/message.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameApiService {
 
-  url: string = "http://localhost:3000";
+  url: string = "http://localhost:3000/api/games/";
 
-  constructor(private http: HttpClient, private messageService: MessageService) {}
+  constructor(private http: HttpClient) {}
 
   get() : Observable<Game[]> {
-    return this.http
-      .get<Game[]>(this.url + '/api/games')
-      .pipe(
-        catchError(this.handleError<Game[]>('get'))
-      ); 
+    return this.http.get<Game[]>(this.url); 
   }
 
   getOne(id:number) : Observable<Game> {
-    return this.http
-      .get<any>(this.url + '/api/games/' + id)
-      .pipe(
-        catchError(this.handleError<Game[]>('get'))
-      ); 
+    return this.http.get<any>(this.url + id); 
   }
 
   create(game: Game): Observable<any> {
-    return this.http
-      .post(this.url + '/api/games', game)
-      .pipe(
-        catchError(this.handleError<Game>('create'))
-      ); 
+    return this.http.post(this.url, game); 
   }
 
   update(game: Game): Observable<any> {
-    return this.http
-      .patch(this.url + '/api/games/' + game.id, game)
-      .pipe(
-        catchError(this.handleError<Game>('update'))
-      ); 
+    return this.http.patch(this.url + game.id, game); 
   }
   
   delete(id:number): Observable<any> {
-    return this.http
-      .delete(this.url + '/api/games/' + id)
-      .pipe(
-        catchError(this.handleError<Game>('delete'))
-      ); 
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: Error): Observable<T> => {
-      this.messageService.message = error.message;
-      return of(result as T);
-    };
+    return this.http.delete(this.url + id); 
   }
 }
