@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProfileFormReactiveComponent } from './profile-form-reactive.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ProfileFormReactiveComponent', () => {
   let component: ProfileFormReactiveComponent;
@@ -8,7 +11,13 @@ describe('ProfileFormReactiveComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProfileFormReactiveComponent ]
+      declarations: [ ProfileFormReactiveComponent ],
+      imports: [
+        ReactiveFormsModule,
+        FormsModule,
+        HttpClientModule,
+        RouterTestingModule
+      ]
     })
     .compileComponents();
   }));
