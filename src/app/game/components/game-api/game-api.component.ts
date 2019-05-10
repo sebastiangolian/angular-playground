@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Game } from '../../interfaces/game.interface';
 import { GameModel } from '../../models/game';
 import { MessageService } from 'src/app/shared/services/message.service';
 import { NgForm } from '@angular/forms';
 import { GameApiService } from '../../services/game-api.service';
-import { HttpEvent, HttpResponse } from '@angular/common/http';
+import { startWith, debounceTime, distinctUntilChanged, switchMap, share } from 'rxjs/operators';
 
 @Component({
   selector: 'app-game-api',
@@ -16,11 +16,23 @@ export class GameApiComponent implements OnInit {
 
   public games$: Observable<Game[]>;
   public model: GameModel = new GameModel();
+  public searchString: string = '';
+  private searchTerms: Subject<string> = new Subject();
 
   constructor(private gameService: GameApiService, public messageService: MessageService) { }
 
   ngOnInit() {
-    this.games$ = this.gameService.get();
+    this.games$ = this.searchTerms.pipe(
+      startWith(this.searchString),
+      debounceTime(500),
+      distinctUntilChanged(),
+      switchMap((query) => this.gameService.get(this.searchString)),
+      share()
+    );
+  }
+
+  onSearch() {
+    this.searchTerms.next(this.searchString);
   }
 
   onClickUpdate(gameId: number) {
@@ -37,7 +49,7 @@ export class GameApiComponent implements OnInit {
       .delete(gameId)
       .subscribe((game: any) => {
         this.messageService.message = 'Game with id ' + gameId + ' is deleted';
-        this.games$ = this.gameService.get();
+        this.games$ = this.gameService.get(this.searchString);
       })
   }
 
@@ -61,7 +73,7 @@ export class GameApiComponent implements OnInit {
   private reset(f: NgForm) {
     f.reset();
     this.model = new GameModel();
-    this.games$ = this.gameService.get();
+    this.games$ = this.gameService.get(this.searchString);
   }
 
   private create(f: NgForm) {

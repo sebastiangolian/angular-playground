@@ -11,7 +11,7 @@ const games = [
 router.get('/', (req, res) => {
   var query = (req.query['q'] || '').toLowerCase();
   if (query) {
-    const foundGames = games.filter((game) => game.name.toLowerCase().indexOf(query) != -1);
+    const foundGames = games.filter((game) => game.title.toLowerCase().indexOf(query) != -1);
     return res.status(200).json(foundGames);
   }
   return res.status(200).json(games);

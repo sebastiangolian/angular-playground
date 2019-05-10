@@ -36,6 +36,8 @@
 </form>
 
 <h2>Games</h2>
+Search: <input name="searchBox" [(ngModel)]="searchString" placeholder="Search Here" (keyup)="onSearch()">
+<p>We have found stocks!</p>
 <table class="games">
   <tr *ngFor="let game of games$  | async">
     <td>{{ game.id }}-{{game.title}}-{{game.price}}</td>

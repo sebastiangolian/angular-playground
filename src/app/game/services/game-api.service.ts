@@ -12,8 +12,8 @@ export class GameApiService {
 
   constructor(private http: HttpClient) { }
 
-  get(): Observable<Game[]> {
-    return this.http.get<Game[]>(this.url);
+  get(query: string): Observable<Game[]> {
+    return this.http.get<Game[]>(this.url + (query != "" ? "?q=" + query : ""));
   }
 
   getOne(id: number): Observable<Game> {
