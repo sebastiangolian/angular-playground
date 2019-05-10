@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
   selector: 'app-test',
@@ -12,9 +13,12 @@ export class TestComponent implements OnInit {
   heroes = ['Rambo', 'Terminator', 'Rocky', 'Superman'];
   defaultHero = this.heroes[0];
 
-  constructor() { }
+  constructor(public messageService: MessageService) {
+    this.messageService.message = "Welcome in app-test component."
+  }
 
   ngOnInit() {
+    
   }
 
 }

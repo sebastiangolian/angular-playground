@@ -1,8 +1,0 @@
-<div *ngIf="post">
-    <h1>{{post.title}}</h1>
-    <p>{{post.body}}</p>
-    <button class="btn btn-primary" (click)="location.back()">Back</button>
-    <hr />
-    <h2>Comments</h2>
-    <app-comment-by-post [post]="post" (refresh)="ngOnInit()"></app-comment-by-post>
-</div> 

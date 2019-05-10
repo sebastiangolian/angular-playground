@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +10,10 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   routes: any;
-  
-  constructor(private router: Router) {
+
+  constructor(public messageService: MessageService, private router: Router) {
     this.routes = this.router.config;
+    this.messageService.message = "Welcome in app-root component."
   }
 
   ngOnInit() {
