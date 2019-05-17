@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -7,10 +6,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-
-  userIsLogged = false;
-
-  constructor(private router: Router) { }
+  
+  constructor() { }
 
   ngOnInit() {}
 }
