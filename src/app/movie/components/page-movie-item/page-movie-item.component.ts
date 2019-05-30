@@ -13,12 +13,10 @@ export class PageMovieItemComponent implements OnInit {
 
   public movie$: Observable<Movie>
   
-  constructor(private route: ActivatedRoute, private moviesService: MovieService) { 
-      const id = this.route.snapshot.paramMap.get('id');
-      this.movie$ = this.moviesService.getOne(Number(id))
-  }
+  constructor(private route: ActivatedRoute, private moviesService: MovieService) { }
 
   ngOnInit() {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.movie$ = this.moviesService.getOne(Number(id))
   }
-
 }

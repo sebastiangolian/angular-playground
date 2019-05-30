@@ -12,11 +12,10 @@ export class PageMovieListComponent implements OnInit {
 
   public dataset$: Observable<Movie[]>
   
-  constructor(private movieService: MovieService) { 
-    this.dataset$ = this.movieService.get()
-  }
+  constructor(private movieService: MovieService) {}
 
   ngOnInit() {
+    this.dataset$ = this.movieService.get()
   }
 
 }
