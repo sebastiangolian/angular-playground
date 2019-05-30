@@ -1,0 +1,4 @@
+<div *ngIf="movie">
+    {{movie | json}}
+    <a [routerLink]="'/movie/' + movie.id">{{movie.title}}</a>
+</div>
