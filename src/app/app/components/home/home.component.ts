@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   routes: any;
 
   constructor(private router: Router) {
-    this.routes = this.router.config.filter((element) => {return (!element.path.includes(":"))})
+    this.routes = this.router.config.filter((element) => {return (!element.path.match(":|error|\\*"))})
   }
 
   ngOnInit() {
