@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
-import { TestComponent } from './components/test/test.component';
-import { GlobalErrorComponent } from '../shared/components/global-error/global-error.component';
 import { PageNotFoundComponent } from '../shared/components/page-not-found/page-not-found.component';
+import { PageHomeComponent } from './components/page-home/page-home.component';
+import { PageTestComponent } from './components/page-test/page-test.component';
+import { PageErrorComponent } from '../shared/components/page-error/page-error.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'test', component: TestComponent },
+  { path: '', component: PageHomeComponent },
+  { path: 'home', component: PageHomeComponent },
+  { path: 'test', component: PageTestComponent },
   { path: `movie`, loadChildren: () => import(`./../movie/movie.module`).then(m => m.MovieModule) },
-  { path: 'error', component: GlobalErrorComponent },
+  { path: 'error', component: PageErrorComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
