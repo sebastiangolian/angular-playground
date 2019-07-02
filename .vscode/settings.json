@@ -1,10 +1,10 @@
 {
     "svn.ignoreMissingSvnWarning": true,
     "files.exclude": {
-        "e2e/": true,
+        "e2e/": false,
         "node_modules/": true,
-        "**/*spec.ts": true,
-        //"**/*component.css": true,
+        "**/*spec.ts": false,
+        "**/*component.css": false,
         "src/assets": true,
         "src/environments": true,
         "src/index.html": true,
