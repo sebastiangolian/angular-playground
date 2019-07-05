@@ -1,7 +1,7 @@
 import { AppPage } from './app.po';
 import { browser, logging } from 'protractor';
 
-describe('angular-playground App test', () => {
+describe('---------- app test -----------------', () => {
   let page: AppPage = new AppPage();
 
   beforeAll(() => {
@@ -13,7 +13,15 @@ describe('angular-playground App test', () => {
   });
 
   it('test menu', () => {
-    page.navigateMenu()
+    page.clickHome()
+    expect(page.getTitleText()).toEqual('HOME PAGE');
+    page.back()
+    page.clickMovie()
+    expect(page.getTitleText()).toEqual('movies');
+    page.back()
+    page.clickTest()
+    expect(page.getTitleText()).toEqual('test');
+    page.back()
   });
 
   afterEach(async () => {

@@ -21,14 +21,19 @@ export class AppPage {
     return element(by.partialLinkText("movie")).getText();
   }
 
-  navigateMenu() {
+  clickHome() {
     element(by.linkText("home")).click()
-    browser.getTitle().then(val => console.log(val))
-    browser.navigate().back();
+  }
+
+  clickMovie() {
     element(by.linkText("movie")).click()
-    browser.getTitle().then(val => console.log(val))
-    browser.navigate().back();
+  }
+
+  clickTest() {
     element(by.linkText("test")).click()
-    browser.getTitle().then(val => console.log(val))
+  }
+
+  back() {
+    browser.navigate().back();
   }
 }
