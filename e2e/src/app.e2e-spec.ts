@@ -2,19 +2,21 @@ import { AppPage } from './app.po';
 import { browser, logging } from 'protractor';
 
 describe('angular-playground App test', () => {
-  let page: AppPage;
+  let page: AppPage = new AppPage();
 
-  beforeEach(() => {
-    page = new AppPage();
+  beforeAll(() => {
+    page.navigateTo();
   });
 
-  it('should display "home page" message', () => {
-    page.navigateTo();
-    expect(page.getTitleText()).toEqual('HOME PAGE');
+  it('only view value in console', () => {
+    page.getLinkWithMovie().then(val => console.log(val))
+  });
+
+  it('test menu', () => {
+    page.navigateMenu()
   });
 
   afterEach(async () => {
-    // Assert that there are no errors emitted from the browser
     const logs = await browser.manage().logs().get(logging.Type.BROWSER);
     expect(logs).not.toContain(jasmine.objectContaining({
       level: logging.Level.SEVERE,
