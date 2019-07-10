@@ -17,7 +17,7 @@ export class AppPage {
     return element(by.linkText("home")).getText();
   }
 
-  getLinkWithMovie() {
+  getLinksWithMovie() {
     return element(by.partialLinkText("movie")).getText();
   }
 

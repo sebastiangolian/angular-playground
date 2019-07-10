@@ -9,7 +9,7 @@ describe('---------- app test -----------------', () => {
   });
 
   it('only view value in console', () => {
-    page.getLinkWithMovie().then(val => console.log(val))
+    page.getLinksWithMovie().then(val => console.log(val))
   });
 
   it('test menu', () => {
@@ -26,8 +26,6 @@ describe('---------- app test -----------------', () => {
 
   afterEach(async () => {
     const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-    expect(logs).not.toContain(jasmine.objectContaining({
-      level: logging.Level.SEVERE,
-    } as logging.Entry));
+    expect(logs).not.toContain(jasmine.objectContaining({level: logging.Level.SEVERE} as logging.Entry));
   });
 });
