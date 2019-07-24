@@ -1,5 +1,4 @@
 {
-    "svn.ignoreMissingSvnWarning": true,
     "files.exclude": {
         "e2e/": false,
         "node_modules/": true,
@@ -7,7 +6,6 @@
         "**/*component.css": false,
         "src/assets": true,
         "src/environments": true,
-        "src/index.html": true,
         "src/favicon.ico": true,
         "src/karma.conf.js": true,
         "src/main.ts": true,
@@ -17,10 +15,8 @@
         "src/tsconfig.spec.json": true,
         "src/tslint.json": true,
         ".editorconfig": true,
-        "angular.json": true,
         "browserslist": true,
         "package-lock.json": true,
-        "README.md": true,
         "tsconfig.json": true,
         "tslint.json": true,
         ".gitignore": true,
