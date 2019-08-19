@@ -1,6 +1,6 @@
 {
   "name": "angular-playground",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "start": "ng serve --open",
     "build": "ng build",
@@ -8,7 +8,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e --port=4201 --webdriverUpdate=false",
     "predeploy": "ng build --prod --base-href=/angular-playground/",
-    "deploy": "gh-pages -d dist/angular-playground/"
+    "deploy": "gh-pages -d dist/angular-playground/",
+    "clear": "rmdir /q /s node_modules"
   },
   "private": true,
   "dependencies": {
