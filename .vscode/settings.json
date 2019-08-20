@@ -5,7 +5,6 @@
         "**/*spec.ts": false,
         "**/*component.css": false,
         "src/assets": true,
-        "src/environments": true,
         "src/favicon.ico": true,
         "src/karma.conf.js": true,
         "src/main.ts": true,
