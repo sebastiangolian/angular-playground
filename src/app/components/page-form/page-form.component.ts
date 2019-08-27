@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, AbstractControlDirective } from '@angular/forms';
 
 @Component({
   selector: 'app-page-form',
@@ -9,7 +9,7 @@ import { NgForm } from '@angular/forms';
 export class PageFormComponent implements OnInit {
 
   model: Profile = new Profile()
-  aliases: Array<String> = new Array<String>()
+  aliases: Array<AbstractControlDirective> = new Array<AbstractControlDirective>()
   isSubmitted: boolean = false
 
   constructor() {}
