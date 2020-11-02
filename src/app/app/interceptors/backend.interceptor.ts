@@ -51,6 +51,18 @@ export class BackendInterceptor implements HttpInterceptor {
                     { id: 1, name: "leon", brand: "seat" },
                     { id: 2, name: "golf", brand: "volkswagen" },
                     { id: 3, name: "A3", brand: "audi" }
+                ],
+                "hero": [
+                    { id: 1, name: 'Rocky' },
+                    { id: 2, name: 'Terminator' },
+                    { id: 3, name: 'Rambo' },
+                    { id: 4, name: 'Superman' },
+                    { id: 5, name: 'Batman' },
+                    { id: 6, name: 'Spiderman' },
+                    { id: 7, name: 'Superwoman' },
+                    { id: 8, name: 'Hulk' },
+                    { id: 9, name: 'Ironman' },
+                    { id: 10, name: 'Antman' }
                 ]
             }
 
@@ -137,7 +149,37 @@ export class BackendInterceptor implements HttpInterceptor {
                     db.car = db.car.filter(car => car.id.toString() !== getIdFromUrl())
                     saveStorage(db)
                     return response200();
-                    //return responseError(400, "Nie masz uprawnień, żeby usuwać użytkowników.")
+                }
+
+                case (method === 'GET' && url.includes("/hero/list")): {
+                    const response = getAll(url, db.hero)
+                    return response200(response);
+                }
+
+                case (method === 'GET' && url.includes("/hero/")): {
+                    let item = db.hero.find(hero => hero.id.toString() == getIdFromUrl())
+                    return response200({ "item": item });
+                }
+
+                case (method === 'POST' && url.includes("/hero")): {
+                    //body.id = db.car.length + 1
+                    db.hero.push(body)
+                    saveStorage(db)
+                    return response200({ "item": body });
+                }
+
+                case (method === 'PUT' && url.includes("/hero")): {
+                    let index = db.hero.findIndex(hero => hero.id.toString() === getIdFromUrl())
+                    body.id = db.hero[index].id;
+                    db.hero[index] = body
+                    saveStorage(db)
+                    return response200({ "item": body });
+                }
+
+                case (method === 'DELETE' && url.includes("/hero")): {
+                    db.hero = db.hero.filter(hero => hero.id.toString() !== getIdFromUrl())
+                    saveStorage(db)
+                    return response200();
                 }
 
                 default: ret = null;
