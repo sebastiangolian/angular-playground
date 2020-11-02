@@ -1,5 +1,5 @@
 # angular-playground
-This angular playground
+This angular empty app
 
 ## Test app 
 [angular-playground](https://sebastiangolian.github.io/angular-playground)

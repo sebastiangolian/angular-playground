@@ -1,7 +1,7 @@
 {
     "files.exclude": {
+        "dist": true,
         "node_modules/": true,
-        "src/assets": true,
         "src/favicon.ico": true,
         "src/main.ts": true,
         "src/polyfills.ts": true,
@@ -9,8 +9,6 @@
         ".editorconfig": true,
         ".gitignore": true,
         "browserslist": true,
-        "karma.conf.js": true,
-        "package-lock.json": true,
         "tsconfig.json": true,
         "tsconfig.app.json": true,
         "tsconfig.spec.json": true,

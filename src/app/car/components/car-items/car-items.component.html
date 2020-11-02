@@ -1,0 +1,4 @@
+<div class="row">
+    <car-item class="col-12 col-md-3 mt-3" *ngFor="let car of cars" [car]="car" [active]="car.id === updateCar.id" 
+    (carSelected)="onSelect($event)" (carDeleted)="onDelete($event)"></car-item>
+</div>

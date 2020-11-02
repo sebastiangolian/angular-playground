@@ -1,0 +1,6 @@
+<post-create *ngIf="isCreatedPost" (postCreated)="onCreate($event)"></post-create>
+<post-update *ngIf="updatedPost" [model]="updatedPost" (postUpdated)="onUpdate($event)"></post-update>
+
+<h2 class="mb-3">Lista artykułów ({{posts.length}}) <button class="btn btn-primary float-right" (click)="onOpenCreate()">Dodaj</button></h2>
+<post-list [posts]="posts" (postEdited)="onEdit($event)" (postDeleted)="onDelete($event)"></post-list>
+

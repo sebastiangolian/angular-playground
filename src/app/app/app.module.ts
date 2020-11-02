@@ -1,35 +1,39 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './components/app/app.component';
-import { PageHomeComponent } from './components/page-home/page-home.component';
-import { PageTestComponent } from './components/page-test/page-test.component';
-import { PageFormComponent } from './components/page-form/page-form.component';
-import { HttpClientModule } from '@angular/common/http';
-import { SharedModule } from '../shared/shared.module';
-import { MovieModule } from '../movie/movie.module';
+import { AppComponent } from './pages/app/app.component';
+import { HttpClientJsonpModule, HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { GlobalErrorHandlerService } from '../shared/services/global-error-handler.service';
-
+import { RouterModule } from '@angular/router';
+import { BackendInterceptor } from './interceptors/backend.interceptor';
+import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
+import { HomeComponent } from './pages/home/home.component';
+import { SharedModule } from '../shared/shared.module';
+import { NgxMaskModule } from 'ngx-mask';
+import { TestComponent } from './pages/test/test.component';
+import { SpinnerModule } from '../spinner/spinner.module';
+import { SpinnerInterceptor } from '../spinner/interceptors/spinner.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageHomeComponent,
-    PageTestComponent,
-    PageFormComponent
+    HomeComponent,
+    TestComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    HttpClientJsonpModule,
     AppRoutingModule,
+    RouterModule,
+    FormsModule,
     SharedModule,
-    MovieModule,
-    FormsModule
+    NgxMaskModule.forRoot(),
+    SpinnerModule,
   ],
   providers: [
-    GlobalErrorHandlerService,
-    { provide: ErrorHandler, useClass: GlobalErrorHandlerService }    
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: BackendInterceptor, multi: true }
   ],
   bootstrap: [
     AppComponent
