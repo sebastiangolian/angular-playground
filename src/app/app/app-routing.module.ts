@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'post', loadChildren: () => import('../post/post.module').then(m => m.PostModule) },
   { path: 'car', loadChildren: () => import('../car/car.module').then(m => m.CarModule) },
   { path: 'wikipedia', loadChildren: () => import('../wikipedia/wikipedia.module').then(m => m.WikipediaModule) },
-  { path: 'hero', loadChildren: () => import('../heroes/heroes.module').then(m => m.HeroesModule) },
+  { path: 'hero', loadChildren: () => import('../hero/hero.module').then(m => m.HeroModule) },
 ];
 
 @NgModule({
