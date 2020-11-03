@@ -6,11 +6,11 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { HeroDetailComponent } from './pages/hero-detail/hero-detail.component';
 import { FormsModule } from '@angular/forms';
 import { HeroSearchComponent } from './components/hero-search/hero-search.component';
-import { MessagesComponent } from './components/messages/messages.component';
+import { HeroMessagesComponent } from './components/hero-messages/hero-messages.component';
 
 @NgModule({
   declarations: [
-    MessagesComponent,
+    HeroMessagesComponent,
     DashboardComponent,
     HeroComponent,
     HeroDetailComponent,

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
-export class MessageService {
+export class HeroMessageService {
   messages: string[] = [];
 
   add(message: string) {
