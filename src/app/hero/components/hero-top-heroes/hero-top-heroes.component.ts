@@ -15,7 +15,6 @@ export class HeroTopHeroesComponent implements OnInit {
 
   ngOnInit() {
     this.getHeroes();
-    console.log('ngOnInit')
   }
 
   getHeroes(): void {

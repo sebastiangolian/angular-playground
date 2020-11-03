@@ -16,7 +16,9 @@
         </form>
     </header>
     <main class="container-fluid">
-        <h1 [innerHtml]="$header|async"></h1>
+        <ng-container *ngIf="$header|async as header">
+            <h1 [innerHtml]="header"></h1>
+        </ng-container>
         <app-messages></app-messages>
         <adblock-detect (detected)="isAddBlock=$event"></adblock-detect>
         <adblock-detect-banner [isView]="isAddBlock"></adblock-detect-banner>

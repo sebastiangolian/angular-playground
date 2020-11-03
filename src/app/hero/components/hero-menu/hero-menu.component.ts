@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'hero-menu',
@@ -8,9 +9,11 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class HeroMenuComponent implements OnInit {
 
-  constructor() { }
+  url: string
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.url = this.router.url
   }
 
 }

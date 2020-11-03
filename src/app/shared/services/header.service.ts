@@ -21,7 +21,10 @@ export class HeaderService {
     getWithSetTitle(): Observable<string> {
         return this.subject.asObservable().pipe(
             tap((header: string) => {
-                this.titleService.setTitle(environment.title.toLowerCase() + " - " + header.toLowerCase())
+                if(header)
+                    this.titleService.setTitle(environment.title.toLowerCase() + " - " + header.toLowerCase())
+                else 
+                    this.titleService.setTitle(environment.title.toLowerCase())
             })
         );
     }
