@@ -1,20 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ApiList } from 'src/app/shared/interfaces/api-list.interface';
 import { Api } from 'src/app/shared/interfaces/api.interface';
-import { HeaderService } from 'src/app/shared/services/header.service';
 import { Hero } from '../../interfaces/hero';
 import { HeroService } from '../../services/hero.service';
 
 @Component({
-  templateUrl: './hero.component.html',
-  styleUrls: ['./hero.component.css']
+  selector: 'hero-list',
+  templateUrl: './hero-list.component.html',
+  styleUrls: ['./hero-list.component.css'],
+  changeDetection: ChangeDetectionStrategy.Default
 })
-export class HeroComponent implements OnInit {
+export class HeroListComponent implements OnInit {
   heroes: Hero[];
 
-  constructor(private heroService: HeroService, private headerService: HeaderService) {
-    this.headerService.set('Heroes')
-  }
+  constructor(private heroService: HeroService) {}
 
   ngOnInit() {
     this.getHeroes();

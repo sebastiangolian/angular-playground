@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { HeroDashboardComponent } from './pages/hero-dashboard/hero-dashboard.component';
 import { HeroDetailComponent } from './pages/hero-detail/hero-detail.component';
-import { HeroComponent } from './pages/hero/hero.component';
+import { HeroHeroesComponent } from './pages/hero-heroes/hero-heroes.component';
 
 const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard', component: HeroDashboardComponent },
   { path: 'detail/:id', component: HeroDetailComponent },
-  { path: '', component: HeroComponent },
+  { path: '', component: HeroHeroesComponent },
 ];
 
 @NgModule({

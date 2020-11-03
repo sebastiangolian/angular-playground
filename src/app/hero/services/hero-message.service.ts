@@ -5,7 +5,8 @@ export class HeroMessageService {
   messages: string[] = [];
 
   add(message: string) {
-    this.messages.push(message);
+    this.messages.unshift(message);
+    if(this.messages.length > 15) this.messages.pop()
   }
 
   clear() {
