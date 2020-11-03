@@ -30,7 +30,7 @@ export class UserDatatableComponent extends DatatableComponent implements OnDest
   constructor(private headerService: HeaderService, private messageService: MessageService, private modalService: BsModalService,
     private userService: UserService, private router: Router, private modalConfirmService: ModalConfirmService) {
     super();
-    this.headerService.set("Użytkownicy - Zarządzanie")
+    this.headerService.set("Users")
   }
 
   onRefresh() {
@@ -50,7 +50,7 @@ export class UserDatatableComponent extends DatatableComponent implements OnDest
   }
 
   onDelete(role: User) {
-    let content: string = `Czy napewno chcesz usunąć rekord ?`
+    let content: string = `Are you sure you want to delete the record ?`
     this._subscription.add(this.modalConfirmService.confirm(content).subscribe(result => {
       if (result) {
         this._subscription.add(this.deleteUser(role))
@@ -82,7 +82,7 @@ export class UserDatatableComponent extends DatatableComponent implements OnDest
       next: (user: User) => {
         if (user != null) this.postUser(user)
       },
-      error: () => this.messageService.sendMessage("Dodawanie nowego rekordu nie powiodło się", "danger")
+      error: () => this.messageService.sendMessage("Adding a new record failed", "danger")
     })
   }
 
@@ -91,7 +91,7 @@ export class UserDatatableComponent extends DatatableComponent implements OnDest
       next: (user: User) => {
         if (user != null) this.putUser(user)
       },
-      error: () => this.messageService.sendMessage("Nie zaktualizowano prawidłowo rekordu", "danger")
+      error: () => this.messageService.sendMessage("Update record failed", "danger")
     })
   }
 
@@ -99,7 +99,7 @@ export class UserDatatableComponent extends DatatableComponent implements OnDest
     return this.userService.create(user).subscribe({
       complete: () => {
         this.onRefresh()
-        this.messageService.sendMessage("Dodano prawidłowo rekord")
+        this.messageService.sendMessage("Record added correctly")
       }
     })
   }
@@ -108,7 +108,7 @@ export class UserDatatableComponent extends DatatableComponent implements OnDest
     return this.userService.update(user.id, user).subscribe({
       complete: () => {
         this.onRefresh()
-        this.messageService.sendMessage("Zaaktualizowano prawidłowo rekord")
+        this.messageService.sendMessage("Record updated correctly")
       }
     })
   }
@@ -117,7 +117,7 @@ export class UserDatatableComponent extends DatatableComponent implements OnDest
     return this.userService.delete(user.id).subscribe({
       complete: () => {
         this.onRefresh()
-        this.messageService.sendMessage("Usunięto prawidłowo rekord")
+        this.messageService.sendMessage("Record deleted correctly")
       }
     })
   }
@@ -126,7 +126,7 @@ export class UserDatatableComponent extends DatatableComponent implements OnDest
     return this.userService.patch(id, body).subscribe({
       complete: () => {
         this.onRefresh()
-        this.messageService.sendMessage("Przypisano prawidłowo rolę")
+        this.messageService.sendMessage("Role has been assigned correctly")
       }
     })
   }
@@ -137,7 +137,7 @@ export class UserDatatableComponent extends DatatableComponent implements OnDest
         if(role != null)
           this.patchUser(user.id.toString(), {"idRole": role.id})
       },
-      error: () => this.messageService.sendMessage("Nie przypisano prawidłowo roli", "danger")
+      error: () => this.messageService.sendMessage("The role was not assigned correctly", "danger")
     })
   }
 

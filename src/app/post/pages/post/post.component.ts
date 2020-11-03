@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HeaderService } from 'src/app/shared/services/header.service';
 import { Post } from '../../interfaces/post.interface';
 import { PostModel } from '../../models/post.model';
@@ -13,8 +13,8 @@ export class PostComponent implements OnInit {
   isCreatedPost: boolean = null
   updatedPost: Post = null
 
-  constructor(private headerService: HeaderService, private changeDetectorRef: ChangeDetectorRef) { 
-    this.headerService.set("Artykuły")
+  constructor(private headerService: HeaderService) { 
+    this.headerService.set("Posts")
   }
 
   ngOnInit(): void {

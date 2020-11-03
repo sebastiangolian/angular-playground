@@ -1,8 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ApiList } from 'src/app/shared/interfaces/api-list.interface';
 import { Api } from 'src/app/shared/interfaces/api.interface';
-import { Hero } from '../../interfaces/hero';
-import { HeroService } from '../../services/hero.service';
+import { Hero } from '../../interfaces/hero.interface';
+import { HeroService } from '../../services/hero.service'; 
 
 @Component({
   selector: 'hero-list',

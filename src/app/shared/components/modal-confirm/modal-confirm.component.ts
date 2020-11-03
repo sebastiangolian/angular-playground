@@ -15,13 +15,11 @@ export class ModalConfirmComponent implements OnInit {
 
   constructor(public bsModalRef: BsModalRef) { }
 
+  ngOnInit(): void {}
+
   action(value: boolean) {
     this.bsModalRef.hide();
     this.subject.next(value);
     this.subject.complete();
   }
-
-  ngOnInit(): void {}
-
-  
 }

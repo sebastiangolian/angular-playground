@@ -12,22 +12,22 @@
                     #email="ngModel" [class.is-invalid]="email.invalid && email.touched" email
                     required>
                 <div *ngIf="email.touched && email.invalid" class="text-danger">
-                    <div *ngIf="!!email.errors.required">Email jest wymagany</div>
-                    <div *ngIf="!!email.errors.email">Email jest nieprawidłowy</div>
+                    <div *ngIf="!!email.errors.required">Email is required</div>
+                    <div *ngIf="!!email.errors.email">Email is invalid</div>
                 </div>
             </div>
 
             <!-- ZIPCODE -->
             <div class="form-group">
-                <label>Kod pocztowy:</label>
+                <label>Zipcode:</label>
                 <input type="text" class="form-control" name="zipcode" [(ngModel)]="model.zipCode" #zipcode="ngModel"
                     [class.is-invalid]="zipcode.invalid && zipcode.touched" minlength="6" maxlength="6"
                     pattern="[0-9]{2}[\-]?[0-9]{3}" required>
                 <div *ngIf="zipcode.touched && zipcode.invalid" class="text-danger">
-                    <div *ngIf="!!zipcode.errors.required">Kod pocztowy jest wymagany</div>
-                    <div *ngIf="!!zipcode.errors.minlength">Kod pocztowy jest za krótki</div>
-                    <div *ngIf="!!zipcode.errors.maxlength">Kod pocztowy jest za długi</div>
-                    <div *ngIf="!!zipcode.errors.pattern">Kod pocztowy musi być w formacie 00-000</div>
+                    <div *ngIf="!!zipcode.errors.required">Zipcode is required</div>
+                    <div *ngIf="!!zipcode.errors.minlength">Zipcode is too short</div>
+                    <div *ngIf="!!zipcode.errors.maxlength">Zipcode is too long</div>
+                    <div *ngIf="!!zipcode.errors.pattern">Zipcode must be in 00-000</div>
                 </div>
             </div>
 
@@ -36,7 +36,7 @@
                 <input class="form-check-input" type="checkbox" name="active" [(ngModel)]="model.active"
                     #active="ngModel">
                 <label class="form-check-label">
-                    Czy aktywny
+                    Is active
                 </label>
             </div>
 
@@ -44,6 +44,6 @@
     </div>
     <div class="modal-footer">
         <button class="btn btn-primary" [disabled]="!f.valid || !f.value.email" (click)="onCreate()">{{title}}</button>
-        <button class="btn btn-primary" (click)="onCancel()">Anuluj</button>
+        <button class="btn btn-primary" (click)="onCancel()">Cancel</button>
     </div>
 </div>

@@ -37,7 +37,7 @@ export class RoleModalSearchComponent extends DatatableSearchComponent implement
   }
 
   onSelectConfirm(role: Role) {
-    let content: string = `Czy napewno chcesz przypisać rolę?`
+    let content: string = `Are you sure you want to assign a role?`
     this._subscription.add(this.modalConfirmService.confirm(content).subscribe(result => {
       if (result) {
         this.onSelect(role)

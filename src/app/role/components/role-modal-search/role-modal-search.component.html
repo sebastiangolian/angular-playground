@@ -1,9 +1,9 @@
 <div class="modal-body clearfix">
     <div class="modal-header">
-        <h4 class="modal-title">Wybór roli</h4>
+        <h4 class="modal-title">Select role</h4>
     </div>
     <div class="modal-text">
-        <div *ngIf="filterError" class="text-danger">Wpisz przynajmniej 3 znaki</div>
+        <div *ngIf="filterError" class="text-danger">Please enter at least 3 characters</div>
         <form name="form" (ngSubmit)="f.form.valid && onFilter(f)" #f="ngForm" autocomplete="off">
             <div class="datatable table-responsive">
                 <table class="table table-striped table-sm">
@@ -21,8 +21,8 @@
                         <th><input type="text" class="form-control form-control-sm" name="name" [(ngModel)]="model.name" #name="ngModel"></th>
                         <th style="width: 73px;">
                             <div class="btn-group">
-                                <input type="image" class="form-control form-control-sm mr-1" src="/assets/icons/search.svg" width="20" height="20" title="Wyszukaj" />
-                                <input type="image" class="form-control form-control-sm" src="/assets/icons/x.svg" alt="" width="24" height="24" title="Usuń filtr" (click)="f.reset();$event.preventDefault();onFilterReset();" />
+                                <input type="image" class="form-control form-control-sm mr-1" src="/assets/icons/search.svg" width="20" height="20" title="Searcg" />
+                                <input type="image" class="form-control form-control-sm" src="/assets/icons/x.svg" alt="" width="24" height="24" title="Clear filter" (click)="f.reset();$event.preventDefault();onFilterReset();" />
                             </div>
                         </th>
                     </tr>
@@ -31,7 +31,7 @@
                             <td>{{item.id}}</td>
                             <td>{{item.name}}</td>
                             <td>
-                                <a class="mr-1" (click)="onSelectConfirm(item)"><app-icon-b name="plus" title="Wybierz"></app-icon-b></a>
+                                <a class="mr-1" (click)="onSelectConfirm(item)"><app-icon-b name="plus" title="Select"></app-icon-b></a>
                             </td>
                         </tr>
                     </tbody>
@@ -50,5 +50,5 @@
     </div>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-primary" (click)="onCancel()">Anuluj</button>
+    <button class="btn btn-primary" (click)="onCancel()">Cancel</button>
 </div>

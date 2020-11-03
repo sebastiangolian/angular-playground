@@ -11,7 +11,7 @@ import { Post } from '../../interfaces/post.interface';
 export class PostFormComponent implements OnInit {
 
   @Input() model: Post;
-  @Input() action: string = "Dodaj";
+  @Input() action: string = "Add";
   @Output() postSubmited: EventEmitter<Post> = new EventEmitter();
 
   constructor() { }

@@ -8,10 +8,9 @@ import { HeaderService } from 'src/app/shared/services/header.service';
 export class UserIndexComponent implements OnInit {
 
   constructor(private headerService: HeaderService) {
-    this.headerService.set("Użytkownicy")
+    this.headerService.set("Users")
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

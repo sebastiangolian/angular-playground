@@ -13,8 +13,7 @@ export class PostUpdateComponent implements OnInit {
   @Output() postUpdated: EventEmitter<Post> = new EventEmitter<Post>();
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onFormSubmit(post: Post) {
     this.postUpdated.emit(post)

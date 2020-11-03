@@ -8,7 +8,7 @@ import { HeaderService } from 'src/app/shared/services/header.service';
 export class HomeComponent implements OnInit {
 
   constructor(private headerService: HeaderService) {
-    this.headerService.set("Strona główna")
+    this.headerService.set("Home")
   }
 
   ngOnInit(): void {

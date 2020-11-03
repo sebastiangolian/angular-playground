@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AbstractService } from 'src/app/shared/services/abstract.service';
-import { Hero } from '../interfaces/hero';
+import { Hero } from '../interfaces/hero.interface';
 import { Observable } from 'rxjs';
 import { Api } from 'src/app/shared/interfaces/api.interface';
 import { HeroMessageService } from './hero-message.service';

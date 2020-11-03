@@ -9,7 +9,7 @@ import { WikipediaResultParse } from '../interfaces/wikipedia-result-parse.inter
   providedIn: 'root'
 })
 export class WikipediaService {
-  url: string = "https://pl.wikipedia.org/w/api.php";
+  url: string = "https://en.wikipedia.org/w/api.php";
   constructor(private http: HttpClient) { }
 
   opensearch(search: string, limit: number = 20): Observable<WikipediaResultOpensearch[]> {

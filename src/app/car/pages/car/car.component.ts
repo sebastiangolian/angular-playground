@@ -17,7 +17,7 @@ export class CarComponent implements OnInit {
   updatedCar: Car = {id: null, brand: null, name: null}
 
   constructor(private headerService: HeaderService, private carService: CarService, private messageService: MessageService) { 
-    this.headerService.set("Samochody")
+    this.headerService.set("Cars")
   }
 
   ngOnInit(): void {
@@ -37,14 +37,14 @@ export class CarComponent implements OnInit {
           this.carService.update(item.item.id.toString(), car).subscribe((result) => {
             this.updatedCar = result.item
             this.reload()
-            this.messageService.sendMessage("Zaktualizowano dane samochodu")
+            this.messageService.sendMessage("Updated car")
             setTimeout(() => {this.updatedCar = this.emptyCar()},2000) 
           })
         } else {
           this.carService.create(car).subscribe((result) => {
             this.updatedCar = result.item
             this.reload()
-            this.messageService.sendMessage("Dodano nowy samochód")
+            this.messageService.sendMessage("Added new car")
             setTimeout(() => {this.updatedCar = this.emptyCar()},2000) 
           })
         }
@@ -59,7 +59,7 @@ export class CarComponent implements OnInit {
   onDelete(car: Car) {
     this.carService.delete(car.id.toString()).subscribe((result) => {
       this.reload()
-      this.messageService.sendMessage("Usunięto samochód")
+      this.messageService.sendMessage("Deleted car")
     })
   }
 

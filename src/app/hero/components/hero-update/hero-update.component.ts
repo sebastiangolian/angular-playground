@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
 import { HeroService } from '../../services/hero.service';
 import { Location } from '@angular/common';
-import { Hero } from '../../interfaces/hero';
+import { Hero } from '../../interfaces/hero.interface';
 
 @Component({
   selector: 'hero-update',

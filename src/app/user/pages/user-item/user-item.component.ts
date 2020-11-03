@@ -20,7 +20,7 @@ export class UserItemComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute, private userService: UserService, private headerService: HeaderService) {
     this.idUser = this.route.snapshot.paramMap.get('id');
-    this.headerService.set("Użytkownik: " + this.idUser)
+    this.headerService.set("User: " + this.idUser)
   }
 
   ngOnInit(): void {

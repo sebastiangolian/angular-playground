@@ -12,7 +12,7 @@ import { UserModel } from '../../models/user.model';
 })
 export class UserModalComponent implements OnInit {
 
-  title: string = "Aktualizuj użytkownika"
+  title: string = "Update user"
   model: User
   subject: Subject<User>
 
@@ -20,7 +20,7 @@ export class UserModalComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.model == null)  {
-      this.title = "Dodaj użytkownika"
+      this.title = "Add user"
       this.model = new UserModel()
       this.model.email = 'test@gmail.com'
       this.model.active = true

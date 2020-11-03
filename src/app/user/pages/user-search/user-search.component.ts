@@ -17,7 +17,7 @@ export class UserSearchComponent implements OnInit, OnDestroy {
   private _subscription: Subscription = new Subscription();
 
   constructor(private userService: UserService, private headerService: HeaderService) {
-    this.headerService.set("Użytkownicy - Wyszukiwarka")
+    this.headerService.set("User search")
   }
 
   ngOnInit(): void {}
@@ -39,7 +39,7 @@ export class UserSearchComponent implements OnInit, OnDestroy {
           this.caption = ""
           this.item = user.item
         } else {
-          this.caption = "Nie istnieje w bazie"
+          this.caption = "Is not exist"
           this.item = null
         }
         

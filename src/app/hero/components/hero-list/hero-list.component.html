@@ -1,5 +1,5 @@
-<label>Nazwa: <input #heroName /></label>
-<button class="btn btn-sm btn-outline-dark mb-1 ml-1" (click)="add(heroName.value); heroName.value=''">Dodaj</button>
+<label>Name: <input #heroName /></label>
+<button class="btn btn-sm btn-outline-dark mb-1 ml-1" (click)="add(heroName.value); heroName.value=''">Add</button>
 
 <div class="hero" *ngFor="let hero of heroes">
   <div class="hero-id">{{hero.id}}</div>

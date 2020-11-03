@@ -4,13 +4,13 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col" colspan="2">Wyszukiwarka użytkowników</th>
+                        <th scope="col" colspan="2">User search</th>
                     </tr>
                 </thead>
                 <tr>
                     <th scope="col" colspan="2" class="p-0">
                         <input type="text" class="form-control form-control-sm" size="100%" name="id"
-                            (input)="onSearch($event.target.value)" #id placeholder="wpisz id użytkownika">
+                            (input)="onSearch($event.target.value)" #id placeholder="empty user id">
                     </th>
                 </tr>
                 <tbody *ngIf="item">
@@ -23,15 +23,15 @@
                         <td>{{item.email}}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Kod pocztowy</th>
+                        <th scope="row">Zipcode</th>
                         <td>{{item.zipCode}}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Data dodania</th>
+                        <th scope="row">Create date</th>
                         <td>{{item.created}}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Czy aktywny</th>
+                        <th scope="row">Is active</th>
                         <td>{{item.active | boolean}}</td>
                     </tr>
                 </tbody>
