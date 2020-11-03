@@ -156,13 +156,18 @@ export class BackendInterceptor implements HttpInterceptor {
                     return response200(response);
                 }
 
+                case (method === 'GET' && url.includes("/hero/search/")): {
+                    let items = db.hero.filter(hero => hero.name.toLowerCase().includes(getIdFromUrl()))
+                    return response200(items);
+                }
+
                 case (method === 'GET' && url.includes("/hero/")): {
                     let item = db.hero.find(hero => hero.id.toString() == getIdFromUrl())
                     return response200({ "item": item });
                 }
 
                 case (method === 'POST' && url.includes("/hero")): {
-                    //body.id = db.car.length + 1
+                    body.id = db.hero.length + 1
                     db.hero.push(body)
                     saveStorage(db)
                     return response200({ "item": body });

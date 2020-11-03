@@ -1,0 +1,9 @@
+<h4 class="mt-3">Hero Search</h4>
+
+<input #searchBox id="search-box" (input)="search(searchBox.value)" placeholder="i'm need three letter..." />
+
+<ul class="list-group">
+  <li class="list-group-item hand" *ngFor="let hero of heroes$ | async" routerLink="/hero/detail/{{hero.id}}">
+      {{hero.name}}
+  </li>
+</ul>

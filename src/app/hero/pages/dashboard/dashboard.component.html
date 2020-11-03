@@ -1,8 +1,10 @@
+<a class="btn btn-outline-dark active mr-1 mb-3" [routerLink]="'/hero/dashboard'">Dashboard</a>
+<a class="btn btn-outline-dark mb-3" [routerLink]="'/hero/'">Heroes</a>
+
 <h3>Top Heroes</h3>
-<div class="grid grid-pad">
-  <a *ngFor="let hero of heroes" class="col-1-4"
-      routerLink="/hero/detail/{{hero.id}}">
-    <div class="module hero">
+<div class="row">
+  <a class="col-12 col-md-3 mb-1 text-decoration-none" *ngFor="let hero of heroes" routerLink="/hero/detail/{{hero.id}}">
+    <div class="hero">
       <h4>{{hero.name}}</h4>
     </div>
   </a>
