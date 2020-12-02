@@ -30,6 +30,6 @@ export class HeaderService {
     }
 
     clear() {
-        this.subject.next(null);
+        this.subject.next("");
     }
 }
