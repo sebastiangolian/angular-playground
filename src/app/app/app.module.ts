@@ -4,6 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './pages/app/app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { TestComponent } from './pages/test/test.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BackendInterceptor } from './interceptors/backend.interceptor';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,10 @@ import { TestComponent } from './pages/test/test.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    // { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: BackendInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
