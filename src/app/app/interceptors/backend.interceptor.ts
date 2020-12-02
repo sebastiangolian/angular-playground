@@ -5,7 +5,6 @@ import { mergeMap, materialize, delay, dematerialize } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { User } from 'src/app/user/interfaces/user.interface';
 
-
 @Injectable()
 export class BackendInterceptor implements HttpInterceptor {
     constructor() { }

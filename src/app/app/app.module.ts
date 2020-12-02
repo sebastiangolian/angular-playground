@@ -6,6 +6,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { TestComponent } from './pages/test/test.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BackendInterceptor } from './interceptors/backend.interceptor';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { BackendInterceptor } from './interceptors/backend.interceptor';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
   providers: [
     // { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
