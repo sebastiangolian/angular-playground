@@ -1,9 +1,0 @@
-<form class="m-0" name="form" #f="ngForm" autocomplete="off">
-    Search: <input type="text" class="form-control" name="search" [(ngModel)]="result.search" #search="ngModel" />
-</form>
-
-<ul *ngIf="results" class="list-group">
-    <wikipedia-item *ngFor="let result of results" [result]="result" (itemSelected)="onItemSelected($event)"></wikipedia-item>
-</ul>
-
-<wikipedia-parse-item *ngIf="parseItem" [item]="parseItem"></wikipedia-parse-item>

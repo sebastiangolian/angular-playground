@@ -1,5 +1,0 @@
-<div class="row" *ngIf="posts">
-    <div class="col-12 col-sm-4" *ngFor="let post of posts">
-        <post-item [model]="post" (postDeleted)="onDelete($event)" (postEdited)="onEdit($event)"></post-item>
-    </div>
-</div>
