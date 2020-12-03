@@ -66,8 +66,8 @@ export class DatatableComponent {
     return Math.ceil(this.total / this.limit)
   }
 
-  onChangeLimit(event: number) {
-    this.limit = event
+  onChangeLimit(target:EventTarget|null) {
+    if(target instanceof HTMLInputElement) this.limit = Number.parseInt(target.value)
     this.page = 1
     this.onRefresh()
   }

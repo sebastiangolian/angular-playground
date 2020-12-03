@@ -4,6 +4,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { mergeMap, materialize, delay, dematerialize } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { User } from 'src/app/user/interfaces/user.interface';
+import { Hero } from 'src/app/hero/interfaces/hero.interface';
 
 @Injectable()
 export class BackendInterceptor implements HttpInterceptor {
@@ -50,18 +51,18 @@ export class BackendInterceptor implements HttpInterceptor {
                 //     { id: 2, name: "golf", brand: "volkswagen" },
                 //     { id: 3, name: "A3", brand: "audi" }
                 // ],
-                // "hero": [
-                //     { id: 1, name: 'Rocky' },
-                //     { id: 2, name: 'Terminator' },
-                //     { id: 3, name: 'Rambo' },
-                //     { id: 4, name: 'Superman' },
-                //     { id: 5, name: 'Batman' },
-                //     { id: 6, name: 'Spiderman' },
-                //     { id: 7, name: 'Superwoman' },
-                //     { id: 8, name: 'Hulk' },
-                //     { id: 9, name: 'Ironman' },
-                //     { id: 10, name: 'Antman' }
-                // ]
+                "hero": [
+                    { id: "1", name: 'Rocky' },
+                    { id: "2", name: 'Terminator' },
+                    { id: "3", name: 'Rambo' },
+                    { id: "4", name: 'Superman' },
+                    { id: "5", name: 'Batman' },
+                    { id: "6", name: 'Spiderman' },
+                    { id: "7", name: 'Superwoman' },
+                    { id: "8", name: 'Hulk' },
+                    { id: "9", name: 'Ironman' },
+                    { id: "10", name: 'Antman' }
+                ]
             }
 
             db = loadStorage(db)
@@ -149,41 +150,41 @@ export class BackendInterceptor implements HttpInterceptor {
                 //     return response200();
                 // }
 
-                // case (method === 'GET' && url.includes("/hero/list")): {
-                //     const response = getAll(url, db.hero)
-                //     return response200(response);
-                // }
+                case (method === 'GET' && url.includes("/hero/list")): {
+                    const response = getAll(url, db.hero)
+                    return response200(response);
+                }
 
-                // case (method === 'GET' && url.includes("/hero/search/")): {
-                //     let items = db.hero.filter(hero => hero.name.toLowerCase().includes(getIdFromUrl()))
-                //     return response200(items);
-                // }
+                case (method === 'GET' && url.includes("/hero/search/")): {
+                    let items = db.hero.filter(hero => hero.name.toLowerCase().includes(getIdFromUrl().toLowerCase()))
+                    return response200(items);
+                }
 
-                // case (method === 'GET' && url.includes("/hero/")): {
-                //     let item = db.hero.find(hero => hero.id.toString() == getIdFromUrl())
-                //     return response200({ "item": item });
-                // }
+                case (method === 'GET' && url.includes("/hero/")): {
+                    let item = db.hero.find(hero => hero.id.toString() == getIdFromUrl())
+                    return response200({ "item": item });
+                }
 
-                // case (method === 'POST' && url.includes("/hero")): {
-                //     body.id = db.hero.length + 1
-                //     db.hero.push(body)
-                //     saveStorage(db)
-                //     return response200({ "item": body });
-                // }
+                case (method === 'POST' && url.includes("/hero")): {
+                    body.id = db.hero.length + 1
+                    db.hero.push(body)
+                    saveStorage(db)
+                    return response200({ "item": body });
+                }
 
-                // case (method === 'PUT' && url.includes("/hero")): {
-                //     let index = db.hero.findIndex(hero => hero.id.toString() === getIdFromUrl())
-                //     body.id = db.hero[index].id;
-                //     db.hero[index] = body
-                //     saveStorage(db)
-                //     return response200({ "item": body });
-                // }
+                case (method === 'PUT' && url.includes("/hero")): {
+                    let index = db.hero.findIndex(hero => hero.id.toString() === getIdFromUrl())
+                    body.id = db.hero[index].id;
+                    db.hero[index] = body
+                    saveStorage(db)
+                    return response200({ "item": body });
+                }
 
-                // case (method === 'DELETE' && url.includes("/hero")): {
-                //     db.hero = db.hero.filter(hero => hero.id.toString() !== getIdFromUrl())
-                //     saveStorage(db)
-                //     return response200();
-                // }
+                case (method === 'DELETE' && url.includes("/hero")): {
+                    db.hero = db.hero.filter(hero => hero.id.toString() !== getIdFromUrl())
+                    saveStorage(db)
+                    return response200();
+                }
             }
 
             return next.handle(request);
@@ -323,4 +324,5 @@ export class BackendInterceptor implements HttpInterceptor {
 
 export interface DbBackend {
     user: User[]
+    hero: Hero[]
 }
