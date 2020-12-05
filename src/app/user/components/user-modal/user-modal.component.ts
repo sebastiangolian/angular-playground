@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { Subject } from 'rxjs/internal/Subject';
+import { Subject } from 'rxjs';
 import { User } from '../../interfaces/user.interface';
 import { UserModel } from '../../models/user.model';
 

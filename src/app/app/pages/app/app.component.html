@@ -1,22 +1,31 @@
 <body>
-    <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white text-dark border-bottom shadow">
-        <h5 class="my-0 mr-4"><a href="#">angular-playground</a></h5>
+    <header
+        class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white text-dark border-bottom shadow">
+        <h5 class="my-0 mr-4"><a routerLink="home">angular-playground</a></h5>
         <nav class="my-2 my-md-0 mr-md-3">
-            <a class="p-2" routerLink="home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
-            <a class="p-2" routerLink="user" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Users</a>
-            <a class="p-2" routerLink="post" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Posts</a>
-            <a class="p-2" routerLink="car" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Cars</a>
-            <a class="p-2" routerLink="wikipedia" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Wikipedia</a>
-            <a class="p-2" routerLink="hero" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Heros</a>
-            <a class="p-2" routerLink="test" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Test</a>
+            <a class="p-2" routerLink="test" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">Test</a>
+            <a class="p-2" routerLink="user" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">Users</a>
+            <a class="p-2" routerLink="post" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">Posts</a>
+            <a class="p-2" routerLink="car" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">Cars</a>
+            <a class="p-2" routerLink="wikipedia" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">Wikipedia</a>
+            <a class="p-2" routerLink="leaflet" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">Leaflet</a>
         </nav>
         <form class="my-2 my-md-0 mr-md-3 ml-auto">
-            <!-- <button class="btn btn-outline-dark my-2 my-sm-0" (click)="onReset()">Clear memory</button> -->
+            <button class="btn btn-outline-dark my-2 my-sm-0" (click)="onReset()">Clear memory</button>
         </form>
     </header>
     <main class="container-fluid">
+        <ng-container *ngIf="$header|async as header">
+            <h1 [innerHtml]="header"></h1>
+        </ng-container>
         <router-outlet></router-outlet>
-    </main> 
+    </main>
     <footer class="container-fluid mt-4 pt-3 border-top">
         <div class="row">
             <div class="col-6 col-md">

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HeaderService } from 'src/app/shared/services/header.service';
 
 @Component({
   templateUrl: './test.component.html',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestComponent implements OnInit {
 
-  constructor() {}
+  constructor(private headerService: HeaderService) {
+    this.headerService.set("Test")
+  }
 
   ngOnInit(): void {}
 }
