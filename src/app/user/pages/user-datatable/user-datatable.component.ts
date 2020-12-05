@@ -37,9 +37,9 @@ export class UserDatatableComponent extends DatatableComponent implements OnDest
     this._subscription.add(this.getUsers())
   }
 
-  // onDownload(user: User) {
-  //   this._subscription.add(this.downloadFile(user))
-  // }
+  onDownload(user: User) {
+    this._subscription.add(this.downloadFile(user))
+  }
 
   onView(user: User) {
     this.router.navigate(['user/', user.id])
@@ -73,9 +73,9 @@ export class UserDatatableComponent extends DatatableComponent implements OnDest
     })
   }
 
-  // private downloadFile(user: User): Subscription {
-  //   return this.userService.downloadFile(user).subscribe()
-  // }
+  private downloadFile(user: User): Subscription {
+    return this.userService.downloadFile(user).subscribe()
+  }
 
   private postUserModal(): Subscription {
     return this.userModal(null).subscribe({
