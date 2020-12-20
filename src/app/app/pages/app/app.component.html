@@ -21,6 +21,7 @@
         </form>
     </header>
     <main class="container-fluid">
+        <app-spinner></app-spinner>
         <ng-container *ngIf="$header|async as header">
             <h1 [innerHtml]="header"></h1>
         </ng-container>

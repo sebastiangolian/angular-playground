@@ -1,3 +1,4 @@
+import { SpinnerModule } from './../spinner/spinner.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -23,7 +24,8 @@ import { RouterModule } from '@angular/router';
     HttpClientJsonpModule,
     RouterModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    SpinnerModule
   ],
   providers: [
     // { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
