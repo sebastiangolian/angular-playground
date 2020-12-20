@@ -7,17 +7,17 @@ import { DatatableComponent } from './datatable.component';
 })
 export class DatatableSearchComponent extends DatatableComponent {
 
-  limitEnabled = false
+  limitEnabled = false;
 
   ngOnInit() {}
 
   onSort(column: string) {
-    if (Object.keys(this.filters).length == 0) return
-    super.onSort(column)
+    if (Object.keys(this.filters).length == 0) { return; }
+    super.onSort(column);
   }
 
   onFilterReset() {
-    this.filters = {}
-    this.items = null
+    this.filters = {};
+    this.items = null;
   }
 }

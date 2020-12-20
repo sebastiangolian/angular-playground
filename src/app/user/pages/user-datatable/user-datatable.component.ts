@@ -20,138 +20,139 @@ import { Role } from 'src/app/role/interfaces/role.interface';
 })
 export class UserDatatableComponent extends DatatableComponent implements OnDestroy {
 
-  limit = 10
-  filterOneSign = ["email"]
-  model: User = new UserModel()
-  items: User[] = []
+  limit = 10;
+  filterOneSign = ['email'];
+  model: User = new UserModel();
+  items: User[] = [];
 
   private _subscription: Subscription = new Subscription();
 
   constructor(private headerService: HeaderService, private messageService: MessageService, private modalService: BsModalService,
-    private userService: UserService, private router: Router, private modalConfirmService: ModalConfirmService) {
+              private userService: UserService, private router: Router, private modalConfirmService: ModalConfirmService) {
     super();
-    this.headerService.set("Users")
+    this.headerService.set('Users');
   }
 
   onRefresh() {
-    this._subscription.add(this.getUsers())
+    this._subscription.add(this.getUsers());
   }
 
   onDownload(user: User) {
-    this._subscription.add(this.downloadFile(user))
+    this._subscription.add(this.downloadFile(user));
   }
 
   onView(user: User) {
-    this.router.navigate(['user/', user.id])
+    this.router.navigate(['user/', user.id]);
   }
 
   onEdit(user: User) {
-    this._subscription.add(this.putUserModal(user))
+    this._subscription.add(this.putUserModal(user));
   }
 
   onDelete(role: User) {
-    let content: string = `Are you sure you want to delete the record ?`
+    const content = `Are you sure you want to delete the record ?`;
     this._subscription.add(this.modalConfirmService.confirm(content).subscribe(result => {
       if (result) {
-        this._subscription.add(this.deleteUser(role))
+        this._subscription.add(this.deleteUser(role));
       }
-    }))
+    }));
   }
 
   onCreate() {
-    this._subscription.add(this.postUserModal())
+    this._subscription.add(this.postUserModal());
   }
 
   onSetRole(user: User) {
-    this._subscription.add(this.setRoleToUser(user))
+    this._subscription.add(this.setRoleToUser(user));
   }
 
   private getUsers(): Subscription {
     return this.userService.get(this.limit, this.page, this.sortBy, this.order, this.filters).subscribe(ret => {
-      this.items = ret.items
-      this.total = ret.total
-    })
+      this.items = ret.items;
+      this.total = ret.total;
+    });
   }
 
   private downloadFile(user: User): Subscription {
-    return this.userService.downloadFile(user).subscribe()
+    return this.userService.downloadFile(user).subscribe();
   }
 
   private postUserModal(): Subscription {
     return this.userModal(null).subscribe({
       next: (user: User|null) => {
-        if (user != null) this.postUser(user)
+        if (user != null) { this.postUser(user); }
       },
-      error: () => this.messageService.sendMessage("Adding a new record failed", "danger")
-    })
+      error: () => this.messageService.sendMessage('Adding a new record failed', 'danger')
+    });
   }
 
   private putUserModal(user: User): Subscription {
     return this.userModal(user).subscribe({
       next: (user: User|null) => {
-        if (user != null) this.putUser(user)
+        if (user != null) { this.putUser(user); }
       },
-      error: () => this.messageService.sendMessage("Update record failed", "danger")
-    })
+      error: () => this.messageService.sendMessage('Update record failed', 'danger')
+    });
   }
 
   private postUser(user: User): Subscription {
     return this.userService.post(user).subscribe({
       complete: () => {
-        this.onRefresh()
-        this.messageService.sendMessage("Record added correctly")
+        this.onRefresh();
+        this.messageService.sendMessage('Record added correctly');
       }
-    })
+    });
   }
 
   private putUser(user: User): Subscription {
     return this.userService.update(user.id, user).subscribe({
       complete: () => {
-        this.onRefresh()
-        this.messageService.sendMessage("Record updated correctly")
+        this.onRefresh();
+        this.messageService.sendMessage('Record updated correctly');
       }
-    })
+    });
   }
 
   private deleteUser(user: User): Subscription {
     return this.userService.delete(user.id).subscribe({
       complete: () => {
-        this.onRefresh()
-        this.messageService.sendMessage("Record deleted correctly")
+        this.onRefresh();
+        this.messageService.sendMessage('Record deleted correctly');
       }
-    })
+    });
   }
 
-  private patchUser(id:string, body: any): Subscription {
+  private patchUser(id: string, body: any): Subscription {
     return this.userService.patch(id, body).subscribe({
       complete: () => {
-        this.onRefresh()
-        this.messageService.sendMessage("Role has been assigned correctly")
+        this.onRefresh();
+        this.messageService.sendMessage('Role has been assigned correctly');
       }
-    })
+    });
   }
 
   private setRoleToUser(user: User): Subscription {
     return this.getModalRole().subscribe({
       next: (role: Role|null) => {
-        if(role != null)
-          this.patchUser(user.id.toString(), {"idRole": role.id})
+        if (role != null) {
+          this.patchUser(user.id.toString(), {idRole: role.id});
+        }
       },
-      error: () => this.messageService.sendMessage("The role was not assigned correctly", "danger")
-    })
+      error: () => this.messageService.sendMessage('The role was not assigned correctly', 'danger')
+    });
   }
 
   private userModal(user: User|null): Observable<User|null> {
     const subject = new Subject<User|null>();
-    let initialState: Partial<UserModalComponent> = {}
-    if(user) initialState = {model: user}
+    let initialState: Partial<UserModalComponent> = {};
+    if (user) { initialState = {model: user}; }
     const modal = this.modalService.show(UserModalComponent, {
-      initialState: initialState,
+      initialState,
       class: 'modal-md',
       ignoreBackdropClick: true
-    })
-    if(modal.content) modal.content.subject = subject
-    return subject
+    });
+    if (modal.content) { modal.content.subject = subject; }
+    return subject;
   }
 
   private getModalRole(): Observable<Role|null> {
@@ -160,12 +161,12 @@ export class UserDatatableComponent extends DatatableComponent implements OnDest
       initialState: {},
       class: 'modal-xl',
       ignoreBackdropClick: true
-    })
-    if(modal.content) modal.content.subject = subject
-    return subject
+    });
+    if (modal.content) { modal.content.subject = subject; }
+    return subject;
   }
 
   ngOnDestroy() {
-    if(this._subscription) this._subscription.unsubscribe()
+    if (this._subscription) { this._subscription.unsubscribe(); }
   }
 }

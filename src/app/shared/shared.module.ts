@@ -36,7 +36,7 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     FormsModule,
     AlertModule.forRoot(),
     ModalModule.forRoot(),
-  ], 
+  ],
   exports: [
     DatatableComponent,
     DatatableSearchComponent,

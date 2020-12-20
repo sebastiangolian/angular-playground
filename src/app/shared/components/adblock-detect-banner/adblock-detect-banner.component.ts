@@ -7,7 +7,7 @@ import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core
 })
 export class AdblockDetectBannerComponent implements OnInit {
 
-  @Input() isView: boolean = false
+  @Input() isView = false;
   constructor() { }
 
   ngOnInit(): void {}

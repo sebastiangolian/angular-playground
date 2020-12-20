@@ -11,45 +11,45 @@ import { Subscription } from 'rxjs';
 })
 export class UserSearchComponent implements OnInit, OnDestroy {
 
-  item: User|null = null
-  caption: string = ""
+  item: User|null = null;
+  caption = '';
 
   private _subscription: Subscription = new Subscription();
 
   constructor(private userService: UserService, private headerService: HeaderService) {
-    this.headerService.set("User search")
+    this.headerService.set('User search');
   }
 
   ngOnInit(): void {}
-  
-  onSearch(target:EventTarget|null) {
-    let value = ""
-    if(target instanceof HTMLInputElement) value = target.value
-    if(value.length > 0) {
-      this._subscription.add(this.search(value))   
+
+  onSearch(target: EventTarget|null) {
+    let value = '';
+    if (target instanceof HTMLInputElement) { value = target.value; }
+    if (value.length > 0) {
+      this._subscription.add(this.search(value));
     } else {
-      this.caption = ""
-      this.item = null
+      this.caption = '';
+      this.item = null;
     }
   }
 
-  search(id:string): Subscription {
+  search(id: string): Subscription {
     return this.userService.getById(id).pipe(
       debounceTime(500),
       tap(user => {
-        if(user.item) {
-          this.caption = ""
-          this.item = user.item
+        if (user.item) {
+          this.caption = '';
+          this.item = user.item;
         } else {
-          this.caption = "Is not exist"
-          this.item = null
+          this.caption = 'Is not exist';
+          this.item = null;
         }
-        
+
       })
-    ).subscribe()
+    ).subscribe();
   }
 
   ngOnDestroy() {
-    if(this._subscription) this._subscription.unsubscribe()
+    if (this._subscription) { this._subscription.unsubscribe(); }
   }
 }

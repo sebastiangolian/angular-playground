@@ -6,7 +6,7 @@ export class HeroMessageService {
 
   add(message: string) {
     this.messages.unshift(message);
-    if(this.messages.length > 15) this.messages.pop()
+    if (this.messages.length > 15) { this.messages.pop(); }
   }
 
   clear() {

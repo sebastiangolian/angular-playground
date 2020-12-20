@@ -10,7 +10,7 @@ import { HeroService } from '../../services/hero.service';
   styleUrls: [ './hero-search.component.css' ]
 })
 export class HeroSearchComponent {
-  heroes$: Observable<Hero[]|null>
+  heroes$: Observable<Hero[]|null>;
   private searchTerms = new Subject<string>();
 
   constructor(private heroService: HeroService) {
@@ -18,10 +18,10 @@ export class HeroSearchComponent {
       debounceTime(300),
       distinctUntilChanged(),
       switchMap((term: string) => {
-        if(term.length > 2) {
-          return this.heroService.getByName(term).pipe(map(api => api.item))
+        if (term.length > 2) {
+          return this.heroService.getByName(term).pipe(map(api => api.item));
         } else {
-          return of(null)
+          return of(null);
         }
       })
     );

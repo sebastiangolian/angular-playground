@@ -16,7 +16,7 @@ export class PostUpdateComponent implements OnInit {
   ngOnInit(): void {}
 
   onFormSubmit(post: Post|null) {
-    this.postUpdated.emit(post)
+    this.postUpdated.emit(post);
   }
 
 }

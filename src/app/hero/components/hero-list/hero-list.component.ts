@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ApiList } from 'src/app/shared/interfaces/api-list.interface';
 import { Api } from 'src/app/shared/interfaces/api.interface';
 import { Hero } from '../../interfaces/hero.interface';
-import { HeroService } from '../../services/hero.service'; 
+import { HeroService } from '../../services/hero.service';
 
 @Component({
   selector: 'hero-list',
@@ -11,7 +11,7 @@ import { HeroService } from '../../services/hero.service';
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class HeroListComponent implements OnInit {
-  heroes: Hero[] = []
+  heroes: Hero[] = [];
 
   constructor(private heroService: HeroService) {}
 

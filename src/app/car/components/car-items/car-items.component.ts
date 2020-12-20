@@ -9,20 +9,20 @@ import { Car } from '../../interfaces/car.interface';
 })
 export class CarItemsComponent implements OnInit {
 
-  @Input() cars: Car[] = []
-  @Input() updateCar: Car|null = null
-  @Output() carSelected: EventEmitter<Car> = new EventEmitter<Car>()
-  @Output() carDeleted: EventEmitter<Car> = new EventEmitter<Car>()
+  @Input() cars: Car[] = [];
+  @Input() updateCar: Car|null = null;
+  @Output() carSelected: EventEmitter<Car> = new EventEmitter<Car>();
+  @Output() carDeleted: EventEmitter<Car> = new EventEmitter<Car>();
   constructor() { }
 
   ngOnInit(): void {}
 
   onSelect(car: Car) {
-    this.carSelected.emit(car)
+    this.carSelected.emit(car);
   }
 
   onDelete(car: Car) {
-    this.carDeleted.emit(car)
+    this.carDeleted.emit(car);
   }
 
 }

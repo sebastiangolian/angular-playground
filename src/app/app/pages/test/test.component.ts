@@ -8,7 +8,7 @@ import { HeaderService } from 'src/app/shared/services/header.service';
 export class TestComponent implements OnInit {
 
   constructor(private headerService: HeaderService) {
-    this.headerService.set("Test")
+    this.headerService.set('Test');
   }
 
   ngOnInit(): void {}

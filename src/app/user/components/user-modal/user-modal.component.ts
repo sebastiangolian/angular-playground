@@ -12,19 +12,19 @@ import { UserModel } from '../../models/user.model';
 })
 export class UserModalComponent implements OnInit {
 
-  title: string = "Update user"
-  model: User|null = null
-  subject: Subject<User|null> = new Subject<User|null>()
+  title = 'Update user';
+  model: User|null = null;
+  subject: Subject<User|null> = new Subject<User|null>();
 
   constructor(public bsModalRef: BsModalRef) { }
 
   ngOnInit(): void {
-    if(this.model == null)  {
-      this.title = "Add user"
-      this.model = new UserModel()
-      this.model.email = 'test@gmail.com'
-      this.model.active = true
-      this.model.zipCode = "00-000"
+    if (this.model == null)  {
+      this.title = 'Add user';
+      this.model = new UserModel();
+      this.model.email = 'test@gmail.com';
+      this.model.active = true;
+      this.model.zipCode = '00-000';
     }
   }
 

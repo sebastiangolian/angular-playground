@@ -13,59 +13,59 @@ import { CarService } from '../../services/car.service';
 })
 export class CarComponent implements OnInit {
 
-  cars: Observable<Car[]> = new Observable<Car[]>()
-  updatedCar: Car = {id: "", brand: "", name: ""}
+  cars: Observable<Car[]> = new Observable<Car[]>();
+  updatedCar: Car = {id: '', brand: '', name: ''};
 
-  constructor(private headerService: HeaderService, private carService: CarService, private messageService: MessageService) { 
-    this.headerService.set("Cars")
+  constructor(private headerService: HeaderService, private carService: CarService, private messageService: MessageService) {
+    this.headerService.set('Cars');
   }
 
   ngOnInit(): void {
-    this.reload()
+    this.reload();
   }
 
   reload() {
     this.cars = this.carService.get().pipe(
       map(api => api.items)
-    )
+    );
   }
 
   onCarSave(car: Car|null) {
-    if(car) {
+    if (car) {
       this.carService.getById(car.id.toString()).subscribe(
         item => {
-          if(item.item) {
+          if (item.item) {
             this.carService.update(item.item.id.toString(), car).subscribe((result) => {
-              this.updatedCar = result
-              this.reload()
-              this.messageService.sendMessage("Updated car")
-              setTimeout(() => {this.updatedCar = this.emptyCar()},2000) 
-            })
+              this.updatedCar = result;
+              this.reload();
+              this.messageService.sendMessage('Updated car');
+              setTimeout(() => {this.updatedCar = this.emptyCar(); }, 2000);
+            });
           } else {
             this.carService.post(car).subscribe((result) => {
-              this.updatedCar = result
-              this.reload()
-              this.messageService.sendMessage("Added new car")
-              setTimeout(() => {this.updatedCar = this.emptyCar()},2000) 
-            })
+              this.updatedCar = result;
+              this.reload();
+              this.messageService.sendMessage('Added new car');
+              setTimeout(() => {this.updatedCar = this.emptyCar(); }, 2000);
+            });
           }
         }
-      )
+      );
     }
   }
 
   onSelect(car: Car) {
-    this.updatedCar = car
+    this.updatedCar = car;
   }
 
   onDelete(car: Car) {
     this.carService.delete(car.id.toString()).subscribe((result) => {
-      this.reload()
-      this.messageService.sendMessage("Deleted car")
-    })
+      this.reload();
+      this.messageService.sendMessage('Deleted car');
+    });
   }
 
   emptyCar() {
-    return {id: "", brand: "", name: ""}
+    return {id: '', brand: '', name: ''};
   }
 }

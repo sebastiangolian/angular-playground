@@ -14,62 +14,62 @@ import { WikipediaService } from '../../services/wikipedia.service';
 })
 export class WikipediaComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  result: FormSearch = new FormSearch()
-  results!: WikipediaResultOpensearch[] | null
-  parseItem!: WikipediaResultParse | null
+  result: FormSearch = new FormSearch();
+  results!: WikipediaResultOpensearch[] | null;
+  parseItem!: WikipediaResultParse | null;
 
   private _subscription: Subscription = new Subscription();
 
-  @ViewChild('f') f!: NgForm
+  @ViewChild('f') f!: NgForm;
   constructor(private headerService: HeaderService, private wikipediaService: WikipediaService) {
-    this.headerService.set("Wikipedia")
+    this.headerService.set('Wikipedia');
   }
 
   ngOnInit(): void { }
 
   ngAfterViewInit(): void {
-    this._subscription.add(this.search().subscribe(results => this.results = results))
+    this._subscription.add(this.search().subscribe(results => this.results = results));
   }
 
   search(): Observable<WikipediaResultOpensearch[] | null> {
     return this.f.form.valueChanges.pipe(
       debounceTime(500),
       switchMap((result: FormSearch) => {
-        if (!result.search) return of(null)
+        if (!result.search) { return of(null); }
         if (result.search.length <= 2) {
-          this.parseItem = null
-          return of(null)
+          this.parseItem = null;
+          return of(null);
         }
-        return this.wikipediaService.opensearch(result.search, 10)
+        return this.wikipediaService.opensearch(result.search, 10);
       })
-    )
+    );
   }
 
   parse(page: string): Observable<WikipediaResultParse> {
     return this.wikipediaService.parse(page).pipe(
       map(result => {
-        for (var prop in result.text) {
-          result.formatText = result.text[prop]
+        for (const prop in result.text) {
+          result.formatText = result.text[prop];
           break;
         }
-        return result
+        return result;
       })
-    )
+    );
   }
 
   onItemSelected(result: WikipediaResultOpensearch | null) {
     if (result) {
-      this.results = []
-      this.result.search = result.term
-      this._subscription.add(this.parse(result.parseTerm).subscribe(results => this.parseItem = results))
+      this.results = [];
+      this.result.search = result.term;
+      this._subscription.add(this.parse(result.parseTerm).subscribe(results => this.parseItem = results));
     }
   }
 
   ngOnDestroy() {
-    if (this._subscription) this._subscription.unsubscribe()
+    if (this._subscription) { this._subscription.unsubscribe(); }
   }
 }
 
 export class FormSearch {
-  search: string = ""
+  search = '';
 }

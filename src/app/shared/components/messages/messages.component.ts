@@ -11,13 +11,13 @@ import { Subscription } from 'rxjs';
 })
 export class MessagesComponent implements OnInit {
 
-  messages: Message[] = []
+  messages: Message[] = [];
   private _subscription: Subscription = new Subscription();
-  
+
   constructor(private messageService: MessageService) { }
 
   ngOnInit(): void {
-    this._subscription.add(this.getMessages())
+    this._subscription.add(this.getMessages());
   }
 
   private getMessages(): Subscription {
@@ -31,7 +31,7 @@ export class MessagesComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this._subscription.unsubscribe()
+    this._subscription.unsubscribe();
   }
 
 }

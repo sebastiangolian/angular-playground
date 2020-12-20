@@ -23,168 +23,168 @@ export class BackendInterceptor implements HttpInterceptor {
 
         function handleRoute() {
 
-            let httpClient: HttpClient = new HttpClient(next);
+            const httpClient: HttpClient = new HttpClient(next);
 
-            if (environment.loggingBackendUrl) console.info('[' + request.method + ']' + url);
-            if (environment.loggingBackendRequestHeaders) console.info(headers);
-            if (environment.loggingBackendRequest) console.info(body);
+            if (environment.loggingBackendUrl) { console.info('[' + request.method + ']' + url); }
+            if (environment.loggingBackendRequestHeaders) { console.info(headers); }
+            if (environment.loggingBackendRequest) { console.info(body); }
 
             let db: DbBackend = {
-                "user": [
-                    { id: "1", email: 'jan.kowalski@example.pl', zipCode: '11-111', created: '2020-04-01 12:02:28', active: false, documentLink: getPdfUrl(), idRole: "1"},
-                    { id: "2", email: 'anna.nowak@example.pl', zipCode: '22-222', created: '2020-04-01 13:02:28', active: false, documentLink: getPdfUrl(), idRole: "1"},
-                    { id: "3", email: 'henryk.kuczynski@example.pl', zipCode: '33-333', created: '2020-04-01 14:02:28', active: false, documentLink: getPdfUrl(), idRole: "1"},
-                    { id: "4", email: 'zdzislaw.kowalski@example.pl', zipCode: '44-444', created: '2020-04-01 15:02:28', active: false, documentLink: getPdfUrl(), idRole: "1"},
-                    { id: "5", email: 'cezary.kowal@example.pl', zipCode: '55-555', created: '2020-04-01 16:02:28', active: false, documentLink: getPdfUrl(), idRole: "1"},
-                    { id: "6", email: 'jerzy.tusk@example.pl', zipCode: '66-666', created: '2020-04-02 12:02:28', active: false, documentLink: getPdfUrl(), idRole: "1"},
-                    { id: "7", email: 'wojciech.walewski@example.pl', zipCode: '77-777', created: '2020-04-02 13:02:28', active: false, documentLink: getPdfUrl(), idRole: "1"},
-                    { id: "8", email: 'andrzej.nowaczek@example.pl', zipCode: '88-888', created: '2020-04-02 14:02:28', active: false, documentLink: getPdfUrl(), idRole: "1"},
-                    { id: "9", email: 'krystian.kowalewski@example.pl', zipCode: '99-999', created: '2020-04-02 15:02:28', active: false, documentLink: getPdfUrl(), idRole: "1"},
-                    { id: "10", email: 'michal.adamczuk@example.pl', zipCode: '00-111', created: '2020-04-02 16:02:28', active: false, documentLink: getPdfUrl(), idRole: "1"},
-                    { id: "11", email: 'adam.adamowicz@example.pl', zipCode: '00-222', created: '2020-04-02 17:02:28', active: false, documentLink: getPdfUrl(), idRole: "1"},
+                user: [
+                    { id: '1', email: 'jan.kowalski@example.pl', zipCode: '11-111', created: '2020-04-01 12:02:28', active: false, documentLink: getPdfUrl(), idRole: '1'},
+                    { id: '2', email: 'anna.nowak@example.pl', zipCode: '22-222', created: '2020-04-01 13:02:28', active: false, documentLink: getPdfUrl(), idRole: '1'},
+                    { id: '3', email: 'henryk.kuczynski@example.pl', zipCode: '33-333', created: '2020-04-01 14:02:28', active: false, documentLink: getPdfUrl(), idRole: '1'},
+                    { id: '4', email: 'zdzislaw.kowalski@example.pl', zipCode: '44-444', created: '2020-04-01 15:02:28', active: false, documentLink: getPdfUrl(), idRole: '1'},
+                    { id: '5', email: 'cezary.kowal@example.pl', zipCode: '55-555', created: '2020-04-01 16:02:28', active: false, documentLink: getPdfUrl(), idRole: '1'},
+                    { id: '6', email: 'jerzy.tusk@example.pl', zipCode: '66-666', created: '2020-04-02 12:02:28', active: false, documentLink: getPdfUrl(), idRole: '1'},
+                    { id: '7', email: 'wojciech.walewski@example.pl', zipCode: '77-777', created: '2020-04-02 13:02:28', active: false, documentLink: getPdfUrl(), idRole: '1'},
+                    { id: '8', email: 'andrzej.nowaczek@example.pl', zipCode: '88-888', created: '2020-04-02 14:02:28', active: false, documentLink: getPdfUrl(), idRole: '1'},
+                    { id: '9', email: 'krystian.kowalewski@example.pl', zipCode: '99-999', created: '2020-04-02 15:02:28', active: false, documentLink: getPdfUrl(), idRole: '1'},
+                    { id: '10', email: 'michal.adamczuk@example.pl', zipCode: '00-111', created: '2020-04-02 16:02:28', active: false, documentLink: getPdfUrl(), idRole: '1'},
+                    { id: '11', email: 'adam.adamowicz@example.pl', zipCode: '00-222', created: '2020-04-02 17:02:28', active: false, documentLink: getPdfUrl(), idRole: '1'},
                 ],
-                "role": [
-                    { id: '1', name: "admin" },
-                    { id: '2', name: "editor" },
-                    { id: '3', name: "standard" }
+                role: [
+                    { id: '1', name: 'admin' },
+                    { id: '2', name: 'editor' },
+                    { id: '3', name: 'standard' }
                 ],
-                "car": [
-                    { id: '1', name: "leon", brand: "seat" },
-                    { id: '2', name: "golf", brand: "volkswagen" },
-                    { id: '3', name: "A3", brand: "audi" }
+                car: [
+                    { id: '1', name: 'leon', brand: 'seat' },
+                    { id: '2', name: 'golf', brand: 'volkswagen' },
+                    { id: '3', name: 'A3', brand: 'audi' }
                 ],
-                "hero": [
-                    { id: "1", name: 'Rocky' },
-                    { id: "2", name: 'Terminator' },
-                    { id: "3", name: 'Rambo' },
-                    { id: "4", name: 'Superman' },
-                    { id: "5", name: 'Batman' },
-                    { id: "6", name: 'Spiderman' },
-                    { id: "7", name: 'Superwoman' },
-                    { id: "8", name: 'Hulk' },
-                    { id: "9", name: 'Ironman' },
-                    { id: "10", name: 'Antman' }
+                hero: [
+                    { id: '1', name: 'Rocky' },
+                    { id: '2', name: 'Terminator' },
+                    { id: '3', name: 'Rambo' },
+                    { id: '4', name: 'Superman' },
+                    { id: '5', name: 'Batman' },
+                    { id: '6', name: 'Spiderman' },
+                    { id: '7', name: 'Superwoman' },
+                    { id: '8', name: 'Hulk' },
+                    { id: '9', name: 'Ironman' },
+                    { id: '10', name: 'Antman' }
                 ]
-            }
+            };
 
-            db = loadStorage(db)
+            db = loadStorage(db);
 
-            //db.user = []
+            // db.user = []
             // for(let i = 1; i <= 100; i++) {
             //     db.user.push({id: i,email: 'example' + i + '@o2.pl', zipCode: '11-111',created: DateTimeHelper.currentDateTime(), active: true, documentLink: getPdfUrl()})
             // }
 
             switch (true) {
-                case (method === 'GET' && url.includes("/user/list")): {
-                    const response = getAll(url, db.user)
+                case (method === 'GET' && url.includes('/user/list')): {
+                    const response = getAll(url, db.user);
                     return response200(response);
                 }
 
-                case (method === 'GET' && url.includes("/user/")): {
-                    let item = db.user.find(user => user.id.toString() == getIdFromUrl())
-                    return response200({ "item": item });
+                case (method === 'GET' && url.includes('/user/')): {
+                    const item = db.user.find(user => user.id.toString() == getIdFromUrl());
+                    return response200({ item });
                 }
 
-                case (method === 'POST' && url.includes("/user")): {
-                    body.id = db.user.length + 1
-                    body.documentLink = getPdfUrl()
-                    body.created = new Date().toJSON().slice(0, 10) + ' ' + new Date().toLocaleTimeString()
-                    db.user.push(body)
-                    saveStorage(db)
-                    return response200({ "item": body });
+                case (method === 'POST' && url.includes('/user')): {
+                    body.id = db.user.length + 1;
+                    body.documentLink = getPdfUrl();
+                    body.created = new Date().toJSON().slice(0, 10) + ' ' + new Date().toLocaleTimeString();
+                    db.user.push(body);
+                    saveStorage(db);
+                    return response200({ item: body });
                 }
 
-                case (method === 'PUT' && url.includes("/user")): {
-                    let index = db.user.findIndex(user => user.id.toString() === getIdFromUrl())
+                case (method === 'PUT' && url.includes('/user')): {
+                    const index = db.user.findIndex(user => user.id.toString() === getIdFromUrl());
                     body.id = db.user[index].id;
-                    db.user[index] = body
-                    saveStorage(db)
-                    return response200({ "item": body });
+                    db.user[index] = body;
+                    saveStorage(db);
+                    return response200({ item: body });
                 }
 
-                case (method === 'DELETE' && url.includes("/user")): {
-                    db.user = db.user.filter(user => user.id.toString() !== getIdFromUrl())
-                    saveStorage(db)
+                case (method === 'DELETE' && url.includes('/user')): {
+                    db.user = db.user.filter(user => user.id.toString() !== getIdFromUrl());
+                    saveStorage(db);
                     return response200();
-                    //return responseError(400, "Nie masz uprawnień, żeby usuwać użytkowników.")
+                    // return responseError(400, "Nie masz uprawnień, żeby usuwać użytkowników.")
                 }
 
-                case (method === 'PATCH' && url.includes("/user")): {
-                    let index = db.user.findIndex(user => user.id.toString() == getIdFromUrl())
-                    db.user[index].idRole = body.idRole
-                    saveStorage(db)
-                    return response200({ "item": body });
+                case (method === 'PATCH' && url.includes('/user')): {
+                    const index = db.user.findIndex(user => user.id.toString() == getIdFromUrl());
+                    db.user[index].idRole = body.idRole;
+                    saveStorage(db);
+                    return response200({ item: body });
                 }
 
-                case (method === 'GET' && url.includes("/role/list")): {
-                    const response = getAll(url, db.role)
+                case (method === 'GET' && url.includes('/role/list')): {
+                    const response = getAll(url, db.role);
                     return response200(response);
                 }
 
-                case (method === 'GET' && url.includes("/car/list")): {
-                    const response = getAll(url, db.car)
+                case (method === 'GET' && url.includes('/car/list')): {
+                    const response = getAll(url, db.car);
                     return response200(response);
                 }
 
-                case (method === 'GET' && url.includes("/car")): {
-                    let item = db.car.find(car => car.id.toString() == getIdFromUrl())
-                    return response200({ "item": item });
+                case (method === 'GET' && url.includes('/car')): {
+                    const item = db.car.find(car => car.id.toString() == getIdFromUrl());
+                    return response200({ item });
                 }
 
-                case (method === 'POST' && url.includes("/car")): {
-                    //body.id = db.car.length + 1
-                    db.car.push(body)
-                    saveStorage(db)
-                    return response200({ "item": body });
+                case (method === 'POST' && url.includes('/car')): {
+                    // body.id = db.car.length + 1
+                    db.car.push(body);
+                    saveStorage(db);
+                    return response200({ item: body });
                 }
 
-                case (method === 'PUT' && url.includes("/car")): {
-                    let index = db.car.findIndex(car => car.id.toString() === getIdFromUrl())
+                case (method === 'PUT' && url.includes('/car')): {
+                    const index = db.car.findIndex(car => car.id.toString() === getIdFromUrl());
                     body.id = db.car[index].id;
-                    db.car[index] = body
-                    saveStorage(db)
-                    return response200({ "item": body });
+                    db.car[index] = body;
+                    saveStorage(db);
+                    return response200({ item: body });
                 }
 
-                case (method === 'DELETE' && url.includes("/car")): {
-                    db.car = db.car.filter(car => car.id.toString() !== getIdFromUrl())
-                    saveStorage(db)
+                case (method === 'DELETE' && url.includes('/car')): {
+                    db.car = db.car.filter(car => car.id.toString() !== getIdFromUrl());
+                    saveStorage(db);
                     return response200();
                 }
 
-                case (method === 'GET' && url.includes("/hero/list")): {
-                    const response = getAll(url, db.hero)
+                case (method === 'GET' && url.includes('/hero/list')): {
+                    const response = getAll(url, db.hero);
                     return response200(response);
                 }
 
-                case (method === 'GET' && url.includes("/hero/search/")): {
-                    let items = db.hero.filter(hero => hero.name.toLowerCase().includes(getIdFromUrl().toLowerCase()))
+                case (method === 'GET' && url.includes('/hero/search/')): {
+                    const items = db.hero.filter(hero => hero.name.toLowerCase().includes(getIdFromUrl().toLowerCase()));
                     return response200(items);
                 }
 
-                case (method === 'GET' && url.includes("/hero/")): {
-                    let item = db.hero.find(hero => hero.id.toString() == getIdFromUrl())
-                    return response200({ "item": item });
+                case (method === 'GET' && url.includes('/hero/')): {
+                    const item = db.hero.find(hero => hero.id.toString() == getIdFromUrl());
+                    return response200({ item });
                 }
 
-                case (method === 'POST' && url.includes("/hero")): {
-                    body.id = db.hero.length + 1
-                    db.hero.push(body)
-                    saveStorage(db)
-                    return response200({ "item": body });
+                case (method === 'POST' && url.includes('/hero')): {
+                    body.id = db.hero.length + 1;
+                    db.hero.push(body);
+                    saveStorage(db);
+                    return response200({ item: body });
                 }
 
-                case (method === 'PUT' && url.includes("/hero")): {
-                    let index = db.hero.findIndex(hero => hero.id.toString() === getIdFromUrl())
+                case (method === 'PUT' && url.includes('/hero')): {
+                    const index = db.hero.findIndex(hero => hero.id.toString() === getIdFromUrl());
                     body.id = db.hero[index].id;
-                    db.hero[index] = body
-                    saveStorage(db)
-                    return response200({ "item": body });
+                    db.hero[index] = body;
+                    saveStorage(db);
+                    return response200({ item: body });
                 }
 
-                case (method === 'DELETE' && url.includes("/hero")): {
-                    db.hero = db.hero.filter(hero => hero.id.toString() !== getIdFromUrl())
-                    saveStorage(db)
+                case (method === 'DELETE' && url.includes('/hero')): {
+                    db.hero = db.hero.filter(hero => hero.id.toString() !== getIdFromUrl());
+                    saveStorage(db);
                     return response200();
                 }
             }
@@ -193,52 +193,52 @@ export class BackendInterceptor implements HttpInterceptor {
         }
 
         function loadStorage(db: any): any {
-            let localStorageDb = localStorage.getItem('angular-playground')
+            const localStorageDb = localStorage.getItem('angular-playground');
 
             if (localStorageDb != null) {
-                return JSON.parse(localStorageDb)
+                return JSON.parse(localStorageDb);
             }
             else {
-                localStorage.setItem('angular-playground', JSON.stringify(db))
-                return db
+                localStorage.setItem('angular-playground', JSON.stringify(db));
+                return db;
             }
         }
 
-        function saveStorage(db:DbBackend) {
-            localStorage.setItem('angular-playground', JSON.stringify(db))
+        function saveStorage(db: DbBackend) {
+            localStorage.setItem('angular-playground', JSON.stringify(db));
         }
 
         function getAll(url: string, items: any[]): any {
-            let sort_by: string = getParamFromUrl('sort_by');
-            let order: string = getParamFromUrl('order');
-            let limit: string = getParamFromUrl('limit');
-            let page: string = getParamFromUrl('page');
-            let filters: string = getParamFromUrl('filters');
+            const sort_by: string = getParamFromUrl('sort_by');
+            const order: string = getParamFromUrl('order');
+            const limit: string = getParamFromUrl('limit');
+            const page: string = getParamFromUrl('page');
+            const filters: string = getParamFromUrl('filters');
             let ret: any[] = items;
             let totalItemFilter: number = items.length;
-            if (filters) ret = setFilter(ret, JSON.parse(filters));
+            if (filters) { ret = setFilter(ret, JSON.parse(filters)); }
 
-            totalItemFilter = ret.length
+            totalItemFilter = ret.length;
 
-            if (sort_by) ret = setSort(ret, sort_by, order);
+            if (sort_by) { ret = setSort(ret, sort_by, order); }
 
             if (limit && page) {
-                let min: number = Number(limit) * (Number(page) - 1);
-                let max: number = min + Number(limit);
-                ret = ret.filter((i: any, index: number) => (index >= min && index < max))
+                const min: number = Number(limit) * (Number(page) - 1);
+                const max: number = min + Number(limit);
+                ret = ret.filter((i: any, index: number) => (index >= min && index < max));
             }
 
-            return { total: totalItemFilter, items: ret }
+            return { total: totalItemFilter, items: ret };
         }
 
         function response200(body?: any): Observable<HttpResponse<any>> {
-            let response = { status: 200, body }
-            if (environment.loggingBackendResponse) console.info(response)
-            return of(new HttpResponse<any>(response))
+            const response = { status: 200, body };
+            if (environment.loggingBackendResponse) { console.info(response); }
+            return of(new HttpResponse<any>(response));
         }
 
         function responseError(status: number, message: string): Observable<HttpResponse<any>> {
-            return throwError({ status: status, message: message });
+            return throwError({ status, message });
         }
 
         function getIdFromUrl(): string {
@@ -246,29 +246,29 @@ export class BackendInterceptor implements HttpInterceptor {
         }
 
         function getParamFromUrl(name: string): string {
-            let param = name + "=";
-            let urlSplit = url.split(param)
+            const param = name + '=';
+            const urlSplit = url.split(param);
 
             if (urlSplit.length > 1) {
-                return urlSplit[1].split("&")[0]
+                return urlSplit[1].split('&')[0];
             } else {
-                return ""
+                return '';
             }
         }
 
         function getParamFromBody(name: string): string {
-            let param = name + "=";
-            let urlSplit = body.split(param)
+            const param = name + '=';
+            const urlSplit = body.split(param);
 
             if (urlSplit.length > 1) {
-                return urlSplit[1].split("&")[0]
+                return urlSplit[1].split('&')[0];
             } else {
-                return ""
+                return '';
             }
         }
 
         function setSort(data: any[], sort: string, order: string): any[] {
-            if (sort == "" || order == "") {
+            if (sort == '' || order == '') {
                 return data;
             }
 
@@ -286,23 +286,23 @@ export class BackendInterceptor implements HttpInterceptor {
         }
 
         function setFilter(data: any[], filters: object): any[] {
-            if (typeof (filters) !== "object") {
+            if (typeof (filters) !== 'object') {
                 return data;
             }
-            let dataFilter = data.filter((item) => {
-                let currentValues: boolean[] = []
+            const dataFilter = data.filter((item) => {
+                const currentValues: boolean[] = [];
                 for (const [key, value] of Object.entries(filters)) {
                     if (item[key] || item[key] == false) {
-                        let valueString = value.toString().toLowerCase()
-                        currentValues.push(item[key].toString().toLowerCase().includes(valueString))
+                        const valueString = value.toString().toLowerCase();
+                        currentValues.push(item[key].toString().toLowerCase().includes(valueString));
                     } else {
-                        currentValues.push(false)
+                        currentValues.push(false);
                     }
                 }
-                return !currentValues.includes(false)
-            })
+                return !currentValues.includes(false);
+            });
 
-            return dataFilter
+            return dataFilter;
         }
 
         function getPdfUrl() {
@@ -314,19 +314,19 @@ export class BackendInterceptor implements HttpInterceptor {
                 CjcwIDUwIFRECi9GMSAxMiBUZgooSGVsbG8sIHdvcmxkISkgVGoKRVQKZW5kc3RyZWFtCmVuZG9iagoKeHJlZgowIDYKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDEwIDAwMDAwIG4g
                 CjAwMDAwMDAwNzkgMDAwMDAgbiAKMDAwMDAwMDE3MyAwMDAwMCBuIAowMDAwMDAwMzAxIDAwMDAwIG4gCjAwMDAwMDAzODAgMDAwMDAgbiAKdHJhaWxlcgo8PAogIC9TaXplIDYKICAvUm9v
                 dCAxIDAgUgo+PgpzdGFydHhyZWYKNDkyCiUlRU9G`);
-            let binary = pdfData
-            let array = new Uint8Array(binary.length)
-            for (var i = 0; i < binary.length; i++) { array[i] = binary.charCodeAt(i) }
+            const binary = pdfData;
+            const array = new Uint8Array(binary.length);
+            for (let i = 0; i < binary.length; i++) { array[i] = binary.charCodeAt(i); }
 
-            let blob = new Blob([array], { type: 'application/pdf' });
+            const blob = new Blob([array], { type: 'application/pdf' });
             return URL.createObjectURL(blob);
         }
     }
 }
 
 export interface DbBackend {
-    user: User[]
-    hero: Hero[]
-    role: Role[]
-    car: Car[]
+    user: User[];
+    hero: Hero[];
+    role: Role[];
+    car: Car[];
 }

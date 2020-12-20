@@ -9,7 +9,7 @@ import { WikipediaResultParse } from '../../interfaces/wikipedia-result-parse.in
 })
 export class WikipediaParseItemComponent implements OnInit {
 
-  @Input() item: WikipediaResultParse|null = null
+  @Input() item: WikipediaResultParse|null = null;
   constructor() { }
 
   ngOnInit(): void {

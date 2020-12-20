@@ -13,23 +13,23 @@ import { User } from '../../interfaces/user.interface';
 })
 export class UserItemComponent implements OnInit, OnDestroy {
 
-  idUser: string = ""
-  $user: Observable<User>
+  idUser = '';
+  $user: Observable<User>;
 
   private _subscription: Subscription = new Subscription();
 
   constructor(private route: ActivatedRoute, private userService: UserService, private headerService: HeaderService) {
-    let id = this.route.snapshot.paramMap.get('id');
-    if(id) this.idUser = id
-    this.headerService.set("User: " + this.idUser)
-    this.$user = this.userService.getById(this.idUser).pipe(map(apiUser => apiUser.item))
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) { this.idUser = id; }
+    this.headerService.set('User: ' + this.idUser);
+    this.$user = this.userService.getById(this.idUser).pipe(map(apiUser => apiUser.item));
   }
 
   ngOnInit(): void {
 }
 
   ngOnDestroy() {
-    if(this._subscription) this._subscription.unsubscribe()
+    if (this._subscription) { this._subscription.unsubscribe(); }
   }
 
 }

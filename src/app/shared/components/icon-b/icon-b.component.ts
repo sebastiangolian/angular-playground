@@ -8,17 +8,17 @@ import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core
 })
 export class IconBComponent implements OnInit {
 
-  @Input() name: string = "";
-  @Input() width: string = "22";
-  @Input() height: string = "22";
-  @Input() class: string = "icon-color";
-  @Input() title: string = "";
+  @Input() name = '';
+  @Input() width = '22';
+  @Input() height = '22';
+  @Input() class = 'icon-color';
+  @Input() title = '';
 
-  href: string = "/assets/icons/"
+  href = '/assets/icons/';
 
   constructor() { }
 
   ngOnInit(): void {
-    this.href = this.href + this.name + ".svg"
+    this.href = this.href + this.name + '.svg';
   }
 }

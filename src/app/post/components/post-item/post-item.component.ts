@@ -12,16 +12,16 @@ export class PostItemComponent implements OnInit {
   @Input() model: Post|null = null;
   @Output() postEdited: EventEmitter<Post> = new EventEmitter();
   @Output() postDeleted: EventEmitter<Post> = new EventEmitter();
-  
+
   constructor() {}
 
   ngOnInit(): void {}
 
   onEdit(post: Post) {
-    this.postEdited.emit(post)
+    this.postEdited.emit(post);
   }
 
   onDelete(post: Post) {
-    this.postDeleted.emit(post)
+    this.postDeleted.emit(post);
   }
 }

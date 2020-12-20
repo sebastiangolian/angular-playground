@@ -1,7 +1,7 @@
 export interface WikipediaResultParse {
-  title: string
-  pageid: number
-  revid: number
-  text: any
-  formatText?: string
+  title: string;
+  pageid: number;
+  revid: number;
+  text: any;
+  formatText?: string;
 }

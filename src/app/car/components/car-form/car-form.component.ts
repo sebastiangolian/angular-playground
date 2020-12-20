@@ -9,7 +9,7 @@ import { Car } from '../../interfaces/car.interface';
 })
 export class CarFormComponent implements OnInit {
 
-  @Input() car: Car|null = null
+  @Input() car: Car|null = null;
   @Output() carSaved: EventEmitter<Car|null> = new EventEmitter();
   constructor() { }
 
@@ -17,7 +17,7 @@ export class CarFormComponent implements OnInit {
   }
 
   onSave() {
-    this.carSaved.emit(this.car)
+    this.carSaved.emit(this.car);
   }
 
 }

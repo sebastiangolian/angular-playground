@@ -15,11 +15,11 @@ export class PostCreateComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.model = new PostModel("Lorem Ipsum","Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus iure officia doloremque vero est")
+    this.model = new PostModel('Lorem Ipsum', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus iure officia doloremque vero est');
   }
 
   onFormSubmit(post: Post|null) {
-    this.postCreated.emit(post)
+    this.postCreated.emit(post);
   }
 
 }

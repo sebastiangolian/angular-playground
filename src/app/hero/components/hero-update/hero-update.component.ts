@@ -10,7 +10,7 @@ import { Hero } from '../../interfaces/hero.interface';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeroUpdateComponent implements OnInit {
-  @Input() hero: Hero|null = null
+  @Input() hero: Hero|null = null;
 
   constructor(private heroService: HeroService, private location: Location) { }
 
@@ -21,7 +21,7 @@ export class HeroUpdateComponent implements OnInit {
   }
 
   save(): void {
-    if(this.hero) {
+    if (this.hero) {
       this.heroService.update(this.hero.id.toString(), this.hero)
       .subscribe(() => this.goBack());
     }

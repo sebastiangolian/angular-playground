@@ -9,7 +9,7 @@ import { HeaderService } from 'src/app/shared/services/header.service';
 })
 export class AppComponent {
   title = 'angular-playground';
-  $header: Observable<string>  = this.headerService.getWithSetTitle()
+  $header: Observable<string>  = this.headerService.getWithSetTitle();
 
   constructor(public headerService: HeaderService) {}
 

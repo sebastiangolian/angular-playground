@@ -10,9 +10,9 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    CarComponent, 
-    CarItemsComponent, 
-    CarItemComponent, 
+    CarComponent,
+    CarItemsComponent,
+    CarItemComponent,
     CarFormComponent
   ],
   imports: [

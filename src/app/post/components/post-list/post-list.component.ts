@@ -9,19 +9,19 @@ import { Post } from '../../interfaces/post.interface';
 })
 export class PostListComponent implements OnInit {
 
-  @Input() posts: Post[] = []
-  @Output() postEdited: EventEmitter<Post> = new EventEmitter()
-  @Output() postDeleted: EventEmitter<Post> = new EventEmitter()
+  @Input() posts: Post[] = [];
+  @Output() postEdited: EventEmitter<Post> = new EventEmitter();
+  @Output() postDeleted: EventEmitter<Post> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {}
 
-  onEdit(post: Post) { 
-    this.postEdited.emit(post)
+  onEdit(post: Post) {
+    this.postEdited.emit(post);
   }
 
   onDelete(post: Post) {
-    this.postDeleted.emit(post)
+    this.postDeleted.emit(post);
   }
 }

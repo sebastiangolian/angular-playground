@@ -15,11 +15,11 @@ export class ModalConfirmService {
     const subject = new Subject<boolean>();
     const modal = this.modalService.show(ModalConfirmComponent, {
       initialState: {
-        content: content,
+        content,
       },
       class: 'modal-sm'
     });
-    if(modal.content) modal.content.subject = subject;
+    if (modal.content) { modal.content.subject = subject; }
     return subject.asObservable();
   }
 }

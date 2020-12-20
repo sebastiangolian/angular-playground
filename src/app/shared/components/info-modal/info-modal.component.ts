@@ -9,14 +9,14 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 })
 export class InfoModalComponent implements OnInit {
 
-  @Input() active: boolean = true;
-  @Input() close: boolean = true;
-  
+  @Input() active = true;
+  @Input() close = true;
+
   constructor() {}
 
   ngOnInit(): void {}
 
-  onClick(modal:ModalDirective): void {
+  onClick(modal: ModalDirective): void {
     modal.hide();
   }
 

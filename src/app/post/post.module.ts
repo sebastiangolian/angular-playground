@@ -13,11 +13,11 @@ import { PostListComponent } from './components/post-list/post-list.component';
 
 @NgModule({
   declarations: [
-    PostItemComponent, 
-    PostComponent, 
-    PostFormComponent, 
-    PostCreateComponent, 
-    PostUpdateComponent, 
+    PostItemComponent,
+    PostComponent,
+    PostFormComponent,
+    PostCreateComponent,
+    PostUpdateComponent,
     PostListComponent
   ],
   imports: [

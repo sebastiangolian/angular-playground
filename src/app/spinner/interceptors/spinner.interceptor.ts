@@ -10,10 +10,10 @@ export class SpinnerInterceptor implements HttpInterceptor {
   constructor(public spinnerService: SpinnerService) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.spinnerService.show();
-    let start = performance.now()
+    const start = performance.now();
     return next.handle(req).pipe(
       tap(res => {
-        if(performance.now() - start > 500) {
+        if (performance.now() - start > 500) {
           this.spinnerService.show();
         }
       }),

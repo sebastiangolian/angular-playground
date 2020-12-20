@@ -9,11 +9,11 @@ import { Router } from '@angular/router';
 })
 export class HeroMenuComponent implements OnInit {
 
-  url: string = ""
+  url = '';
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.url = this.router.url
+    this.url = this.router.url;
   }
 
 }

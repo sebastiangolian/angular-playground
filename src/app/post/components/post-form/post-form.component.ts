@@ -11,15 +11,15 @@ import { Post } from '../../interfaces/post.interface';
 export class PostFormComponent implements OnInit {
 
   @Input() model: Post|null = null;
-  @Input() action: string = "Add";
+  @Input() action = 'Add';
   @Output() postSubmited: EventEmitter<Post|null> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {}
 
-  onSubmit(f:NgForm) {
-    this.postSubmited.emit(this.model)
+  onSubmit(f: NgForm) {
+    this.postSubmited.emit(this.model);
   }
 
 }
