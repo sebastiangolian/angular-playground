@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { User } from 'src/app/user/interfaces/user.interface';
 import { Hero } from 'src/app/hero/interfaces/hero.interface';
 import { Role } from 'src/app/role/interfaces/role.interface';
+import { Car } from 'src/app/car/interfaces/car.interface';
 
 @Injectable()
 export class BackendInterceptor implements HttpInterceptor {
@@ -47,11 +48,11 @@ export class BackendInterceptor implements HttpInterceptor {
                     { id: '2', name: "editor" },
                     { id: '3', name: "standard" }
                 ],
-                // "car": [
-                //     { id: 1, name: "leon", brand: "seat" },
-                //     { id: 2, name: "golf", brand: "volkswagen" },
-                //     { id: 3, name: "A3", brand: "audi" }
-                // ],
+                "car": [
+                    { id: '1', name: "leon", brand: "seat" },
+                    { id: '2', name: "golf", brand: "volkswagen" },
+                    { id: '3', name: "A3", brand: "audi" }
+                ],
                 "hero": [
                     { id: "1", name: 'Rocky' },
                     { id: "2", name: 'Terminator' },
@@ -120,36 +121,37 @@ export class BackendInterceptor implements HttpInterceptor {
                     return response200(response);
                 }
 
-                // case (method === 'GET' && url.includes("/car/list")): {
-                //     const response = getAll(url, db.car)
-                //     return response200(response);
-                // }
+                case (method === 'GET' && url.includes("/car/list")): {
+                    const response = getAll(url, db.car)
+                    return response200(response);
+                }
 
-                // case (method === 'GET' && url.includes("/car/")): {
-                //     let item = db.car.find(car => car.id.toString() == getIdFromUrl())
-                //     return response200({ "item": item });
-                // }
+                case (method === 'GET' && url.includes("/car")): {
+                    let item = db.car.find(car => car.id.toString() == getIdFromUrl())
+                    return response200({ "item": item });
+                }
 
-                // case (method === 'POST' && url.includes("/car")): {
-                //     //body.id = db.car.length + 1
-                //     db.car.push(body)
-                //     saveStorage(db)
-                //     return response200({ "item": body });
-                // }
+                case (method === 'POST' && url.includes("/car")): {
+                    //body.id = db.car.length + 1
+                    console.log(body)
+                    db.car.push(body)
+                    saveStorage(db)
+                    return response200({ "item": body });
+                }
 
-                // case (method === 'PUT' && url.includes("/car")): {
-                //     let index = db.car.findIndex(car => car.id.toString() === getIdFromUrl())
-                //     body.id = db.car[index].id;
-                //     db.car[index] = body
-                //     saveStorage(db)
-                //     return response200({ "item": body });
-                // }
+                case (method === 'PUT' && url.includes("/car")): {
+                    let index = db.car.findIndex(car => car.id.toString() === getIdFromUrl())
+                    body.id = db.car[index].id;
+                    db.car[index] = body
+                    saveStorage(db)
+                    return response200({ "item": body });
+                }
 
-                // case (method === 'DELETE' && url.includes("/car")): {
-                //     db.car = db.car.filter(car => car.id.toString() !== getIdFromUrl())
-                //     saveStorage(db)
-                //     return response200();
-                // }
+                case (method === 'DELETE' && url.includes("/car")): {
+                    db.car = db.car.filter(car => car.id.toString() !== getIdFromUrl())
+                    saveStorage(db)
+                    return response200();
+                }
 
                 case (method === 'GET' && url.includes("/hero/list")): {
                     const response = getAll(url, db.hero)
@@ -327,4 +329,5 @@ export interface DbBackend {
     user: User[]
     hero: Hero[]
     role: Role[]
+    car: Car[]
 }

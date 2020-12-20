@@ -1,0 +1,6 @@
+<form *ngIf="car" name="form" #f="ngForm" autocomplete="off" class="shadow rounded p-5">
+    <label class="mr-1">Id: </label><input [(ngModel)]="car.id" #id="ngModel" name="id" class="mr-5">
+    <label class="mr-1">Brand: </label><input [(ngModel)]="car.brand" #brand="ngModel" name="brand" class="mr-5">
+    <label class="mr-1">Name: </label><input [(ngModel)]="car.name" #name="ngModel" name="name" class="mr-3">
+    <button class="btn btn-outline-dark btn-sm mb-1" (click)="onSave()">Save</button>
+</form>
