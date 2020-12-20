@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable, of, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap, tap} from 'rxjs/operators';
-import { Api } from 'src/app/shared/interfaces/api.interface';
+import { debounceTime, distinctUntilChanged, map, switchMap, tap} from 'rxjs/operators';
 import { Hero } from '../../interfaces/hero.interface';
 import { HeroService } from '../../services/hero.service';
 
@@ -20,12 +19,11 @@ export class HeroSearchComponent {
       distinctUntilChanged(),
       switchMap((term: string) => {
         if(term.length > 2) {
-          return this.heroService.getByName(term)
+          return this.heroService.getByName(term).pipe(map(api => api.item))
         } else {
           return of(null)
         }
-      }),
-      tap(console.log)
+      })
     );
   }
 

@@ -133,7 +133,6 @@ export class BackendInterceptor implements HttpInterceptor {
 
                 case (method === 'POST' && url.includes("/car")): {
                     //body.id = db.car.length + 1
-                    console.log(body)
                     db.car.push(body)
                     saveStorage(db)
                     return response200({ "item": body });

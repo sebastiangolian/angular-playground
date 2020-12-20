@@ -1,0 +1,4 @@
+<li *ngIf="result" class="list-group-item" [class.active]="active" 
+    (mouseover)="active = true" (mouseout)="active = false" (click)="onClick()">
+    {{ result.term }}
+</li>

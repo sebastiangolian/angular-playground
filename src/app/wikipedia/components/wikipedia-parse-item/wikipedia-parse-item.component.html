@@ -1,0 +1,6 @@
+<ng-container *ngIf="item">
+    <ng-container *ngIf="item.formatText">
+        <div [innerHtml]="item.formatText | html"></div>
+    </ng-container>
+</ng-container>
+

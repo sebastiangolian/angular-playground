@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'user', loadChildren: () => import('../user/user.module').then(m => m.UserModule) },
   { path: 'hero', loadChildren: () => import('../hero/hero.module').then(m => m.HeroModule) },
   { path: 'leaflet', loadChildren: () => import('../leaflet/leaflet.module').then(m => m.LeafletModule) },
+  { path: 'wikipedia', loadChildren: () => import('../wikipedia/wikipedia.module').then(m => m.WikipediaModule) },
 ];
 
 @NgModule({
