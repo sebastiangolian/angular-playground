@@ -1,0 +1,8 @@
+<div class="card mb-3">
+    <div class="card-header">Update post</div>
+    <div class="card-body">
+        <p class="card-text">
+            <post-form [model]="model" [action]="'Save'" (postSubmited)="onFormSubmit($event)"></post-form>
+        </p>
+    </div>
+</div>
