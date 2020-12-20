@@ -5,6 +5,7 @@ import { mergeMap, materialize, delay, dematerialize } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { User } from 'src/app/user/interfaces/user.interface';
 import { Hero } from 'src/app/hero/interfaces/hero.interface';
+import { Role } from 'src/app/role/interfaces/role.interface';
 
 @Injectable()
 export class BackendInterceptor implements HttpInterceptor {
@@ -41,11 +42,11 @@ export class BackendInterceptor implements HttpInterceptor {
                     { id: "10", email: 'michal.adamczuk@example.pl', zipCode: '00-111', created: '2020-04-02 16:02:28', active: false, documentLink: getPdfUrl(), idRole: "1"},
                     { id: "11", email: 'adam.adamowicz@example.pl', zipCode: '00-222', created: '2020-04-02 17:02:28', active: false, documentLink: getPdfUrl(), idRole: "1"},
                 ],
-                // "role": [
-                //     { id: 1, name: "admin" },
-                //     { id: 2, name: "editor" },
-                //     { id: 3, name: "standard" }
-                // ],
+                "role": [
+                    { id: '1', name: "admin" },
+                    { id: '2', name: "editor" },
+                    { id: '3', name: "standard" }
+                ],
                 // "car": [
                 //     { id: 1, name: "leon", brand: "seat" },
                 //     { id: 2, name: "golf", brand: "volkswagen" },
@@ -114,10 +115,10 @@ export class BackendInterceptor implements HttpInterceptor {
                     return response200({ "item": body });
                 }
 
-                // case (method === 'GET' && url.includes("/role/list")): {
-                //     const response = getAll(url, db.role)
-                //     return response200(response);
-                // }
+                case (method === 'GET' && url.includes("/role/list")): {
+                    const response = getAll(url, db.role)
+                    return response200(response);
+                }
 
                 // case (method === 'GET' && url.includes("/car/list")): {
                 //     const response = getAll(url, db.car)
@@ -325,4 +326,5 @@ export class BackendInterceptor implements HttpInterceptor {
 export interface DbBackend {
     user: User[]
     hero: Hero[]
+    role: Role[]
 }
