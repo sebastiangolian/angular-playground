@@ -24,13 +24,13 @@ export class CarComponent implements OnInit {
     this.reload();
   }
 
-  reload() {
+  reload(): void {
     this.cars = this.carService.get().pipe(
       map(api => api.items)
     );
   }
 
-  onCarSave(car: Car|null) {
+  onCarSave(car: Car|null): void {
     if (car) {
       this.carService.getById(car.id.toString()).subscribe(
         item => {
@@ -54,18 +54,18 @@ export class CarComponent implements OnInit {
     }
   }
 
-  onSelect(car: Car) {
+  onSelect(car: Car): void {
     this.updatedCar = car;
   }
 
-  onDelete(car: Car) {
+  onDelete(car: Car): void {
     this.carService.delete(car.id.toString()).subscribe((result) => {
       this.reload();
       this.messageService.sendMessage('Deleted car');
     });
   }
 
-  emptyCar() {
+  emptyCar(): Car {
     return {id: '', brand: '', name: ''};
   }
 }

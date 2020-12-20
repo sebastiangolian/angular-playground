@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, EventEmitter, Output } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, EventEmitter, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Post } from '../../interfaces/post.interface';
 
@@ -8,7 +8,7 @@ import { Post } from '../../interfaces/post.interface';
   styleUrls: ['./post-form.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PostFormComponent implements OnInit {
+export class PostFormComponent {
 
   @Input() model: Post|null = null;
   @Input() action = 'Add';
@@ -16,9 +16,7 @@ export class PostFormComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {}
-
-  onSubmit(f: NgForm) {
+  onSubmit(f: NgForm): void {
     this.postSubmited.emit(this.model);
   }
 

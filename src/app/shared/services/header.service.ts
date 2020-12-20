@@ -10,7 +10,7 @@ export class HeaderService {
 
     constructor(private titleService: Title) { }
 
-    set(header: string) {
+    set(header: string): void {
         this.subject.next(header);
     }
 
@@ -31,7 +31,7 @@ export class HeaderService {
         );
     }
 
-    clear() {
+    clear(): void {
         this.subject.next('');
     }
 }

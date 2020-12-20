@@ -17,11 +17,11 @@ export class CarItemComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSelect(car: Car) {
+  onSelect(car: Car): void {
     this.carSelected.emit(car);
   }
 
-  onDelete(car: Car) {
+  onDelete(car: Car): void {
     this.carDeleted.emit(car);
   }
 

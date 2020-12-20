@@ -9,7 +9,7 @@ export class PadPipe implements PipeTransform {
     return this.pad(value, 2);
   }
 
-  pad(num: number, size: number) {
+  pad(num: number, size: number): string {
     let s = num + '';
     while (s.length < size) { s = '0' + s; }
     return s;

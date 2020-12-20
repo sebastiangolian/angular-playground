@@ -19,7 +19,7 @@ export class UserModalComponent implements OnInit {
   constructor(public bsModalRef: BsModalRef) { }
 
   ngOnInit(): void {
-    if (this.model == null)  {
+    if (this.model === null)  {
       this.title = 'Add user';
       this.model = new UserModel();
       this.model.email = 'test@gmail.com';
@@ -28,13 +28,13 @@ export class UserModalComponent implements OnInit {
     }
   }
 
-  onCreate() {
+  onCreate(): void {
     this.bsModalRef.hide();
     this.subject.next(this.model);
     this.subject.complete();
   }
 
-  onCancel() {
+  onCancel(): void {
     this.bsModalRef.hide();
     this.subject.next(null);
     this.subject.complete();

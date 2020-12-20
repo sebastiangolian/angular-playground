@@ -16,7 +16,7 @@ export class CarFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSave() {
+  onSave(): void {
     this.carSaved.emit(this.car);
   }
 

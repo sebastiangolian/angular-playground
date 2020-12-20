@@ -18,7 +18,7 @@ export class WikipediaComponent implements OnInit, AfterViewInit, OnDestroy {
   results!: WikipediaResultOpensearch[] | null;
   parseItem!: WikipediaResultParse | null;
 
-  private _subscription: Subscription = new Subscription();
+  private subscription: Subscription = new Subscription();
 
   @ViewChild('f') f!: NgForm;
   constructor(private headerService: HeaderService, private wikipediaService: WikipediaService) {
@@ -28,7 +28,7 @@ export class WikipediaComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void { }
 
   ngAfterViewInit(): void {
-    this._subscription.add(this.search().subscribe(results => this.results = results));
+    this.subscription.add(this.search().subscribe(results => this.results = results));
   }
 
   search(): Observable<WikipediaResultOpensearch[] | null> {
@@ -49,24 +49,26 @@ export class WikipediaComponent implements OnInit, AfterViewInit, OnDestroy {
     return this.wikipediaService.parse(page).pipe(
       map(result => {
         for (const prop in result.text) {
-          result.formatText = result.text[prop];
-          break;
+          if (result.hasOwnProperty(prop)) {
+            result.formatText = result.text[prop];
+            break;
+          }
         }
         return result;
       })
     );
   }
 
-  onItemSelected(result: WikipediaResultOpensearch | null) {
+  onItemSelected(result: WikipediaResultOpensearch | null): void {
     if (result) {
       this.results = [];
       this.result.search = result.term;
-      this._subscription.add(this.parse(result.parseTerm).subscribe(results => this.parseItem = results));
+      this.subscription.add(this.parse(result.parseTerm).subscribe(results => this.parseItem = results));
     }
   }
 
-  ngOnDestroy() {
-    if (this._subscription) { this._subscription.unsubscribe(); }
+  ngOnDestroy(): void {
+    if (this.subscription) { this.subscription.unsubscribe(); }
   }
 }
 

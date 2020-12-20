@@ -25,21 +25,21 @@ export class PostComponent implements OnInit {
     ];
   }
 
-  onOpenCreate() {
+  onOpenCreate(): void {
     this.isCreatedPost = true;
   }
 
-  onCreate(post: Post|null) {
+  onCreate(post: Post|null): void {
     if (post) {
       this.posts = [post, ...this.posts];
       this.isCreatedPost = false;
     }
   }
 
-  onUpdate(post: Post|null) {
+  onUpdate(post: Post|null): void {
     if (post) {
       const posts: Post[] = [];
-      const updatePostIndex = this.posts.findIndex(result => result.id == post.id);
+      const updatePostIndex = this.posts.findIndex(result => result.id === post.id);
       this.posts[updatePostIndex] = post;
       this.posts.forEach(val => posts.push(Object.assign({}, val)));
       this.posts = posts;
@@ -47,11 +47,11 @@ export class PostComponent implements OnInit {
     }
   }
 
-  onEdit(post: Post) {
+  onEdit(post: Post): void {
     this.updatedPost = post;
   }
 
-  onDelete(post: Post) {
-    this.posts = this.posts.filter(result => result.id != post.id);
+  onDelete(post: Post): void {
+    this.posts = this.posts.filter(result => result.id !== post.id);
   }
 }

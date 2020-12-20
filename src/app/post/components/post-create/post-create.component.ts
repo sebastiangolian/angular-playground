@@ -18,7 +18,7 @@ export class PostCreateComponent implements OnInit {
     this.model = new PostModel('Lorem Ipsum', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus iure officia doloremque vero est');
   }
 
-  onFormSubmit(post: Post|null) {
+  onFormSubmit(post: Post|null): void {
     this.postCreated.emit(post);
   }
 

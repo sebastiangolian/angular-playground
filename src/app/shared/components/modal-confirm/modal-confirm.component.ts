@@ -17,7 +17,7 @@ export class ModalConfirmComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  action(value: boolean) {
+  action(value: boolean): void {
     this.bsModalRef.hide();
     this.subject.next(value);
     this.subject.complete();

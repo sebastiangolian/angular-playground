@@ -16,7 +16,7 @@ export class UserItemComponent implements OnInit, OnDestroy {
   idUser = '';
   $user: Observable<User>;
 
-  private _subscription: Subscription = new Subscription();
+  private subscription: Subscription = new Subscription();
 
   constructor(private route: ActivatedRoute, private userService: UserService, private headerService: HeaderService) {
     const id = this.route.snapshot.paramMap.get('id');
@@ -26,10 +26,10 @@ export class UserItemComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-}
+  }
 
-  ngOnDestroy() {
-    if (this._subscription) { this._subscription.unsubscribe(); }
+  ngOnDestroy(): void {
+    if (this.subscription) { this.subscription.unsubscribe(); }
   }
 
 }

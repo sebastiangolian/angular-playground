@@ -18,15 +18,15 @@ export class RoleModalSearchComponent extends DatatableSearchComponent implement
   items: Role[] = [];
   subject: Subject<Role|null> = new Subject<Role|null>();
 
-  private _subscription: Subscription = new Subscription();
+  private subscription: Subscription = new Subscription();
 
   constructor(private roleService: RoleService, public bsModalRef: BsModalRef, private modalConfirmService: ModalConfirmService) {
     super();
     this.onRefresh();
   }
 
-  onRefresh() {
-    this._subscription.add(this.getRoles());
+  onRefresh(): void {
+    this.subscription.add(this.getRoles());
   }
 
   private getRoles(): Subscription {
@@ -36,28 +36,28 @@ export class RoleModalSearchComponent extends DatatableSearchComponent implement
     });
   }
 
-  onSelectConfirm(role: Role) {
+  onSelectConfirm(role: Role): void {
     const content = `Are you sure you want to assign a role?`;
-    this._subscription.add(this.modalConfirmService.confirm(content).subscribe(result => {
+    this.subscription.add(this.modalConfirmService.confirm(content).subscribe(result => {
       if (result) {
         this.onSelect(role);
       }
     }));
   }
 
-  onSelect(role: Role) {
+  onSelect(role: Role): void {
     this.bsModalRef.hide();
     this.subject.next(role);
     this.subject.complete();
   }
 
-  onCancel() {
+  onCancel(): void {
     this.bsModalRef.hide();
     this.subject.next(null);
     this.subject.complete();
   }
 
-  ngOnDestroy() {
-    if (this._subscription) { this._subscription.unsubscribe(); }
+  ngOnDestroy(): void {
+    if (this.subscription) { this.subscription.unsubscribe(); }
   }
 }

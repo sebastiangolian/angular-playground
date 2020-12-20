@@ -9,11 +9,11 @@ export class SpinnerService {
   isLoading = new Subject<boolean>();
   constructor() { }
 
-  show() {
+  show(): void {
     this.isLoading.next(true);
   }
 
-  hide() {
+  hide(): void  {
     this.isLoading.next(false);
   }
 }

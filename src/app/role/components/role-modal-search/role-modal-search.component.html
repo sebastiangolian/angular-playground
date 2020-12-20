@@ -8,11 +8,11 @@
             <div class="datatable table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
-                        <th scope="col"><a (click)="onSort('id')">Id <span *ngIf="sortBy == 'created'" [innerHTML]="getSortClass('id')"></span></a></th>
-                        <th scope="col"><a (click)="onSort('name')">Name <span *ngIf="sortBy == 'name'" [innerHTML]="getSortClass('name')"></span></a></th>
+                        <th scope="col"><a (click)="onSort('id')">Id <span *ngIf="sortBy === 'created'" [innerHTML]="getSortClass('id')"></span></a></th>
+                        <th scope="col"><a (click)="onSort('name')">Name <span *ngIf="sortBy === 'name'" [innerHTML]="getSortClass('name')"></span></a></th>
                         <th scope="col">
                             <select *ngIf="limitEnabled" class="form-control form-control-sm float-right" name="limit" id="limit" (change)="onChangeLimit($event.target)">
-                                <option *ngFor="let value of limitValues" [ngValue]="value" [selected]="value == this.limit">{{value}}</option>
+                                <option *ngFor="let value of limitValues" [ngValue]="value" [selected]="value === this.limit">{{value}}</option>
                             </select>
                         </th>
                     </thead>
@@ -44,7 +44,7 @@
             <div class="col-4 text-center">Page {{page}} z {{getTotalPage()}}</div>
             <div class="col-4">
                 <button class="btn btn-primary btn-sm float-right ml-1" [disabled]="total <= limit*page" (click)="onNext()">&gt;</button>
-                <button class="btn btn-primary btn-sm float-right" [disabled]="page == 1" (click)="onPrev()">&lt;</button>
+                <button class="btn btn-primary btn-sm float-right" [disabled]="page === 1" (click)="onPrev()">&lt;</button>
             </div>
         </div>
     </div>

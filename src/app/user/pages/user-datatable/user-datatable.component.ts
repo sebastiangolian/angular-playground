@@ -25,7 +25,7 @@ export class UserDatatableComponent extends DatatableComponent implements OnDest
   model: User = new UserModel();
   items: User[] = [];
 
-  private _subscription: Subscription = new Subscription();
+  private subscription: Subscription = new Subscription();
 
   constructor(private headerService: HeaderService, private messageService: MessageService, private modalService: BsModalService,
               private userService: UserService, private router: Router, private modalConfirmService: ModalConfirmService) {
@@ -33,37 +33,37 @@ export class UserDatatableComponent extends DatatableComponent implements OnDest
     this.headerService.set('Users');
   }
 
-  onRefresh() {
-    this._subscription.add(this.getUsers());
+  onRefresh(): void {
+    this.subscription.add(this.getUsers());
   }
 
-  onDownload(user: User) {
-    this._subscription.add(this.downloadFile(user));
+  onDownload(user: User): void {
+    this.subscription.add(this.downloadFile(user));
   }
 
-  onView(user: User) {
+  onView(user: User): void {
     this.router.navigate(['user/', user.id]);
   }
 
-  onEdit(user: User) {
-    this._subscription.add(this.putUserModal(user));
+  onEdit(user: User): void {
+    this.subscription.add(this.putUserModal(user));
   }
 
-  onDelete(role: User) {
+  onDelete(role: User): void {
     const content = `Are you sure you want to delete the record ?`;
-    this._subscription.add(this.modalConfirmService.confirm(content).subscribe(result => {
+    this.subscription.add(this.modalConfirmService.confirm(content).subscribe(result => {
       if (result) {
-        this._subscription.add(this.deleteUser(role));
+        this.subscription.add(this.deleteUser(role));
       }
     }));
   }
 
-  onCreate() {
-    this._subscription.add(this.postUserModal());
+  onCreate(): void {
+    this.subscription.add(this.postUserModal());
   }
 
-  onSetRole(user: User) {
-    this._subscription.add(this.setRoleToUser(user));
+  onSetRole(user: User): void {
+    this.subscription.add(this.setRoleToUser(user));
   }
 
   private getUsers(): Subscription {
@@ -79,8 +79,8 @@ export class UserDatatableComponent extends DatatableComponent implements OnDest
 
   private postUserModal(): Subscription {
     return this.userModal(null).subscribe({
-      next: (user: User|null) => {
-        if (user != null) { this.postUser(user); }
+      next: (user: User | null) => {
+        if (user !== null) { this.postUser(user); }
       },
       error: () => this.messageService.sendMessage('Adding a new record failed', 'danger')
     });
@@ -88,8 +88,8 @@ export class UserDatatableComponent extends DatatableComponent implements OnDest
 
   private putUserModal(user: User): Subscription {
     return this.userModal(user).subscribe({
-      next: (user: User|null) => {
-        if (user != null) { this.putUser(user); }
+      next: (modalUser: User | null) => {
+        if (modalUser !== null) { this.putUser(modalUser); }
       },
       error: () => this.messageService.sendMessage('Update record failed', 'danger')
     });
@@ -133,19 +133,19 @@ export class UserDatatableComponent extends DatatableComponent implements OnDest
 
   private setRoleToUser(user: User): Subscription {
     return this.getModalRole().subscribe({
-      next: (role: Role|null) => {
-        if (role != null) {
-          this.patchUser(user.id.toString(), {idRole: role.id});
+      next: (role: Role | null) => {
+        if (role !== null) {
+          this.patchUser(user.id.toString(), { idRole: role.id });
         }
       },
       error: () => this.messageService.sendMessage('The role was not assigned correctly', 'danger')
     });
   }
 
-  private userModal(user: User|null): Observable<User|null> {
-    const subject = new Subject<User|null>();
+  private userModal(user: User | null): Observable<User | null> {
+    const subject = new Subject<User | null>();
     let initialState: Partial<UserModalComponent> = {};
-    if (user) { initialState = {model: user}; }
+    if (user) { initialState = { model: user }; }
     const modal = this.modalService.show(UserModalComponent, {
       initialState,
       class: 'modal-md',
@@ -155,8 +155,8 @@ export class UserDatatableComponent extends DatatableComponent implements OnDest
     return subject;
   }
 
-  private getModalRole(): Observable<Role|null> {
-    const subject = new Subject<Role|null>();
+  private getModalRole(): Observable<Role | null> {
+    const subject = new Subject<Role | null>();
     const modal = this.modalService.show(RoleModalSearchComponent, {
       initialState: {},
       class: 'modal-xl',
@@ -166,7 +166,7 @@ export class UserDatatableComponent extends DatatableComponent implements OnDest
     return subject;
   }
 
-  ngOnDestroy() {
-    if (this._subscription) { this._subscription.unsubscribe(); }
+  ngOnDestroy(): void {
+    if (this.subscription) { this.subscription.unsubscribe(); }
   }
 }

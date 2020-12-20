@@ -34,17 +34,17 @@ export abstract class AbstractService<T> {
     }
 
     post(item: T): Observable<T> {
-        item = this._trimItem(item);
+        item = this.trimItem(item);
         return this.http.post<T>(this.url, item);
     }
 
     update(id: string, item: T): Observable<T> {
-        item = this._trimItem(item);
+        item = this.trimItem(item);
         return this.http.put<T>(this.url + '/' + id, item);
     }
 
     patch(id: string, item: any): Observable<T> {
-        item = this._trimItem(item);
+        item = this.trimItem(item);
         return this.http.patch<T>(this.url + '/' + id, item);
     }
 
@@ -52,9 +52,9 @@ export abstract class AbstractService<T> {
         return this.http.delete<null>(this.url + '/' + id);
     }
 
-    private _trimItem(item: any) {
+    private trimItem(item: any): T {
         for (const key in item) {
-            if (typeof item[key] == 'string') { item[key] = item[key].trim(); }
+            if (typeof item[key] === 'string') { item[key] = item[key].trim(); }
         }
         return item;
     }

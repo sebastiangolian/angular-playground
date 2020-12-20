@@ -9,14 +9,12 @@ export class DatatableSearchComponent extends DatatableComponent {
 
   limitEnabled = false;
 
-  ngOnInit() {}
-
-  onSort(column: string) {
-    if (Object.keys(this.filters).length == 0) { return; }
+  onSort(column: string): void {
+    if (Object.keys(this.filters).length === 0) { return; }
     super.onSort(column);
   }
 
-  onFilterReset() {
+  onFilterReset(): void {
     this.filters = {};
     this.items = null;
   }

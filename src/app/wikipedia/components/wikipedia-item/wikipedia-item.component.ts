@@ -17,7 +17,7 @@ export class WikipediaItemComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onClick() {
+  onClick(): void {
     this.itemSelected.emit(this.result);
   }
 }

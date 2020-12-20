@@ -11,22 +11,22 @@ import { Subscription } from 'rxjs';
 })
 export class UserSearchComponent implements OnInit, OnDestroy {
 
-  item: User|null = null;
+  item: User | null = null;
   caption = '';
 
-  private _subscription: Subscription = new Subscription();
+  private subscription: Subscription = new Subscription();
 
   constructor(private userService: UserService, private headerService: HeaderService) {
     this.headerService.set('User search');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-  onSearch(target: EventTarget|null) {
+  onSearch(target: EventTarget | null): void {
     let value = '';
     if (target instanceof HTMLInputElement) { value = target.value; }
     if (value.length > 0) {
-      this._subscription.add(this.search(value));
+      this.subscription.add(this.search(value));
     } else {
       this.caption = '';
       this.item = null;
@@ -49,7 +49,7 @@ export class UserSearchComponent implements OnInit, OnDestroy {
     ).subscribe();
   }
 
-  ngOnDestroy() {
-    if (this._subscription) { this._subscription.unsubscribe(); }
+  ngOnDestroy(): void {
+    if (this.subscription) { this.subscription.unsubscribe(); }
   }
 }

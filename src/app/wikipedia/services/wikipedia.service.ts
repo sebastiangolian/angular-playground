@@ -23,9 +23,9 @@ export class WikipediaService {
         const result: WikipediaResultOpensearch[] = [];
         for (let i = 0; i < val[1].length; i++) {
           const term = val[1][i];
-          const url = val[3][i];
+          const resultUrl = val[3][i];
           const parseTerm = val[3][i].substring(val[3][i].lastIndexOf('/') + 1);
-          result.push({term, url, parseTerm});
+          result.push({term, url: resultUrl, parseTerm});
         }
 
         return result;

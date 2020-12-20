@@ -17,11 +17,11 @@ export class PostItemComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onEdit(post: Post) {
+  onEdit(post: Post): void {
     this.postEdited.emit(post);
   }
 
-  onDelete(post: Post) {
+  onDelete(post: Post): void {
     this.postDeleted.emit(post);
   }
 }
