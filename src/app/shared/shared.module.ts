@@ -1,3 +1,4 @@
+import { SafePipe } from './pipes/safe.pipe';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -25,11 +26,12 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     BooleanPipe,
     ModalConfirmComponent,
     PadPipe,
+    HtmlPipe,
+    SafePipe,
     AdblockDetectComponent,
     InfoModalComponent,
     AdblockDetectBannerComponent,
-    IconBComponent,
-    HtmlPipe
+    IconBComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +50,8 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     AdblockDetectComponent,
     InfoModalComponent,
     AdblockDetectBannerComponent,
-    IconBComponent
+    IconBComponent,
+    SafePipe
   ]
 })
 export class SharedModule { }
