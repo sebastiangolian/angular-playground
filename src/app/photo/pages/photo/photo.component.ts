@@ -1,7 +1,5 @@
-import { PhotoExternalService } from '../../../shared/services/photo-external.service';
 import { Component, OnInit } from '@angular/core';
 import { HeaderService } from 'src/app/shared/services/header.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-photo',
@@ -10,15 +8,12 @@ import { Observable } from 'rxjs';
 })
 export class PhotoComponent implements OnInit {
 
-  url$: Observable<string> = new Observable<string>()
-
-  constructor(private headerService: HeaderService, private photoExternalService: PhotoExternalService) {
+  constructor(private headerService: HeaderService) {
     this.headerService.set('Photo');
   }
 
   ngOnInit(): void {
-    const url = 'https://picsum.photos/id/237/200/300'
-    this.url$ = this.photoExternalService.getBlobUrl(url)
+
   }
 
 }

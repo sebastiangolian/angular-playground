@@ -16,22 +16,27 @@ import { BooleanPipe } from './pipes/boolean.pipe';
 import { HtmlPipe } from './pipes/html.pipe';
 import { PadPipe } from './pipes/pad.pipe';
 import { AlertModule } from 'ngx-bootstrap/alert';
+import { ImageLazyLoadingComponent } from './components/image-lazy-loading/image-lazy-loading.component';
 
 @NgModule({
   declarations: [
+    //components
+    AdblockDetectComponent,
+    AdblockDetectBannerComponent,
     DatatableComponent,
     DatatableSearchComponent,
-    MessagesComponent,
-    InputFocusDirective,
-    BooleanPipe,
-    ModalConfirmComponent,
-    PadPipe,
-    HtmlPipe,
-    SafePipe,
-    AdblockDetectComponent,
+    IconBComponent,
+    ImageLazyLoadingComponent,
     InfoModalComponent,
-    AdblockDetectBannerComponent,
-    IconBComponent
+    MessagesComponent,
+    ModalConfirmComponent,
+    //directives
+    InputFocusDirective,
+    //pipes
+    BooleanPipe,
+    HtmlPipe,
+    PadPipe,
+    SafePipe
   ],
   imports: [
     CommonModule,
@@ -40,17 +45,21 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     ModalModule.forRoot(),
   ],
   exports: [
+    //components
+    AdblockDetectComponent,
+    AdblockDetectBannerComponent,
+    IconBComponent,
+    ImageLazyLoadingComponent,
     DatatableComponent,
     DatatableSearchComponent,
     MessagesComponent,
-    InputFocusDirective,
-    BooleanPipe,
-    PadPipe,
-    HtmlPipe,
-    AdblockDetectComponent,
     InfoModalComponent,
-    AdblockDetectBannerComponent,
-    IconBComponent,
+    //directives
+    InputFocusDirective,
+    //pipes
+    BooleanPipe,
+    HtmlPipe,
+    PadPipe,
     SafePipe
   ]
 })
