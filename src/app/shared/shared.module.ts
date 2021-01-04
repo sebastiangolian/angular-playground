@@ -17,6 +17,7 @@ import { HtmlPipe } from './pipes/html.pipe';
 import { PadPipe } from './pipes/pad.pipe';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { ImageLazyLoadingComponent } from './components/image-lazy-loading/image-lazy-loading.component';
+import { IntersectionObserverDirective } from './directives/intersection-observer.directive';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ImageLazyLoadingComponent } from './components/image-lazy-loading/image
     ModalConfirmComponent,
     //directives
     InputFocusDirective,
+    IntersectionObserverDirective,
     //pipes
     BooleanPipe,
     HtmlPipe,
@@ -56,6 +58,7 @@ import { ImageLazyLoadingComponent } from './components/image-lazy-loading/image
     InfoModalComponent,
     //directives
     InputFocusDirective,
+    IntersectionObserverDirective,
     //pipes
     BooleanPipe,
     HtmlPipe,

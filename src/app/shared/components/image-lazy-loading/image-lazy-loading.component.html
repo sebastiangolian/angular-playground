@@ -1,3 +1,1 @@
-<ng-container *ngIf="url$ | async as url">
-    <img [src]="url | safe:'resourceUrl'">
-</ng-container>
+<img data-src="src" [width]="width" [height]="height" (visibilityChange)="onVisibilityChange($event)" intersectionObserver #img>
