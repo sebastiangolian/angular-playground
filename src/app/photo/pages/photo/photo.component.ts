@@ -12,8 +12,10 @@ export class PhotoComponent implements OnInit {
     this.headerService.set('Photo');
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
 
+  onVisibleChange(isVisible: boolean) {
+    console.log(isVisible)
   }
 
 }

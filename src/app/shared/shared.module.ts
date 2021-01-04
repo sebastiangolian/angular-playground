@@ -16,8 +16,8 @@ import { BooleanPipe } from './pipes/boolean.pipe';
 import { HtmlPipe } from './pipes/html.pipe';
 import { PadPipe } from './pipes/pad.pipe';
 import { AlertModule } from 'ngx-bootstrap/alert';
-import { ImageLazyLoadingComponent } from './components/image-lazy-loading/image-lazy-loading.component';
 import { IntersectionObserverDirective } from './directives/intersection-observer.directive';
+import { LazyLoadingImageDirective } from './directives/lazy-loading-image.directive';
 
 @NgModule({
   declarations: [
@@ -27,11 +27,11 @@ import { IntersectionObserverDirective } from './directives/intersection-observe
     DatatableComponent,
     DatatableSearchComponent,
     IconBComponent,
-    ImageLazyLoadingComponent,
     InfoModalComponent,
     MessagesComponent,
     ModalConfirmComponent,
     //directives
+    LazyLoadingImageDirective,
     InputFocusDirective,
     IntersectionObserverDirective,
     //pipes
@@ -51,12 +51,12 @@ import { IntersectionObserverDirective } from './directives/intersection-observe
     AdblockDetectComponent,
     AdblockDetectBannerComponent,
     IconBComponent,
-    ImageLazyLoadingComponent,
     DatatableComponent,
     DatatableSearchComponent,
     MessagesComponent,
     InfoModalComponent,
     //directives
+    LazyLoadingImageDirective,
     InputFocusDirective,
     IntersectionObserverDirective,
     //pipes
