@@ -5,8 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AdblockDetectBannerComponent } from './components/adblock-detect-banner/adblock-detect-banner.component';
 import { AdblockDetectComponent } from './components/adblock-detect/adblock-detect.component';
-import { DatatableSearchComponent } from './components/datatable/datatable-search.component';
-import { DatatableComponent } from './components/datatable/datatable.component';
 import { IconBComponent } from './components/icon-b/icon-b.component';
 import { InfoModalComponent } from './components/info-modal/info-modal.component';
 import { MessagesComponent } from './components/messages/messages.component';
@@ -24,8 +22,6 @@ import { LazyLoadingImageDirective } from './directives/lazy-loading-image.direc
     //components
     AdblockDetectComponent,
     AdblockDetectBannerComponent,
-    DatatableComponent,
-    DatatableSearchComponent,
     IconBComponent,
     InfoModalComponent,
     MessagesComponent,
@@ -51,8 +47,6 @@ import { LazyLoadingImageDirective } from './directives/lazy-loading-image.direc
     AdblockDetectComponent,
     AdblockDetectBannerComponent,
     IconBComponent,
-    DatatableComponent,
-    DatatableSearchComponent,
     MessagesComponent,
     InfoModalComponent,
     //directives

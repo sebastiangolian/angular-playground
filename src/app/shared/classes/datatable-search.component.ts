@@ -5,7 +5,7 @@ import { DatatableComponent } from './datatable.component';
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DatatableSearchComponent extends DatatableComponent {
+export class DatatableSearchComponent<T> extends DatatableComponent<T> {
 
   limitEnabled = false;
 
@@ -16,6 +16,6 @@ export class DatatableSearchComponent extends DatatableComponent {
 
   onFilterReset(): void {
     this.filters = {};
-    this.items = null;
+    this.items = [];
   }
 }

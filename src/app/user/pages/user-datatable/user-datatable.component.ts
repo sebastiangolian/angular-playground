@@ -2,7 +2,6 @@ import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { Observable, Subject, Subscription } from 'rxjs';
-import { DatatableComponent } from 'src/app/shared/components/datatable/datatable.component';
 import { HeaderService } from 'src/app/shared/services/header.service';
 import { MessageService } from 'src/app/shared/services/message.service';
 import { UserModalComponent } from '../../components/user-modal/user-modal.component';
@@ -12,25 +11,23 @@ import { UserService } from '../../services/user.service';
 import { ModalConfirmService } from 'src/app/shared/components/modal-confirm/services/modal-confirm.service';
 import { RoleModalSearchComponent } from 'src/app/role/components/role-modal-search/role-modal-search.component';
 import { Role } from 'src/app/role/interfaces/role.interface';
+import { DatatableComponent } from 'src/app/shared/classes/datatable.component';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user-datatable.component.html',
   styleUrls: ['./user-datatable.component.css']
 })
-export class UserDatatableComponent extends DatatableComponent implements OnDestroy {
+export class UserDatatableComponent extends DatatableComponent<User> implements OnDestroy {
 
-  limit = 10;
-  filterOneSign = ['email'];
   model: User = new UserModel();
-  items: User[] = [];
-
   private subscription: Subscription = new Subscription();
 
   constructor(private headerService: HeaderService, private messageService: MessageService, private modalService: BsModalService,
-              private userService: UserService, private router: Router, private modalConfirmService: ModalConfirmService) {
+    private userService: UserService, private router: Router, private modalConfirmService: ModalConfirmService) {
     super();
     this.headerService.set('Users');
+    this.filterOneSign = ['email'];
   }
 
   onRefresh(): void {

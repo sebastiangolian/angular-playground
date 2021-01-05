@@ -5,24 +5,25 @@ import { NgForm } from '@angular/forms';
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DatatableComponent implements OnInit {
+export class DatatableComponent<T> implements OnInit {
 
-  items: any;
-  filterError = false;
-  total = 0;
-  page = 1;
+  items: T[] = [];
+  filterError: boolean = false;
+  total: number = 0;
+  page: number = 1;
 
-  limitEnabled = true;                            // limit - wyłączenie
-  sortEnabled = true;                             // sortowanie - wyłączenie
-  filterEnabled = true;                           // filtrowanie - wyłączenie
-  limit = 10;                                      // paginacja - ilość rekordów na stronie
-  limitValues: number[] = [5, 10, 20];                       // paginacja - wartości
-  sortBy = '';                                     // sortowanie - kolumna
-  order = 'asc';                                   // sortowanie - kierunek
-  filters: any = {};                                       // filtrowanie - objekt z filtrami
-  filterMinLength = 3;                             // filtrowanie - minimalna ilość znaków
-  filterOneSign: string[] = [];                            // filtrowanie - tablica właściwości do filtrowania po jednym znaku
-  onRefresh(): void {}
+  limitEnabled: boolean = true;                             // limit - wyłączenie
+  sortEnabled: boolean = true;                              // sortowanie - wyłączenie
+  filterEnabled: boolean = true;                            // filtrowanie - wyłączenie
+  limit: number = 10;                                       // paginacja - ilość rekordów na stronie
+  limitValues: number[] = [5, 10, 20];                      // paginacja - wartości
+  sortBy: string = '';                                      // sortowanie - kolumna
+  order: string = 'asc';                                    // sortowanie - kierunek
+  filters: any = {};                                        // filtrowanie - obiekt z filtrami
+  filterMinLength: number = 3;                              // filtrowanie - minimalna ilość znaków
+  filterOneSign: string[] = [];                             // filtrowanie - tablica właściwości do filtrowania po jednym znaku
+
+  onRefresh(): void { }
 
   ngOnInit(): void {
     this.onRefresh();
@@ -66,7 +67,7 @@ export class DatatableComponent implements OnInit {
     return Math.ceil(this.total / this.limit);
   }
 
-  onChangeLimit(target: EventTarget|null): void {
+  onChangeLimit(target: EventTarget | null): void {
     if (target instanceof HTMLInputElement) { this.limit = Number(target.value); }
     this.page = 1;
     this.onRefresh();
