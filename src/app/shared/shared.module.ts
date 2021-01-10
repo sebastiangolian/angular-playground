@@ -6,7 +6,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { AdblockDetectBannerComponent } from './components/adblock-detect-banner/adblock-detect-banner.component';
 import { AdblockDetectComponent } from './components/adblock-detect/adblock-detect.component';
 import { IconBComponent } from './components/icon-b/icon-b.component';
-import { InfoModalComponent } from './components/info-modal/info-modal.component';
+import { ModalInfoComponent } from './components/modal-info/modal-info.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.component';
 import { InputFocusDirective } from './directives/input-focus.directive';
@@ -23,7 +23,7 @@ import { LazyLoadingImageDirective } from './directives/lazy-loading-image.direc
     AdblockDetectComponent,
     AdblockDetectBannerComponent,
     IconBComponent,
-    InfoModalComponent,
+    ModalInfoComponent,
     MessagesComponent,
     ModalConfirmComponent,
     //directives
@@ -48,7 +48,7 @@ import { LazyLoadingImageDirective } from './directives/lazy-loading-image.direc
     AdblockDetectBannerComponent,
     IconBComponent,
     MessagesComponent,
-    InfoModalComponent,
+    ModalInfoComponent,
     //directives
     LazyLoadingImageDirective,
     InputFocusDirective,
