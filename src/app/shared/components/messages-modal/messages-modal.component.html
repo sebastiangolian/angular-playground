@@ -1,4 +1,4 @@
-<modal-info *ngIf="message" [headerClass]="headerClass">
+<modal-info *ngIf="message" [headerClass]="headerClass" [datetime]="datetime">
     <div class="header" [innerHTML]="headerText"></div>
     <div class="body" [innerHtml]="message.text"></div>
 </modal-info>

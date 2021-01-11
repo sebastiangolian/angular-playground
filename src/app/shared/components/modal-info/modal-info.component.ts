@@ -8,10 +8,10 @@ import { Component, ChangeDetectionStrategy, Input, OnChanges } from '@angular/c
 })
 export class ModalInfoComponent implements OnChanges {
   @Input() isCloseVisible = true;
-  @Input() headerClass = '';
+  @Input() headerClass: string = '';
+  @Input() datetime: string = '';
 
-  public active = true;
-
+  public active: boolean = true;
   constructor() {
     this.headerClass = "modal-header " + this.headerClass
   }

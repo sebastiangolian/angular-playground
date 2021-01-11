@@ -12,6 +12,7 @@ import { MessageService } from '../../services/message.service';
 })
 export class MessagesModalComponent implements OnInit, OnDestroy {
   message!: Message;
+  datetime: string = ''
   headerClass: string = ''
   headerText: string = ''
   private subscription: Subscription = new Subscription();
@@ -28,6 +29,7 @@ export class MessagesModalComponent implements OnInit, OnDestroy {
         this.headerClass = this.headerClassByMessage(message)
         this.headerText = this.headerTextByMessage(message)
         this.message = message;
+        if (message.datetime) this.datetime = message.datetime
         this.messageService.clearMessages()
       }
     });
@@ -51,13 +53,13 @@ export class MessagesModalComponent implements OnInit, OnDestroy {
   private headerTextByMessage(message: Message): string {
     switch (message.type) {
       case "success":
-        return 'Powodzenie'
+        return 'Success'
       case "info":
-        return 'Informacja'
+        return 'Info'
       case "warning":
-        return 'Ostrzeżenie'
+        return 'Warning'
       case "danger":
-        return 'Błąd'
+        return 'Error'
       default:
         return ''
     }
