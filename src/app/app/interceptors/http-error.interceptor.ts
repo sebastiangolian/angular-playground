@@ -29,25 +29,25 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   }
 
   clientSideError(error: ErrorEvent): Message {
-    return {text: error.error.message, type: "danger"}
+    return { text: error.error.message, type: "danger", timeout: 5000, dismissible: true }
   }
 
   serverSideError(error: HttpErrorResponse): Message {
     switch (error.status) {
       case 401: {
-        return {text: "Twoja sesja wygasła. Zaloguj się ponownie", type: "warning"}
+        return { text: "Twoja sesja wygasła. Zaloguj się ponownie", type: "warning", timeout: 5000, dismissible: true }
       }
       case 403: {
-        return {text: `Nie masz uprawnień do tego zasobu`, type: "warning"}
+        return { text: `Nie masz uprawnień do tego zasobu`, type: "warning", timeout: 5000, dismissible: true }
       }
       case 404: {
-        return {text: `Podany zasób nie istnieje`, type: "info"}
+        return { text: `Podany zasób nie istnieje`, type: "info", timeout: 5000, dismissible: true }
       }
       case 500: {
-        return {text: `Wystąpił nieoczekiwany problem. Proszę spróbuj ponownie`, type: "danger"}
+        return { text: `Wystąpił nieoczekiwany problem. Proszę spróbuj ponownie`, type: "danger", timeout: 5000, dismissible: true }
       }
-      default: { 
-        return {text: `(${error.status}) ${error.message}`, type: "danger"}
+      default: {
+        return { text: `(${error.status}) ${error.message}`, type: "danger", timeout: 5000, dismissible: true }
       }
     }
   }

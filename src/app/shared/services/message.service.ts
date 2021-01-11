@@ -8,7 +8,7 @@ export class MessageService {
     private subject = new Subject<Message | null>();
 
     sendMessage(message: string, type: string = 'success', dismissible: boolean = environment.messageDismissible,
-                timeout: number = 0): void {
+        timeout: number = 0): void {
         if (timeout === 0) {
             switch (type) {
                 case 'success': {

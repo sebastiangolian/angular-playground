@@ -1,5 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
-import { ModalDirective } from 'ngx-bootstrap/modal';
+import { Component, ChangeDetectionStrategy, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'modal-info',
@@ -7,17 +6,22 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
   styleUrls: ['./modal-info.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ModalInfoComponent implements OnInit {
+export class ModalInfoComponent implements OnChanges {
 
   @Input() active = true;
-  @Input() close = true;
+  @Input() isCloseVisible = true;
+  @Input() headerClass = '';
 
-  constructor() { }
-
-  ngOnInit(): void { }
-
-  onClick(modal: ModalDirective): void {
-    modal.hide();
+  constructor() {
+    this.headerClass = "modal-header " + this.headerClass
   }
 
+  ngOnChanges(): void {
+    this.headerClass = "modal-header " + this.headerClass
+    this.active = true
+  }
+
+  onClose(): void {
+    this.active = false
+  }
 }

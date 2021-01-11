@@ -24,6 +24,8 @@
     </header>
     <main class="container-fluid">
         <app-spinner></app-spinner>
+        <!-- <app-messages></app-messages> -->
+        <messages-modal></messages-modal>
         <ng-container *ngIf="$header|async as header">
             <h1 [innerHtml]="header"></h1>
         </ng-container>

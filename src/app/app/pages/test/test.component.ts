@@ -11,5 +11,5 @@ export class TestComponent implements OnInit {
     this.headerService.set('Test');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }
