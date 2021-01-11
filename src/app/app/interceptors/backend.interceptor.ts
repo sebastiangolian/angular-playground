@@ -70,9 +70,11 @@ export class BackendInterceptor implements HttpInterceptor {
 
             db = loadStorage(db);
 
-            db.user = []
-            for (let i = 1; i <= 100; i++) {
-                db.user.push({ id: i.toString(), email: 'example' + i + '@o2.pl', zipCode: '11-111', created: DateTimeHelper.currentDateTime(), active: true, documentLink: getPdfUrl(), idRole: '1' })
+            if (!db.user) {
+                db.user = []
+                for (let i = 1; i <= 100; i++) {
+                    db.user.push({ id: i.toString(), email: 'example' + i + '@o2.pl', zipCode: '11-111', created: DateTimeHelper.currentDateTime(), active: true, documentLink: getPdfUrl(), idRole: '1' })
+                }
             }
 
             switch (true) {
