@@ -1,3 +1,4 @@
+import { DateTimeHelper } from './../helpers/date-time.helper';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Message } from '../interfaces/message.interface';
@@ -26,7 +27,7 @@ export class MessageService {
             }
         }
 
-        this.subject.next({ text: message, type, dismissible, timeout });
+        this.subject.next({ text: message, type, dismissible, timeout, datetime: DateTimeHelper.currentDateTime() });
     }
 
     clearMessages(): void {

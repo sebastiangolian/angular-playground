@@ -3,4 +3,5 @@ export interface Message {
     type: string;
     dismissible: boolean;
     timeout: number;
+    datetime?: string;
 }

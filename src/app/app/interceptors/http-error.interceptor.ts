@@ -35,7 +35,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   serverSideError(error: HttpErrorResponse): Message {
     switch (error.status) {
       case 401: {
-        return { text: "Twoja sesja wygasła. Zaloguj się ponownie", type: "warning", timeout: 5000, dismissible: true }
+        return { text: "Twoja sesja wygasła. Zaloguj się ponownie", type: "info", timeout: 5000, dismissible: true }
       }
       case 403: {
         return { text: `Nie masz uprawnień do tego zasobu`, type: "warning", timeout: 5000, dismissible: true }

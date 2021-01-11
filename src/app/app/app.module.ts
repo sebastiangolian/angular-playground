@@ -11,6 +11,7 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SpinnerModule
   ],
   providers: [
-    // { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: BackendInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

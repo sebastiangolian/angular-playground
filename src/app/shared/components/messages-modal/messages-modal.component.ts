@@ -57,7 +57,7 @@ export class MessagesModalComponent implements OnInit, OnDestroy {
       case "warning":
         return 'Ostrzeżenie'
       case "danger":
-        return 'Wystąpił błąd w działaniu aplikacji'
+        return 'Błąd'
       default:
         return ''
     }
