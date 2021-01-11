@@ -7,7 +7,7 @@ import { AdblockDetectBannerComponent } from './components/adblock-detect-banner
 import { AdblockDetectComponent } from './components/adblock-detect/adblock-detect.component';
 import { IconBComponent } from './components/icon-b/icon-b.component';
 import { ModalInfoComponent } from './components/modal-info/modal-info.component';
-import { MessagesComponent } from './components/messages/messages.component';
+import { MessagesAlertComponent } from './components/messages-alert/messages-alert.component';
 import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.component';
 import { InputFocusDirective } from './directives/input-focus.directive';
 import { BooleanPipe } from './pipes/boolean.pipe';
@@ -25,7 +25,7 @@ import { MessagesModalComponent } from './components/messages-modal/messages-mod
     AdblockDetectBannerComponent,
     IconBComponent,
     ModalInfoComponent,
-    MessagesComponent,
+    MessagesAlertComponent,
     MessagesModalComponent,
     ModalConfirmComponent,
     //directives
@@ -49,7 +49,7 @@ import { MessagesModalComponent } from './components/messages-modal/messages-mod
     AdblockDetectComponent,
     AdblockDetectBannerComponent,
     IconBComponent,
-    MessagesComponent,
+    MessagesAlertComponent,
     MessagesModalComponent,
     ModalInfoComponent,
     //directives

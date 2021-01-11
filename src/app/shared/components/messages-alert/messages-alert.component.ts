@@ -4,12 +4,12 @@ import { Message } from '../../interfaces/message.interface';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-messages',
-  templateUrl: './messages.component.html',
-  styleUrls: ['./messages.component.css'],
+  selector: 'messages-alert',
+  templateUrl: './messages-alert.component.html',
+  styleUrls: ['./messages-alert.component.css'],
   changeDetection: ChangeDetectionStrategy.Default
 })
-export class MessagesComponent implements OnInit, OnDestroy {
+export class MessagesAlertComponent implements OnInit, OnDestroy {
 
   messages: Message[] = [];
   private subscription: Subscription = new Subscription();
