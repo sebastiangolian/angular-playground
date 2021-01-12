@@ -20,7 +20,7 @@ import { MessagesModalComponent } from './components/messages-modal/messages-mod
 
 @NgModule({
   declarations: [
-    //components
+    // components
     AdblockDetectComponent,
     AdblockDetectBannerComponent,
     IconBComponent,
@@ -28,11 +28,11 @@ import { MessagesModalComponent } from './components/messages-modal/messages-mod
     MessagesAlertComponent,
     MessagesModalComponent,
     ModalConfirmComponent,
-    //directives
+    // directives
     LazyLoadingImageDirective,
     InputFocusDirective,
     IntersectionObserverDirective,
-    //pipes
+    // pipes
     BooleanPipe,
     HtmlPipe,
     PadPipe,
@@ -45,18 +45,18 @@ import { MessagesModalComponent } from './components/messages-modal/messages-mod
     ModalModule.forRoot(),
   ],
   exports: [
-    //components
+    // components
     AdblockDetectComponent,
     AdblockDetectBannerComponent,
     IconBComponent,
     MessagesAlertComponent,
     MessagesModalComponent,
     ModalInfoComponent,
-    //directives
+    // directives
     LazyLoadingImageDirective,
     InputFocusDirective,
     IntersectionObserverDirective,
-    //pipes
+    // pipes
     BooleanPipe,
     HtmlPipe,
     PadPipe,

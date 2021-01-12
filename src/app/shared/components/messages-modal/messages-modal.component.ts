@@ -13,9 +13,9 @@ import { MessageService } from '../../services/message.service';
 })
 export class MessagesModalComponent implements OnInit, OnDestroy {
   message!: Message;
-  datetime: string = ''
-  headerClass: string = ''
-  headerText: string = ''
+  datetime = '';
+  headerClass = '';
+  headerText = '';
   private subscription: Subscription = new Subscription();
 
   constructor(private messageService: MessageService) { }
@@ -27,11 +27,11 @@ export class MessagesModalComponent implements OnInit, OnDestroy {
   private getMessages(): Subscription {
     return this.messageService.getMessage().subscribe(message => {
       if (message) {
-        this.headerClass = this.headerClassByMessage(message)
-        this.headerText = this.headerTextByMessage(message)
+        this.headerClass = this.headerClassByMessage(message);
+        this.headerText = this.headerTextByMessage(message);
         this.message = message;
-        if (message.datetime) this.datetime = message.datetime
-        this.messageService.clearMessages()
+        if (message.datetime) { this.datetime = message.datetime; }
+        this.messageService.clearMessages();
       }
     });
   }
@@ -39,30 +39,30 @@ export class MessagesModalComponent implements OnInit, OnDestroy {
   private headerClassByMessage(message: Message): string {
     switch (message.type) {
       case MessageType.SUCCESS:
-        return 'bg-success text-light'
+        return 'bg-success text-light';
       case MessageType.INFO:
-        return 'bg-info text-light'
+        return 'bg-info text-light';
       case MessageType.WARNING:
-        return 'bg-warning text-dark'
+        return 'bg-warning text-dark';
       case MessageType.ERROR:
-        return 'bg-danger text-light'
+        return 'bg-danger text-light';
       default:
-        return ''
+        return '';
     }
   }
 
   private headerTextByMessage(message: Message): string {
     switch (message.type) {
       case MessageType.SUCCESS:
-        return 'Success'
+        return 'Success';
       case MessageType.INFO:
-        return 'Info'
+        return 'Info';
       case MessageType.WARNING:
-        return 'Warning'
+        return 'Warning';
       case MessageType.ERROR:
-        return 'Error'
+        return 'Error';
       default:
-        return ''
+        return '';
     }
   }
 

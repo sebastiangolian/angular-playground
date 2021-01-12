@@ -8,20 +8,20 @@ import { MessageModel } from '../models/message.model';
 export class MessageService {
     private subject = new Subject<Message | null>();
 
-    sendMessage(text: string, type: MessageType = MessageType.SUCCESS) {
-        let model: MessageModel = new MessageModel()
-        model.text = text
-        model.type = type
-        model.setTimeoutByType()
+    sendMessage(text: string, type: MessageType = MessageType.SUCCESS): void {
+        const model: MessageModel = new MessageModel();
+        model.text = text;
+        model.type = type;
+        model.setTimeoutByType();
         this.subject.next(model);
     }
 
     sendMessageByObject(message: Message): void {
-        let model: MessageModel = new MessageModel()
-        model.text = message.text
-        model.type = message.type
-        model.dismissible = message.dismissible
-        model.setTimeoutByType()
+        const model: MessageModel = new MessageModel();
+        model.text = message.text;
+        model.type = message.type;
+        model.dismissible = message.dismissible;
+        model.setTimeoutByType();
         this.subject.next(model);
     }
 

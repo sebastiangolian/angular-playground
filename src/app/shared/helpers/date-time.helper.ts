@@ -1,7 +1,7 @@
 export class DateTimeHelper {
 
     static isoString(): string {
-        return new Date().toISOString()
+        return new Date().toISOString();
     }
 
     static currentDate(): string {

@@ -3,11 +3,11 @@ import { Message } from 'src/app/shared/interfaces/message.interface';
 import { environment } from 'src/environments/environment';
 import { MessageType } from '../enums/message-type.enum';
 export class MessageModel implements Message {
-    text: string = '';
-    type: MessageType = MessageType.SUCCESS
-    dismissible: boolean = environment.messageDismissible
-    timeout: number = 0
-    datetime: string = DateTimeHelper.currentDateTime()
+    text = '';
+    type: MessageType = MessageType.SUCCESS;
+    dismissible: boolean = environment.messageDismissible;
+    timeout = 0;
+    datetime: string = DateTimeHelper.currentDateTime();
 
     setTimeoutByType(timeout: number = this.timeout): void {
         if (timeout === 0) {

@@ -25,7 +25,7 @@ export class UserDatatableComponent extends DatatableComponent<User> implements 
   private subscription: Subscription = new Subscription();
 
   constructor(private headerService: HeaderService, private messageService: MessageService, private modalService: BsModalService,
-    private userService: UserService, private router: Router, private modalConfirmService: ModalConfirmService) {
+              private userService: UserService, private router: Router, private modalConfirmService: ModalConfirmService) {
     super();
     this.headerService.set('Users');
     this.filterOneSign = ['email'];

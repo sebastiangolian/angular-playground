@@ -14,8 +14,8 @@ export class PhotoComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  onVisibleChange(isVisible: boolean) {
-    console.info(isVisible)
+  onVisibleChange(isVisible: boolean): void {
+    console.info(isVisible);
   }
 
 }
