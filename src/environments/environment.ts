@@ -10,7 +10,7 @@ export const environment = {
   loggingBackendResponse: false,
   apiEndpoint: '',
   messageDismissible: false,
-  messageSuccessTimeout: 300000,
+  messageSuccessTimeout: 3000,
   messageInfoTimeout: 5000,
-  messageAnotherTimeout: 10000,
+  messageAnotherTimeout: 1000000,
 };
