@@ -12,6 +12,7 @@ import { ModalConfirmService } from 'src/app/shared/components/modal-confirm/ser
 import { RoleModalSearchComponent } from 'src/app/role/components/role-modal-search/role-modal-search.component';
 import { Role } from 'src/app/role/interfaces/role.interface';
 import { DatatableComponent } from 'src/app/shared/classes/datatable.component';
+import { MessageType } from 'src/app/shared/enums/message-type.enum';
 
 @Component({
   selector: 'app-user',
@@ -79,7 +80,7 @@ export class UserDatatableComponent extends DatatableComponent<User> implements 
       next: (user: User | null) => {
         if (user !== null) { this.postUser(user); }
       },
-      error: () => this.messageService.sendMessage('Adding a new record failed', 'danger')
+      error: () => this.messageService.sendMessage('Adding a new record failed', MessageType.ERROR)
     });
   }
 
@@ -88,7 +89,7 @@ export class UserDatatableComponent extends DatatableComponent<User> implements 
       next: (modalUser: User | null) => {
         if (modalUser !== null) { this.putUser(modalUser); }
       },
-      error: () => this.messageService.sendMessage('Update record failed', 'danger')
+      error: () => this.messageService.sendMessage('Update record failed', MessageType.ERROR)
     });
   }
 
@@ -135,7 +136,7 @@ export class UserDatatableComponent extends DatatableComponent<User> implements 
           this.patchUser(user.id.toString(), { idRole: role.id });
         }
       },
-      error: () => this.messageService.sendMessage('The role was not assigned correctly', 'danger')
+      error: () => this.messageService.sendMessage('The role was not assigned correctly', MessageType.ERROR)
     });
   }
 

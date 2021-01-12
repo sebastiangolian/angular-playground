@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse, HttpResponseBase } from '@angular/common/http';
+import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Message } from 'src/app/shared/interfaces/message.interface';
 import { MessageService } from 'src/app/shared/services/message.service';
+import { MessageType } from 'src/app/shared/enums/message-type.enum';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
@@ -29,25 +30,25 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   }
 
   clientSideError(error: ErrorEvent): Message {
-    return { text: error.error.message, type: "danger", timeout: 5000, dismissible: true }
+    return { text: error.error.message, type: MessageType.ERROR, timeout: 5000, dismissible: true }
   }
 
   serverSideError(error: HttpErrorResponse): Message {
     switch (error.status) {
       case 401: {
-        return { text: "Twoja sesja wygasła. Zaloguj się ponownie", type: "info", timeout: 5000, dismissible: true }
+        return { text: "Twoja sesja wygasła. Zaloguj się ponownie", type: MessageType.INFO, timeout: 5000, dismissible: true }
       }
       case 403: {
-        return { text: `Nie masz uprawnień do tego zasobu`, type: "warning", timeout: 5000, dismissible: true }
+        return { text: `Nie masz uprawnień do tego zasobu`, type: MessageType.WARNING, timeout: 5000, dismissible: true }
       }
       case 404: {
-        return { text: `Podany zasób nie istnieje`, type: "info", timeout: 5000, dismissible: true }
+        return { text: `Podany zasób nie istnieje`, type: MessageType.INFO, timeout: 5000, dismissible: true }
       }
       case 500: {
-        return { text: `Wystąpił nieoczekiwany problem. Proszę spróbuj ponownie`, type: "danger", timeout: 5000, dismissible: true }
+        return { text: `Wystąpił nieoczekiwany problem. Proszę spróbuj ponownie`, type: MessageType.ERROR, timeout: 5000, dismissible: true }
       }
       default: {
-        return { text: `(${error.status}) ${error.message}`, type: "danger", timeout: 5000, dismissible: true }
+        return { text: `(${error.status}) ${error.message}`, type: MessageType.ERROR, timeout: 5000, dismissible: true }
       }
     }
   }

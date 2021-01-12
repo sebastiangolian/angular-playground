@@ -1,6 +1,7 @@
 
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { MessageType } from '../../enums/message-type.enum';
 import { Message } from '../../interfaces/message.interface';
 import { MessageService } from '../../services/message.service';
 
@@ -37,13 +38,13 @@ export class MessagesModalComponent implements OnInit, OnDestroy {
 
   private headerClassByMessage(message: Message): string {
     switch (message.type) {
-      case "success":
+      case MessageType.SUCCESS:
         return 'bg-success text-light'
-      case "info":
+      case MessageType.INFO:
         return 'bg-info text-light'
-      case "warning":
+      case MessageType.WARNING:
         return 'bg-warning text-dark'
-      case "danger":
+      case MessageType.ERROR:
         return 'bg-danger text-light'
       default:
         return ''
@@ -52,13 +53,13 @@ export class MessagesModalComponent implements OnInit, OnDestroy {
 
   private headerTextByMessage(message: Message): string {
     switch (message.type) {
-      case "success":
+      case MessageType.SUCCESS:
         return 'Success'
-      case "info":
+      case MessageType.INFO:
         return 'Info'
-      case "warning":
+      case MessageType.WARNING:
         return 'Warning'
-      case "danger":
+      case MessageType.ERROR:
         return 'Error'
       default:
         return ''

@@ -1,3 +1,4 @@
+import { MessageType } from './../enums/message-type.enum';
 import { DateTimeHelper } from './../helpers/date-time.helper';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
@@ -8,15 +9,15 @@ import { environment } from 'src/environments/environment';
 export class MessageService {
     private subject = new Subject<Message | null>();
 
-    sendMessage(message: string, type: string = 'success', dismissible: boolean = environment.messageDismissible,
+    sendMessage(message: string, type: MessageType = MessageType.SUCCESS, dismissible: boolean = environment.messageDismissible,
         timeout: number = 0): void {
         if (timeout === 0) {
             switch (type) {
-                case 'success': {
+                case MessageType.SUCCESS: {
                     timeout = 3000;
                     break;
                 }
-                case 'info': {
+                case MessageType.INFO: {
                     timeout = 2000;
                     break;
                 }
