@@ -14,7 +14,7 @@ import { CarService } from '../../services/car.service';
 export class CarComponent implements OnInit {
 
   cars: Observable<Car[]> = new Observable<Car[]>();
-  updatedCar: Car = {id: '', brand: '', name: ''};
+  updatedCar: Car = { id: '', brand: '', name: '' };
 
   constructor(private headerService: HeaderService, private carService: CarService, private messageService: MessageService) {
     this.headerService.set('Cars');
@@ -30,7 +30,7 @@ export class CarComponent implements OnInit {
     );
   }
 
-  onCarSave(car: Car|null): void {
+  onCarSave(car: Car | null): void {
     if (car) {
       this.carService.getById(car.id.toString()).subscribe(
         item => {
@@ -39,14 +39,14 @@ export class CarComponent implements OnInit {
               this.updatedCar = result;
               this.reload();
               this.messageService.sendMessage('Updated car');
-              setTimeout(() => {this.updatedCar = this.emptyCar(); }, 2000);
+              setTimeout(() => { this.updatedCar = this.emptyCar(); }, 2000);
             });
           } else {
             this.carService.post(car).subscribe((result) => {
               this.updatedCar = result;
               this.reload();
               this.messageService.sendMessage('Added new car');
-              setTimeout(() => {this.updatedCar = this.emptyCar(); }, 2000);
+              setTimeout(() => { this.updatedCar = this.emptyCar(); }, 2000);
             });
           }
         }
@@ -66,6 +66,6 @@ export class CarComponent implements OnInit {
   }
 
   emptyCar(): Car {
-    return {id: '', brand: '', name: ''};
+    return { id: '', brand: '', name: '' };
   }
 }

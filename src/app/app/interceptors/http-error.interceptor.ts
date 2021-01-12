@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { Message } from 'src/app/shared/interfaces/message.interface';
 import { MessageService } from 'src/app/shared/services/message.service';
 import { MessageType } from 'src/app/shared/enums/message-type.enum';
+import { MessageModel } from 'src/app/shared/models/message.model';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
@@ -23,33 +24,49 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           } else {
             message = this.serverSideError(error);
           }
-          this.messageService.sendMessage(message.text, message.type)
+          this.messageService.sendMessageByObject(message)
           return throwError(message.text);
         })
       )
   }
 
   clientSideError(error: ErrorEvent): Message {
-    return { text: error.error.message, type: MessageType.ERROR, timeout: 5000, dismissible: true }
+    let message: Message = new MessageModel()
+    message.text = error.error.message
+    message.type = MessageType.ERROR
+    return message
   }
 
   serverSideError(error: HttpErrorResponse): Message {
+    let message = new MessageModel()
     switch (error.status) {
       case 401: {
-        return { text: "Twoja sesja wygasła. Zaloguj się ponownie", type: MessageType.INFO, timeout: 5000, dismissible: true }
+        message.text = "Twoja sesja wygasła. Zaloguj się ponownie"
+        message.type = MessageType.INFO
+        break;
       }
       case 403: {
-        return { text: `Nie masz uprawnień do tego zasobu`, type: MessageType.WARNING, timeout: 5000, dismissible: true }
+        message.text = "Nie masz uprawnień do tego zasobu"
+        message.type = MessageType.WARNING
+        break;
       }
       case 404: {
-        return { text: `Podany zasób nie istnieje`, type: MessageType.INFO, timeout: 5000, dismissible: true }
+        message.text = "Podany zasób nie istnieje"
+        message.type = MessageType.INFO
+        break;
       }
       case 500: {
-        return { text: `Wystąpił nieoczekiwany problem. Proszę spróbuj ponownie`, type: MessageType.ERROR, timeout: 5000, dismissible: true }
+        message.text = "Wystąpił nieoczekiwany problem. Proszę spróbuj ponownie"
+        message.type = MessageType.ERROR
+        break;
       }
       default: {
-        return { text: `(${error.status}) ${error.message}`, type: MessageType.ERROR, timeout: 5000, dismissible: true }
+        message.text = `(${error.status}) ${error.message}`
+        message.type = MessageType.ERROR
+        break;
       }
     }
+
+    return message
   }
 }

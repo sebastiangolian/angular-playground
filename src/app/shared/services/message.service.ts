@@ -1,34 +1,28 @@
-import { MessageType } from './../enums/message-type.enum';
-import { DateTimeHelper } from './../helpers/date-time.helper';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { MessageType } from '../enums/message-type.enum';
 import { Message } from '../interfaces/message.interface';
-import { environment } from 'src/environments/environment';
+import { MessageModel } from '../models/message.model';
 
 @Injectable({ providedIn: 'root' })
 export class MessageService {
     private subject = new Subject<Message | null>();
 
-    sendMessage(message: string, type: MessageType = MessageType.SUCCESS, dismissible: boolean = environment.messageDismissible,
-        timeout: number = 0): void {
-        if (timeout === 0) {
-            switch (type) {
-                case MessageType.SUCCESS: {
-                    timeout = 3000;
-                    break;
-                }
-                case MessageType.INFO: {
-                    timeout = 2000;
-                    break;
-                }
-                default: {
-                    timeout = 10000;
-                    break;
-                }
-            }
-        }
+    sendMessage(text: string, type: MessageType = MessageType.SUCCESS) {
+        let model: MessageModel = new MessageModel()
+        model.text = text
+        model.type = type
+        model.setTimeoutByType()
+        this.subject.next(model);
+    }
 
-        this.subject.next({ text: message, type, dismissible, timeout, datetime: DateTimeHelper.currentDateTime() });
+    sendMessageByObject(message: Message): void {
+        let model: MessageModel = new MessageModel()
+        model.text = message.text
+        model.type = message.type
+        model.dismissible = message.dismissible
+        model.setTimeoutByType()
+        this.subject.next(model);
     }
 
     clearMessages(): void {
