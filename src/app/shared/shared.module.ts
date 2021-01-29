@@ -42,7 +42,7 @@ import { MessagesModalComponent } from './components/messages-modal/messages-mod
     CommonModule,
     FormsModule,
     AlertModule.forRoot(),
-    ModalModule.forRoot(),
+    ModalModule.forRoot()
   ],
   exports: [
     // components
