@@ -16,4 +16,16 @@ export class JphUserService {
     return this.http.get<JphUser[]>(this.url)
   }
 
+  post(user: JphUser): Observable<JphUser> {
+    return this.http.post<JphUser>(this.url, user)
+  }
+
+  put(user: JphUser): Observable<JphUser> {
+    return this.http.put<JphUser>(this.url + "/" + user.id, user)
+  }
+
+  delete(user: JphUser): Observable<null> {
+    return this.http.delete<null>(this.url + "/" + user.id)
+  }
+
 }

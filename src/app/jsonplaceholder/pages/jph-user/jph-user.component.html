@@ -1,3 +1,4 @@
 <ng-container *ngIf="users$ | async as users">
-    <jph-user-items [users]="users" (update)="onUpdate($event)" (delete)="onDelete($event)"></jph-user-items>
+    <jph-user-items [users]="users" (create)="onCreate()"
+        (update)="onUpdate($event)" (delete)="onDelete($event)"></jph-user-items>
 </ng-container>

@@ -10,6 +10,7 @@ import { JphUser } from '../../interfaces/jph-user';
 export class JphUserItemsComponent implements OnInit {
 
   @Input() users: JphUser[] = [];
+  @Output() create: EventEmitter<boolean> = new EventEmitter();
   @Output() update: EventEmitter<JphUser> = new EventEmitter();
   @Output() delete: EventEmitter<JphUser> = new EventEmitter();
 

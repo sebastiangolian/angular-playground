@@ -76,19 +76,20 @@ export class BackendInterceptor implements HttpInterceptor {
                     db.user.push({ id: i.toString(), email: 'example' + i + '@o2.pl', zipCode: '11-111', created: DateTimeHelper.currentDateTime(), active: true, documentLink: getPdfUrl(), idRole: '1' });
                 }
             }
-
+            console.log(url)
             switch (true) {
-                case (method === 'GET' && url.includes('/user/list')): {
+
+                case (method === 'GET' && url.includes('mock/user/list')): {
                     const response = getAll(db.user);
                     return response200(response);
                 }
 
-                case (method === 'GET' && url.includes('/user/')): {
+                case (method === 'GET' && url.includes('mock/user/')): {
                     const item = db.user.find(user => user.id.toString() === getIdFromUrl());
                     return response200({ item });
                 }
 
-                case (method === 'POST' && url.includes('/user')): {
+                case (method === 'POST' && url.includes('mock/user')): {
                     body.id = db.user.length + 1;
                     body.documentLink = getPdfUrl();
                     body.created = new Date().toJSON().slice(0, 10) + ' ' + new Date().toLocaleTimeString();
@@ -97,7 +98,7 @@ export class BackendInterceptor implements HttpInterceptor {
                     return response200({ item: body });
                 }
 
-                case (method === 'PUT' && url.includes('/user')): {
+                case (method === 'PUT' && url.includes('mock/user')): {
                     const index = db.user.findIndex(user => user.id.toString() === getIdFromUrl());
                     body.id = db.user[index].id;
                     db.user[index] = body;
@@ -105,43 +106,43 @@ export class BackendInterceptor implements HttpInterceptor {
                     return response200({ item: body });
                 }
 
-                case (method === 'DELETE' && url.includes('/user')): {
+                case (method === 'DELETE' && url.includes('mock/user')): {
                     db.user = db.user.filter(user => user.id.toString() !== getIdFromUrl());
                     saveStorage(db);
                     return response200();
                     // return responseError(400, "Nie masz uprawnień, żeby usuwać użytkowników.")
                 }
 
-                case (method === 'PATCH' && url.includes('/user')): {
+                case (method === 'PATCH' && url.includes('mock/user')): {
                     const index = db.user.findIndex(user => user.id.toString() === getIdFromUrl());
                     db.user[index].idRole = body.idRole;
                     saveStorage(db);
                     return response200({ item: body });
                 }
 
-                case (method === 'GET' && url.includes('/role/list')): {
+                case (method === 'GET' && url.includes('mock/role/list')): {
                     const response = getAll(db.role);
                     return response200(response);
                 }
 
-                case (method === 'GET' && url.includes('/car/list')): {
+                case (method === 'GET' && url.includes('mock/car/list')): {
                     const response = getAll(db.car);
                     return response200(response);
                 }
 
-                case (method === 'GET' && url.includes('/car')): {
+                case (method === 'GET' && url.includes('mock/car')): {
                     const item = db.car.find(car => car.id.toString() === getIdFromUrl());
                     return response200({ item });
                 }
 
-                case (method === 'POST' && url.includes('/car')): {
+                case (method === 'POST' && url.includes('mock/car')): {
                     // body.id = db.car.length + 1
                     db.car.push(body);
                     saveStorage(db);
                     return response200({ item: body });
                 }
 
-                case (method === 'PUT' && url.includes('/car')): {
+                case (method === 'PUT' && url.includes('mock/car')): {
                     const index = db.car.findIndex(car => car.id.toString() === getIdFromUrl());
                     body.id = db.car[index].id;
                     db.car[index] = body;
@@ -149,35 +150,35 @@ export class BackendInterceptor implements HttpInterceptor {
                     return response200({ item: body });
                 }
 
-                case (method === 'DELETE' && url.includes('/car')): {
+                case (method === 'DELETE' && url.includes('mock/car')): {
                     db.car = db.car.filter(car => car.id.toString() !== getIdFromUrl());
                     saveStorage(db);
                     return response200();
                 }
 
-                case (method === 'GET' && url.includes('/hero/list')): {
+                case (method === 'GET' && url.includes('mock/hero/list')): {
                     const response = getAll(db.hero);
                     return response200(response);
                 }
 
-                case (method === 'GET' && url.includes('/hero/search/')): {
+                case (method === 'GET' && url.includes('mock/hero/search/')): {
                     const items = db.hero.filter(hero => hero.name.toLowerCase().includes(getIdFromUrl().toLowerCase()));
                     return response200(items);
                 }
 
-                case (method === 'GET' && url.includes('/hero/')): {
+                case (method === 'GET' && url.includes('mock/hero/')): {
                     const item = db.hero.find(hero => hero.id.toString() === getIdFromUrl());
                     return response200({ item });
                 }
 
-                case (method === 'POST' && url.includes('/hero')): {
+                case (method === 'POST' && url.includes('mock/hero')): {
                     body.id = db.hero.length + 1;
                     db.hero.push(body);
                     saveStorage(db);
                     return response200({ item: body });
                 }
 
-                case (method === 'PUT' && url.includes('/hero')): {
+                case (method === 'PUT' && url.includes('mock/hero')): {
                     const index = db.hero.findIndex(hero => hero.id.toString() === getIdFromUrl());
                     body.id = db.hero[index].id;
                     db.hero[index] = body;
@@ -185,7 +186,7 @@ export class BackendInterceptor implements HttpInterceptor {
                     return response200({ item: body });
                 }
 
-                case (method === 'DELETE' && url.includes('/hero')): {
+                case (method === 'DELETE' && url.includes('mock/hero')): {
                     db.hero = db.hero.filter(hero => hero.id.toString() !== getIdFromUrl());
                     saveStorage(db);
                     return response200();

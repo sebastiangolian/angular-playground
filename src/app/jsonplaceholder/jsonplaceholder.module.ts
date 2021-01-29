@@ -8,6 +8,9 @@ import { JphUserItemsComponent } from './components/jph-user-items/jph-user-item
 import { JphUserAddressComponent } from './components/jph-user-address/jph-user-address.component';
 import { JphUserCompanyComponent } from './components/jph-user-company/jph-user-company.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { JphUserFormComponent } from './components/jph-user-form/jph-user-form.component';
+import { FormsModule } from '@angular/forms';
+import { JphUserModalComponent } from './components/jph-user-modal/jph-user-modal.component';
 
 
 @NgModule({
@@ -16,11 +19,14 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     JphComponent,
     JphUserItemsComponent,
     JphUserAddressComponent,
-    JphUserCompanyComponent
+    JphUserCompanyComponent,
+    JphUserFormComponent,
+    JphUserModalComponent
   ],
   imports: [
     CommonModule,
     JsonplaceholderRoutingModule,
+    FormsModule,
     BsDropdownModule.forRoot(),
     SharedModule
   ]

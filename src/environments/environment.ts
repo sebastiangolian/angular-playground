@@ -8,7 +8,7 @@ export const environment = {
   loggingBackendRequestHeaders: false,
   loggingBackendRequest: false,
   loggingBackendResponse: false,
-  apiEndpoint: '',
+  apiEndpoint: 'mock',
   messageDismissible: false,
   messageSuccessTimeout: 3000,
   messageInfoTimeout: 5000,
