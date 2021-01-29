@@ -20,8 +20,12 @@
         <td [innerHTML]="user.username"></td>
         <td [innerHTML]="user.phone"></td>
         <td [innerHTML]="user.website"></td>
-        <td><jph-user-address [address]="user.address"></jph-user-address></td>
-        <td><jph-user-company [company]="user.company"></jph-user-company></td>
+        <td>
+          <jph-user-address [address]="user.address"></jph-user-address>
+        </td>
+        <td>
+          <jph-user-company [company]="user.company"></jph-user-company>
+        </td>
         <td>
           <div class="btn-group" dropdown>
             <button id="dropdown-button" dropdownToggle type="button" class="btn
