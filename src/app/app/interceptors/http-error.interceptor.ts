@@ -3,10 +3,8 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { Message } from 'src/app/shared/interfaces/message.interface';
 import { MessageService } from 'src/app/shared/services/message.service';
 import { MessageType } from 'src/app/shared/enums/message-type.enum';
-import { MessageModel } from 'src/app/shared/models/message.model';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
@@ -17,56 +15,44 @@ export class HttpErrorInterceptor implements HttpInterceptor {
     return next.handle(request)
       .pipe(
         retry(environment.httpRetry),
-        catchError((error: HttpErrorResponse) => {
-          let message: Message;
-          if (error.error instanceof ErrorEvent) {
-            message = this.clientSideError(error.error);
+        catchError((errorResponse: HttpErrorResponse) => {
+          if (errorResponse.error instanceof ErrorEvent) {
+            this.clientSideError(errorResponse.error);
           } else {
-            message = this.serverSideError(error);
+            this.serverSideError(errorResponse, request);
           }
-          this.messageService.sendMessageByObject(message);
-          return throwError(message.text);
+          return throwError(errorResponse);
         })
       );
   }
 
-  clientSideError(error: ErrorEvent): Message {
-    const message: Message = new MessageModel();
-    message.text = error.error.message;
-    message.type = MessageType.ERROR;
-    return message;
+  clientSideError(error: ErrorEvent): void {
+    this.messageService.sendMessage(error.error.message, MessageType.ERROR)
   }
 
-  serverSideError(error: HttpErrorResponse): Message {
-    const message = new MessageModel();
+  serverSideError(error: HttpErrorResponse, request: HttpRequest<any>): void {
     switch (error.status) {
       case 401: {
-        message.text = 'Twoja sesja wygasła. Zaloguj się ponownie';
-        message.type = MessageType.INFO;
+        if (request.url.includes("/user/login")) break;
+        this.messageService.sendMessage('Twoja sesja wygasła. Zaloguj się ponownie', MessageType.INFO)
         break;
       }
       case 403: {
-        message.text = 'Nie masz uprawnień do tego zasobu';
-        message.type = MessageType.WARNING;
+        this.messageService.sendMessage('Nie masz uprawnień do tego zasobu', MessageType.WARNING)
         break;
       }
       case 404: {
-        message.text = 'Podany zasób nie istnieje';
-        message.type = MessageType.INFO;
+        this.messageService.sendMessage('Podany zasób nie istnieje', MessageType.INFO)
         break;
       }
       case 500: {
-        message.text = 'Wystąpił nieoczekiwany problem. Proszę spróbuj ponownie';
-        message.type = MessageType.ERROR;
+        this.messageService.sendMessage('Wystąpił nieoczekiwany problem. Proszę spróbuj ponownie', MessageType.ERROR)
         break;
       }
       default: {
-        message.text = `(${error.status}) ${error.message}`;
-        message.type = MessageType.ERROR;
+        this.messageService.sendMessage(`(${error.status}) ${error.message}`, MessageType.ERROR)
         break;
       }
     }
-
-    return message;
   }
 }
