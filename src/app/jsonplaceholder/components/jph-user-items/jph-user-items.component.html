@@ -9,8 +9,7 @@
         <th scope="col">Website</th>
         <th scope="col">Address</th>
         <th scope="col">Company</th>
-        <th scope="col"><button class="btn btn-sm btn-primary"
-            (click)="create.emit(true)">Create</button></th>
+        <th scope="col"><button class="btn btn-sm btn-primary" (click)="create.emit(true)">Create</button></th>
       </tr>
     </thead>
     <tbody>
@@ -28,16 +27,14 @@
         </td>
         <td>
           <div class="btn-group" dropdown>
-            <button id="dropdown-button" dropdownToggle type="button" class="btn
-              btn-outline-dark dropdown-toggle" aria-controls="dropdown-list">
+            <button id="dropdown-button" dropdownToggle type="button" class="btn btn-outline-dark dropdown-toggle"
+              aria-controls="dropdown-list">
               Actions <span class="caret"></span>
             </button>
             <ul id="dropdown-list" *dropdownMenu class="dropdown-menu"
               role="menu" aria-labelledby="button-basic">
-              <li role="menuitem"><a class="dropdown-item hand"
-                  (click)="update.emit(user)">Update</a></li>
-              <li role="menuitem"><a class="dropdown-item hand"
-                  (click)="delete.emit(user)">Delete</a></li>
+              <li role="menuitem"><a class="dropdown-item hand" (click)="update.emit(user)">Update</a></li>
+              <li role="menuitem"><a class="dropdown-item hand" (click)="delete.emit(user)">Delete</a></li>
             </ul>
           </div>
         </td>

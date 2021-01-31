@@ -37,7 +37,6 @@ export class JphUserComponent implements OnInit, OnDestroy {
   private postUser(user: JphUser): Subscription {
     return this.jphUserService.post(user).subscribe({
       complete: () => {
-        this.ngOnInit();
         this.messageService.sendMessage('Record created correctly');
       }
     });
@@ -46,7 +45,6 @@ export class JphUserComponent implements OnInit, OnDestroy {
   private putUser(user: JphUser): Subscription {
     return this.jphUserService.put(user).subscribe({
       complete: () => {
-        this.ngOnInit();
         this.messageService.sendMessage('Record updated correctly');
       }
     });
@@ -55,7 +53,6 @@ export class JphUserComponent implements OnInit, OnDestroy {
   private deleteUser(user: JphUser): Subscription {
     return this.jphUserService.delete(user).subscribe({
       complete: () => {
-        this.ngOnInit();
         this.messageService.sendMessage('Record deleted correctly');
       }
     });
@@ -63,24 +60,20 @@ export class JphUserComponent implements OnInit, OnDestroy {
 
   private postUserModal(): Subscription {
     return this.userModal(new JphUserModel()).subscribe({
-      next: (modalUser: JphUser | null) => {
-        if (modalUser !== null) { this.postUser(modalUser); }
-      },
+      next: (modalUser: JphUser) => this.postUser(modalUser),
       error: () => this.messageService.sendMessage('Create record failed', MessageType.ERROR)
     });
   }
 
   private putUserModal(user: JphUser): Subscription {
     return this.userModal(user).subscribe({
-      next: (modalUser: JphUser | null) => {
-        if (modalUser !== null) { this.putUser(modalUser); }
-      },
+      next: (modalUser: JphUser) => this.putUser(modalUser),
       error: () => this.messageService.sendMessage('Update record failed', MessageType.ERROR)
     });
   }
 
-  private userModal(user: JphUser): Observable<JphUser | null> {
-    const subject = new Subject<JphUser | null>();
+  private userModal(user: JphUser): Observable<JphUser> {
+    const subject = new Subject<JphUser>();
     let initialState: Partial<JphUserModalComponent> = {};
     if (user.id) {
       initialState = { user: user, title: 'Update user ' + user.id };
@@ -96,7 +89,6 @@ export class JphUserComponent implements OnInit, OnDestroy {
     if (modal.content) { modal.content.subject = subject; }
     return subject;
   }
-
 
   ngOnDestroy() {
     if (this.subscription) this.subscription.unsubscribe()

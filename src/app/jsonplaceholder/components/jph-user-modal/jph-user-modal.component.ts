@@ -1,5 +1,5 @@
 import { JphUser } from './../../interfaces/jph-user';
-import { Component, OnInit, ChangeDetectionStrategy, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
 import { Subject } from 'rxjs';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 
@@ -12,7 +12,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 export class JphUserModalComponent implements OnInit {
   @Input() user!: JphUser;
   @Input() title!: string;
-  subject: Subject<JphUser | null> = new Subject<JphUser | null>();
+  subject: Subject<JphUser> = new Subject<JphUser>();
 
   constructor(public bsModalRef: BsModalRef) { }
 
@@ -26,7 +26,6 @@ export class JphUserModalComponent implements OnInit {
 
   onCancel(): void {
     this.bsModalRef.hide();
-    this.subject.next(null);
     this.subject.complete();
   }
 
