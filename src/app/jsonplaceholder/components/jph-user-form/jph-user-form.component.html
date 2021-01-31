@@ -1,4 +1,4 @@
-<form *ngIf="user" name="form" (ngSubmit)="f.form.valid && submit.emit(user)" #f="ngForm" autocomplete="off">
+<form *ngIf="user" name="form" (ngSubmit)="f.form.valid && save.emit(user)" #f="ngForm" autocomplete="off">
     <div class="form-group">
         <label>Name:</label>
         <input type="text" class="form-control" name="title" [(ngModel)]="user.name" #name="ngModel" required />
@@ -6,7 +6,8 @@
 
     <div class="form-group">
         <label>Username:</label>
-        <input type="text" class="form-control" name="username" [(ngModel)]="user.username" #username="ngModel" required />
+        <input type="text" class="form-control" name="username" [(ngModel)]="user.username" #username="ngModel"
+            required />
     </div>
 
     <div class="form-group">
@@ -29,32 +30,38 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label>Street:</label>
-                <input type="text" class="form-control" name="street" [(ngModel)]="user.address.street" #street="ngModel" required />
+                <input type="text" class="form-control" name="street" [(ngModel)]="user.address.street"
+                    #street="ngModel" required />
             </div>
             <div class="form-group col-md-6">
                 <label>Suite:</label>
-                <input type="text" class="form-control" name="suite" [(ngModel)]="user.address.suite" #suite="ngModel" required />
+                <input type="text" class="form-control" name="suite" [(ngModel)]="user.address.suite" #suite="ngModel"
+                    required />
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label>Zipcode:</label>
-                <input type="text" class="form-control" name="zipcode" [(ngModel)]="user.address.zipcode" #zipcode="ngModel" required />
+                <input type="text" class="form-control" name="zipcode" [(ngModel)]="user.address.zipcode"
+                    #zipcode="ngModel" required />
             </div>
             <div class="form-group col-md-8">
                 <label>Suite:</label>
-                <input type="text" class="form-control" name="city" [(ngModel)]="user.address.city" #city="ngModel" required />
+                <input type="text" class="form-control" name="city" [(ngModel)]="user.address.city" #city="ngModel"
+                    required />
             </div>
         </div>
         <div ngModelGroup="geo">
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label>Lat:</label>
-                    <input type="text" class="form-control" name="lat" [(ngModel)]="user.address.geo.lat" #lat="ngModel" required />
+                    <input type="text" class="form-control" name="lat" [(ngModel)]="user.address.geo.lat" #lat="ngModel"
+                        required />
                 </div>
                 <div class="form-group col-md-4">
                     <label>Lng:</label>
-                    <input type="text" class="form-control" name="lng" [(ngModel)]="user.address.geo.lng" #lng="ngModel" required />
+                    <input type="text" class="form-control" name="lng" [(ngModel)]="user.address.geo.lng" #lng="ngModel"
+                        required />
                 </div>
             </div>
         </div>
@@ -63,11 +70,13 @@
         <h2>Company</h2>
         <div class="form-group">
             <label>Name:</label>
-            <input type="text" class="form-control" name="name" [(ngModel)]="user.company.name" #name="ngModel" required />
+            <input type="text" class="form-control" name="name" [(ngModel)]="user.company.name" #name="ngModel"
+                required />
         </div>
         <div class="form-group">
             <label>CatchPhrase:</label>
-            <input type="text" class="form-control" name="catchPhrase" [(ngModel)]="user.company.catchPhrase" #catchPhrase="ngModel" required />
+            <input type="text" class="form-control" name="catchPhrase" [(ngModel)]="user.company.catchPhrase"
+                #catchPhrase="ngModel" required />
         </div>
         <div class="form-group">
             <label>Bs:</label>
