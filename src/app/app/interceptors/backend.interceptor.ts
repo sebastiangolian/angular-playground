@@ -32,17 +32,50 @@ export class BackendInterceptor implements HttpInterceptor {
 
             let db: DbBackend = {
                 user: [
-                    // { id: '1', email: 'jan.kowalski@example.pl', zipCode: '11-111', created: '2020-04-01 12:02:28', active: false, documentLink: getPdfUrl(), idRole: '1' },
-                    // { id: '2', email: 'anna.nowak@example.pl', zipCode: '22-222', created: '2020-04-01 13:02:28', active: false, documentLink: getPdfUrl(), idRole: '1' },
-                    // { id: '3', email: 'henryk.kuczynski@example.pl', zipCode: '33-333', created: '2020-04-01 14:02:28', active: false, documentLink: getPdfUrl(), idRole: '1' },
-                    // { id: '4', email: 'zdzislaw.kowalski@example.pl', zipCode: '44-444', created: '2020-04-01 15:02:28', active: false, documentLink: getPdfUrl(), idRole: '1' },
-                    // { id: '5', email: 'cezary.kowal@example.pl', zipCode: '55-555', created: '2020-04-01 16:02:28', active: false, documentLink: getPdfUrl(), idRole: '1' },
-                    // { id: '6', email: 'jerzy.tusk@example.pl', zipCode: '66-666', created: '2020-04-02 12:02:28', active: false, documentLink: getPdfUrl(), idRole: '1' },
-                    // { id: '7', email: 'wojciech.walewski@example.pl', zipCode: '77-777', created: '2020-04-02 13:02:28', active: false, documentLink: getPdfUrl(), idRole: '1' },
-                    // { id: '8', email: 'andrzej.nowaczek@example.pl', zipCode: '88-888', created: '2020-04-02 14:02:28', active: false, documentLink: getPdfUrl(), idRole: '1' },
-                    // { id: '9', email: 'krystian.kowalewski@example.pl', zipCode: '99-999', created: '2020-04-02 15:02:28', active: false, documentLink: getPdfUrl(), idRole: '1' },
-                    // { id: '10', email: 'michal.adamczuk@example.pl', zipCode: '00-111', created: '2020-04-02 16:02:28', active: false, documentLink: getPdfUrl(), idRole: '1' },
-                    // { id: '11', email: 'adam.adamowicz@example.pl', zipCode: '00-222', created: '2020-04-02 17:02:28', active: false, documentLink: getPdfUrl(), idRole: '1' },
+                    // {
+                    //     id: '1', email: 'jan.kowalski@example.pl', zipCode: '11-111', created: '2020-04-01 12:02:28',
+                    //     active: false, documentLink: getPdfUrl(), idRole: '1'
+                    // },
+                    // {
+                    //     id: '2', email: 'anna.nowak@example.pl', zipCode: '22-222', created: '2020-04-01 13:02:28',
+                    //     active: false, documentLink: getPdfUrl(), idRole: '1'
+                    // },
+                    // {
+                    //     id: '3', email: 'henryk.kuczynski@example.pl', zipCode: '33-333', created: '2020-04-01 14:02:28',
+                    //     active: false, documentLink: getPdfUrl(), idRole: '1'
+                    // },
+                    // {
+                    //     id: '4', email: 'zdzislaw.kowalski@example.pl', zipCode: '44-444', created: '2020-04-01 15:02:28',
+                    //     active: false, documentLink: getPdfUrl(), idRole: '1'
+                    // },
+                    // {
+                    //     id: '5', email: 'cezary.kowal@example.pl', zipCode: '55-555', created: '2020-04-01 16:02:28',
+                    //     active: false, documentLink: getPdfUrl(), idRole: '1'
+                    // },
+                    // {
+                    //     id: '6', email: 'jerzy.tusk@example.pl', zipCode: '66-666', created: '2020-04-02 12:02:28',
+                    //     active: false, documentLink: getPdfUrl(), idRole: '1'
+                    // },
+                    // {
+                    //     id: '7', email: 'wojciech.walewski@example.pl', zipCode: '77-777', created: '2020-04-02 13:02:28',
+                    //     active: false, documentLink: getPdfUrl(), idRole: '1'
+                    // },
+                    // {
+                    //     id: '8', email: 'andrzej.nowaczek@example.pl', zipCode: '88-888', created: '2020-04-02 14:02:28',
+                    //     active: false, documentLink: getPdfUrl(), idRole: '1'
+                    // },
+                    // {
+                    //     id: '9', email: 'krystian.kowalewski@example.pl', zipCode: '99-999', created: '2020-04-02 15:02:28',
+                    //     active: false, documentLink: getPdfUrl(), idRole: '1'
+                    // },
+                    // {
+                    //     id: '10', email: 'michal.adamczuk@example.pl', zipCode: '00-111', created: '2020-04-02 16:02:28',
+                    //     active: false, documentLink: getPdfUrl(), idRole: '1'
+                    // },
+                    // {
+                    //     id: '11', email: 'adam.adamowicz@example.pl', zipCode: '00-222', created: '2020-04-02 17:02:28',
+                    //     active: false, documentLink: getPdfUrl(), idRole: '1'
+                    // },
                 ],
                 role: [
                     { id: '1', name: 'admin' },
@@ -73,10 +106,13 @@ export class BackendInterceptor implements HttpInterceptor {
             if (!db.user) {
                 db.user = [];
                 for (let i = 1; i <= 100; i++) {
-                    db.user.push({ id: i.toString(), email: 'example' + i + '@o2.pl', zipCode: '11-111', created: DateTimeHelper.currentDateTime(), active: true, documentLink: getPdfUrl(), idRole: '1' });
+                    db.user.push({
+                        id: i.toString(), email: 'example' + i + '@o2.pl', zipCode: '11-111',
+                        created: DateTimeHelper.currentDateTime(), active: true, documentLink: getPdfUrl(), idRole: '1'
+                    });
                 }
             }
-            console.log(url)
+            console.log(url);
             switch (true) {
 
                 case (method === 'GET' && url.includes('mock/user/list')): {

@@ -1,6 +1,6 @@
 import { JphUser } from './../../interfaces/jph-user';
 import { Component, OnInit, ChangeDetectionStrategy, Input, EventEmitter, Output } from '@angular/core';
-import { JphUserCompanyModel, JphUserModel } from '../../models/jph-user.model';
+import { JphUserModel } from '../../models/jph-user.model';
 
 @Component({
   selector: 'jph-user-form',
@@ -10,19 +10,19 @@ import { JphUserCompanyModel, JphUserModel } from '../../models/jph-user.model';
 })
 export class JphUserFormComponent implements OnInit {
 
-  @Input() user: JphUser = new JphUserModel()
-  @Output() submit: EventEmitter<JphUser> = new EventEmitter();
+  @Input() user: JphUser = new JphUserModel();
+  @Output() save: EventEmitter<JphUser> = new EventEmitter();
   @Output() cancel: EventEmitter<boolean> = new EventEmitter();
 
-  buttonSubmitText: string = 'Create'
+  buttonSubmitText = 'Create';
 
   constructor() { }
 
   ngOnInit(): void {
     if (!this.user.id) {
-      this.buttonSubmitText = 'Create'
+      this.buttonSubmitText = 'Create';
     } else {
-      this.buttonSubmitText = 'Update'
+      this.buttonSubmitText = 'Update';
     }
   }
 

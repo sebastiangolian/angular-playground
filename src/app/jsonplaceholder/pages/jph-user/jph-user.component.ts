@@ -19,18 +19,18 @@ export class JphUserComponent implements OnInit, OnDestroy {
   constructor(private jphUserService: JphUserService, private modalService: BsModalService, private messageService: MessageService) { }
 
   ngOnInit(): void {
-    this.users$ = this.jphUserService.get()
+    this.users$ = this.jphUserService.get();
   }
 
-  onCreate() {
+  onCreate(): void {
     this.subscription.add(this.postUserModal());
   }
 
-  onUpdate(user: JphUser) {
+  onUpdate(user: JphUser): void {
     this.subscription.add(this.putUserModal(user));
   }
 
-  onDelete(user: JphUser) {
+  onDelete(user: JphUser): void {
     this.subscription.add(this.deleteUser(user));
   }
 
@@ -76,9 +76,9 @@ export class JphUserComponent implements OnInit, OnDestroy {
     const subject = new Subject<JphUser>();
     let initialState: Partial<JphUserModalComponent> = {};
     if (user.id) {
-      initialState = { user: user, title: 'Update user ' + user.id };
+      initialState = { user, title: 'Update user ' + user.id };
     } else {
-      initialState = { user: user, title: 'Create user' };
+      initialState = { user, title: 'Create user' };
     }
 
     const modal = this.modalService.show(JphUserModalComponent, {
@@ -90,8 +90,8 @@ export class JphUserComponent implements OnInit, OnDestroy {
     return subject;
   }
 
-  ngOnDestroy() {
-    if (this.subscription) this.subscription.unsubscribe()
+  ngOnDestroy(): void {
+    if (this.subscription) { this.subscription.unsubscribe(); }
   }
 
 }
