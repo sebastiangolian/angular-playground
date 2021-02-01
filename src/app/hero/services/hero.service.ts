@@ -30,9 +30,9 @@ export class HeroService extends AbstractService<Hero> {
     return super.getById(id);
   }
 
-  getByName(name: string): Observable<Api<Hero[]>> {
+  getByName(name: string): Observable<ApiList<Hero>> {
     this.heroMessageService.add('HeroService.getByName: ' + name);
-    return this.http.get<Api<Hero[]>>(this.url + '/search/' + name);
+    return this.http.get<ApiList<Hero>>(this.url + '/search/' + name);
   }
 
   create(item: Hero): Observable<any> {

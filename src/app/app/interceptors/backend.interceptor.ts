@@ -115,13 +115,12 @@ export class BackendInterceptor implements HttpInterceptor {
             switch (true) {
 
                 case (method === 'GET' && url.includes('mock/user/list')): {
-                    const response = getAll(db.user);
-                    return response200(response);
+                    return response200(getAll(db.user));
                 }
 
                 case (method === 'GET' && url.includes('mock/user/')): {
-                    const item = db.user.find(user => user.id.toString() === getIdFromUrl());
-                    return response200({ item });
+                    const user = db.user.find(user => user.id.toString() === getIdFromUrl());
+                    return response200({ item: user });
                 }
 
                 case (method === 'POST' && url.includes('mock/user')): {
@@ -145,7 +144,6 @@ export class BackendInterceptor implements HttpInterceptor {
                     db.user = db.user.filter(user => user.id.toString() !== getIdFromUrl());
                     saveStorage(db);
                     return response200();
-                    // return responseError(400, "Nie masz uprawnień, żeby usuwać użytkowników.")
                 }
 
                 case (method === 'PATCH' && url.includes('mock/user')): {
@@ -156,22 +154,19 @@ export class BackendInterceptor implements HttpInterceptor {
                 }
 
                 case (method === 'GET' && url.includes('mock/role/list')): {
-                    const response = getAll(db.role);
-                    return response200(response);
+                    return response200(getAll(db.role));
                 }
 
                 case (method === 'GET' && url.includes('mock/car/list')): {
-                    const response = getAll(db.car);
-                    return response200(response);
+                    return response200(getAll(db.car));
                 }
 
                 case (method === 'GET' && url.includes('mock/car')): {
-                    const item = db.car.find(car => car.id.toString() === getIdFromUrl());
-                    return response200({ item });
+                    const car = db.car.find(car => car.id.toString() === getIdFromUrl());
+                    return response200({ item: car });
                 }
 
                 case (method === 'POST' && url.includes('mock/car')): {
-                    // body.id = db.car.length + 1
                     db.car.push(body);
                     saveStorage(db);
                     return response200({ item: body });
@@ -192,18 +187,17 @@ export class BackendInterceptor implements HttpInterceptor {
                 }
 
                 case (method === 'GET' && url.includes('mock/hero/list')): {
-                    const response = getAll(db.hero);
-                    return response200(response);
+                    return response200(getAll(db.hero));
                 }
 
                 case (method === 'GET' && url.includes('mock/hero/search/')): {
                     const items = db.hero.filter(hero => hero.name.toLowerCase().includes(getIdFromUrl().toLowerCase()));
-                    return response200(items);
+                    return response200(getAll(items));
                 }
 
                 case (method === 'GET' && url.includes('mock/hero/')): {
                     const item = db.hero.find(hero => hero.id.toString() === getIdFromUrl());
-                    return response200({ item });
+                    return response200({ item: item });
                 }
 
                 case (method === 'POST' && url.includes('mock/hero')): {
