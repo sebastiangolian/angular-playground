@@ -13,7 +13,7 @@
                         <th scope="col"><a (click)="onSort('active')">Is active <span *ngIf="sortBy === 'active'" [innerHTML]="getSortClass('active')"></span></a></th>
                         <th scope="col"><a (click)="onSort('IdRole')">Role <span *ngIf="sortBy === 'idRole'" [innerHTML]="getSortClass('idRole')"></span></a></th>
                         <th scope="col">
-                            <select *ngIf="limitEnabled" class="form-control form-control-sm float-right" name="limit" id="limit" (change)="onChangeLimit($event.target)">
+                            <select *ngIf="limitEnabled" class="form-control form-control-sm float-right" name="limit" id="limit" (change)="onChangeLimit(limitSelect.value)" #limitSelect>
                                 <option *ngFor="let value of limitValues" [ngValue]="value"
                                     [selected]="value === this.limit">{{value}}</option>
                             </select>
