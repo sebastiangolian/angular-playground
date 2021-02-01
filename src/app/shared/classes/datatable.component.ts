@@ -8,20 +8,20 @@ import { NgForm } from '@angular/forms';
 export class DatatableComponent<T> implements OnInit {
 
   items: T[] = [];
-  filterError = false;
-  total = 0;
-  page = 1;
+  filterError: boolean = false;
+  total: number = 0;
+  page: number = 1;
 
-  limitEnabled = true;                             // limit - wyłączenie
-  sortEnabled = true;                              // sortowanie - wyłączenie
-  filterEnabled = true;                            // filtrowanie - wyłączenie
-  limit = 10;                                       // paginacja - ilość rekordów na stronie
-  limitValues: number[] = [5, 10, 20];                      // paginacja - wartości
-  sortBy = '';                                      // sortowanie - kolumna
-  order = 'asc';                                    // sortowanie - kierunek
-  filters: any = {};                                        // filtrowanie - obiekt z filtrami
-  filterMinLength = 3;                              // filtrowanie - minimalna ilość znaków
-  filterOneSign: string[] = [];                             // filtrowanie - tablica właściwości do filtrowania po jednym znaku
+  limitEnabled: boolean = true;                       // limit - wyłączenie
+  sortEnabled: boolean = true;                        // sortowanie - wyłączenie
+  filterEnabled: boolean = true;                      // filtrowanie - wyłączenie
+  limit: number = 10;                                 // paginacja - ilość rekordów na stronie
+  limitValues: number[] = [5, 10, 20];                // paginacja - wartości
+  sortBy: string = '';                                // sortowanie - kolumna
+  order: string = 'asc';                              // sortowanie - kierunek
+  filters: any = {};                                  // filtrowanie - obiekt z filtrami
+  filterMinLength: number = 3;                        // filtrowanie - minimalna ilość znaków
+  filterOneSign: string[] = [];                       // filtrowanie - tablica właściwości do filtrowania po jednym znaku
 
   onRefresh(): void { }
 

@@ -103,7 +103,7 @@ export class BackendInterceptor implements HttpInterceptor {
 
             db = loadStorage(db);
 
-            if (!db.user) {
+            if (db.user.length == 0) {
                 db.user = [];
                 for (let i = 1; i <= 100; i++) {
                     db.user.push({
@@ -112,7 +112,6 @@ export class BackendInterceptor implements HttpInterceptor {
                     });
                 }
             }
-            console.log(url);
             switch (true) {
 
                 case (method === 'GET' && url.includes('mock/user/list')): {

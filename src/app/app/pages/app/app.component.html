@@ -1,23 +1,57 @@
-<body>
-    <header
-        class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white text-dark border-bottom shadow">
-        <h5 class="my-0 mr-4"><a routerLink="home">angular-playground</a></h5>
-        <nav class="my-2 my-md-0 mr-md-3">
-            <a class="p-2" routerLink="test" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Test</a>
-            <a class="p-2" routerLink="user" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Users</a>
-            <a class="p-2" routerLink="post" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Posts</a>
-            <a class="p-2" routerLink="hero" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Hero</a>
-            <a class="p-2" routerLink="car" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Cars</a>
-            <a class="p-2" routerLink="wikipedia" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Wikipedia</a>
-            <a class="p-2" routerLink="leaflet" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Leaflet</a>
-            <a class="p-2" routerLink="photo" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Photo</a>
-            <a class="p-2" routerLink="jsonplaceholder" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Jsonplaceholder</a>
-        </nav>
-        <form class="my-2 my-md-0 mr-md-3 ml-auto">
-            <button class="btn btn-outline-dark my-2 my-sm-0" (click)="onReset()">Clear memory</button>
-        </form>
-    </header>
-    <main class="container-fluid">
+<body class="h-100 d-flex flex-column">
+    <nav class="navbar navbar-expand-sm navbar-light bg-light border-bottom">
+        <div class="container-xl">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                (click)="isCollapsed = !isCollapsed">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="#">angular-playground</a>
+            <div [collapse]=isCollapsed class="collapse navbar-collapse" id="navbar-content">
+                <ul class="navbar-nav ml-auto mr-5">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="test" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{ exact: true }">Test</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="user" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{ exact: true }">Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="post" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{ exact: true }">Posts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="hero" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{ exact: true }">Hero</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="car" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{ exact: true }">Cars</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="wikipedia" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{ exact: true }">Wikipedia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="leaflet" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{ exact: true }">Leaflet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="photo" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{ exact: true }">Photo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="jsonplaceholder" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{ exact: true }">Jsonplaceholder</a>
+                    </li>
+                </ul>
+                <button class="btn btn-outline-dark my-2 my-sm-0" (click)="onReset()">Clear memory</button>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main" class="container pt-4 position-relative flex-grow-1 my-2">
         <app-spinner></app-spinner>
         <!-- <messages-alert></messages-alert> -->
         <messages-modal></messages-modal>
@@ -26,16 +60,31 @@
         </ng-container>
         <router-outlet></router-outlet>
     </main>
-    <footer class="container-fluid mt-4 pt-3 border-top">
-        <div class="row">
-            <div class="col-6 col-md">
-                <ul class="list-unstyled">
-                    <li><a routerLink="home">Home</a></li>
-                </ul>
-            </div>
-            <div class="col-6 col-md"></div>
-            <div class="col-12 col-md text-right">
-                sebastiangolian@gmail.com 2020
+
+    <footer class="text-light bg-dark">
+        <div class="container p-4">
+            <div class="row text-center d-flex align-items-center">
+                <div class="col-md-4 text-md-left py-2">
+                    <a href="#" class="text-light">Home</a>
+                </div>
+                <div class="col-md-4 py-2">
+                    <a class="text-light text-decoration-none mr-2" href="#">
+                        <icon-b width="32" height="32" name="facebook"></icon-b>
+                    </a>
+                    <a class="text-light text-decoration-none mr-2" href="#">
+                        <icon-b width="32" height="32" name="twitter"></icon-b>
+                    </a>
+                    <a class="text-light text-decoration-none mr-2" href="#">
+                        <icon-b width="32" height="32" name="instagram"></icon-b>
+                    </a>
+                    <i class="fab fa-facebook fa-2x mr-1"></i>
+                    <i class="fab fa-twitter fa-2x mr-1"></i>
+                    <i class="fab fa-instagram fa-2x mr-1"></i>
+                    <i class="fab fa-tiktok fa-2x"></i>
+                </div>
+                <div class="col-md-4 text-md-right py-2">
+                    <a href="mailto:sebastiangolian@gmail.com" class="text-white">sebastiangolian@gmail.com </a>2021
+                </div>
             </div>
         </div>
     </footer>

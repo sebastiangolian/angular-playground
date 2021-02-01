@@ -9,9 +9,11 @@ import { HeaderService } from 'src/app/shared/services/header.service';
 })
 export class AppComponent {
   title = 'angular-playground';
-  $header: Observable<string>  = this.headerService.getWithSetTitle();
+  isCollapsed = true;
 
-  constructor(public headerService: HeaderService) {}
+  $header: Observable<string> = this.headerService.getWithSetTitle();
+
+  constructor(public headerService: HeaderService) { }
 
   onReset(): void {
     localStorage.clear();

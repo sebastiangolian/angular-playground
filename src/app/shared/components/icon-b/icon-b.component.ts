@@ -1,7 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-icon-b',
+  selector: 'icon-b',
   templateUrl: './icon-b.component.html',
   styleUrls: ['./icon-b.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -13,6 +13,7 @@ export class IconBComponent implements OnInit {
   @Input() height = '22';
   @Input() class = 'icon-color';
   @Input() title = '';
+  @Output() click: EventEmitter<Event> = new EventEmitter();
 
   href = '/assets/icons/';
 

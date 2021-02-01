@@ -1,99 +1,11 @@
-/************************** LAYOUT *************************************/
-
-html {
-    height: 100%;
-    font-size: 12px;
-}
-
 body {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
     font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif!important;
 }
-
-main {
-    flex: 1 0 auto;
-}
-
-footer {
-    flex-shrink: 0;
-    padding: 20px;
-    background-color: #262626;
-    color: white;
-}
-
-footer a[href] {
-    color: white;
-}
-
-/************************** HTML *************************************/
-a[href] {
-    color: darkslategrey;
-}
-
-h1 {
-    font-size: 2em;
-}
-
-h2 {
-    font-size: 1.5em;
-}
-
-h3 {
-    font-size: 1em;
-}
-
-/************************** CLASS *************************************/
 
 .hand {
     cursor: pointer;
 }
 
-.btn-primary {
-    background-color: #272B30;
-    border: none;
-}
-
-.btn-primary.disabled, .btn-primary:disabled {
-    background-color: #343A40;
-    border: none;
-}
-
-.btn-primary:hover {
-    background-color: #474849;
-    border-color: #474849;
-}
-
-.bg-primary .icon {
-    filter: invert(1);
-}
-
-.icon-color {
-    filter: invert(20%) sepia(2%) saturate(2878%) hue-rotate(169deg) brightness(94%) contrast(89%);
-}
-
-/************************** ID *************************************/
-
-#limit {
-    width: 100px;
-}
-
-/************************** TABLE *************************************/
-
-.table thead th {
-    border: 0;
-    vertical-align: middle;
-    background-color: #8A8A8A;
-    cursor: pointer;
-    color: white;
-}
-
-.table thead th:nth-last-child() {
-    margin-left: 5px
-}
-
-.table-sm td, .table-sm th {
-    padding: .45rem;
-    vertical-align: middle;
+.no-outline {
+    outline: none;
 }

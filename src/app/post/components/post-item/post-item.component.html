@@ -3,7 +3,7 @@
         <h3 class="card-title">{{ model.title}} <span class="text-muted float-right">({{model.id}})</span></h3>
         <p class="card-text">{{ model.body}}</p>
         <div class="btn-group" role="group" aria-label="Basic example">
-            <button class="btn btn-primary"(click)="onEdit(model)">Edit</button>
+            <button class="btn btn-dark" (click)="onEdit(model)">Edit</button>
             <button class="btn btn-danger" (click)="onDelete(model)">Delete</button>
         </div>
     </div>
