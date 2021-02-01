@@ -1,23 +1,26 @@
 import { Injectable } from '@angular/core';
-import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor} from '@angular/common/http';
+import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { finalize, tap } from 'rxjs/operators';
+import { finalize } from 'rxjs/operators';
 import { SpinnerService } from '../services/spinner.service';
 
 @Injectable()
 export class SpinnerInterceptor implements HttpInterceptor {
+  private visible: boolean = true
+  private delay: number = 300         //delay visible in milliseconds
 
   constructor(public spinnerService: SpinnerService) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    this.spinnerService.show();
-    const start = performance.now();
+    this.visible = true
+    setTimeout(() => {
+      if (this.visible) this.spinnerService.show()
+    }, this.delay)
+
     return next.handle(req).pipe(
-      tap(res => {
-        if (performance.now() - start > 500) {
-          this.spinnerService.show();
-        }
-      }),
-      finalize(() => this.spinnerService.hide())
+      finalize(() => {
+        this.visible = false
+        this.spinnerService.hide()
+      })
     );
   }
 }
