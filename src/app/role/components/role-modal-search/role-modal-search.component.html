@@ -1,5 +1,5 @@
 <div class="modal-body clearfix">
-    <div class="modal-header">
+    <div class="modal-header border-0">
         <h4 class="modal-title">Select role</h4>
     </div>
     <div class="modal-text">
@@ -8,10 +8,8 @@
             <div class="datatable table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
-                        <th scope="col"><a (click)="onSort('id')">Id <span *ngIf="sortBy === 'created'"
-                                    [innerHTML]="getSortClass('id')"></span></a></th>
-                        <th scope="col"><a (click)="onSort('name')">Name <span *ngIf="sortBy === 'name'"
-                                    [innerHTML]="getSortClass('name')"></span></a></th>
+                        <th scope="col"><a (click)="onSort('id')">Id <span *ngIf="sortBy === 'created'" [innerHTML]="getSortClass('id')"></span></a></th>
+                        <th scope="col"><a (click)="onSort('name')">Name <span *ngIf="sortBy === 'name'" [innerHTML]="getSortClass('name')"></span></a></th>
                         <th scope="col">
                             <select *ngIf="limitEnabled" class="form-control form-control-sm float-right" name="limit" id="limit" (change)="onChangeLimit(limitSelect.value)" #limitSelect>
                                 <option *ngFor="let value of limitValues" [ngValue]="value"
@@ -22,11 +20,9 @@
                     <tr *ngIf="filterEnabled">
                         <th><input type="text" class="form-control form-control-sm" name="id" [(ngModel)]="model.id" #id="ngModel"></th>
                         <th><input type="text" class="form-control form-control-sm" name="name" [(ngModel)]="model.name" #name="ngModel"></th>
-                        <th style="width: 73px;">
-                            <div class="btn-group">
-                                <input type="image" class="form-control form-control-sm mr-1" src="/assets/icons/search.svg" width="20" height="20" title="Searcg" />
-                                <input type="image" class="form-control form-control-sm" src="/assets/icons/x.svg" alt="" width="24" height="24" title="Clear filter" (click)="f.reset();$event.preventDefault();onFilterReset();" />
-                            </div>
+                        <th class="btn-group border-0 float-right">
+                            <input type="image" class="mt-1 no-outline" src="/assets/icons/search.svg" width="20" height="20" title="Search" />
+                            <input type="image" class="no-outline" src="/assets/icons/x.svg" width="32" height="32" title="Clear filter" (click)="f.reset();$event.preventDefault();onFilterReset();" />
                         </th>
                     </tr>
                     <tbody *ngIf="items">
