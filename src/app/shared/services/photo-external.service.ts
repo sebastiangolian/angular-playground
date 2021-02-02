@@ -10,7 +10,7 @@ export class PhotoExternalService {
 
   constructor(protected http: HttpClient) { }
 
-  getBlobUrl(url: string): Observable<any> {
+  getBlobUrl(url: string): Observable<string> {
     return this.http.get(url, { responseType: 'blob', observe: 'response' }).pipe(
       map(api => api.body),
       map(body => {
@@ -18,7 +18,7 @@ export class PhotoExternalService {
           const blob = new Blob([body], { type: 'image/jpeg' });
           return URL.createObjectURL(blob);
         } else {
-          return null
+          return ''
         }
       })
     );

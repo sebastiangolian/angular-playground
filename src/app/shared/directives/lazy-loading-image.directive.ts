@@ -1,7 +1,8 @@
+import { PhotoExternalService } from './../services/photo-external.service';
 import { HttpClient } from '@angular/common/http';
 import { Directive, ElementRef, EventEmitter, Input, Output, OnDestroy } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
+import { MemoryStorageService } from '../services/memory-storage.service';
 
 @Directive({
   selector: '[lazyLoadingImage]'
@@ -10,19 +11,21 @@ export class LazyLoadingImageDirective implements OnDestroy {
   private subscription: Subscription = new Subscription();
 
   @Input() isBlob = false;
+  @Input() saveInMemory = true
   @Output() visibleChange = new EventEmitter<boolean>();
   private isVisible = false;
 
-  constructor(private element: ElementRef, protected http: HttpClient) {
+  constructor(private element: ElementRef, protected http: HttpClient, private memoryStorageService: MemoryStorageService,
+    private photoExternalService: PhotoExternalService) {
     this.visibleChange.emit(false);
 
     const intersectionObserverCallback = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting && !this.isVisible) {
-          if (this.isBlob) {
-            this.subscription.add(this.getBlobUrlSubscription(this.element.nativeElement.getAttribute('data-src')));
+          if (this.saveInMemory) {
+            this.setSrcFromMemory()
           } else {
-            this.element.nativeElement.src = this.element.nativeElement.getAttribute('data-src');
+            this.setSrc()
           }
           this.isVisible = true;
           this.visibleChange.emit(true);
@@ -34,21 +37,28 @@ export class LazyLoadingImageDirective implements OnDestroy {
     intersectionObserver.observe(this.element.nativeElement);
   }
 
-  getBlobUrlObservable(url: string): Observable<string> {
-    return this.http.get(url, { responseType: 'blob', observe: 'response' }).pipe(
-      map(api => api.body),
-      map(body => {
-        if (body) {
-          return URL.createObjectURL(new Blob([body]));
-        } else {
-          return '';
-        }
-      })
-    );
+  private getBlobUrlSubscription(src: string): Subscription {
+    return this.photoExternalService.getBlobUrl(src).subscribe(url => {
+      this.element.nativeElement.src = url
+      if (this.saveInMemory) this.memoryStorageService.add('lazy-loading-image', src, url)
+    });
   }
 
-  getBlobUrlSubscription(src: string): Subscription {
-    return this.getBlobUrlObservable(src).subscribe(url => this.element.nativeElement.src = url);
+  private setSrcFromMemory(): void {
+    const memoryUrl = this.memoryStorageService.get('lazy-loading-image', this.element.nativeElement.getAttribute('data-src'))
+    if (memoryUrl) {
+      this.element.nativeElement.src = memoryUrl
+    } else {
+      this.setSrc()
+    }
+  }
+
+  private setSrc() {
+    if (this.isBlob) {
+      this.subscription.add(this.getBlobUrlSubscription(this.element.nativeElement.getAttribute('data-src')));
+    } else {
+      this.element.nativeElement.src = this.element.nativeElement.getAttribute('data-src');
+    }
   }
 
   ngOnDestroy(): void {
