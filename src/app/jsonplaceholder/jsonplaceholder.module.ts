@@ -11,6 +11,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { JphUserFormComponent } from './components/jph-user-form/jph-user-form.component';
 import { FormsModule } from '@angular/forms';
 import { JphUserModalComponent } from './components/jph-user-modal/jph-user-modal.component';
+import { JphPhotoComponent } from './pages/jph-photo/jph-photo.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { JphUserModalComponent } from './components/jph-user-modal/jph-user-moda
     JphUserAddressComponent,
     JphUserCompanyComponent,
     JphUserFormComponent,
-    JphUserModalComponent
+    JphUserModalComponent,
+    JphPhotoComponent
   ],
   imports: [
     CommonModule,
