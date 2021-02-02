@@ -10,6 +10,7 @@ import { UserSearchComponent } from './pages/user-search/user-search.component';
 import { UserIndexComponent } from './pages/user-index/user-index.component';
 import { UserItemComponent } from './pages/user-item/user-item.component';
 import { RoleModule } from '../role/role.module';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { RoleModule } from '../role/role.module';
     FormsModule,
     RoleModule,
     NgxMaskModule.forRoot(),
+    BsDropdownModule.forRoot(),
   ]
 })
 export class UserModule { }

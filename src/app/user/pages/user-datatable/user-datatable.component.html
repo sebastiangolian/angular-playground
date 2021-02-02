@@ -47,23 +47,18 @@
                             <td>{{item.zipCode}}</td>
                             <td>{{item.active | boolean}}</td>
                             <td>{{item.idRole}}</td>
-                            <td class="text-right">
-                                <a class="mr-1" (click)="onView(item)">
-                                    <icon-b name="eye" title="View"></icon-b>
-                                </a>
-                                <a class="mr-1" (click)="onSetRole(item)">
-                                    <icon-b name="person-plus" title="Set role"></icon-b>
-                                </a>
-                                <a class="mr-1" (click)="onEdit(item)">
-                                    <icon-b name="pencil" title="Edit" width="20" height="20"></icon-b>
-                                </a>
-                                <a class="mr-1" (click)="onDownload(item)">
-                                    <icon-b name="download" title="Download"></icon-b>
-                                </a>
-                                <a class="mr-1" (click)="onDelete(item)">
-                                    <icon-b name="trash" title="Delete" width="20" height="20"></icon-b>
-                                </a>
-                            </td>
+                            <div class="btn-group" dropdown>
+                                <button id="dropdown-button" dropdownToggle type="button" class="btn btn-sm btn-outline-dark dropdown-toggle" aria-controls="dropdown-list">
+                                  Actions <span class="caret"></span>
+                                </button>
+                                <ul id="dropdown-list" *dropdownMenu class="dropdown-menu left-minus-85" role="menu" aria-labelledby="button-basic">
+                                    <li role="menuitem"><a class="dropdown-item hand" (click)="onView(item)">View</a></li>
+                                    <li role="menuitem"><a class="dropdown-item hand" (click)="onEdit(item)">Edit</a></li>
+                                    <li role="menuitem"><a class="dropdown-item hand" (click)="onSetRole(item)">Set role</a></li>
+                                    <li role="menuitem"><a class="dropdown-item hand" (click)="onDownload(item)">Download</a></li>
+                                    <li role="menuitem"><a class="dropdown-item hand" (click)="onDelete(item)">Delete</a></li>
+                                </ul>
+                            </div>
                         </tr>
                     </tbody>
                     <caption *ngIf="!items">No records</caption>

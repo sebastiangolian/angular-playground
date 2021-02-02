@@ -9,3 +9,7 @@ body {
 .no-outline {
     outline: none;
 }
+
+.left-minus-85 {
+    left: -85px!important;
+}
