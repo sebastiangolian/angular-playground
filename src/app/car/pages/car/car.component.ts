@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HeaderService } from 'src/app/shared/services/header.service';
 import { MessageService } from 'src/app/shared/services/message.service';
@@ -11,10 +11,12 @@ import { CarService } from '../../services/car.service';
   templateUrl: './car.component.html',
   styleUrls: ['./car.component.css']
 })
-export class CarComponent implements OnInit {
+export class CarComponent implements OnInit, OnDestroy {
 
   cars: Observable<Car[]> = new Observable<Car[]>();
   updatedCar: Car = { id: '', brand: '', name: '' };
+  isUpdated: boolean = false
+  private subscription: Subscription = new Subscription();
 
   constructor(private headerService: HeaderService, private carService: CarService, private messageService: MessageService) {
     this.headerService.set('Cars');
@@ -24,48 +26,58 @@ export class CarComponent implements OnInit {
     this.reload();
   }
 
-  reload(): void {
-    this.cars = this.carService.get().pipe(
-      map(api => api.items)
-    );
-  }
-
-  onCarSave(car: Car | null): void {
-    if (car) {
-      this.carService.getById(car.id.toString()).subscribe(
-        item => {
-          if (item.item) {
-            this.carService.update(item.item.id.toString(), car).subscribe((result) => {
-              this.updatedCar = result;
-              this.reload();
-              this.messageService.sendMessage('Updated car');
-              setTimeout(() => { this.updatedCar = this.emptyCar(); }, 2000);
-            });
-          } else {
-            this.carService.post(car).subscribe((result) => {
-              this.updatedCar = result;
-              this.reload();
-              this.messageService.sendMessage('Added new car');
-              setTimeout(() => { this.updatedCar = this.emptyCar(); }, 2000);
-            });
-          }
-        }
-      );
+  onCarSave(car: Car) {
+    if (this.isUpdated) {
+      this.subscription.add(this.updateSubscription(car));
+    } else {
+      this.subscription.add(this.createSubscription(car));
     }
   }
 
   onSelect(car: Car): void {
+    this.isUpdated = true
     this.updatedCar = car;
   }
 
   onDelete(car: Car): void {
-    this.carService.delete(car.id.toString()).subscribe((result) => {
+    this.subscription.add(this.deleteSubscription(car));
+  }
+
+  private reload(): void {
+    this.cars = this.carService.get().pipe(map(api => api.items));
+    this.isUpdated = false
+  }
+
+  private createSubscription(car: Car): Subscription {
+    return this.carService.post(car).subscribe((result) => {
+      this.updatedCar = result;
+      this.reload();
+      this.messageService.sendMessage('Added new car');
+      setTimeout(() => { this.updatedCar = this.emptyCar(); }, 2000);
+    });
+  }
+
+  private updateSubscription(car: Car): Subscription {
+    return this.carService.update(car.id, car).subscribe((result) => {
+      this.updatedCar = result;
+      this.reload();
+      this.messageService.sendMessage('Updated car');
+      setTimeout(() => { this.updatedCar = this.emptyCar(); }, 2000);
+    });
+  }
+
+  private deleteSubscription(car: Car): Subscription {
+    return this.carService.delete(car.id.toString()).subscribe((result) => {
       this.reload();
       this.messageService.sendMessage('Deleted car');
     });
   }
 
-  emptyCar(): Car {
+  private emptyCar(): Car {
     return { id: '', brand: '', name: '' };
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) this.subscription.unsubscribe()
   }
 }

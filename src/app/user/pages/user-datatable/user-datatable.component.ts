@@ -76,8 +76,8 @@ export class UserDatatableComponent extends DatatableComponent<User> implements 
   }
 
   private postUserModal(): Subscription {
-    return this.userModal(null).subscribe({
-      next: (user: User | null) => {
+    return this.userModal(new UserModel()).subscribe({
+      next: (user: User) => {
         if (user !== null) { this.postUser(user); }
       },
       error: () => this.messageService.sendMessage('Adding a new record failed', MessageType.ERROR)
@@ -86,7 +86,7 @@ export class UserDatatableComponent extends DatatableComponent<User> implements 
 
   private putUserModal(user: User): Subscription {
     return this.userModal(user).subscribe({
-      next: (modalUser: User | null) => {
+      next: (modalUser: User) => {
         if (modalUser !== null) { this.putUser(modalUser); }
       },
       error: () => this.messageService.sendMessage('Update record failed', MessageType.ERROR)
@@ -131,17 +131,15 @@ export class UserDatatableComponent extends DatatableComponent<User> implements 
 
   private setRoleToUser(user: User): Subscription {
     return this.getModalRole().subscribe({
-      next: (role: Role | null) => {
-        if (role !== null) {
-          this.patchUser(user.id.toString(), { idRole: role.id });
-        }
+      next: (role: Role) => {
+        this.patchUser(user.id.toString(), { idRole: role.id });
       },
       error: () => this.messageService.sendMessage('The role was not assigned correctly', MessageType.ERROR)
     });
   }
 
-  private userModal(user: User | null): Observable<User | null> {
-    const subject = new Subject<User | null>();
+  private userModal(user: User): Observable<User> {
+    const subject = new Subject<User>();
     let initialState: Partial<UserModalComponent> = {};
     if (user) { initialState = { model: user }; }
     const modal = this.modalService.show(UserModalComponent, {
@@ -153,8 +151,8 @@ export class UserDatatableComponent extends DatatableComponent<User> implements 
     return subject;
   }
 
-  private getModalRole(): Observable<Role | null> {
-    const subject = new Subject<Role | null>();
+  private getModalRole(): Observable<Role> {
+    const subject = new Subject<Role>();
     const modal = this.modalService.show(RoleModalSearchComponent, {
       initialState: {},
       class: 'modal-xl',

@@ -13,13 +13,13 @@ import { UserModel } from '../../models/user.model';
 export class UserModalComponent implements OnInit {
 
   title = 'Update user';
-  model: User|null = null;
-  subject: Subject<User|null> = new Subject<User|null>();
+  model: User = new UserModel();
+  subject: Subject<User> = new Subject<User>();
 
   constructor(public bsModalRef: BsModalRef) { }
 
   ngOnInit(): void {
-    if (this.model === null)  {
+    if (this.model === null) {
       this.title = 'Add user';
       this.model = new UserModel();
       this.model.email = 'test@gmail.com';
@@ -36,7 +36,6 @@ export class UserModalComponent implements OnInit {
 
   onCancel(): void {
     this.bsModalRef.hide();
-    this.subject.next(null);
     this.subject.complete();
   }
 

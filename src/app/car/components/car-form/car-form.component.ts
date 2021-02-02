@@ -9,8 +9,8 @@ import { Car } from '../../interfaces/car.interface';
 })
 export class CarFormComponent implements OnInit {
 
-  @Input() car: Car|null = null;
-  @Output() carSaved: EventEmitter<Car|null> = new EventEmitter();
+  @Input() car!: Car;
+  @Output() carSaved: EventEmitter<Car> = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {

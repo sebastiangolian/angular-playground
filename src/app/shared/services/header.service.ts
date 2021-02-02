@@ -32,6 +32,6 @@ export class HeaderService {
     }
 
     clear(): void {
-        this.subject.next('');
+        this.subject.complete();
     }
 }

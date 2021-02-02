@@ -3,7 +3,7 @@ export interface User {
   email: string;
   zipCode: string;
   created: string;
-  active: boolean | null;
+  active?: boolean;
   documentLink: string;
   idRole: string;
 }

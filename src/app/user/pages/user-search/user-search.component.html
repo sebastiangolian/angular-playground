@@ -9,10 +9,10 @@
                 </thead>
                 <tr>
                     <th scope="col" colspan="2" class="p-0">
-                        <input type="text" class="form-control form-control-sm" size="100%" name="id" (input)="onSearch($event.target)" #id placeholder="empty user id">
+                        <input type="text" class="form-control form-control-sm" size="100%" name="id" (input)="onSearch(id.value)" #id placeholder="empty user id">
                     </th>
                 </tr>
-                <tbody *ngIf="item">
+                <tbody *ngIf="item.id">
                     <tr>
                         <th scope="row">Id</th>
                         <td>{{item.id}}</td>

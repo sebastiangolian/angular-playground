@@ -1,9 +1,16 @@
-<form class="m-0" name="form" #f="ngForm" autocomplete="off">
-    Search: <input type="text" class="form-control" name="search" [(ngModel)]="result.search" #search="ngModel" />
-</form>
-
-<ul *ngIf="results" class="list-group">
-    <wikipedia-item *ngFor="let result of results" [result]="result" (itemSelected)="onItemSelected($event)"></wikipedia-item>
+<div class="input-group mb-2 mr-sm-2">
+    <div class="input-group-prepend">
+        <div class="input-group-text">Search</div>
+    </div>
+    <input type="text" class="form-control" name="search" (input)="onSearch(searchInput.value)" #searchInput />
+    <div class="input-group-prepend">
+        <div class="input-group-text hand" (click)="onClear()">X</div>
+    </div>
+</div>
+<ul *ngIf="searchResults$ | async as results" class="list-group">
+    <ng-container *ngIf="viewSearchResult">
+        <wikipedia-item *ngFor="let result of results" [result]="result" (itemSelected)="onItemSelected($event)"></wikipedia-item>
+    </ng-container>
 </ul>
 
-<wikipedia-parse-item *ngIf="parseItem" [item]="parseItem"></wikipedia-parse-item>
+<wikipedia-parse-item *ngIf="wikiResult && viewWikiResult" [item]="wikiResult"></wikipedia-parse-item>

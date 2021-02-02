@@ -6,7 +6,7 @@ import { MessageModel } from '../models/message.model';
 
 @Injectable({ providedIn: 'root' })
 export class MessageService {
-    private subject = new Subject<Message | null>();
+    private subject = new Subject<Message>();
 
     sendMessage(text: string, type: MessageType = MessageType.SUCCESS): void {
         const model: MessageModel = new MessageModel();
@@ -26,10 +26,10 @@ export class MessageService {
     }
 
     clearMessages(): void {
-        this.subject.next(null);
+        this.subject.complete();
     }
 
-    getMessage(): Observable<Message | null> {
+    getMessage(): Observable<Message> {
         return this.subject.asObservable();
     }
 }

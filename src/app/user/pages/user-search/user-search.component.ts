@@ -4,6 +4,7 @@ import { UserService } from '../../services/user.service';
 import { HeaderService } from 'src/app/shared/services/header.service';
 import { debounceTime, tap } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
+import { UserModel } from '../../models/user.model';
 
 @Component({
   templateUrl: './user-search.component.html',
@@ -11,7 +12,7 @@ import { Subscription } from 'rxjs';
 })
 export class UserSearchComponent implements OnInit, OnDestroy {
 
-  item: User | null = null;
+  item: User = new UserModel();
   caption = '';
 
   private subscription: Subscription = new Subscription();
@@ -22,14 +23,12 @@ export class UserSearchComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void { }
 
-  onSearch(target: EventTarget | null): void {
-    let value = '';
-    if (target instanceof HTMLInputElement) { value = target.value; }
+  onSearch(value: string): void {
     if (value.length > 0) {
       this.subscription.add(this.search(value));
-    } else {
-      this.caption = '';
-      this.item = null;
+    }
+    else {
+      this.item = new UserModel()
     }
   }
 
@@ -42,7 +41,7 @@ export class UserSearchComponent implements OnInit, OnDestroy {
           this.item = user.item;
         } else {
           this.caption = 'Is not exist';
-          this.item = null;
+          this.item = new UserModel();
         }
 
       })

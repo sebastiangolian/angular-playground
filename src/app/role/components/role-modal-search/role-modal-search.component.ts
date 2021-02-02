@@ -16,7 +16,7 @@ export class RoleModalSearchComponent extends DatatableSearchComponent<Role> imp
 
   model: Role = new RoleModel();
   items: Role[] = [];
-  subject: Subject<Role | null> = new Subject<Role | null>();
+  subject: Subject<Role> = new Subject<Role>();
 
   private subscription: Subscription = new Subscription();
 
@@ -53,7 +53,6 @@ export class RoleModalSearchComponent extends DatatableSearchComponent<Role> imp
 
   onCancel(): void {
     this.bsModalRef.hide();
-    this.subject.next(null);
     this.subject.complete();
   }
 

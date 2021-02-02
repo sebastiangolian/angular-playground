@@ -10,7 +10,7 @@ import { HeroService } from '../../services/hero.service';
   styleUrls: ['./hero-search.component.css']
 })
 export class HeroSearchComponent {
-  heroes$: Observable<Hero[] | null>;
+  heroes$: Observable<Hero[]>;
   private searchTerms = new Subject<string>();
 
   constructor(private heroService: HeroService) {
@@ -23,7 +23,7 @@ export class HeroSearchComponent {
             map(api => api.items),
           );
         } else {
-          return of(null);
+          return of([]);
         }
       })
     );

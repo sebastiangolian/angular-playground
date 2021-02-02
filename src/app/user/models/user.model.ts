@@ -5,7 +5,7 @@ export class UserModel implements User {
   email: string = '';
   zipCode: string = '';
   created: string = '';
-  active: boolean | null = null;
+  active?: boolean = undefined;
   documentLink: string = '';
   idRole: string = '';
 }
