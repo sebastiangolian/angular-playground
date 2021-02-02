@@ -21,7 +21,6 @@ export class HeroSearchComponent {
         if (term.length > 2) {
           return this.heroService.getByName(term).pipe(
             map(api => api.items),
-            tap(res => console.log(res))
           );
         } else {
           return of(null);

@@ -13,25 +13,19 @@
                         <th scope="col"><a (click)="onSort('name')">Name <span *ngIf="sortBy === 'name'"
                                     [innerHTML]="getSortClass('name')"></span></a></th>
                         <th scope="col">
-                            <select *ngIf="limitEnabled" class="form-control form-control-sm float-right" name="limit"
-                                id="limit" (change)="onChangeLimit($event.target)">
+                            <select *ngIf="limitEnabled" class="form-control form-control-sm float-right" name="limit" id="limit" (change)="onChangeLimit(limitSelect.value)" #limitSelect>
                                 <option *ngFor="let value of limitValues" [ngValue]="value"
                                     [selected]="value === this.limit">{{value}}</option>
                             </select>
                         </th>
                     </thead>
                     <tr *ngIf="filterEnabled">
-                        <th><input type="text" class="form-control form-control-sm" name="id" [(ngModel)]="model.id"
-                                #id="ngModel"></th>
-                        <th><input type="text" class="form-control form-control-sm" name="name" [(ngModel)]="model.name"
-                                #name="ngModel"></th>
+                        <th><input type="text" class="form-control form-control-sm" name="id" [(ngModel)]="model.id" #id="ngModel"></th>
+                        <th><input type="text" class="form-control form-control-sm" name="name" [(ngModel)]="model.name" #name="ngModel"></th>
                         <th style="width: 73px;">
                             <div class="btn-group">
-                                <input type="image" class="form-control form-control-sm mr-1"
-                                    src="/assets/icons/search.svg" width="20" height="20" title="Searcg" />
-                                <input type="image" class="form-control form-control-sm" src="/assets/icons/x.svg"
-                                    alt="" width="24" height="24" title="Clear filter"
-                                    (click)="f.reset();$event.preventDefault();onFilterReset();" />
+                                <input type="image" class="form-control form-control-sm mr-1" src="/assets/icons/search.svg" width="20" height="20" title="Searcg" />
+                                <input type="image" class="form-control form-control-sm" src="/assets/icons/x.svg" alt="" width="24" height="24" title="Clear filter" (click)="f.reset();$event.preventDefault();onFilterReset();" />
                             </div>
                         </th>
                     </tr>
@@ -54,10 +48,8 @@
             <div class="col-4">Total: {{ total }}</div>
             <div class="col-4 text-center">Page {{page}} z {{getTotalPage()}}</div>
             <div class="col-4">
-                <button class="btn btn-dark btn-sm float-right ml-1" [disabled]="total <= limit*page"
-                    (click)="onNext()">&gt;</button>
-                <button class="btn btn-dark btn-sm float-right" [disabled]="page === 1"
-                    (click)="onPrev()">&lt;</button>
+                <button class="btn btn-dark btn-sm float-right ml-1" [disabled]="total <= limit*page" (click)="onNext()">&gt;</button>
+                <button class="btn btn-dark btn-sm float-right" [disabled]="page === 1" (click)="onPrev()">&lt;</button>
             </div>
         </div>
     </div>

@@ -68,7 +68,6 @@ export class DatatableComponent<T> implements OnInit {
   }
 
   onChangeLimit(limit: string): void {
-    console.log(limit)
     this.limit = Number(limit);
     this.page = 1;
     this.onRefresh();
@@ -79,26 +78,32 @@ export class DatatableComponent<T> implements OnInit {
     this.filterError = false;
     for (const [key, value] of Object.entries(f.value)) {
       if (typeof value === 'string') {
-        if (value.toString().length < this.filterMinLength && !this.filterOneSign.includes(key.toString())) {
+        const checkMinLength = value.toString().length < this.filterMinLength;
+        const checkOneSign = !this.filterOneSign.includes(key.toString())
+        const checkValue = value != ""
+        if (checkMinLength && checkOneSign && checkValue) {
           this.filterError = true;
-          break;
         }
       }
 
       if (f.value[key]) { formValues[key] = value; }
     }
 
-    this.filters = formValues;
+    if (!this.filterError) {
+      this.filters = formValues;
 
-    if (Object.keys(formValues).length > 0) {
-      this.onRefresh();
-    } else {
-      this.onFilterReset();
+      if (Object.keys(formValues).length > 0) {
+        this.onRefresh();
+      } else {
+        this.onFilterReset();
+      }
     }
+
   }
 
   onFilterReset(): void {
     this.filters = {};
+    this.filterError = false;
     this.onRefresh();
   }
 }
