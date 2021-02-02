@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', component: UserIndexComponent },
   { path: 'datatable', component: UserDatatableComponent },
   { path: 'search', component: UserSearchComponent },
-  { path: ':id', component: UserItemComponent},
+  { path: ':id', component: UserItemComponent },
 ];
 
 @NgModule({
