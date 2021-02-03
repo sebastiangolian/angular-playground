@@ -17,6 +17,7 @@ import { AlertModule } from 'ngx-bootstrap/alert';
 import { IntersectionObserverDirective } from './directives/intersection-observer.directive';
 import { LazyLoadingImageDirective } from './directives/lazy-loading-image.directive';
 import { MessagesModalComponent } from './components/messages-modal/messages-modal.component';
+import { LazyLoadingItemDirective } from './directives/lazy-loading-item.directive';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MessagesModalComponent } from './components/messages-modal/messages-mod
     ModalConfirmComponent,
     // directives
     LazyLoadingImageDirective,
+    LazyLoadingItemDirective,
     InputFocusDirective,
     IntersectionObserverDirective,
     // pipes
@@ -54,6 +56,7 @@ import { MessagesModalComponent } from './components/messages-modal/messages-mod
     ModalInfoComponent,
     // directives
     LazyLoadingImageDirective,
+    LazyLoadingItemDirective,
     InputFocusDirective,
     IntersectionObserverDirective,
     // pipes
