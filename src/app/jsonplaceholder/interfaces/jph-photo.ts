@@ -4,4 +4,5 @@ export interface JphPhoto {
     title: string;
     url: string;
     thumbnailUrl: string;
+    description?: string;
 }

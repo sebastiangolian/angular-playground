@@ -6,4 +6,5 @@ export class JphPhotoModel implements JphPhoto {
     title: string = '';
     url: string = '';
     thumbnailUrl: string = '';
+    description?: string = undefined;
 }
