@@ -13,7 +13,7 @@ export class JphPhotoComponent implements OnInit {
   constructor(private jphPhotoService: JphPhotoService) { }
 
   ngOnInit(): void {
-    this.photos$ = this.jphPhotoService.get(666, 0)
+    this.photos$ = this.jphPhotoService.get(500, 0)
   }
 
 }
