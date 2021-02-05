@@ -12,7 +12,6 @@ import { JphUserFormComponent } from './components/jph-user-form/jph-user-form.c
 import { FormsModule } from '@angular/forms';
 import { JphUserModalComponent } from './components/jph-user-modal/jph-user-modal.component';
 import { JphPhotoComponent } from './pages/jph-photo/jph-photo.component';
-import { JphPhotoTableComponent } from './pages/jph-photo-table/jph-photo-table.component';
 
 
 @NgModule({
@@ -24,8 +23,7 @@ import { JphPhotoTableComponent } from './pages/jph-photo-table/jph-photo-table.
     JphUserCompanyComponent,
     JphUserFormComponent,
     JphUserModalComponent,
-    JphPhotoComponent,
-    JphPhotoTableComponent
+    JphPhotoComponent
   ],
   imports: [
     CommonModule,
