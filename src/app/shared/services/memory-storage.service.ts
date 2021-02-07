@@ -1,7 +1,8 @@
+import { OnDestroy } from '@angular/core';
 import { Injectable } from '@angular/core';
 
-@Injectable({providedIn: 'root'})
-export class MemoryStorageService {
+@Injectable({ providedIn: 'root' })
+export class MemoryStorageService implements OnDestroy {
   items: MemoryStorage[] = []
 
   constructor() { }
@@ -20,6 +21,10 @@ export class MemoryStorageService {
       return item.value
     else
       return ''
+  }
+
+  ngOnDestroy(): void {
+    this.items = []
   }
 }
 

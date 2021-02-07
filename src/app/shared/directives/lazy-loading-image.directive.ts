@@ -29,6 +29,7 @@ export class LazyLoadingImageDirective implements OnDestroy {
           }
           this.isVisible = true;
           this.visibleChange.emit(true);
+          observer.unobserve(this.element.nativeElement);
         }
       });
     };
