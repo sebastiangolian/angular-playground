@@ -1,33 +1,41 @@
+import { environment } from './../../../environments/environment';
 import { PhotoExternalService } from './../services/photo-external.service';
 import { HttpClient } from '@angular/common/http';
-import { Directive, ElementRef, EventEmitter, Input, Output, OnDestroy } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, Input, Output, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MemoryStorageService } from '../services/memory-storage.service';
 
 @Directive({
   selector: '[lazyLoadingImage]'
 })
-export class LazyLoadingImageDirective implements OnDestroy {
+export class LazyLoadingImageDirective implements OnDestroy, OnChanges {
   private subscription: Subscription = new Subscription();
 
+  @Input() originalSrc: string = ''
   @Input() isBlob = false;
-  @Input() saveInMemory = true
+  @Input() saveInMemory = environment.lazyLoadingImageSaveInMemory
   @Output() visibleChange = new EventEmitter<boolean>();
-  private isVisible = false;
 
   constructor(private element: ElementRef, protected http: HttpClient, private memoryStorageService: MemoryStorageService,
     private photoExternalService: PhotoExternalService) {
+    this.runIntersectionObserver()
+  }
+
+  ngOnChanges(): void {
+    this.runIntersectionObserver()
+  }
+
+  private runIntersectionObserver(): void {
     this.visibleChange.emit(false);
 
     const intersectionObserverCallback = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting && !this.isVisible) {
+        if (entry.isIntersecting) {
           if (this.saveInMemory) {
             this.setSrcFromMemory()
           } else {
             this.setSrc()
           }
-          this.isVisible = true;
           this.visibleChange.emit(true);
           observer.unobserve(this.element.nativeElement);
         }
