@@ -4,6 +4,7 @@ export const environment = {
   production: true,
   backendDelay: 0,
   httpRetry: 0,
+  lazyLoadingImageSaveInMemory: true,
   loggingBackendUrl: true,
   loggingBackendRequestHeaders: false,
   loggingBackendRequest: false,
