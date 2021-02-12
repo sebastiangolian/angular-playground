@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'wikipedia', loadChildren: () => import('../wikipedia/wikipedia.module').then(m => m.WikipediaModule) },
   { path: 'photo', loadChildren: () => import('../photo/photo.module').then(m => m.PhotoModule) },
   { path: 'jsonplaceholder', loadChildren: () => import('../jsonplaceholder/jsonplaceholder.module').then(m => m.JsonplaceholderModule) },
+  { path: 'other', loadChildren: () => import('../other/other.module').then(m => m.OtherModule) },
 ];
 
 @NgModule({

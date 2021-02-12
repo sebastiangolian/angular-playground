@@ -1,38 +1,53 @@
 <body class="h-100 d-flex flex-column">
     <nav class="navbar navbar-expand-sm navbar-light bg-light border-bottom">
         <div class="container-xl">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                (click)="isCollapsed = !isCollapsed">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <a class="navbar-brand" href="#">angular-playground</a>
             <div [collapse]=isCollapsed class="collapse navbar-collapse" id="navbar-content">
                 <ul class="navbar-nav ml-auto mr-5" (click)="isCollapsed = !isCollapsed">
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="test" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Test</a>
+                        <a class="nav-link" routerLink="test" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{ exact: true }">Test</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="user" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Users</a>
+                        <a class="nav-link" routerLink="user" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{ exact: true }">Users</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="post" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Posts</a>
+                        <a class="nav-link" routerLink="post" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{ exact: true }">Posts</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="hero" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Hero</a>
+                        <a class="nav-link" routerLink="hero" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{ exact: true }">Hero</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="car" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Cars</a>
+                        <a class="nav-link" routerLink="car" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{ exact: true }">Cars</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="wikipedia" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Wikipedia</a>
+                        <a class="nav-link" routerLink="wikipedia" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{ exact: true }">Wikipedia</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="leaflet" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Leaflet</a>
+                        <a class="nav-link" routerLink="leaflet" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{ exact: true }">Leaflet</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="photo" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Photo</a>
+                        <a class="nav-link" routerLink="photo" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{ exact: true }">Photo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="jsonplaceholder" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Jsonplaceholder</a>
+                        <a class="nav-link" routerLink="jsonplaceholder" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{ exact: true }">Jsonplaceholder</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="other" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{ exact: true }">Other</a>
                     </li>
                 </ul>
                 <button class="btn btn-outline-dark my-2 my-sm-0" (click)="onReset()">Clear memory</button>
