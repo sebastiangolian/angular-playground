@@ -13,7 +13,6 @@ const routes: Routes = [
   { path: 'hero', loadChildren: () => import('../hero/hero.module').then(m => m.HeroModule) },
   { path: 'leaflet', loadChildren: () => import('../leaflet/leaflet.module').then(m => m.LeafletModule) },
   { path: 'wikipedia', loadChildren: () => import('../wikipedia/wikipedia.module').then(m => m.WikipediaModule) },
-  { path: 'photo', loadChildren: () => import('../photo/photo.module').then(m => m.PhotoModule) },
   { path: 'jsonplaceholder', loadChildren: () => import('../jsonplaceholder/jsonplaceholder.module').then(m => m.JsonplaceholderModule) },
   { path: 'other', loadChildren: () => import('../other/other.module').then(m => m.OtherModule) },
 ];
