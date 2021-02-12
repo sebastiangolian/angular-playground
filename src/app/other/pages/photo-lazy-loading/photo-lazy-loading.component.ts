@@ -14,7 +14,7 @@ export class PhotoLazyLoadingComponent implements OnInit {
   ngOnInit(): void { }
 
   onVisibleChange(isVisible: boolean): void {
-    console.info(isVisible);
+
   }
 
 }

@@ -18,6 +18,7 @@ import { IntersectionObserverDirective } from './directives/intersection-observe
 import { LazyLoadingImageDirective } from './directives/lazy-loading-image.directive';
 import { MessagesModalComponent } from './components/messages-modal/messages-modal.component';
 import { LazyLoadingItemComponent } from './components/lazy-loading-item/lazy-loading-item.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { LazyLoadingItemComponent } from './components/lazy-loading-item/lazy-lo
     MessagesModalComponent,
     ModalConfirmComponent,
     LazyLoadingItemComponent,
+    SpinnerComponent,
     // directives
     LazyLoadingImageDirective,
     InputFocusDirective,
@@ -55,6 +57,7 @@ import { LazyLoadingItemComponent } from './components/lazy-loading-item/lazy-lo
     MessagesModalComponent,
     ModalInfoComponent,
     LazyLoadingItemComponent,
+    SpinnerComponent,
     // directives
     LazyLoadingImageDirective,
     InputFocusDirective,

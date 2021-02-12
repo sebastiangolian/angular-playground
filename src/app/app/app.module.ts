@@ -1,4 +1,3 @@
-import { SpinnerModule } from './../spinner/spinner.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { SpinnerInterceptor } from '../shared/components/spinner/interceptors/spinner.interceptor';
 
 @NgModule({
   declarations: [
@@ -29,10 +29,10 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     RouterModule,
     FormsModule,
     SharedModule,
-    SpinnerModule,
     CollapseModule.forRoot(),
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: BackendInterceptor, multi: true }
   ],

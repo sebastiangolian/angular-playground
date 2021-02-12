@@ -7,7 +7,7 @@ import { SpinnerService } from '../services/spinner.service';
 @Injectable()
 export class SpinnerInterceptor implements HttpInterceptor {
   private visible: boolean = true
-  private delay: number = 300         //delay visible in milliseconds
+  private delay: number = 100         //delay visible in milliseconds
 
   constructor(public spinnerService: SpinnerService) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

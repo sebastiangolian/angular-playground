@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
-import { SpinnerService } from '../../services/spinner.service';
+import { SpinnerService } from './services/spinner.service';
 
 @Component({
   selector: 'app-spinner',
