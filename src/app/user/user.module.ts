@@ -9,8 +9,8 @@ import { NgxMaskModule } from 'ngx-mask';
 import { UserSearchComponent } from './pages/user-search/user-search.component';
 import { UserIndexComponent } from './pages/user-index/user-index.component';
 import { UserItemComponent } from './pages/user-item/user-item.component';
-import { RoleModule } from '../role/role.module';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { RoleModalSearchComponent } from './components/role-modal-search/role-modal-search.component';
 
 
 @NgModule({
@@ -19,14 +19,14 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     UserSearchComponent,
     UserItemComponent,
     UserIndexComponent,
-    UserModalComponent
+    UserModalComponent,
+    RoleModalSearchComponent
   ],
   imports: [
     CommonModule,
     UserRoutingModule,
     SharedModule,
     FormsModule,
-    RoleModule,
     NgxMaskModule.forRoot(),
     BsDropdownModule.forRoot(),
   ]

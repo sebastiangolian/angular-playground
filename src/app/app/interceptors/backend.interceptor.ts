@@ -5,7 +5,7 @@ import { mergeMap, materialize, delay, dematerialize } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { User } from 'src/app/user/interfaces/user.interface';
 import { Hero } from 'src/app/hero/interfaces/hero.interface';
-import { Role } from 'src/app/role/interfaces/role.interface';
+import { Role } from 'src/app/user/interfaces/role.interface';
 import { Car } from 'src/app/car/interfaces/car.interface';
 import { DateTimeHelper } from 'src/app/shared/helpers/date-time.helper';
 

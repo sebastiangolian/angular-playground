@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Role } from '../interfaces/role.interface';
 import { AbstractService } from 'src/app/shared/services/abstract.service';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class RoleService extends AbstractService<Role> {
 
   constructor(protected http: HttpClient) {

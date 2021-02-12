@@ -9,8 +9,8 @@ import { User } from '../../interfaces/user.interface';
 import { UserModel } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
 import { ModalConfirmService } from 'src/app/shared/components/modal-confirm/services/modal-confirm.service';
-import { RoleModalSearchComponent } from 'src/app/role/components/role-modal-search/role-modal-search.component';
-import { Role } from 'src/app/role/interfaces/role.interface';
+import { RoleModalSearchComponent } from 'src/app/user/components/role-modal-search/role-modal-search.component';
+import { Role } from 'src/app/user/interfaces/role.interface';
 import { DatatableComponent } from 'src/app/shared/classes/datatable.component';
 import { MessageType } from 'src/app/shared/enums/message-type.enum';
 
