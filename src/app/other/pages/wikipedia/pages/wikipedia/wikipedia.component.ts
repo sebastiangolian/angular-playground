@@ -1,10 +1,10 @@
+import { WikipediaService } from './../../services/wikipedia.service';
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Observable, of, Subject, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, switchMap, tap } from 'rxjs/operators';
 import { HeaderService } from 'src/app/shared/services/header.service';
 import { WikipediaResultOpensearch } from '../../interfaces/wikipedia-result-opensearch.interface';
 import { WikipediaResultParse } from '../../interfaces/wikipedia-result-parse.interface';
-import { WikipediaService } from '../../services/wikipedia.service';
 
 @Component({
   selector: 'app-wikipedia',
