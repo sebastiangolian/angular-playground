@@ -1,17 +1,27 @@
 {
-    "files.exclude": {
-      "dist": true,
-      "node_modules/": true,
-      "src/favicon.ico": true,
-      "src/main.ts": true,
-      "src/polyfills.ts": true,
-      "src/test.ts": true,
-      ".editorconfig": true,
-      ".gitignore": true,
-      "browserslist": true,
-      "tsconfig.json": true,
-      "tsconfig.app.json": true,
-      "tsconfig.spec.json": true,
-      "tslint.json": true
-    }
+  "files.exclude": {
+    "dist": true,
+    "node_modules/": true,
+    "src/favicon.ico": true,
+    "src/main.ts": true,
+    "src/polyfills.ts": true,
+    "src/test.ts": true,
+    ".editorconfig": true,
+    ".gitignore": true,
+    "browserslist": true,
+    "tsconfig.json": true,
+    "tsconfig.app.json": true,
+    "tsconfig.spec.json": true,
+    "tslint.json": true
+  },
+  "cSpell.words": [
+    "angular",
+    "browserslist",
+    "build",
+    "codelyzer",
+    "devkit",
+    "filesaver",
+    "ngx",
+    "predeploy"
+  ]
 }

@@ -4,7 +4,7 @@
     "cyrilletuzi.angular-schematics",
     "johnpapa.angular2",
     "ms-vscode.vscode-typescript-tslint-plugin",
-    "esbenp.prettier-vscode",
+    //"esbenp.prettier-vscode",
     "aeschli.vscode-css-formatter"
   ]
 }

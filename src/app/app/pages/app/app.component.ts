@@ -14,7 +14,8 @@ export class AppComponent {
 
   constructor(public headerService: HeaderService) { }
 
-  onReset(): void {
+  onReset(): void 
+  {
     localStorage.clear();
     window.location.reload();
   }
