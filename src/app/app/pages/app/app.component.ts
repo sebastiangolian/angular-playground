@@ -12,10 +12,12 @@ export class AppComponent {
   isCollapsed = true;
   $header: Observable<string> = this.headerService.getWithSetTitle();
 
-  constructor(public headerService: HeaderService) { }
-
-  onReset(): void 
+  constructor(public headerService: HeaderService)
   {
+
+  }
+
+  onReset(): void {
     localStorage.clear();
     window.location.reload();
   }
