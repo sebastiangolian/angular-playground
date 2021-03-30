@@ -12,6 +12,10 @@ export class TestComponent implements OnInit {
   }
 
   test() {
+
+  }
+
+  testtwo() {
     
   }
 
