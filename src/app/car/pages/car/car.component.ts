@@ -15,7 +15,7 @@ export class CarComponent implements OnInit, OnDestroy {
 
   cars: Observable<Car[]> = new Observable<Car[]>();
   updatedCar: Car = { id: '', brand: '', name: '' };
-  isUpdated: boolean = false
+  isUpdated = false;
   private subscription: Subscription = new Subscription();
 
   constructor(private headerService: HeaderService, private carService: CarService, private messageService: MessageService) {
@@ -26,7 +26,7 @@ export class CarComponent implements OnInit, OnDestroy {
     this.reload();
   }
 
-  onCarSave(car: Car) {
+  onCarSave(car: Car): void {
     if (this.isUpdated) {
       this.subscription.add(this.updateSubscription(car));
     } else {
@@ -35,7 +35,7 @@ export class CarComponent implements OnInit, OnDestroy {
   }
 
   onSelect(car: Car): void {
-    this.isUpdated = true
+    this.isUpdated = true;
     this.updatedCar = car;
   }
 
@@ -45,7 +45,7 @@ export class CarComponent implements OnInit, OnDestroy {
 
   private reload(): void {
     this.cars = this.carService.get().pipe(map(api => api.items));
-    this.isUpdated = false
+    this.isUpdated = false;
   }
 
   private createSubscription(car: Car): Subscription {
@@ -78,6 +78,6 @@ export class CarComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.subscription) this.subscription.unsubscribe()
+    if (this.subscription) { this.subscription.unsubscribe(); }
   }
 }

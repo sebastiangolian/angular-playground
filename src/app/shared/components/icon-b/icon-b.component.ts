@@ -13,7 +13,7 @@ export class IconBComponent implements OnInit {
   @Input() height = '22';
   @Input() class = 'icon-color';
   @Input() title = '';
-  @Output() click: EventEmitter<Event> = new EventEmitter();
+  @Output() clicked: EventEmitter<Event> = new EventEmitter();
 
   href = '/assets/icons/';
 

@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { WikipediaResultOpensearch } from '../interfaces/wikipedia-result-opensearch.interface';
+import { WikipediaResultOpenSearch } from '../interfaces/wikipedia-result-opensearch.interface';
 import { WikipediaResultParse } from '../interfaces/wikipedia-result-parse.interface';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class WikipediaService {
   url = 'https://en.wikipedia.org/w/api.php';
   constructor(private http: HttpClient) { }
 
-  opensearch(search: string, limit: number = 20): Observable<WikipediaResultOpensearch[]> {
+  openSearch(search: string, limit: number = 20): Observable<WikipediaResultOpenSearch[]> {
     const params = new HttpParams()
       .append('action', 'opensearch')
       .append('limit', limit.toString())
@@ -20,7 +20,7 @@ export class WikipediaService {
     const url = `${this.url}?${params.toString()}`;
     return this.http.jsonp<string[][]>(url, 'callback').pipe(
       map(val => {
-        const result: WikipediaResultOpensearch[] = [];
+        const result: WikipediaResultOpenSearch[] = [];
         for (let i = 0; i < val[1].length; i++) {
           const term = val[1][i];
           const resultUrl = val[3][i];

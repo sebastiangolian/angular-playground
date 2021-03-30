@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserRoutingModule } from './user-routing.module';
-import { UserDatatableComponent } from './pages/user-datatable/user-datatable.component';
+import { UserDataTableComponent } from './pages/user-datatable/user-datatable.component';
 import { SharedModule } from '../shared/shared.module';
 import { UserModalComponent } from './components/user-modal/user-modal.component';
 import { FormsModule } from '@angular/forms';
@@ -15,7 +15,7 @@ import { RoleModalSearchComponent } from './components/role-modal-search/role-mo
 
 @NgModule({
   declarations: [
-    UserDatatableComponent,
+    UserDataTableComponent,
     UserSearchComponent,
     UserItemComponent,
     UserIndexComponent,

@@ -9,7 +9,7 @@ import { TimerService } from 'src/app/shared/services/timer.service';
 })
 export class TimerComponent implements OnInit {
 
-  timer$: Observable<number> = new Observable()
+  timer$: Observable<number> = new Observable();
 
   constructor(private headerService: HeaderService, private timerService: TimerService) {
     this.headerService.set('Timer');
@@ -18,24 +18,24 @@ export class TimerComponent implements OnInit {
   ngOnInit(): void { }
 
   onClick(): void {
-    this.timer$ = this.timerService.subjectTimer$
-    this.timerService.start()
+    this.timer$ = this.timerService.subjectTimer$;
+    this.timerService.start();
   }
 
   onStop(): void {
-    this.timerService.stop()
+    this.timerService.stop();
   }
 
   onReset(): void {
-    this.timerService.reset()
+    this.timerService.reset();
   }
 
   onInvert(): void {
-    this.timerService.toogleInvert()
+    this.timerService.toggleInvert();
   }
 
   onSet(): void {
-    this.timerService.setTimer(1000)
+    this.timerService.setTimer(1000);
   }
 
 }

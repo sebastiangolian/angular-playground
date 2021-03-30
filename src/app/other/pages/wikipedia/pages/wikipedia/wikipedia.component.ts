@@ -3,7 +3,7 @@ import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/co
 import { Observable, of, Subject, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, switchMap, tap } from 'rxjs/operators';
 import { HeaderService } from 'src/app/shared/services/header.service';
-import { WikipediaResultOpensearch } from '../../interfaces/wikipedia-result-opensearch.interface';
+import { WikipediaResultOpenSearch } from '../../interfaces/wikipedia-result-opensearch.interface';
 import { WikipediaResultParse } from '../../interfaces/wikipedia-result-parse.interface';
 
 @Component({
@@ -13,10 +13,10 @@ import { WikipediaResultParse } from '../../interfaces/wikipedia-result-parse.in
 })
 export class WikipediaComponent implements OnInit, OnDestroy {
 
-  viewSearchResult: boolean = false
-  viewWikiResult: boolean = false
+  viewSearchResult = false;
+  viewWikiResult = false;
 
-  searchResults$: Observable<WikipediaResultOpensearch[]> = new Observable();
+  searchResults$: Observable<WikipediaResultOpenSearch[]> = new Observable();
   wikiResult!: WikipediaResultParse;
 
   private searchTerms = new Subject<string>();
@@ -29,36 +29,36 @@ export class WikipediaComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.searchResults$ = this.searchWiki()
+    this.searchResults$ = this.searchWiki();
   }
 
   onSearch(term: string): void {
-    this.viewSearchResult = true
-    this.viewWikiResult = false
+    this.viewSearchResult = true;
+    this.viewWikiResult = false;
     this.searchTerms.next(term);
   }
 
-  onItemSelected(result: WikipediaResultOpensearch): void {
-    this.viewSearchResult = false
-    this.viewWikiResult = true
-    this.searchInput.nativeElement.value = result.parseTerm
+  onItemSelected(result: WikipediaResultOpenSearch): void {
+    this.viewSearchResult = false;
+    this.viewWikiResult = true;
+    this.searchInput.nativeElement.value = result.parseTerm;
     this.subscription.add(this.parse(result.parseTerm).subscribe(results => this.wikiResult = results));
   }
 
   onClear(): void {
-    this.searchInput.nativeElement.value = ''
-    this.viewSearchResult = false
-    this.viewWikiResult = false
+    this.searchInput.nativeElement.value = '';
+    this.viewSearchResult = false;
+    this.viewWikiResult = false;
   }
 
-  private searchWiki(): Observable<WikipediaResultOpensearch[]> {
+  private searchWiki(): Observable<WikipediaResultOpenSearch[]> {
     return this.searchTerms.pipe(
       debounceTime(300),
       distinctUntilChanged(),
       switchMap((term: string) => {
         if (term.length > 2) {
-          this.viewSearchResult = true
-          return this.wikipediaService.opensearch(term, 10);
+          this.viewSearchResult = true;
+          return this.wikipediaService.openSearch(term, 10);
         } else {
           return of([]);
         }
@@ -70,7 +70,9 @@ export class WikipediaComponent implements OnInit, OnDestroy {
     return this.wikipediaService.parse(page).pipe(
       map(result => {
         for (const prop in result.text) {
-          result.formatText = result.text[prop];
+          if (prop) {
+            result.formatText = result.text[prop];
+          }
         }
         return result;
       })

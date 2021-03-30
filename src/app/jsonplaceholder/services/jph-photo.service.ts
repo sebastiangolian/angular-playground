@@ -16,9 +16,9 @@ export class JphPhotoService {
     return this.http.get<JphPhoto[]>(this.url).pipe(
       map(items => items.filter((val, index) => index >= offset && index < limit + offset)),
       map(items => {
-        items.forEach(item => item.description = StringHelper.lorem(Math.floor(Math.random() * 10) + 1, "<br />"))
-        return items
+        items.forEach(item => item.description = StringHelper.lorem(Math.floor(Math.random() * 10) + 1, '<br />'));
+        return items;
       })
-    )
+    );
   }
 }

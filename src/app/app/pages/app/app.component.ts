@@ -12,8 +12,7 @@ export class AppComponent {
   isCollapsed = true;
   $header: Observable<string> = this.headerService.getWithSetTitle();
 
-  constructor(public headerService: HeaderService)
-  {
+  constructor(public headerService: HeaderService) {
 
   }
 

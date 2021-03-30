@@ -19,9 +19,17 @@
     "browserslist",
     "build",
     "codelyzer",
+    "darr",
     "devkit",
     "filesaver",
     "ngx",
-    "predeploy"
+    "opensearch",
+    "predeploy",
+    "spiderman",
+    "uarr"
+  ],
+  "cSpell.ignoreWords": [
+    "antman",
+    "ironman"
   ]
 }

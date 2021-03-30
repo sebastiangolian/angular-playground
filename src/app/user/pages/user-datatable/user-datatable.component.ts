@@ -11,7 +11,7 @@ import { UserService } from '../../services/user.service';
 import { ModalConfirmService } from 'src/app/shared/components/modal-confirm/services/modal-confirm.service';
 import { RoleModalSearchComponent } from 'src/app/user/components/role-modal-search/role-modal-search.component';
 import { Role } from 'src/app/user/interfaces/role.interface';
-import { DatatableComponent } from 'src/app/shared/classes/datatable.component';
+import { DataTableComponent } from 'src/app/shared/classes/datatable.component';
 import { MessageType } from 'src/app/shared/enums/message-type.enum';
 
 @Component({
@@ -19,13 +19,13 @@ import { MessageType } from 'src/app/shared/enums/message-type.enum';
   templateUrl: './user-datatable.component.html',
   styleUrls: ['./user-datatable.component.css']
 })
-export class UserDatatableComponent extends DatatableComponent<User> implements OnDestroy {
+export class UserDataTableComponent extends DataTableComponent<User> implements OnDestroy {
 
   model: User = new UserModel();
   private subscription: Subscription = new Subscription();
 
   constructor(private headerService: HeaderService, private messageService: MessageService, private modalService: BsModalService,
-    private userService: UserService, private router: Router, private modalConfirmService: ModalConfirmService) {
+              private userService: UserService, private router: Router, private modalConfirmService: ModalConfirmService) {
     super();
     this.headerService.set('Users');
     this.filterOneSign = ['id'];

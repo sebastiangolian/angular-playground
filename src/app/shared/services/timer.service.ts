@@ -5,61 +5,61 @@ import { BehaviorSubject, Subscription, timer } from 'rxjs';
 export class TimerService implements OnDestroy {
   public subjectTimer$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   private subscription: Subscription = new Subscription();
-  private timer: number = 0
-  private interval: number = 1000
-  private isStoped: boolean = true
-  private isInvert: boolean = false
+  private timer = 0;
+  private interval = 1000;
+  private isStopped = true;
+  private isInvert = false;
 
   constructor() {
-    this.initTimer()
+    this.initTimer();
   }
 
-  public toogleInvert(): void {
+  public toggleInvert(): void {
     this.isInvert = !this.isInvert;
-    this.subjectTimer$.next(this.timer)
+    this.subjectTimer$.next(this.timer);
   }
 
-  public setTimer(timer: number): void {
-    this.timer = timer;
-    this.subjectTimer$.next(this.timer)
+  public setTimer(value: number): void {
+    this.timer = value;
+    this.subjectTimer$.next(this.timer);
   }
 
   public initTimer(): void {
-    this.subscription.add(this.timerSubscription())
+    this.subscription.add(this.timerSubscription());
   }
 
   public start(): void {
-    this.isStoped = false
+    this.isStopped = false;
   }
 
   public stop(): void {
-    this.isStoped = true
+    this.isStopped = true;
   }
 
   public reset(): void {
-    this.timer = 0
-    this.subjectTimer$.next(this.timer)
+    this.timer = 0;
+    this.subjectTimer$.next(this.timer);
   }
 
   public killTimer(): void {
-    this.timer = 0
-    this.subjectTimer$.next(this.timer)
+    this.timer = 0;
+    this.subjectTimer$.next(this.timer);
     this.subscription.unsubscribe();
   }
 
   private timerSubscription(): Subscription {
     return timer(0, this.interval).subscribe(tick => {
-      if (!this.isStoped) {
+      if (!this.isStopped) {
 
         if (!this.isInvert) {
-          this.timer += 1
+          this.timer += 1;
         } else {
-          this.timer -= 1
+          this.timer -= 1;
         }
 
-        this.subjectTimer$.next(this.timer)
+        this.subjectTimer$.next(this.timer);
       }
-    })
+    });
   }
 
   public ngOnDestroy(): void {

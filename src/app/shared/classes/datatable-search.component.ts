@@ -1,11 +1,11 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { DatatableComponent } from './datatable.component';
+import { DataTableComponent } from './datatable.component';
 
 @Component({
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DatatableSearchComponent<T> extends DatatableComponent<T> {
+export class DataTableSearchComponent<T> extends DataTableComponent<T> {
 
   limitEnabled = false;
 

@@ -1,4 +1,4 @@
-export interface WikipediaResultOpensearch {
+export interface WikipediaResultOpenSearch {
     term: string;
     url: string;
     parseTerm: string;

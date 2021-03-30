@@ -5,23 +5,23 @@ import { NgForm } from '@angular/forms';
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DatatableComponent<T> implements OnInit {
+export class DataTableComponent<T> implements OnInit {
 
   items: T[] = [];
-  filterError: boolean = false;
-  total: number = 0;
-  page: number = 1;
+  filterError = false;
+  total = 0;
+  page = 1;
 
-  limitEnabled: boolean = true;                       // limit - wyłączenie
-  sortEnabled: boolean = true;                        // sortowanie - wyłączenie
-  filterEnabled: boolean = true;                      // filtrowanie - wyłączenie
-  limit: number = 10;                                 // paginacja - ilość rekordów na stronie
-  limitValues: number[] = [5, 10, 20];                // paginacja - wartości
-  sortBy: string = '';                                // sortowanie - kolumna
-  order: string = 'asc';                              // sortowanie - kierunek
-  filters: any = {};                                  // filtrowanie - obiekt z filtrami
-  filterMinLength: number = 3;                        // filtrowanie - minimalna ilość znaków
-  filterOneSign: string[] = [];                       // filtrowanie - tablica właściwości do filtrowania po jednym znaku
+  limitEnabled = true;
+  sortEnabled = true;
+  filterEnabled = true;
+  limit = 10;
+  limitValues: number[] = [5, 10, 20];
+  sortBy = '';
+  order = 'asc';
+  filters: any = {};
+  filterMinLength = 3;
+  filterOneSign: string[] = [];
 
   onRefresh(): void { }
 
@@ -79,8 +79,8 @@ export class DatatableComponent<T> implements OnInit {
     for (const [key, value] of Object.entries(f.value)) {
       if (typeof value === 'string') {
         const checkMinLength = value.toString().length < this.filterMinLength;
-        const checkOneSign = !this.filterOneSign.includes(key.toString())
-        const checkValue = value != ""
+        const checkOneSign = !this.filterOneSign.includes(key.toString());
+        const checkValue = value !== '';
         if (checkMinLength && checkOneSign && checkValue) {
           this.filterError = true;
         }

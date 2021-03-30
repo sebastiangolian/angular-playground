@@ -9,11 +9,11 @@ import { JphPhoto } from '../../interfaces/jph-photo';
 })
 export class JphPhotoComponent implements OnInit {
 
-  photos$: Observable<JphPhoto[]> = new Observable()
+  photos$: Observable<JphPhoto[]> = new Observable();
   constructor(private jphPhotoService: JphPhotoService) { }
 
   ngOnInit(): void {
-    this.photos$ = this.jphPhotoService.get(500, 0)
+    this.photos$ = this.jphPhotoService.get(500, 0);
   }
 
 }

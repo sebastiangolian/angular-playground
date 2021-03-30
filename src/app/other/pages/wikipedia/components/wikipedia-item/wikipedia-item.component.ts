@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
-import { WikipediaResultOpensearch } from '../../interfaces/wikipedia-result-opensearch.interface';
+import { WikipediaResultOpenSearch } from '../../interfaces/wikipedia-result-opensearch.interface';
 
 @Component({
   selector: 'wikipedia-item',
@@ -9,8 +9,8 @@ import { WikipediaResultOpensearch } from '../../interfaces/wikipedia-result-ope
 })
 export class WikipediaItemComponent implements OnInit {
 
-  @Input() result!: WikipediaResultOpensearch;
-  @Output() itemSelected: EventEmitter<WikipediaResultOpensearch> = new EventEmitter<WikipediaResultOpensearch>();
+  @Input() result!: WikipediaResultOpenSearch;
+  @Output() itemSelected: EventEmitter<WikipediaResultOpenSearch> = new EventEmitter<WikipediaResultOpenSearch>();
   active = false;
 
   constructor() { }

@@ -103,7 +103,7 @@ export class BackendInterceptor implements HttpInterceptor {
 
             db = loadStorage(db);
 
-            if (db.user.length == 0) {
+            if (db.user.length === 0) {
                 db.user = [];
                 for (let i = 1; i <= 100; i++) {
                     db.user.push({
@@ -119,8 +119,8 @@ export class BackendInterceptor implements HttpInterceptor {
                 }
 
                 case (method === 'GET' && url.includes('mock/user/')): {
-                    const user = db.user.find(user => user.id.toString() === getIdFromUrl());
-                    return response200({ item: user });
+                    const findUser = db.user.find(user => user.id.toString() === getIdFromUrl());
+                    return response200({ item: findUser });
                 }
 
                 case (method === 'POST' && url.includes('mock/user')): {
@@ -162,8 +162,8 @@ export class BackendInterceptor implements HttpInterceptor {
                 }
 
                 case (method === 'GET' && url.includes('mock/car')): {
-                    const car = db.car.find(car => car.id.toString() === getIdFromUrl());
-                    return response200({ item: car });
+                    const findCar = db.car.find(car => car.id.toString() === getIdFromUrl());
+                    return response200({ item: findCar });
                 }
 
                 case (method === 'POST' && url.includes('mock/car')): {
@@ -197,7 +197,7 @@ export class BackendInterceptor implements HttpInterceptor {
 
                 case (method === 'GET' && url.includes('mock/hero/')): {
                     const item = db.hero.find(hero => hero.id.toString() === getIdFromUrl());
-                    return response200({ item: item });
+                    return response200({ item });
                 }
 
                 case (method === 'POST' && url.includes('mock/hero')): {

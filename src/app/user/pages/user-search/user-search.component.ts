@@ -28,7 +28,7 @@ export class UserSearchComponent implements OnInit, OnDestroy {
       this.subscription.add(this.search(value));
     }
     else {
-      this.item = new UserModel()
+      this.item = new UserModel();
     }
   }
 

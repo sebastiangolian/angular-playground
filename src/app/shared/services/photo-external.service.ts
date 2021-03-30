@@ -18,7 +18,7 @@ export class PhotoExternalService {
           const blob = new Blob([body], { type: 'image/jpeg' });
           return URL.createObjectURL(blob);
         } else {
-          return ''
+          return '';
         }
       })
     );
