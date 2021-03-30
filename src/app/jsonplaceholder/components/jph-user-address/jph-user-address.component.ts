@@ -5,15 +5,12 @@ import { JphUserAddress } from '../../interfaces/jph-user';
   selector: 'jph-user-address',
   templateUrl: './jph-user-address.component.html',
   styleUrls: ['./jph-user-address.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class JphUserAddressComponent implements OnInit {
-
   @Input() address!: JphUserAddress;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

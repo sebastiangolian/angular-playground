@@ -48,9 +48,8 @@ export class TimerService implements OnDestroy {
   }
 
   private timerSubscription(): Subscription {
-    return timer(0, this.interval).subscribe(tick => {
+    return timer(0, this.interval).subscribe((tick) => {
       if (!this.isStopped) {
-
         if (!this.isInvert) {
           this.timer += 1;
         } else {

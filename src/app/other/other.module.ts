@@ -11,7 +11,6 @@ import { LeafletComponent } from './pages/leaflet/leaflet.component';
 import { WikipediaComponent } from './pages/wikipedia/pages/wikipedia/wikipedia.component';
 import { FormsModule } from '@angular/forms';
 
-
 @NgModule({
   declarations: [
     OtherComponent,
@@ -20,13 +19,8 @@ import { FormsModule } from '@angular/forms';
     LeafletComponent,
     WikipediaComponent,
     WikipediaItemComponent,
-    WikipediaParseItemComponent
+    WikipediaParseItemComponent,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    OtherRoutingModule,
-    SharedModule
-  ]
+  imports: [CommonModule, FormsModule, OtherRoutingModule, SharedModule],
 })
-export class OtherModule { }
+export class OtherModule {}

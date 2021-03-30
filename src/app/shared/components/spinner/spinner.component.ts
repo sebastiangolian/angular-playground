@@ -7,12 +7,11 @@ import { SpinnerService } from './services/spinner.service';
   templateUrl: './spinner.component.html',
   styleUrls: ['./spinner.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class SpinnerComponent implements OnInit {
-
   isLoading: Subject<boolean> = this.spinnerService.isLoading;
-  constructor(private spinnerService: SpinnerService) { }
+  constructor(private spinnerService: SpinnerService) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 }

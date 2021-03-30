@@ -1,34 +1,53 @@
 <form *ngIf="model" name="form" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" autocomplete="off">
-
-    <div class="form-group">
-        <label>Title:</label>
-        <input type="text" class="form-control" name="title" [(ngModel)]="model.title" #title="ngModel" size="35"
-            [class.is-invalid]="title.invalid && title.touched" minlength="3" maxlength="35"
-            pattern='[0-9a-zA-ZĄąĆćĘęŁłŃńÓóŚśŹźŻż\s."-]*' required>
-        <div *ngIf="title.errors && title.touched && title.invalid" class="text-danger">
-            <div *ngIf="!!title.errors.required">Title is required</div>
-            <div *ngIf="!!title.errors.minlength">Title must be at least 3 characters long</div>
-            <div *ngIf="!!title.errors.maxlength">Title cannot be longer than 35 character</div>
-            <div *ngIf="!!title.errors.pattern">You have used characters that are not allowed</div>
-        </div>
+  <div class="form-group">
+    <label>Title:</label>
+    <input
+      type="text"
+      class="form-control"
+      name="title"
+      [(ngModel)]="model.title"
+      #title="ngModel"
+      size="35"
+      [class.is-invalid]="title.invalid && title.touched"
+      minlength="3"
+      maxlength="35"
+      pattern='[0-9a-zA-ZĄąĆćĘęŁłŃńÓóŚśŹźŻż\s."-]*'
+      required
+    />
+    <div *ngIf="title.errors && title.touched && title.invalid" class="text-danger">
+      <div *ngIf="!!title.errors.required">Title is required</div>
+      <div *ngIf="!!title.errors.minlength">Title must be at least 3 characters long</div>
+      <div *ngIf="!!title.errors.maxlength">Title cannot be longer than 35 character</div>
+      <div *ngIf="!!title.errors.pattern">You have used characters that are not allowed</div>
     </div>
+  </div>
 
-    <div class="form-group">
-        <label>Body:</label>
-        <input type="text" class="form-control" name="body" [(ngModel)]="model.body" #body="ngModel" size="35"
-            [class.is-invalid]="body.invalid && body.touched" minlength="3" maxlength="255"
-            pattern='[0-9a-zA-ZĄąĆćĘęŁłŃńÓóŚśŹźŻż\s."-]*' required>
-        <div *ngIf="body.errors && body.touched && body.invalid" class="text-danger">
-            <div *ngIf="!!body.errors.required">Body is required</div>
-            <div *ngIf="!!body.errors.minlength">Body must be at least 3 characters long</div>
-            <div *ngIf="!!body.errors.maxlength">Body cannot be longer than 35 character</div>
-            <div *ngIf="!!body.errors.pattern">You have used characters that are not allowed</div>
-        </div>
+  <div class="form-group">
+    <label>Body:</label>
+    <input
+      type="text"
+      class="form-control"
+      name="body"
+      [(ngModel)]="model.body"
+      #body="ngModel"
+      size="35"
+      [class.is-invalid]="body.invalid && body.touched"
+      minlength="3"
+      maxlength="255"
+      pattern='[0-9a-zA-ZĄąĆćĘęŁłŃńÓóŚśŹźŻż\s."-]*'
+      required
+    />
+    <div *ngIf="body.errors && body.touched && body.invalid" class="text-danger">
+      <div *ngIf="!!body.errors.required">Body is required</div>
+      <div *ngIf="!!body.errors.minlength">Body must be at least 3 characters long</div>
+      <div *ngIf="!!body.errors.maxlength">Body cannot be longer than 35 character</div>
+      <div *ngIf="!!body.errors.pattern">You have used characters that are not allowed</div>
     </div>
+  </div>
 
-    <p class="btn-group">
-        <button type="submit" class="btn btn-dark" [disabled]="!f.valid">{{ action }}</button>
-        <button type="reset" class="btn btn-info">Clear</button>
-        <button class="btn btn-dark" routerLink="../">Back</button>
-    </p>
+  <p class="btn-group">
+    <button type="submit" class="btn btn-dark" [disabled]="!f.valid">{{ action }}</button>
+    <button type="reset" class="btn btn-info">Clear</button>
+    <button class="btn btn-dark" routerLink="../">Back</button>
+  </p>
 </form>

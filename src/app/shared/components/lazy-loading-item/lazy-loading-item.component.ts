@@ -4,7 +4,7 @@ import { Component, OnInit, ChangeDetectionStrategy, Input, TemplateRef, Element
   selector: 'lazy-loading-item',
   templateUrl: './lazy-loading-item.component.html',
   styleUrls: ['./lazy-loading-item.component.css'],
-  changeDetection: ChangeDetectionStrategy.Default
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class LazyLoadingItemComponent implements OnInit, OnDestroy {
   @Input() initialTemplate!: TemplateRef<any>;
@@ -13,7 +13,7 @@ export class LazyLoadingItemComponent implements OnInit, OnDestroy {
   currentTemplate!: TemplateRef<any>;
   intersectionObserver!: IntersectionObserver;
 
-  constructor(private element: ElementRef) { }
+  constructor(private element: ElementRef) {}
 
   ngOnInit(): void {
     this.currentTemplate = this.initialTemplate;
@@ -21,7 +21,9 @@ export class LazyLoadingItemComponent implements OnInit, OnDestroy {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           this.currentTemplate = this.doneTemplate;
-          if (this.saveInMemory) { observer.unobserve(this.element.nativeElement); }
+          if (this.saveInMemory) {
+            observer.unobserve(this.element.nativeElement);
+          }
         }
       });
     };
@@ -33,5 +35,4 @@ export class LazyLoadingItemComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.intersectionObserver.unobserve(this.element.nativeElement);
   }
-
 }

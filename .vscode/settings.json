@@ -20,6 +20,7 @@
     "build",
     "codelyzer",
     "darr",
+    "datatable",
     "devkit",
     "filesaver",
     "ngx",
@@ -30,6 +31,23 @@
   ],
   "cSpell.ignoreWords": [
     "antman",
-    "ironman"
+    "app",
+    "arrow",
+    "assets",
+    "config",
+    "css",
+    "different",
+    "environments",
+    "html",
+    "ironman",
+    "js",
+    "json",
+    "list",
+    "parens",
+    "prettier",
+    "prettierrc",
+    "scss",
+    "src",
+    "ts"
   ]
 }

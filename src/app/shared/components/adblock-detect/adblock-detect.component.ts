@@ -5,7 +5,6 @@ import { Component, AfterViewInit, ViewChild, ElementRef, Output, EventEmitter }
   templateUrl: './adblock-detect.component.html',
 })
 export class AdblockDetectComponent implements AfterViewInit {
-
   @ViewChild('banner') banner!: ElementRef;
   @Output() detected: EventEmitter<boolean> = new EventEmitter();
 
@@ -17,7 +16,7 @@ export class AdblockDetectComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     setTimeout(() => {
-      if (this.banner.nativeElement.offsetHeight === 0){
+      if (this.banner.nativeElement.offsetHeight === 0) {
         this.viewContent = true;
         this.detected.emit(this.banner.nativeElement.offsetHeight === 0);
       }

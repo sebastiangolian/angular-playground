@@ -9,10 +9,9 @@ import { User } from '../../interfaces/user.interface';
 
 @Component({
   templateUrl: './user-item.component.html',
-  styleUrls: ['./user-item.component.css']
+  styleUrls: ['./user-item.component.css'],
 })
 export class UserItemComponent implements OnInit, OnDestroy {
-
   idUser = '';
   $user: Observable<User>;
 
@@ -20,16 +19,18 @@ export class UserItemComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute, private userService: UserService, private headerService: HeaderService) {
     const id = this.route.snapshot.paramMap.get('id');
-    if (id) { this.idUser = id; }
+    if (id) {
+      this.idUser = id;
+    }
     this.headerService.set('User: ' + this.idUser);
-    this.$user = this.userService.getById(this.idUser).pipe(map(apiUser => apiUser.item));
+    this.$user = this.userService.getById(this.idUser).pipe(map((apiUser) => apiUser.item));
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   ngOnDestroy(): void {
-    if (this.subscription) { this.subscription.unsubscribe(); }
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
-
 }

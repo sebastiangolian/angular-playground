@@ -5,14 +5,11 @@ import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core
   selector: 'jph-user-company',
   templateUrl: './jph-user-company.component.html',
   styleUrls: ['./jph-user-company.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class JphUserCompanyComponent implements OnInit {
-
   @Input() company!: JphUserCompany;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

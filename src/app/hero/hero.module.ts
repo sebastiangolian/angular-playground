@@ -24,10 +24,6 @@ import { HeroListComponent } from './components/hero-list/hero-list.component';
     HeroUpdateComponent,
     HeroListComponent,
   ],
-  imports: [
-    CommonModule,
-    HeroRoutingModule,
-    FormsModule
-  ]
+  imports: [CommonModule, HeroRoutingModule, FormsModule],
 })
-export class HeroModule { }
+export class HeroModule {}

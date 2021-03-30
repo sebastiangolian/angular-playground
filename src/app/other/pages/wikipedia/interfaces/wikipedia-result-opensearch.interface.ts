@@ -1,5 +1,5 @@
 export interface WikipediaResultOpenSearch {
-    term: string;
-    url: string;
-    parseTerm: string;
-  }
+  term: string;
+  url: string;
+  parseTerm: string;
+}

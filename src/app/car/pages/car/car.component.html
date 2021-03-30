@@ -1,5 +1,5 @@
-<car-form (carSaved)="onCarSave($event)" [car]="updatedCar"></car-form> 
+<car-form (carSaved)="onCarSave($event)" [car]="updatedCar"></car-form>
 <br />
-<ng-container *ngIf="cars|async as cars">
-    <car-items [cars]="cars" [updateCar]="updatedCar" (carSelected)="onSelect($event)" (carDeleted)="onDelete($event)"></car-items>
+<ng-container *ngIf="cars | async as cars">
+  <car-items [cars]="cars" [updateCar]="updatedCar" (carSelected)="onSelect($event)" (carDeleted)="onDelete($event)"></car-items>
 </ng-container>

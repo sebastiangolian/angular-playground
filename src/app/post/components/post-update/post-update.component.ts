@@ -5,18 +5,16 @@ import { Post } from '../../interfaces/post.interface';
   selector: 'post-update',
   templateUrl: './post-update.component.html',
   styleUrls: ['./post-update.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostUpdateComponent implements OnInit {
-
-  @Input() model: Post|null = null;
-  @Output() postUpdated: EventEmitter<Post|null> = new EventEmitter<Post|null>();
-  constructor() { }
+  @Input() model: Post | null = null;
+  @Output() postUpdated: EventEmitter<Post | null> = new EventEmitter<Post | null>();
+  constructor() {}
 
   ngOnInit(): void {}
 
-  onFormSubmit(post: Post|null): void {
+  onFormSubmit(post: Post | null): void {
     this.postUpdated.emit(post);
   }
-
 }

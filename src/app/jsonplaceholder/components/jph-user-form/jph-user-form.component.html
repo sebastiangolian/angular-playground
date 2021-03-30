@@ -1,91 +1,82 @@
 <form *ngIf="user" name="form" (ngSubmit)="f.form.valid && save.emit(user)" #f="ngForm" autocomplete="off">
+  <div class="form-group">
+    <label>Name:</label>
+    <input type="text" class="form-control" name="title" [(ngModel)]="user.name" #name="ngModel" required />
+  </div>
+
+  <div class="form-group">
+    <label>Username:</label>
+    <input type="text" class="form-control" name="username" [(ngModel)]="user.username" #username="ngModel" required />
+  </div>
+
+  <div class="form-group">
+    <label>Email:</label>
+    <input type="text" class="form-control" name="email" [(ngModel)]="user.email" #email="ngModel" required />
+  </div>
+
+  <div class="form-group">
+    <label>Phone:</label>
+    <input type="text" class="form-control" name="phone" [(ngModel)]="user.phone" #phone="ngModel" required />
+  </div>
+
+  <div class="form-group">
+    <label>Website:</label>
+    <input type="text" class="form-control" name="website" [(ngModel)]="user.website" #website="ngModel" required />
+  </div>
+
+  <div ngModelGroup="address">
+    <h2>Address</h2>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Street:</label>
+        <input type="text" class="form-control" name="street" [(ngModel)]="user.address.street" #street="ngModel" required />
+      </div>
+      <div class="form-group col-md-6">
+        <label>Suite:</label>
+        <input type="text" class="form-control" name="suite" [(ngModel)]="user.address.suite" #suite="ngModel" required />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label>Zipcode:</label>
+        <input type="text" class="form-control" name="zipcode" [(ngModel)]="user.address.zipcode" #zipcode="ngModel" required />
+      </div>
+      <div class="form-group col-md-8">
+        <label>Suite:</label>
+        <input type="text" class="form-control" name="city" [(ngModel)]="user.address.city" #city="ngModel" required />
+      </div>
+    </div>
+    <div ngModelGroup="geo">
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label>Lat:</label>
+          <input type="text" class="form-control" name="lat" [(ngModel)]="user.address.geo.lat" #lat="ngModel" required />
+        </div>
+        <div class="form-group col-md-4">
+          <label>Lng:</label>
+          <input type="text" class="form-control" name="lng" [(ngModel)]="user.address.geo.lng" #lng="ngModel" required />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div ngModelGroup="company">
+    <h2>Company</h2>
     <div class="form-group">
-        <label>Name:</label>
-        <input type="text" class="form-control" name="title" [(ngModel)]="user.name" #name="ngModel" required />
+      <label>Name:</label>
+      <input type="text" class="form-control" name="name" [(ngModel)]="user.company.name" #name="ngModel" required />
     </div>
-
     <div class="form-group">
-        <label>Username:</label>
-        <input type="text" class="form-control" name="username" [(ngModel)]="user.username" #username="ngModel"
-            required />
+      <label>CatchPhrase:</label>
+      <input type="text" class="form-control" name="catchPhrase" [(ngModel)]="user.company.catchPhrase" #catchPhrase="ngModel" required />
     </div>
-
     <div class="form-group">
-        <label>Email:</label>
-        <input type="text" class="form-control" name="email" [(ngModel)]="user.email" #email="ngModel" required />
+      <label>Bs:</label>
+      <input type="text" class="form-control" name="bs" [(ngModel)]="user.company.bs" #bs="ngModel" required />
     </div>
+  </div>
 
-    <div class="form-group">
-        <label>Phone:</label>
-        <input type="text" class="form-control" name="phone" [(ngModel)]="user.phone" #phone="ngModel" required />
-    </div>
-
-    <div class="form-group">
-        <label>Website:</label>
-        <input type="text" class="form-control" name="website" [(ngModel)]="user.website" #website="ngModel" required />
-    </div>
-
-    <div ngModelGroup="address">
-        <h2>Address</h2>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label>Street:</label>
-                <input type="text" class="form-control" name="street" [(ngModel)]="user.address.street"
-                    #street="ngModel" required />
-            </div>
-            <div class="form-group col-md-6">
-                <label>Suite:</label>
-                <input type="text" class="form-control" name="suite" [(ngModel)]="user.address.suite" #suite="ngModel"
-                    required />
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label>Zipcode:</label>
-                <input type="text" class="form-control" name="zipcode" [(ngModel)]="user.address.zipcode"
-                    #zipcode="ngModel" required />
-            </div>
-            <div class="form-group col-md-8">
-                <label>Suite:</label>
-                <input type="text" class="form-control" name="city" [(ngModel)]="user.address.city" #city="ngModel"
-                    required />
-            </div>
-        </div>
-        <div ngModelGroup="geo">
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label>Lat:</label>
-                    <input type="text" class="form-control" name="lat" [(ngModel)]="user.address.geo.lat" #lat="ngModel"
-                        required />
-                </div>
-                <div class="form-group col-md-4">
-                    <label>Lng:</label>
-                    <input type="text" class="form-control" name="lng" [(ngModel)]="user.address.geo.lng" #lng="ngModel"
-                        required />
-                </div>
-            </div>
-        </div>
-    </div>
-    <div ngModelGroup="company">
-        <h2>Company</h2>
-        <div class="form-group">
-            <label>Name:</label>
-            <input type="text" class="form-control" name="name" [(ngModel)]="user.company.name" #name="ngModel"
-                required />
-        </div>
-        <div class="form-group">
-            <label>CatchPhrase:</label>
-            <input type="text" class="form-control" name="catchPhrase" [(ngModel)]="user.company.catchPhrase"
-                #catchPhrase="ngModel" required />
-        </div>
-        <div class="form-group">
-            <label>Bs:</label>
-            <input type="text" class="form-control" name="bs" [(ngModel)]="user.company.bs" #bs="ngModel" required />
-        </div>
-    </div>
-
-    <p class="btn-group">
-        <button type="submit" class="btn btn-dark" [disabled]="!f.valid" [innerHTML]="buttonSubmitText"></button>
-        <button class="btn btn-dark" (click)="cancel.emit()">Cancel</button>
-    </p>
+  <p class="btn-group">
+    <button type="submit" class="btn btn-dark" [disabled]="!f.valid" [innerHTML]="buttonSubmitText"></button>
+    <button class="btn btn-dark" (click)="cancel.emit()">Cancel</button>
+  </p>
 </form>

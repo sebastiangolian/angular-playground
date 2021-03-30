@@ -7,12 +7,12 @@ import { Hero } from '../../interfaces/hero.interface';
   selector: 'hero-update',
   templateUrl: './hero-update.component.html',
   styleUrls: ['./hero-update.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeroUpdateComponent implements OnInit {
-  @Input() hero: Hero|null = null;
+  @Input() hero: Hero | null = null;
 
-  constructor(private heroService: HeroService, private location: Location) { }
+  constructor(private heroService: HeroService, private location: Location) {}
 
   ngOnInit(): void {}
 
@@ -22,8 +22,7 @@ export class HeroUpdateComponent implements OnInit {
 
   save(): void {
     if (this.hero) {
-      this.heroService.update(this.hero.id.toString(), this.hero)
-      .subscribe(() => this.goBack());
+      this.heroService.update(this.hero.id.toString(), this.hero).subscribe(() => this.goBack());
     }
   }
 }

@@ -8,22 +8,20 @@ import { MessageType } from 'src/app/shared/enums/message-type.enum';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
-
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    return next.handle(request)
-      .pipe(
-        retry(environment.httpRetry),
-        catchError((errorResponse: HttpErrorResponse) => {
-          if (errorResponse.error instanceof ErrorEvent) {
-            this.clientSideError(errorResponse.error);
-          } else {
-            this.serverSideError(errorResponse, request);
-          }
-          return throwError(errorResponse);
-        })
-      );
+    return next.handle(request).pipe(
+      retry(environment.httpRetry),
+      catchError((errorResponse: HttpErrorResponse) => {
+        if (errorResponse.error instanceof ErrorEvent) {
+          this.clientSideError(errorResponse.error);
+        } else {
+          this.serverSideError(errorResponse, request);
+        }
+        return throwError(errorResponse);
+      }),
+    );
   }
 
   clientSideError(error: ErrorEvent): void {
@@ -33,7 +31,9 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   serverSideError(error: HttpErrorResponse, request: HttpRequest<any>): void {
     switch (error.status) {
       case 401: {
-        if (request.url.includes('/user/login')) { break; }
+        if (request.url.includes('/user/login')) {
+          break;
+        }
         this.messageService.sendMessage('Twoja sesja wygasła. Zaloguj się ponownie', MessageType.INFO);
         break;
       }

@@ -9,7 +9,6 @@ import { ApiList } from 'src/app/shared/interfaces/api-list.interface';
 
 @Injectable({ providedIn: 'root' })
 export class HeroService extends AbstractService<Hero> {
-
   constructor(protected http: HttpClient, private heroMessageService: HeroMessageService) {
     super(http);
     this.url += '/hero';

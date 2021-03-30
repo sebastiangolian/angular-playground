@@ -17,15 +17,20 @@ import { MessageType } from 'src/app/shared/enums/message-type.enum';
 @Component({
   selector: 'app-user',
   templateUrl: './user-datatable.component.html',
-  styleUrls: ['./user-datatable.component.css']
+  styleUrls: ['./user-datatable.component.css'],
 })
 export class UserDataTableComponent extends DataTableComponent<User> implements OnDestroy {
-
   model: User = new UserModel();
   private subscription: Subscription = new Subscription();
 
-  constructor(private headerService: HeaderService, private messageService: MessageService, private modalService: BsModalService,
-              private userService: UserService, private router: Router, private modalConfirmService: ModalConfirmService) {
+  constructor(
+    private headerService: HeaderService,
+    private messageService: MessageService,
+    private modalService: BsModalService,
+    private userService: UserService,
+    private router: Router,
+    private modalConfirmService: ModalConfirmService,
+  ) {
     super();
     this.headerService.set('Users');
     this.filterOneSign = ['id'];
@@ -49,11 +54,13 @@ export class UserDataTableComponent extends DataTableComponent<User> implements 
 
   onDelete(role: User): void {
     const content = `Are you sure you want to delete the record ?`;
-    this.subscription.add(this.modalConfirmService.confirm(content).subscribe(result => {
-      if (result) {
-        this.subscription.add(this.deleteUser(role));
-      }
-    }));
+    this.subscription.add(
+      this.modalConfirmService.confirm(content).subscribe((result) => {
+        if (result) {
+          this.subscription.add(this.deleteUser(role));
+        }
+      }),
+    );
   }
 
   onCreate(): void {
@@ -65,7 +72,7 @@ export class UserDataTableComponent extends DataTableComponent<User> implements 
   }
 
   private getUsers(): Subscription {
-    return this.userService.get(this.limit, this.page, this.sortBy, this.order, this.filters).subscribe(ret => {
+    return this.userService.get(this.limit, this.page, this.sortBy, this.order, this.filters).subscribe((ret) => {
       this.items = ret.items;
       this.total = ret.total;
     });
@@ -78,18 +85,22 @@ export class UserDataTableComponent extends DataTableComponent<User> implements 
   private postUserModal(): Subscription {
     return this.userModal(new UserModel()).subscribe({
       next: (user: User) => {
-        if (user !== null) { this.postUser(user); }
+        if (user !== null) {
+          this.postUser(user);
+        }
       },
-      error: () => this.messageService.sendMessage('Adding a new record failed', MessageType.ERROR)
+      error: () => this.messageService.sendMessage('Adding a new record failed', MessageType.ERROR),
     });
   }
 
   private putUserModal(user: User): Subscription {
     return this.userModal(user).subscribe({
       next: (modalUser: User) => {
-        if (modalUser !== null) { this.putUser(modalUser); }
+        if (modalUser !== null) {
+          this.putUser(modalUser);
+        }
       },
-      error: () => this.messageService.sendMessage('Update record failed', MessageType.ERROR)
+      error: () => this.messageService.sendMessage('Update record failed', MessageType.ERROR),
     });
   }
 
@@ -98,7 +109,7 @@ export class UserDataTableComponent extends DataTableComponent<User> implements 
       complete: () => {
         this.onRefresh();
         this.messageService.sendMessage('Record added correctly');
-      }
+      },
     });
   }
 
@@ -107,7 +118,7 @@ export class UserDataTableComponent extends DataTableComponent<User> implements 
       complete: () => {
         this.onRefresh();
         this.messageService.sendMessage('Record updated correctly');
-      }
+      },
     });
   }
 
@@ -116,7 +127,7 @@ export class UserDataTableComponent extends DataTableComponent<User> implements 
       complete: () => {
         this.onRefresh();
         this.messageService.sendMessage('Record deleted correctly');
-      }
+      },
     });
   }
 
@@ -125,7 +136,7 @@ export class UserDataTableComponent extends DataTableComponent<User> implements 
       complete: () => {
         this.onRefresh();
         this.messageService.sendMessage('Role has been assigned correctly');
-      }
+      },
     });
   }
 
@@ -134,20 +145,24 @@ export class UserDataTableComponent extends DataTableComponent<User> implements 
       next: (role: Role) => {
         this.patchUser(user.id.toString(), { idRole: role.id });
       },
-      error: () => this.messageService.sendMessage('The role was not assigned correctly', MessageType.ERROR)
+      error: () => this.messageService.sendMessage('The role was not assigned correctly', MessageType.ERROR),
     });
   }
 
   private userModal(user: User): Observable<User> {
     const subject = new Subject<User>();
     let initialState: Partial<UserModalComponent> = {};
-    if (user) { initialState = { model: user }; }
+    if (user) {
+      initialState = { model: user };
+    }
     const modal = this.modalService.show(UserModalComponent, {
       initialState,
       class: 'modal-md',
-      ignoreBackdropClick: true
+      ignoreBackdropClick: true,
     });
-    if (modal.content) { modal.content.subject = subject; }
+    if (modal.content) {
+      modal.content.subject = subject;
+    }
     return subject;
   }
 
@@ -156,13 +171,17 @@ export class UserDataTableComponent extends DataTableComponent<User> implements 
     const modal = this.modalService.show(RoleModalSearchComponent, {
       initialState: {},
       class: 'modal-xl',
-      ignoreBackdropClick: true
+      ignoreBackdropClick: true,
     });
-    if (modal.content) { modal.content.subject = subject; }
+    if (modal.content) {
+      modal.content.subject = subject;
+    }
     return subject;
   }
 
   ngOnDestroy(): void {
-    if (this.subscription) { this.subscription.unsubscribe(); }
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

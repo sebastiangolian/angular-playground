@@ -9,10 +9,9 @@ import { WikipediaResultParse } from '../../interfaces/wikipedia-result-parse.in
 @Component({
   selector: 'app-wikipedia',
   templateUrl: './wikipedia.component.html',
-  styleUrls: ['./wikipedia.component.css']
+  styleUrls: ['./wikipedia.component.css'],
 })
 export class WikipediaComponent implements OnInit, OnDestroy {
-
   viewSearchResult = false;
   viewWikiResult = false;
 
@@ -42,7 +41,7 @@ export class WikipediaComponent implements OnInit, OnDestroy {
     this.viewSearchResult = false;
     this.viewWikiResult = true;
     this.searchInput.nativeElement.value = result.parseTerm;
-    this.subscription.add(this.parse(result.parseTerm).subscribe(results => this.wikiResult = results));
+    this.subscription.add(this.parse(result.parseTerm).subscribe((results) => (this.wikiResult = results)));
   }
 
   onClear(): void {
@@ -62,24 +61,26 @@ export class WikipediaComponent implements OnInit, OnDestroy {
         } else {
           return of([]);
         }
-      })
+      }),
     );
   }
 
   private parse(page: string): Observable<WikipediaResultParse> {
     return this.wikipediaService.parse(page).pipe(
-      map(result => {
+      map((result) => {
         for (const prop in result.text) {
           if (prop) {
             result.formatText = result.text[prop];
           }
         }
         return result;
-      })
+      }),
     );
   }
 
   ngOnDestroy(): void {
-    if (this.subscription) { this.subscription.unsubscribe(); }
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

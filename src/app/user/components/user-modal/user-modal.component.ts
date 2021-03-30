@@ -8,15 +8,14 @@ import { UserModel } from '../../models/user.model';
   selector: 'app-user-modal',
   templateUrl: './user-modal.component.html',
   styleUrls: ['./user-modal.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserModalComponent implements OnInit {
-
   title = 'Update user';
   model: User = new UserModel();
   subject: Subject<User> = new Subject<User>();
 
-  constructor(public bsModalRef: BsModalRef) { }
+  constructor(public bsModalRef: BsModalRef) {}
 
   ngOnInit(): void {
     if (this.model === null) {
@@ -38,5 +37,4 @@ export class UserModalComponent implements OnInit {
     this.bsModalRef.hide();
     this.subject.complete();
   }
-
 }

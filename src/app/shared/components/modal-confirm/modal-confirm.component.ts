@@ -6,14 +6,13 @@ import { Subject } from 'rxjs';
   selector: 'app-modal-confirm',
   templateUrl: './modal-confirm.component.html',
   styleUrls: ['./modal-confirm.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalConfirmComponent implements OnInit {
-
   content = '';
   subject: Subject<boolean> = new Subject();
 
-  constructor(public bsModalRef: BsModalRef) { }
+  constructor(public bsModalRef: BsModalRef) {}
 
   ngOnInit(): void {}
 

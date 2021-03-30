@@ -1,4 +1,4 @@
-<ng-container *ngIf="($user|async) as user">
+<ng-container *ngIf="$user | async as user">
   <div class="row">
     <div class="col-12 col-md-6">
       <div class="table-responsive">
@@ -6,23 +6,23 @@
           <tbody>
             <tr>
               <th scope="row">Id</th>
-              <td>{{user.id}}</td>
+              <td>{{ user.id }}</td>
             </tr>
             <tr>
               <th scope="row">Email</th>
-              <td>{{user.email}}</td>
+              <td>{{ user.email }}</td>
             </tr>
             <tr>
               <th scope="row">Zipcode</th>
-              <td>{{user.zipCode}}</td>
+              <td>{{ user.zipCode }}</td>
             </tr>
             <tr>
               <th scope="row">Create date</th>
-              <td>{{user.created}}</td>
+              <td>{{ user.created }}</td>
             </tr>
             <tr>
               <th scope="row">Is active</th>
-              <td>{{user.active}}</td>
+              <td>{{ user.active }}</td>
             </tr>
           </tbody>
         </table>

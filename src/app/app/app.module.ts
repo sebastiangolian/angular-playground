@@ -15,11 +15,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { SpinnerInterceptor } from '../shared/components/spinner/interceptors/spinner.interceptor';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    TestComponent
-  ],
+  declarations: [AppComponent, HomeComponent, TestComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -34,8 +30,8 @@ import { SpinnerInterceptor } from '../shared/components/spinner/interceptors/sp
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: BackendInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: BackendInterceptor, multi: true },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

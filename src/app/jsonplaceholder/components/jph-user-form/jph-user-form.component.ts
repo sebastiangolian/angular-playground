@@ -6,17 +6,16 @@ import { JphUserModel } from '../../models/jph-user.model';
   selector: 'jph-user-form',
   templateUrl: './jph-user-form.component.html',
   styleUrls: ['./jph-user-form.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class JphUserFormComponent implements OnInit {
-
   @Input() user: JphUser = new JphUserModel();
   @Output() save: EventEmitter<JphUser> = new EventEmitter();
   @Output() cancel: EventEmitter<boolean> = new EventEmitter();
 
   buttonSubmitText = 'Create';
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     if (!this.user.id) {
@@ -25,5 +24,4 @@ export class JphUserFormComponent implements OnInit {
       this.buttonSubmitText = 'Update';
     }
   }
-
 }

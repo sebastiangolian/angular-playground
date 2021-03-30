@@ -13,7 +13,6 @@ import { FormsModule } from '@angular/forms';
 import { JphUserModalComponent } from './components/jph-user-modal/jph-user-modal.component';
 import { JphPhotoComponent } from './pages/jph-photo/jph-photo.component';
 
-
 @NgModule({
   declarations: [
     JphUserComponent,
@@ -23,14 +22,8 @@ import { JphPhotoComponent } from './pages/jph-photo/jph-photo.component';
     JphUserCompanyComponent,
     JphUserFormComponent,
     JphUserModalComponent,
-    JphPhotoComponent
+    JphPhotoComponent,
   ],
-  imports: [
-    CommonModule,
-    JsonplaceholderRoutingModule,
-    FormsModule,
-    BsDropdownModule.forRoot(),
-    SharedModule
-  ]
+  imports: [CommonModule, JsonplaceholderRoutingModule, FormsModule, BsDropdownModule.forRoot(), SharedModule],
 })
-export class JsonplaceholderModule { }
+export class JsonplaceholderModule {}

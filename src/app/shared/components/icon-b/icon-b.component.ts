@@ -4,10 +4,9 @@ import { Component, OnInit, ChangeDetectionStrategy, Input, EventEmitter, Output
   selector: 'icon-b',
   templateUrl: './icon-b.component.html',
   styleUrls: ['./icon-b.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IconBComponent implements OnInit {
-
   @Input() name = '';
   @Input() width = '22';
   @Input() height = '22';
@@ -17,7 +16,7 @@ export class IconBComponent implements OnInit {
 
   href = '/assets/icons/';
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     this.href = this.href + this.name + '.svg';

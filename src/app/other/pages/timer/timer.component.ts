@@ -5,17 +5,16 @@ import { TimerService } from 'src/app/shared/services/timer.service';
 
 @Component({
   templateUrl: './timer.component.html',
-  styleUrls: ['./timer.component.css']
+  styleUrls: ['./timer.component.css'],
 })
 export class TimerComponent implements OnInit {
-
   timer$: Observable<number> = new Observable();
 
   constructor(private headerService: HeaderService, private timerService: TimerService) {
     this.headerService.set('Timer');
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   onClick(): void {
     this.timer$ = this.timerService.subjectTimer$;
@@ -37,5 +36,4 @@ export class TimerComponent implements OnInit {
   onSet(): void {
     this.timerService.setTimer(1000);
   }
-
 }

@@ -10,13 +10,13 @@ import { JphUserModel } from '../../models/jph-user.model';
 
 @Component({
   templateUrl: './jph-user.component.html',
-  styleUrls: ['./jph-user.component.css']
+  styleUrls: ['./jph-user.component.css'],
 })
 export class JphUserComponent implements OnInit, OnDestroy {
   users$: Observable<JphUser[]> = new Observable();
   private subscription: Subscription = new Subscription();
 
-  constructor(private jphUserService: JphUserService, private modalService: BsModalService, private messageService: MessageService) { }
+  constructor(private jphUserService: JphUserService, private modalService: BsModalService, private messageService: MessageService) {}
 
   ngOnInit(): void {
     this.users$ = this.jphUserService.get();
@@ -38,7 +38,7 @@ export class JphUserComponent implements OnInit, OnDestroy {
     return this.jphUserService.post(user).subscribe({
       complete: () => {
         this.messageService.sendMessage('Record created correctly');
-      }
+      },
     });
   }
 
@@ -46,7 +46,7 @@ export class JphUserComponent implements OnInit, OnDestroy {
     return this.jphUserService.put(user).subscribe({
       complete: () => {
         this.messageService.sendMessage('Record updated correctly');
-      }
+      },
     });
   }
 
@@ -54,21 +54,21 @@ export class JphUserComponent implements OnInit, OnDestroy {
     return this.jphUserService.delete(user).subscribe({
       complete: () => {
         this.messageService.sendMessage('Record deleted correctly');
-      }
+      },
     });
   }
 
   private postUserModal(): Subscription {
     return this.userModal(new JphUserModel()).subscribe({
       next: (modalUser: JphUser) => this.postUser(modalUser),
-      error: () => this.messageService.sendMessage('Create record failed', MessageType.ERROR)
+      error: () => this.messageService.sendMessage('Create record failed', MessageType.ERROR),
     });
   }
 
   private putUserModal(user: JphUser): Subscription {
     return this.userModal(user).subscribe({
       next: (modalUser: JphUser) => this.putUser(modalUser),
-      error: () => this.messageService.sendMessage('Update record failed', MessageType.ERROR)
+      error: () => this.messageService.sendMessage('Update record failed', MessageType.ERROR),
     });
   }
 
@@ -84,14 +84,17 @@ export class JphUserComponent implements OnInit, OnDestroy {
     const modal = this.modalService.show(JphUserModalComponent, {
       initialState,
       class: 'modal-md',
-      ignoreBackdropClick: true
+      ignoreBackdropClick: true,
     });
-    if (modal.content) { modal.content.subject = subject; }
+    if (modal.content) {
+      modal.content.subject = subject;
+    }
     return subject;
   }
 
   ngOnDestroy(): void {
-    if (this.subscription) { this.subscription.unsubscribe(); }
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
-
 }

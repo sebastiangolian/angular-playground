@@ -7,11 +7,11 @@ import { JphComponent } from './pages/jph/jph.component';
 const routes: Routes = [
   { path: '', component: JphComponent },
   { path: 'user', component: JphUserComponent },
-  { path: 'photo', component: JphPhotoComponent }
+  { path: 'photo', component: JphPhotoComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class JsonplaceholderRoutingModule { }
+export class JsonplaceholderRoutingModule {}

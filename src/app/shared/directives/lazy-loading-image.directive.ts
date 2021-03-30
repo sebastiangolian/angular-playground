@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
 import { MemoryStorageService } from '../services/memory-storage.service';
 
 @Directive({
-  selector: '[lazyLoadingImage]'
+  selector: '[lazyLoadingImage]',
 })
 export class LazyLoadingImageDirective implements OnDestroy, OnChanges {
   private subscription: Subscription = new Subscription();
@@ -16,8 +16,12 @@ export class LazyLoadingImageDirective implements OnDestroy, OnChanges {
   @Input() saveInMemory = environment.lazyLoadingImageSaveInMemory;
   @Output() visibleChange = new EventEmitter<boolean>();
 
-  constructor(private element: ElementRef, protected http: HttpClient, private memoryStorageService: MemoryStorageService,
-              private photoExternalService: PhotoExternalService) {
+  constructor(
+    private element: ElementRef,
+    protected http: HttpClient,
+    private memoryStorageService: MemoryStorageService,
+    private photoExternalService: PhotoExternalService,
+  ) {
     this.runIntersectionObserver();
   }
 
@@ -47,9 +51,11 @@ export class LazyLoadingImageDirective implements OnDestroy, OnChanges {
   }
 
   private getBlobUrlSubscription(src: string): Subscription {
-    return this.photoExternalService.getBlobUrl(src).subscribe(url => {
+    return this.photoExternalService.getBlobUrl(src).subscribe((url) => {
       this.element.nativeElement.src = url;
-      if (this.saveInMemory) { this.memoryStorageService.add('lazy-loading-image', src, url); }
+      if (this.saveInMemory) {
+        this.memoryStorageService.add('lazy-loading-image', src, url);
+      }
     });
   }
 
@@ -71,7 +77,8 @@ export class LazyLoadingImageDirective implements OnDestroy, OnChanges {
   }
 
   ngOnDestroy(): void {
-    if (this.subscription) { this.subscription.unsubscribe(); }
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
-
 }

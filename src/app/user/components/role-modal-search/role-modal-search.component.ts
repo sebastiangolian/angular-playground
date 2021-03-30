@@ -13,7 +13,6 @@ import { RoleService } from '../../services/role.service';
   styleUrls: ['./role-modal-search.component.css'],
 })
 export class RoleModalSearchComponent extends DataTableSearchComponent<Role> implements OnDestroy {
-
   model: Role = new RoleModel();
   items: Role[] = [];
   subject: Subject<Role> = new Subject<Role>();
@@ -30,7 +29,7 @@ export class RoleModalSearchComponent extends DataTableSearchComponent<Role> imp
   }
 
   private getRoles(): Subscription {
-    return this.roleService.get(this.limit, this.page, this.sortBy, this.order, this.filters).subscribe(ret => {
+    return this.roleService.get(this.limit, this.page, this.sortBy, this.order, this.filters).subscribe((ret) => {
       this.items = ret.items;
       this.total = ret.total;
     });
@@ -38,11 +37,13 @@ export class RoleModalSearchComponent extends DataTableSearchComponent<Role> imp
 
   onSelectConfirm(role: Role): void {
     const content = `Are you sure you want to assign a role?`;
-    this.subscription.add(this.modalConfirmService.confirm(content).subscribe(result => {
-      if (result) {
-        this.onSelect(role);
-      }
-    }));
+    this.subscription.add(
+      this.modalConfirmService.confirm(content).subscribe((result) => {
+        if (result) {
+          this.onSelect(role);
+        }
+      }),
+    );
   }
 
   onSelect(role: Role): void {
@@ -57,6 +58,8 @@ export class RoleModalSearchComponent extends DataTableSearchComponent<Role> imp
   }
 
   ngOnDestroy(): void {
-    if (this.subscription) { this.subscription.unsubscribe(); }
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

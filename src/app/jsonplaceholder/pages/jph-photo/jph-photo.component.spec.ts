@@ -8,9 +8,8 @@ describe('JphPhotoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ JphPhotoComponent ]
-    })
-    .compileComponents();
+      declarations: [JphPhotoComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

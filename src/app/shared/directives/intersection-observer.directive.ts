@@ -2,7 +2,7 @@ import { Directive, ElementRef, EventEmitter, Input, OnInit, Output } from '@ang
 import { IntersectionStatus } from '../enums/intersection-status.enum';
 
 @Directive({
-  selector: '[intersectionObserver]'
+  selector: '[intersectionObserver]',
 })
 export class IntersectionObserverDirective implements OnInit {
   @Input() intersectionDebounce = 0;
@@ -11,7 +11,7 @@ export class IntersectionObserverDirective implements OnInit {
   @Input() intersectionThreshold!: number | number[];
   @Output() visibilityChange = new EventEmitter<IntersectionStatus>();
 
-  constructor(private element: ElementRef) { }
+  constructor(private element: ElementRef) {}
 
   ngOnInit(): void {
     this.visibilityChange.emit(IntersectionStatus.NOT_VISIBLE);
@@ -19,7 +19,7 @@ export class IntersectionObserverDirective implements OnInit {
     const config = {
       root: this.intersectionRoot,
       rootMargin: this.intersectionRootMargin,
-      threshold: this.intersectionThreshold
+      threshold: this.intersectionThreshold,
     };
 
     const intersectionObserverCallback = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {

@@ -8,9 +8,8 @@ describe('JphUserModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ JphUserModalComponent ]
-    })
-    .compileComponents();
+      declarations: [JphUserModalComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

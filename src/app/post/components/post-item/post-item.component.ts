@@ -5,11 +5,10 @@ import { Post } from '../../interfaces/post.interface';
   selector: 'post-item',
   templateUrl: './post-item.component.html',
   styleUrls: ['./post-item.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostItemComponent implements OnInit {
-
-  @Input() model: Post|null = null;
+  @Input() model: Post | null = null;
   @Output() postEdited: EventEmitter<Post> = new EventEmitter();
   @Output() postDeleted: EventEmitter<Post> = new EventEmitter();
 

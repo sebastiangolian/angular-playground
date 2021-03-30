@@ -8,10 +8,9 @@ import { UserModel } from '../../models/user.model';
 
 @Component({
   templateUrl: './user-search.component.html',
-  styleUrls: ['./user-search.component.css']
+  styleUrls: ['./user-search.component.css'],
 })
 export class UserSearchComponent implements OnInit, OnDestroy {
-
   item: User = new UserModel();
   caption = '';
 
@@ -21,34 +20,37 @@ export class UserSearchComponent implements OnInit, OnDestroy {
     this.headerService.set('User search');
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   onSearch(value: string): void {
     if (value.length > 0) {
       this.subscription.add(this.search(value));
-    }
-    else {
+    } else {
       this.item = new UserModel();
     }
   }
 
   search(id: string): Subscription {
-    return this.userService.getById(id).pipe(
-      debounceTime(500),
-      tap(user => {
-        if (user.item) {
-          this.caption = '';
-          this.item = user.item;
-        } else {
-          this.caption = 'Is not exist';
-          this.item = new UserModel();
-        }
-
-      })
-    ).subscribe();
+    return this.userService
+      .getById(id)
+      .pipe(
+        debounceTime(500),
+        tap((user) => {
+          if (user.item) {
+            this.caption = '';
+            this.item = user.item;
+          } else {
+            this.caption = 'Is not exist';
+            this.item = new UserModel();
+          }
+        }),
+      )
+      .subscribe();
   }
 
   ngOnDestroy(): void {
-    if (this.subscription) { this.subscription.unsubscribe(); }
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

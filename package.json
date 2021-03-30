@@ -10,6 +10,7 @@
     "build-prod": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint --fix",
+    "prettier": "prettier --write --config ./.prettierrc --list-different \"src/{app,environments,assets}/**/*{.ts,.js,.json,.css,.scss,.html}\"",
     "e2e": "ng e2e --port=4201 --webdriverUpdate=true",
     "predeploy": "ng build --prod --base-href=/angular-playground/ --outputPath=dist/angular-playground",
     "deploy": "gh-pages -d dist/angular-playground/",
@@ -18,7 +19,9 @@
     "prepare": "husky install"
   },
   "lint-staged": {
-    "*.ts": ["npm run lint"]
+    "src/**/*.{ts,css,html}": [
+        "npm run prettier:check"
+    ]
   },
   "private": true,
   "dependencies": {

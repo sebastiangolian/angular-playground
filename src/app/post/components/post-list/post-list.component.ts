@@ -5,15 +5,14 @@ import { Post } from '../../interfaces/post.interface';
   selector: 'post-list',
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostListComponent implements OnInit {
-
   @Input() posts: Post[] = [];
   @Output() postEdited: EventEmitter<Post> = new EventEmitter();
   @Output() postDeleted: EventEmitter<Post> = new EventEmitter();
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {}
 

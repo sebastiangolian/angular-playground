@@ -9,10 +9,9 @@ import { CarService } from '../../services/car.service';
 @Component({
   selector: 'app-car',
   templateUrl: './car.component.html',
-  styleUrls: ['./car.component.css']
+  styleUrls: ['./car.component.css'],
 })
 export class CarComponent implements OnInit, OnDestroy {
-
   cars: Observable<Car[]> = new Observable<Car[]>();
   updatedCar: Car = { id: '', brand: '', name: '' };
   isUpdated = false;
@@ -44,7 +43,7 @@ export class CarComponent implements OnInit, OnDestroy {
   }
 
   private reload(): void {
-    this.cars = this.carService.get().pipe(map(api => api.items));
+    this.cars = this.carService.get().pipe(map((api) => api.items));
     this.isUpdated = false;
   }
 
@@ -53,7 +52,9 @@ export class CarComponent implements OnInit, OnDestroy {
       this.updatedCar = result;
       this.reload();
       this.messageService.sendMessage('Added new car');
-      setTimeout(() => { this.updatedCar = this.emptyCar(); }, 2000);
+      setTimeout(() => {
+        this.updatedCar = this.emptyCar();
+      }, 2000);
     });
   }
 
@@ -62,7 +63,9 @@ export class CarComponent implements OnInit, OnDestroy {
       this.updatedCar = result;
       this.reload();
       this.messageService.sendMessage('Updated car');
-      setTimeout(() => { this.updatedCar = this.emptyCar(); }, 2000);
+      setTimeout(() => {
+        this.updatedCar = this.emptyCar();
+      }, 2000);
     });
   }
 
@@ -78,6 +81,8 @@ export class CarComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.subscription) { this.subscription.unsubscribe(); }
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

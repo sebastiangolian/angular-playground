@@ -10,20 +10,8 @@ import { PostCreateComponent } from './components/post-create/post-create.compon
 import { PostUpdateComponent } from './components/post-update/post-update.component';
 import { PostListComponent } from './components/post-list/post-list.component';
 
-
 @NgModule({
-  declarations: [
-    PostItemComponent,
-    PostComponent,
-    PostFormComponent,
-    PostCreateComponent,
-    PostUpdateComponent,
-    PostListComponent
-  ],
-  imports: [
-    CommonModule,
-    PostRoutingModule,
-    FormsModule
-  ],
+  declarations: [PostItemComponent, PostComponent, PostFormComponent, PostCreateComponent, PostUpdateComponent, PostListComponent],
+  imports: [CommonModule, PostRoutingModule, FormsModule],
 })
-export class PostModule { }
+export class PostModule {}

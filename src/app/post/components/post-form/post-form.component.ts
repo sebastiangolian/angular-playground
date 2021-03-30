@@ -6,18 +6,16 @@ import { Post } from '../../interfaces/post.interface';
   selector: 'post-form',
   templateUrl: './post-form.component.html',
   styleUrls: ['./post-form.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostFormComponent {
-
-  @Input() model: Post|null = null;
+  @Input() model: Post | null = null;
   @Input() action = 'Add';
-  @Output() postSubmited: EventEmitter<Post|null> = new EventEmitter();
+  @Output() postSubmited: EventEmitter<Post | null> = new EventEmitter();
 
-  constructor() { }
+  constructor() {}
 
   onSubmit(f: NgForm): void {
     this.postSubmited.emit(this.model);
   }
-
 }

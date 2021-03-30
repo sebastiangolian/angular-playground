@@ -7,16 +7,16 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
   selector: 'jph-user-modal',
   templateUrl: './jph-user-modal.component.html',
   styleUrls: ['./jph-user-modal.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class JphUserModalComponent implements OnInit {
   @Input() user!: JphUser;
   @Input() title!: string;
   subject: Subject<JphUser> = new Subject<JphUser>();
 
-  constructor(public bsModalRef: BsModalRef) { }
+  constructor(public bsModalRef: BsModalRef) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   onSubmit(): void {
     this.bsModalRef.hide();
@@ -28,5 +28,4 @@ export class JphUserModalComponent implements OnInit {
     this.bsModalRef.hide();
     this.subject.complete();
   }
-
 }

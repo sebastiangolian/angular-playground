@@ -6,7 +6,7 @@ import { HeroService } from '../../services/hero.service';
   selector: 'hero-top-heroes',
   templateUrl: './hero-top-heroes.component.html',
   styleUrls: ['./hero-top-heroes.component.css'],
-  changeDetection: ChangeDetectionStrategy.Default
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class HeroTopHeroesComponent implements OnInit {
   heroes: Hero[] = [];
@@ -18,6 +18,6 @@ export class HeroTopHeroesComponent implements OnInit {
   }
 
   getHeroes(): void {
-    this.heroService.get().subscribe(heroes => this.heroes = heroes.items.slice(1, 5));
+    this.heroService.get().subscribe((heroes) => (this.heroes = heroes.items.slice(1, 5)));
   }
 }

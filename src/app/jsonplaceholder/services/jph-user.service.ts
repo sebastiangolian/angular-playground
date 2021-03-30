@@ -4,13 +4,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class JphUserService {
-
   url = 'https://jsonplaceholder.typicode.com/users';
 
-  constructor(protected http: HttpClient) { }
+  constructor(protected http: HttpClient) {}
 
   get(): Observable<JphUser[]> {
     return this.http.get<JphUser[]>(this.url);
@@ -27,5 +26,4 @@ export class JphUserService {
   delete(user: JphUser): Observable<null> {
     return this.http.delete<null>(this.url + '/' + user.id);
   }
-
 }

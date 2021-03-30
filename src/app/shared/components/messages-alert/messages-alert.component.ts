@@ -7,21 +7,20 @@ import { Subscription } from 'rxjs';
   selector: 'messages-alert',
   templateUrl: './messages-alert.component.html',
   styleUrls: ['./messages-alert.component.css'],
-  changeDetection: ChangeDetectionStrategy.Default
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class MessagesAlertComponent implements OnInit, OnDestroy {
-
   messages: Message[] = [];
   private subscription: Subscription = new Subscription();
 
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService) {}
 
   ngOnInit(): void {
     this.subscription.add(this.getMessages());
   }
 
   private getMessages(): Subscription {
-    return this.messageService.getMessage().subscribe(message => {
+    return this.messageService.getMessage().subscribe((message) => {
       if (message) {
         this.messages.push(message);
       } else {
@@ -33,5 +32,4 @@ export class MessagesAlertComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
 }

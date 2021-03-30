@@ -5,19 +5,16 @@ import { Car } from '../../interfaces/car.interface';
   selector: 'car-form',
   templateUrl: './car-form.component.html',
   styleUrls: ['./car-form.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CarFormComponent implements OnInit {
-
   @Input() car!: Car;
   @Output() carSaved: EventEmitter<Car> = new EventEmitter();
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onSave(): void {
     this.carSaved.emit(this.car);
   }
-
 }

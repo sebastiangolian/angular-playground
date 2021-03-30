@@ -1,8 +1,8 @@
 <h4 class="text-danger mt-3">Top-4 hero</h4>
 <div class="row">
-  <a class="col-12 col-md-3 mb-1 text-decoration-none" *ngFor="let hero of heroes" routerLink="/hero/detail/{{hero.id}}">
+  <a class="col-12 col-md-3 mb-1 text-decoration-none" *ngFor="let hero of heroes" routerLink="/hero/detail/{{ hero.id }}">
     <div class="hero">
-      <h4>{{hero.name}}</h4>
+      <h4>{{ hero.name }}</h4>
     </div>
   </a>
 </div>

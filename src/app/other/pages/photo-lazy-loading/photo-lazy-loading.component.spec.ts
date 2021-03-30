@@ -8,9 +8,8 @@ describe('PhotoLazyLoadingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PhotoLazyLoadingComponent ]
-    })
-    .compileComponents();
+      declarations: [PhotoLazyLoadingComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

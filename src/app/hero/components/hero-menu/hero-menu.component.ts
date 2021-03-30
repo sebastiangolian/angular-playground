@@ -5,15 +5,13 @@ import { Router } from '@angular/router';
   selector: 'hero-menu',
   templateUrl: './hero-menu.component.html',
   styleUrls: ['./hero-menu.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeroMenuComponent implements OnInit {
-
   url = '';
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.url = this.router.url;
   }
-
 }

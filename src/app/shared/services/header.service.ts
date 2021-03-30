@@ -6,32 +6,31 @@ import { tap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class HeaderService {
-    public subject = new BehaviorSubject<string>('');
+  public subject = new BehaviorSubject<string>('');
 
-    constructor(private titleService: Title) { }
+  constructor(private titleService: Title) {}
 
-    set(header: string): void {
-        this.subject.next(header);
-    }
+  set(header: string): void {
+    this.subject.next(header);
+  }
 
-    get(): Observable<string> {
-        return this.subject.asObservable();
-    }
+  get(): Observable<string> {
+    return this.subject.asObservable();
+  }
 
-    getWithSetTitle(): Observable<string> {
-        return this.subject.asObservable().pipe(
-            tap((header: string) => {
-                if (header) {
-                    this.titleService.setTitle(environment.title.toLowerCase() + ' - ' + header.toLowerCase());
-                }
-                else {
-                    this.titleService.setTitle(environment.title.toLowerCase());
-                }
-            })
-        );
-    }
+  getWithSetTitle(): Observable<string> {
+    return this.subject.asObservable().pipe(
+      tap((header: string) => {
+        if (header) {
+          this.titleService.setTitle(environment.title.toLowerCase() + ' - ' + header.toLowerCase());
+        } else {
+          this.titleService.setTitle(environment.title.toLowerCase());
+        }
+      }),
+    );
+  }
 
-    clear(): void {
-        this.subject.complete();
-    }
+  clear(): void {
+    this.subject.complete();
+  }
 }

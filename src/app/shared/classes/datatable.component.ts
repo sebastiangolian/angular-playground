@@ -3,10 +3,9 @@ import { NgForm } from '@angular/forms';
 
 @Component({
   template: '',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DataTableComponent<T> implements OnInit {
-
   items: T[] = [];
   filterError = false;
   total = 0;
@@ -23,7 +22,7 @@ export class DataTableComponent<T> implements OnInit {
   filterMinLength = 3;
   filterOneSign: string[] = [];
 
-  onRefresh(): void { }
+  onRefresh(): void {}
 
   ngOnInit(): void {
     this.onRefresh();
@@ -43,7 +42,9 @@ export class DataTableComponent<T> implements OnInit {
     if (column !== '' && this.sortEnabled) {
       if (this.total > 0) {
         let sortDirection = 'asc';
-        if (this.order === 'asc') { sortDirection = 'desc'; }
+        if (this.order === 'asc') {
+          sortDirection = 'desc';
+        }
         this.sortBy = column;
         this.order = sortDirection;
         this.onRefresh();
@@ -53,8 +54,12 @@ export class DataTableComponent<T> implements OnInit {
 
   getSortClass(column: string): string {
     if (this.sortBy === column) {
-      if (this.order === 'asc') { return '&darr;'; }
-      if (this.order === 'desc') { return '&uarr;'; }
+      if (this.order === 'asc') {
+        return '&darr;';
+      }
+      if (this.order === 'desc') {
+        return '&uarr;';
+      }
     }
     return '&darr;';
   }
@@ -86,7 +91,9 @@ export class DataTableComponent<T> implements OnInit {
         }
       }
 
-      if (f.value[key]) { formValues[key] = value; }
+      if (f.value[key]) {
+        formValues[key] = value;
+      }
     }
 
     if (!this.filterError) {
@@ -98,7 +105,6 @@ export class DataTableComponent<T> implements OnInit {
         this.onFilterReset();
       }
     }
-
   }
 
   onFilterReset(): void {

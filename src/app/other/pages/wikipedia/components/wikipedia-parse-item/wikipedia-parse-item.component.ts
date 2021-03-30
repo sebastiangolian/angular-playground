@@ -5,14 +5,11 @@ import { WikipediaResultParse } from '../../interfaces/wikipedia-result-parse.in
   selector: 'wikipedia-parse-item',
   templateUrl: './wikipedia-parse-item.component.html',
   styleUrls: ['./wikipedia-parse-item.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WikipediaParseItemComponent implements OnInit {
-
   @Input() item!: WikipediaResultParse;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

@@ -2,13 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   templateUrl: './jph.component.html',
-  styleUrls: ['./jph.component.css']
+  styleUrls: ['./jph.component.css'],
 })
 export class JphComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

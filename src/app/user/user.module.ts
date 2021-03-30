@@ -12,7 +12,6 @@ import { UserItemComponent } from './pages/user-item/user-item.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { RoleModalSearchComponent } from './components/role-modal-search/role-modal-search.component';
 
-
 @NgModule({
   declarations: [
     UserDataTableComponent,
@@ -20,15 +19,8 @@ import { RoleModalSearchComponent } from './components/role-modal-search/role-mo
     UserItemComponent,
     UserIndexComponent,
     UserModalComponent,
-    RoleModalSearchComponent
+    RoleModalSearchComponent,
   ],
-  imports: [
-    CommonModule,
-    UserRoutingModule,
-    SharedModule,
-    FormsModule,
-    NgxMaskModule.forRoot(),
-    BsDropdownModule.forRoot(),
-  ]
+  imports: [CommonModule, UserRoutingModule, SharedModule, FormsModule, NgxMaskModule.forRoot(), BsDropdownModule.forRoot()],
 })
-export class UserModule { }
+export class UserModule {}

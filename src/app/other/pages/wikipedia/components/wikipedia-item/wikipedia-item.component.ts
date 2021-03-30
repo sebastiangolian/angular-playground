@@ -5,17 +5,16 @@ import { WikipediaResultOpenSearch } from '../../interfaces/wikipedia-result-ope
   selector: 'wikipedia-item',
   templateUrl: './wikipedia-item.component.html',
   styleUrls: ['./wikipedia-item.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WikipediaItemComponent implements OnInit {
-
   @Input() result!: WikipediaResultOpenSearch;
   @Output() itemSelected: EventEmitter<WikipediaResultOpenSearch> = new EventEmitter<WikipediaResultOpenSearch>();
   active = false;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   onClick(): void {
     this.itemSelected.emit(this.result);

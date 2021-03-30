@@ -8,9 +8,8 @@ describe('JphUserCompanyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ JphUserCompanyComponent ]
-    })
-    .compileComponents();
+      declarations: [JphUserCompanyComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

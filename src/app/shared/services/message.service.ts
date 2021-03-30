@@ -6,30 +6,30 @@ import { MessageModel } from '../models/message.model';
 
 @Injectable({ providedIn: 'root' })
 export class MessageService {
-    private subject = new Subject<Message>();
+  private subject = new Subject<Message>();
 
-    sendMessage(text: string, type: MessageType = MessageType.SUCCESS): void {
-        const model: MessageModel = new MessageModel();
-        model.text = text;
-        model.type = type;
-        model.setTimeoutByType();
-        this.subject.next(model);
-    }
+  sendMessage(text: string, type: MessageType = MessageType.SUCCESS): void {
+    const model: MessageModel = new MessageModel();
+    model.text = text;
+    model.type = type;
+    model.setTimeoutByType();
+    this.subject.next(model);
+  }
 
-    sendMessageByObject(message: Message): void {
-        const model: MessageModel = new MessageModel();
-        model.text = message.text;
-        model.type = message.type;
-        model.dismissible = message.dismissible;
-        model.setTimeoutByType();
-        this.subject.next(model);
-    }
+  sendMessageByObject(message: Message): void {
+    const model: MessageModel = new MessageModel();
+    model.text = message.text;
+    model.type = message.type;
+    model.dismissible = message.dismissible;
+    model.setTimeoutByType();
+    this.subject.next(model);
+  }
 
-    clearMessages(): void {
-        this.subject.complete();
-    }
+  clearMessages(): void {
+    this.subject.complete();
+  }
 
-    getMessage(): Observable<Message> {
-        return this.subject.asObservable();
-    }
+  getMessage(): Observable<Message> {
+    return this.subject.asObservable();
+  }
 }

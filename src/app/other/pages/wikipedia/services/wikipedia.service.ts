@@ -6,11 +6,11 @@ import { WikipediaResultOpenSearch } from '../interfaces/wikipedia-result-opense
 import { WikipediaResultParse } from '../interfaces/wikipedia-result-parse.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class WikipediaService {
   url = 'https://en.wikipedia.org/w/api.php';
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   openSearch(search: string, limit: number = 20): Observable<WikipediaResultOpenSearch[]> {
     const params = new HttpParams()
@@ -19,7 +19,7 @@ export class WikipediaService {
       .append('search', encodeURIComponent(search));
     const url = `${this.url}?${params.toString()}`;
     return this.http.jsonp<string[][]>(url, 'callback').pipe(
-      map(val => {
+      map((val) => {
         const result: WikipediaResultOpenSearch[] = [];
         for (let i = 0; i < val[1].length; i++) {
           const term = val[1][i];
@@ -29,18 +29,13 @@ export class WikipediaService {
         }
 
         return result;
-      })
+      }),
     );
   }
 
   parse(page: string): Observable<WikipediaResultParse> {
-    const params = new HttpParams()
-      .append('action', 'parse')
-      .append('format', 'json')
-      .append('page', decodeURIComponent(page));
+    const params = new HttpParams().append('action', 'parse').append('format', 'json').append('page', decodeURIComponent(page));
     const url = `${this.url}?${params.toString()}`;
-    return this.http.jsonp<any>(url, 'callback').pipe(
-      map(result => result.parse)
-    );
+    return this.http.jsonp<any>(url, 'callback').pipe(map((result) => result.parse));
   }
 }

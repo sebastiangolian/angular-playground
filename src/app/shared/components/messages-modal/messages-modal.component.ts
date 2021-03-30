@@ -1,4 +1,3 @@
-
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MessageType } from '../../enums/message-type.enum';
@@ -9,7 +8,7 @@ import { MessageService } from '../../services/message.service';
   selector: 'messages-modal',
   templateUrl: './messages-modal.component.html',
   styleUrls: ['./messages-modal.component.css'],
-  changeDetection: ChangeDetectionStrategy.Default
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class MessagesModalComponent implements OnInit, OnDestroy {
   message!: Message;
@@ -18,19 +17,21 @@ export class MessagesModalComponent implements OnInit, OnDestroy {
   headerText = '';
   private subscription: Subscription = new Subscription();
 
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService) {}
 
   ngOnInit(): void {
     this.subscription.add(this.getMessages());
   }
 
   private getMessages(): Subscription {
-    return this.messageService.getMessage().subscribe(message => {
+    return this.messageService.getMessage().subscribe((message) => {
       if (message) {
         this.headerClass = this.headerClassByMessage(message);
         this.headerText = this.headerTextByMessage(message);
         this.message = message;
-        if (message.datetime) { this.datetime = message.datetime; }
+        if (message.datetime) {
+          this.datetime = message.datetime;
+        }
         this.messageService.clearMessages();
       }
     });
@@ -69,5 +70,4 @@ export class MessagesModalComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
 }

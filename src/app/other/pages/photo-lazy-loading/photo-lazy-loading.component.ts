@@ -3,18 +3,14 @@ import { HeaderService } from 'src/app/shared/services/header.service';
 
 @Component({
   templateUrl: './photo-lazy-loading.component.html',
-  styleUrls: ['./photo-lazy-loading.component.css']
+  styleUrls: ['./photo-lazy-loading.component.css'],
 })
 export class PhotoLazyLoadingComponent implements OnInit {
-
   constructor(private headerService: HeaderService) {
     this.headerService.set('Photo');
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
-  onVisibleChange(isVisible: boolean): void {
-
-  }
-
+  onVisibleChange(isVisible: boolean): void {}
 }

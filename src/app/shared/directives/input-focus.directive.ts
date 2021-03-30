@@ -1,10 +1,9 @@
-import {Directive, ElementRef, OnInit} from '@angular/core';
+import { Directive, ElementRef, OnInit } from '@angular/core';
 
 @Directive({
-  selector: '[focus]'
+  selector: '[focus]',
 })
 export class InputFocusDirective implements OnInit {
-
   constructor(protected el: ElementRef) {}
 
   ngOnInit(): void {

@@ -40,14 +40,9 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     BooleanPipe,
     HtmlPipe,
     PadPipe,
-    SafePipe
+    SafePipe,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    AlertModule.forRoot(),
-    ModalModule.forRoot()
-  ],
+  imports: [CommonModule, FormsModule, AlertModule.forRoot(), ModalModule.forRoot()],
   exports: [
     // components
     AdblockDetectComponent,
@@ -66,7 +61,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     BooleanPipe,
     HtmlPipe,
     PadPipe,
-    SafePipe
-  ]
+    SafePipe,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}

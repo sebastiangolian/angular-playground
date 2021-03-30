@@ -5,11 +5,10 @@ import { ModalConfirmComponent } from '../modal-confirm.component';
 import { Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ModalConfirmService {
-
-  constructor(private modalService: BsModalService) { }
+  constructor(private modalService: BsModalService) {}
 
   public confirm(content: string): Observable<boolean> {
     const subject = new Subject<boolean>();
@@ -17,9 +16,11 @@ export class ModalConfirmService {
       initialState: {
         content,
       },
-      class: 'modal-sm'
+      class: 'modal-sm',
     });
-    if (modal.content) { modal.content.subject = subject; }
+    if (modal.content) {
+      modal.content.subject = subject;
+    }
     return subject.asObservable();
   }
 }

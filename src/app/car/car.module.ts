@@ -7,18 +7,8 @@ import { CarItemComponent } from './components/car-item/car-item.component';
 import { CarFormComponent } from './components/car-form/car-form.component';
 import { FormsModule } from '@angular/forms';
 
-
 @NgModule({
-  declarations: [
-    CarComponent,
-    CarItemsComponent,
-    CarItemComponent,
-    CarFormComponent
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    CarRoutingModule
-  ]
+  declarations: [CarComponent, CarItemsComponent, CarItemComponent, CarFormComponent],
+  imports: [CommonModule, FormsModule, CarRoutingModule],
 })
-export class CarModule { }
+export class CarModule {}

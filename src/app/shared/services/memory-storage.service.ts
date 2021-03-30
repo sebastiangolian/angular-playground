@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 export class MemoryStorageService implements OnDestroy {
   items: MemoryStorage[] = [];
 
-  constructor() { }
+  constructor() {}
 
   add(type: string, key: string, value: string): void {
     const memoryStorage: MemoryStorage = new MemoryStorageModel();
@@ -16,11 +16,10 @@ export class MemoryStorageService implements OnDestroy {
   }
 
   get(type: string, key: string): string {
-    const storage: MemoryStorage | undefined = this.items.find(item => item.key === key && item.type === type);
+    const storage: MemoryStorage | undefined = this.items.find((item) => item.key === key && item.type === type);
     if (storage) {
       return storage.value;
-    }
-    else {
+    } else {
       return '';
     }
   }
@@ -41,4 +40,3 @@ export class MemoryStorageModel implements MemoryStorage {
   key = '';
   value = '';
 }
-
