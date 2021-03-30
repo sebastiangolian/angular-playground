@@ -14,7 +14,7 @@ export class IntersectionObserverDirective implements OnInit {
   constructor(private element: ElementRef) {}
 
   ngOnInit(): void {
-    this.visibilityChange.emit(IntersectionStatus.NOT_VISIBLE);
+    this.visibilityChange.emit(IntersectionStatus.notVisible);
 
     const config = {
       root: this.intersectionRoot,
@@ -25,7 +25,7 @@ export class IntersectionObserverDirective implements OnInit {
     const intersectionObserverCallback = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          this.visibilityChange.emit(IntersectionStatus.VISIBLE);
+          this.visibilityChange.emit(IntersectionStatus.visible);
           observer.disconnect();
         }
       });

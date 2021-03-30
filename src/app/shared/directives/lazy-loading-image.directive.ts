@@ -9,12 +9,12 @@ import { MemoryStorageService } from '../services/memory-storage.service';
   selector: '[lazyLoadingImage]',
 })
 export class LazyLoadingImageDirective implements OnDestroy, OnChanges {
-  private subscription: Subscription = new Subscription();
-
   @Input() originalSrc = '';
   @Input() isBlob = false;
   @Input() saveInMemory = environment.lazyLoadingImageSaveInMemory;
   @Output() visibleChange = new EventEmitter<boolean>();
+
+  private subscription: Subscription = new Subscription();
 
   constructor(
     private element: ElementRef,
@@ -27,6 +27,12 @@ export class LazyLoadingImageDirective implements OnDestroy, OnChanges {
 
   ngOnChanges(): void {
     this.runIntersectionObserver();
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   private runIntersectionObserver(): void {
@@ -73,12 +79,6 @@ export class LazyLoadingImageDirective implements OnDestroy, OnChanges {
       this.subscription.add(this.getBlobUrlSubscription(this.element.nativeElement.getAttribute('data-src')));
     } else {
       this.element.nativeElement.src = this.element.nativeElement.getAttribute('data-src');
-    }
-  }
-
-  ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
     }
   }
 }

@@ -8,7 +8,7 @@ import { MessageModel } from '../models/message.model';
 export class MessageService {
   private subject = new Subject<Message>();
 
-  sendMessage(text: string, type: MessageType = MessageType.SUCCESS): void {
+  sendMessage(text: string, type: MessageType = MessageType.success): void {
     const model: MessageModel = new MessageModel();
     model.text = text;
     model.type = type;

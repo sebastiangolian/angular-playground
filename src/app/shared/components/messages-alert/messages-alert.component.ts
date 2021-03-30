@@ -19,6 +19,10 @@ export class MessagesAlertComponent implements OnInit, OnDestroy {
     this.subscription.add(this.getMessages());
   }
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
   private getMessages(): Subscription {
     return this.messageService.getMessage().subscribe((message) => {
       if (message) {
@@ -27,9 +31,5 @@ export class MessagesAlertComponent implements OnInit, OnDestroy {
         this.messages = [];
       }
     });
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
   }
 }

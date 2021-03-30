@@ -71,6 +71,12 @@ export class UserDataTableComponent extends DataTableComponent<User> implements 
     this.subscription.add(this.setRoleToUser(user));
   }
 
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+
   private getUsers(): Subscription {
     return this.userService.get(this.limit, this.page, this.sortBy, this.order, this.filters).subscribe((ret) => {
       this.items = ret.items;
@@ -89,7 +95,7 @@ export class UserDataTableComponent extends DataTableComponent<User> implements 
           this.postUser(user);
         }
       },
-      error: () => this.messageService.sendMessage('Adding a new record failed', MessageType.ERROR),
+      error: () => this.messageService.sendMessage('Adding a new record failed', MessageType.error),
     });
   }
 
@@ -100,7 +106,7 @@ export class UserDataTableComponent extends DataTableComponent<User> implements 
           this.putUser(modalUser);
         }
       },
-      error: () => this.messageService.sendMessage('Update record failed', MessageType.ERROR),
+      error: () => this.messageService.sendMessage('Update record failed', MessageType.error),
     });
   }
 
@@ -145,7 +151,7 @@ export class UserDataTableComponent extends DataTableComponent<User> implements 
       next: (role: Role) => {
         this.patchUser(user.id.toString(), { idRole: role.id });
       },
-      error: () => this.messageService.sendMessage('The role was not assigned correctly', MessageType.ERROR),
+      error: () => this.messageService.sendMessage('The role was not assigned correctly', MessageType.error),
     });
   }
 
@@ -177,11 +183,5 @@ export class UserDataTableComponent extends DataTableComponent<User> implements 
       modal.content.subject = subject;
     }
     return subject;
-  }
-
-  ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
   }
 }

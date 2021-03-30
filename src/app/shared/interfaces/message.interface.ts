@@ -4,5 +4,5 @@ export interface Message {
   type: MessageType;
   dismissible: boolean;
   timeout: number;
-  datetime?: string;
+  dateTime?: string;
 }

@@ -12,6 +12,7 @@ import { WikipediaResultParse } from '../../interfaces/wikipedia-result-parse.in
   styleUrls: ['./wikipedia.component.css'],
 })
 export class WikipediaComponent implements OnInit, OnDestroy {
+  @ViewChild('searchInput') searchInput!: ElementRef;
   viewSearchResult = false;
   viewWikiResult = false;
 
@@ -20,8 +21,6 @@ export class WikipediaComponent implements OnInit, OnDestroy {
 
   private searchTerms = new Subject<string>();
   private subscription: Subscription = new Subscription();
-
-  @ViewChild('searchInput') searchInput!: ElementRef;
 
   constructor(private headerService: HeaderService, private wikipediaService: WikipediaService) {
     this.headerService.set('Wikipedia');
@@ -50,6 +49,12 @@ export class WikipediaComponent implements OnInit, OnDestroy {
     this.viewWikiResult = false;
   }
 
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+
   private searchWiki(): Observable<WikipediaResultOpenSearch[]> {
     return this.searchTerms.pipe(
       debounceTime(300),
@@ -76,11 +81,5 @@ export class WikipediaComponent implements OnInit, OnDestroy {
         return result;
       }),
     );
-  }
-
-  ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
   }
 }

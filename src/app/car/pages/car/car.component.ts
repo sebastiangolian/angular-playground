@@ -42,6 +42,12 @@ export class CarComponent implements OnInit, OnDestroy {
     this.subscription.add(this.deleteSubscription(car));
   }
 
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+
   private reload(): void {
     this.cars = this.carService.get().pipe(map((api) => api.items));
     this.isUpdated = false;
@@ -78,11 +84,5 @@ export class CarComponent implements OnInit, OnDestroy {
 
   private emptyCar(): Car {
     return { id: '', brand: '', name: '' };
-  }
-
-  ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
   }
 }

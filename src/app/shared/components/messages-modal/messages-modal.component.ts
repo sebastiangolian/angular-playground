@@ -12,7 +12,7 @@ import { MessageService } from '../../services/message.service';
 })
 export class MessagesModalComponent implements OnInit, OnDestroy {
   message!: Message;
-  datetime = '';
+  dateTime = '';
   headerClass = '';
   headerText = '';
   private subscription: Subscription = new Subscription();
@@ -23,14 +23,18 @@ export class MessagesModalComponent implements OnInit, OnDestroy {
     this.subscription.add(this.getMessages());
   }
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
   private getMessages(): Subscription {
     return this.messageService.getMessage().subscribe((message) => {
       if (message) {
         this.headerClass = this.headerClassByMessage(message);
         this.headerText = this.headerTextByMessage(message);
         this.message = message;
-        if (message.datetime) {
-          this.datetime = message.datetime;
+        if (message.dateTime) {
+          this.dateTime = message.dateTime;
         }
         this.messageService.clearMessages();
       }
@@ -39,13 +43,13 @@ export class MessagesModalComponent implements OnInit, OnDestroy {
 
   private headerClassByMessage(message: Message): string {
     switch (message.type) {
-      case MessageType.SUCCESS:
+      case MessageType.success:
         return 'bg-success text-light';
-      case MessageType.INFO:
+      case MessageType.info:
         return 'bg-info text-light';
-      case MessageType.WARNING:
+      case MessageType.warning:
         return 'bg-warning text-dark';
-      case MessageType.ERROR:
+      case MessageType.error:
         return 'bg-danger text-light';
       default:
         return '';
@@ -54,20 +58,16 @@ export class MessagesModalComponent implements OnInit, OnDestroy {
 
   private headerTextByMessage(message: Message): string {
     switch (message.type) {
-      case MessageType.SUCCESS:
+      case MessageType.success:
         return 'Success';
-      case MessageType.INFO:
+      case MessageType.info:
         return 'Info';
-      case MessageType.WARNING:
+      case MessageType.warning:
         return 'Warning';
-      case MessageType.ERROR:
+      case MessageType.error:
         return 'Error';
       default:
         return '';
     }
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
   }
 }

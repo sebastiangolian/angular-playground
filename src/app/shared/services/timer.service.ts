@@ -47,6 +47,10 @@ export class TimerService implements OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  public ngOnDestroy(): void {
+    this.killTimer();
+  }
+
   private timerSubscription(): Subscription {
     return timer(0, this.interval).subscribe((tick) => {
       if (!this.isStopped) {
@@ -59,9 +63,5 @@ export class TimerService implements OnDestroy {
         this.subjectTimer$.next(this.timer);
       }
     });
-  }
-
-  public ngOnDestroy(): void {
-    this.killTimer();
   }
 }

@@ -8,10 +8,9 @@ import { HeaderService } from 'src/app/shared/services/header.service';
   styleUrls: ['./leaflet.component.css'],
 })
 export class LeafletComponent implements AfterViewInit {
-  private map!: L.Map;
-
   @ViewChild('map')
   private mapContainer!: ElementRef<HTMLElement>;
+  private map!: L.Map;
 
   constructor(private headerService: HeaderService) {
     this.headerService.set('Leaflet');

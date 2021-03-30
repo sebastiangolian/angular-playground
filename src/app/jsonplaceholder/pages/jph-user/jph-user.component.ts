@@ -34,6 +34,12 @@ export class JphUserComponent implements OnInit, OnDestroy {
     this.subscription.add(this.deleteUser(user));
   }
 
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+
   private postUser(user: JphUser): Subscription {
     return this.jphUserService.post(user).subscribe({
       complete: () => {
@@ -61,14 +67,14 @@ export class JphUserComponent implements OnInit, OnDestroy {
   private postUserModal(): Subscription {
     return this.userModal(new JphUserModel()).subscribe({
       next: (modalUser: JphUser) => this.postUser(modalUser),
-      error: () => this.messageService.sendMessage('Create record failed', MessageType.ERROR),
+      error: () => this.messageService.sendMessage('Create record failed', MessageType.error),
     });
   }
 
   private putUserModal(user: JphUser): Subscription {
     return this.userModal(user).subscribe({
       next: (modalUser: JphUser) => this.putUser(modalUser),
-      error: () => this.messageService.sendMessage('Update record failed', MessageType.ERROR),
+      error: () => this.messageService.sendMessage('Update record failed', MessageType.error),
     });
   }
 
@@ -90,11 +96,5 @@ export class JphUserComponent implements OnInit, OnDestroy {
       modal.content.subject = subject;
     }
     return subject;
-  }
-
-  ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
   }
 }

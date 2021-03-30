@@ -4,19 +4,19 @@ import { environment } from 'src/environments/environment';
 import { MessageType } from '../enums/message-type.enum';
 export class MessageModel implements Message {
   text = '';
-  type: MessageType = MessageType.SUCCESS;
+  type: MessageType = MessageType.success;
   dismissible: boolean = environment.messageDismissible;
   timeout = 0;
-  datetime: string = DateTimeHelper.currentDateTime();
+  dateTime: string = DateTimeHelper.currentDateTime();
 
   setTimeoutByType(timeout: number = this.timeout): void {
     if (timeout === 0) {
       switch (this.type) {
-        case MessageType.SUCCESS: {
+        case MessageType.success: {
           this.timeout = environment.messageSuccessTimeout;
           break;
         }
-        case MessageType.INFO: {
+        case MessageType.info: {
           this.timeout = environment.messageInfoTimeout;
           break;
         }

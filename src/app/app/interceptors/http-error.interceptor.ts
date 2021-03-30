@@ -25,7 +25,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   }
 
   clientSideError(error: ErrorEvent): void {
-    this.messageService.sendMessage(error.error.message, MessageType.ERROR);
+    this.messageService.sendMessage(error.error.message, MessageType.error);
   }
 
   serverSideError(error: HttpErrorResponse, request: HttpRequest<any>): void {
@@ -34,23 +34,23 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         if (request.url.includes('/user/login')) {
           break;
         }
-        this.messageService.sendMessage('Twoja sesja wygasła. Zaloguj się ponownie', MessageType.INFO);
+        this.messageService.sendMessage('Twoja sesja wygasła. Zaloguj się ponownie', MessageType.info);
         break;
       }
       case 403: {
-        this.messageService.sendMessage('Nie masz uprawnień do tego zasobu', MessageType.WARNING);
+        this.messageService.sendMessage('Nie masz uprawnień do tego zasobu', MessageType.warning);
         break;
       }
       case 404: {
-        this.messageService.sendMessage('Podany zasób nie istnieje', MessageType.INFO);
+        this.messageService.sendMessage('Podany zasób nie istnieje', MessageType.info);
         break;
       }
       case 500: {
-        this.messageService.sendMessage('Wystąpił nieoczekiwany problem. Proszę spróbuj ponownie', MessageType.ERROR);
+        this.messageService.sendMessage('Wystąpił nieoczekiwany problem. Proszę spróbuj ponownie', MessageType.error);
         break;
       }
       default: {
-        this.messageService.sendMessage(`(${error.status}) ${error.message}`, MessageType.ERROR);
+        this.messageService.sendMessage(`(${error.status}) ${error.message}`, MessageType.error);
         break;
       }
     }

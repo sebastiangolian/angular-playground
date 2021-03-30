@@ -29,9 +29,7 @@ export class UserService extends AbstractService<User> {
   getFileByUserId(id: string): Observable<any> {
     return this.getById(id).pipe(
       map((user) => user.item),
-      switchMap((user) => {
-        return this.getFile(user);
-      }),
+      switchMap((user) => this.getFile(user)),
     );
   }
 }

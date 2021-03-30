@@ -28,13 +28,6 @@ export class RoleModalSearchComponent extends DataTableSearchComponent<Role> imp
     this.subscription.add(this.getRoles());
   }
 
-  private getRoles(): Subscription {
-    return this.roleService.get(this.limit, this.page, this.sortBy, this.order, this.filters).subscribe((ret) => {
-      this.items = ret.items;
-      this.total = ret.total;
-    });
-  }
-
   onSelectConfirm(role: Role): void {
     const content = `Are you sure you want to assign a role?`;
     this.subscription.add(
@@ -61,5 +54,12 @@ export class RoleModalSearchComponent extends DataTableSearchComponent<Role> imp
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+  }
+
+  private getRoles(): Subscription {
+    return this.roleService.get(this.limit, this.page, this.sortBy, this.order, this.filters).subscribe((ret) => {
+      this.items = ret.items;
+      this.total = ret.total;
+    });
   }
 }
