@@ -14,12 +14,13 @@
     "predeploy": "ng build --prod --base-href=/angular-playground/ --outputPath=dist/angular-playground",
     "deploy": "gh-pages -d dist/angular-playground/",
     "clear": "rmdir /q /s node_modules",
-    "analyze": "ng build --prod --stats-json && webpack-bundle-analyzer dist/stats.json"
+    "analyze": "ng build --prod --stats-json && webpack-bundle-analyzer dist/stats.json",
+    "prepare": "husky install"
   },
   "private": true,
   "husky": {
     "hooks": {
-      "pre-commit": "console.log('pre-commit')"
+      "pre-commit": "npm run lint"
     }
   },
   "dependencies": {
