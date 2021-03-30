@@ -19,8 +19,8 @@
     "prepare": "husky install"
   },
   "lint-staged": {
-    "*": [
-      "npm run prettier:write"
+    "src/**/*.{ts,css,html}": [
+      "lint"
     ]
   },
   "private": true,
