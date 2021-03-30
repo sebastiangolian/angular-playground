@@ -17,12 +17,10 @@
     "analyze": "ng build --prod --stats-json && webpack-bundle-analyzer dist/stats.json",
     "prepare": "husky install"
   },
-  "private": true,
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint"
-    }
+  "lint-staged": {
+    "*.ts": ["npm run lint"]
   },
+  "private": true,
   "dependencies": {
     "@angular/animations": "~11.2.7",
     "@angular/common": "~11.2.7",
