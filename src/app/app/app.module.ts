@@ -5,7 +5,7 @@ import { AppComponent } from './pages/app/app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { TestComponent } from './pages/test/test.component';
 import { HttpClientJsonpModule, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { BackendInterceptor } from './interceptors/backend.interceptor';
+import { BackendInterceptor } from '../backend/interceptors/backend.interceptor';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';

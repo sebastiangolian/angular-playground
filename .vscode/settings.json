@@ -16,41 +16,5 @@
     ".husky": true,
     ".prettierrc": true,
     ".eslintrc.json": true
-  },
-  "cSpell.words": [
-    "angular",
-    "browserslist",
-    "build",
-    "codelyzer",
-    "darr",
-    "datatable",
-    "devkit",
-    "filesaver",
-    "ngx",
-    "opensearch",
-    "predeploy",
-    "spiderman",
-    "uarr"
-  ],
-  "cSpell.ignoreWords": [
-    "antman",
-    "app",
-    "arrow",
-    "assets",
-    "config",
-    "css",
-    "different",
-    "environments",
-    "html",
-    "ironman",
-    "js",
-    "json",
-    "list",
-    "parens",
-    "prettier",
-    "prettierrc",
-    "scss",
-    "src",
-    "ts"
-  ]
+  }
 }
