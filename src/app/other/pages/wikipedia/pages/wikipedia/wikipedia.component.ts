@@ -1,7 +1,7 @@
 import { WikipediaService } from './../../services/wikipedia.service';
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Observable, of, Subject, Subscription } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map, switchMap, tap } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, map, switchMap } from 'rxjs/operators';
 import { HeaderService } from 'src/app/shared/services/header.service';
 import { WikipediaResultOpenSearch } from '../../interfaces/wikipedia-result-opensearch.interface';
 import { WikipediaResultParse } from '../../interfaces/wikipedia-result-parse.interface';
@@ -40,7 +40,11 @@ export class WikipediaComponent implements OnInit, OnDestroy {
     this.viewSearchResult = false;
     this.viewWikiResult = true;
     this.searchInput.nativeElement.value = result.parseTerm;
-    this.subscription.add(this.parse(result.parseTerm).subscribe((results) => (this.wikiResult = results)));
+    this.subscription.add(this.onItemSelectedSubscription(result.parseTerm));
+  }
+
+  onItemSelectedSubscription(parseTerm: string): Subscription {
+    return this.parse(parseTerm).subscribe((results) => (this.wikiResult = results));
   }
 
   onClear(): void {
@@ -60,6 +64,7 @@ export class WikipediaComponent implements OnInit, OnDestroy {
       debounceTime(300),
       distinctUntilChanged(),
       switchMap((term: string) => {
+        this.viewWikiResult = false;
         if (term.length > 2) {
           this.viewSearchResult = true;
           return this.wikipediaService.openSearch(term, 10);

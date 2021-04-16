@@ -14,3 +14,4 @@
 </ul>
 
 <wikipedia-parse-item *ngIf="wikiResult && viewWikiResult" [item]="wikiResult"></wikipedia-parse-item>
+<ng-container *ngIf="!wikiResult && viewWikiResult">Loading...</ng-container>
