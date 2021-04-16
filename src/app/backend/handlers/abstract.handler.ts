@@ -118,7 +118,7 @@ export abstract class AbstractHandler {
     return throwError({ status, message });
   }
 
-  protected getPdfUrl(): string {
+  protected getPdfBlob(): Blob {
     const pdfData = atob(
       `JVBERi0xLjcKCjEgMCBvYmogICUgZW50cnkgcG9pbnQKPDwKICAvVHlwZSAvQ2F0YWxvZwogIC9QYWdlcyAyIDAgUgo+PgplbmRvYmoK
            CjIgMCBvYmoKPDwKICAvVHlwZSAvUGFnZXMKICAvTWVkaWFCb3ggWyAwIDAgMjAwIDIwMCBdCiAgL0NvdW50IDEKICAvS2lkcyBbIDMg
@@ -136,7 +136,10 @@ export abstract class AbstractHandler {
       array[i] = binary.charCodeAt(i);
     }
 
-    const blob = new Blob([array], { type: 'application/pdf' });
-    return URL.createObjectURL(blob);
+    return new Blob([array], { type: 'application/pdf' });
+  }
+
+  protected getPdfUrl(): string {
+    return URL.createObjectURL(this.getPdfBlob());
   }
 }

@@ -6,7 +6,7 @@ export const userData: User[] = [
     zipCode: '11-111',
     created: '2020-04-01 12:02:28',
     active: false,
-    documentLink: '',
+    documentLink: 'mock/user/1/document',
     idRole: '1',
   },
   {
@@ -15,7 +15,7 @@ export const userData: User[] = [
     zipCode: '22-222',
     created: '2020-04-01 13:02:28',
     active: false,
-    documentLink: '',
+    documentLink: 'mock/user/2/document',
     idRole: '1',
   },
   {
@@ -24,7 +24,7 @@ export const userData: User[] = [
     zipCode: '33-333',
     created: '2020-04-01 14:02:28',
     active: false,
-    documentLink: '',
+    documentLink: 'mock/user/3/document',
     idRole: '1',
   },
   {
@@ -33,7 +33,7 @@ export const userData: User[] = [
     zipCode: '44-444',
     created: '2020-04-01 15:02:28',
     active: false,
-    documentLink: '',
+    documentLink: 'mock/user/4/document',
     idRole: '1',
   },
   {
@@ -42,7 +42,7 @@ export const userData: User[] = [
     zipCode: '55-555',
     created: '2020-04-01 16:02:28',
     active: false,
-    documentLink: '',
+    documentLink: 'mock/user/5/document',
     idRole: '1',
   },
   {
@@ -51,7 +51,7 @@ export const userData: User[] = [
     zipCode: '66-666',
     created: '2020-04-02 12:02:28',
     active: false,
-    documentLink: '',
+    documentLink: 'mock/user/6/document',
     idRole: '1',
   },
   {
@@ -60,7 +60,7 @@ export const userData: User[] = [
     zipCode: '77-777',
     created: '2020-04-02 13:02:28',
     active: false,
-    documentLink: '',
+    documentLink: 'mock/user/7/document',
     idRole: '1',
   },
   {
@@ -69,7 +69,7 @@ export const userData: User[] = [
     zipCode: '88-888',
     created: '2020-04-02 14:02:28',
     active: false,
-    documentLink: '',
+    documentLink: 'mock/user/8/document',
     idRole: '1',
   },
   {
@@ -78,7 +78,7 @@ export const userData: User[] = [
     zipCode: '99-999',
     created: '2020-04-02 15:02:28',
     active: false,
-    documentLink: '',
+    documentLink: 'mock/user/9/document',
     idRole: '1',
   },
   {
@@ -87,7 +87,7 @@ export const userData: User[] = [
     zipCode: '00-111',
     created: '2020-04-02 16:02:28',
     active: false,
-    documentLink: '',
+    documentLink: 'mock/user/10/document',
     idRole: '1',
   },
   {
@@ -96,7 +96,7 @@ export const userData: User[] = [
     zipCode: '00-222',
     created: '2020-04-02 17:02:28',
     active: false,
-    documentLink: '',
+    documentLink: 'mock/user/11/document',
     idRole: '1',
   },
 ];

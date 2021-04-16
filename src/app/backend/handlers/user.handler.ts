@@ -12,6 +12,10 @@ export class UserHandler extends AbstractHandler implements BackendHandler {
       return this.response200(request, mainBody);
     }
 
+    if (method === 'GET' && url.includes('mock/user') && url.includes('/document')) {
+      return this.response200(request, this.getPdfBlob());
+    }
+
     if (method === 'GET' && url.includes('mock/user/')) {
       const findUser = this.db.users.find((user) => user.id.toString() === this.getIdFromUrl(url));
       return this.response200(request, { item: findUser });
