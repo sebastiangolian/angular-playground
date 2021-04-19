@@ -6,7 +6,7 @@ import { MessageModel } from '../models/message.model';
 
 @Injectable({ providedIn: 'root' })
 export class MessageService {
-  private subject = new Subject<Message>();
+  public subject = new Subject<Message>();
 
   sendMessage(text: string, type: MessageType = MessageType.success): void {
     const model: MessageModel = new MessageModel();
