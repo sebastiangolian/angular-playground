@@ -1,4 +1,3 @@
-import { logging } from 'protractor';
 import { DbBackendService } from './../services/db-backend.service';
 import { UserHandler } from './../handlers/user.handler';
 import { Injectable } from '@angular/core';
