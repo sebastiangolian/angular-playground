@@ -1,27 +1,49 @@
-# AngularPlayground
+# angular-playground
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
+Test app with angular
 
-## Development server
+## Test app
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+[angular-playground](https://sebastiangolian.github.io/angular-playground)
 
-## Code scaffolding
+## Getting started
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+npm install
+```
 
-## Build
+```bash
+npm run start
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Scripts
 
-## Running unit tests
+Build project
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+npm run build
+```
 
-## Running end-to-end tests
+Test project
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```bash
+npm run test
+```
 
-## Further help
+Test e2e project
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+npm run e2e
+```
+
+Lint project
+
+```bash
+npm run lint
+```
+
+Deploy files in gh-pages
+
+```bash
+npm run deploy
+```
