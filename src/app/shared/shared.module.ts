@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { AdblockDetectBannerComponent } from './components/adblock-detect-banner/adblock-detect-banner.component';
+import { AdblockDetectBannerComponent } from './components/adblock-detect/adblock-detect-banner.component';
 import { AdblockDetectComponent } from './components/adblock-detect/adblock-detect.component';
 import { IconBComponent } from './components/icon-b/icon-b.component';
 import { ModalInfoComponent } from './components/modal-info/modal-info.component';
