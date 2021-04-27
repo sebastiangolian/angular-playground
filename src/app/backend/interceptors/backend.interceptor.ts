@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 import { materialize, delay, dematerialize } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { RoleHandler } from '../handlers/role.handler';
-import { CarHandler } from '../handlers/car.handler';
 import { HeroHandler } from '../handlers/hero.handler';
 
 @Injectable()
@@ -26,11 +25,6 @@ export class BackendInterceptor implements HttpInterceptor {
     if (request.url.includes('role')) {
       const roleHandler = new RoleHandler(this.dbBackendService);
       return roleHandler.handleRoute(request, next);
-    }
-
-    if (request.url.includes('car')) {
-      const carHandler = new CarHandler(this.dbBackendService);
-      return carHandler.handleRoute(request, next);
     }
 
     if (request.url.includes('hero')) {
