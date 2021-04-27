@@ -15,31 +15,7 @@
       </button>
       <a class="navbar-brand" href="#">angular-playground</a>
       <div [collapse]="isCollapsed" class="collapse navbar-collapse" id="navbar-content">
-        <ul class="navbar-nav ml-auto mr-5" (click)="isCollapsed = !isCollapsed">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="test" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Test</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="user" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Users</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="post" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Posts</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="hero" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Hero</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="car" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Cars</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="jsonplaceholder" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
-              >Jsonplaceholder</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="other" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Other</a>
-          </li>
-        </ul>
+        <app-menu class="ml-auto mr-5" (clicked)="isCollapsed = !isCollapsed"></app-menu>
         <button class="btn btn-outline-dark my-2 my-sm-0" (click)="onReset()">Clear memory</button>
       </div>
     </div>

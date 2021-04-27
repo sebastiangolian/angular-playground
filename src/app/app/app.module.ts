@@ -13,9 +13,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { SpinnerInterceptor } from '../shared/components/spinner/interceptors/spinner.interceptor';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, TestComponent],
+  declarations: [AppComponent, HomeComponent, TestComponent, MenuComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
