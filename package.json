@@ -9,6 +9,7 @@
     "build": "ng build",
     "build-prod": "ng build --prod",
     "test": "ng test",
+    "test-headless": "ng test --browsers ChromeHeadless",
     "eslint:fix": "eslint src/{app,environments,assets}/**/*{.ts,.js} --fix",
     "prettier:write": "prettier --write --config ./.prettierrc --list-different \"src/{app,environments,assets}/**/*{.ts,.js,.css,.scss,.html}\"",
     "e2e": "ng e2e --port=4201 --webdriverUpdate=true",
