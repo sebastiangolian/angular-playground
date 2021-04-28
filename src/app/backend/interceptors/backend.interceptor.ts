@@ -1,3 +1,4 @@
+import { PostHandler } from './../handlers/post.handler';
 import { DbBackendService } from './../services/db-backend.service';
 import { UserHandler } from './../handlers/user.handler';
 import { Injectable } from '@angular/core';
@@ -17,6 +18,16 @@ export class BackendInterceptor implements HttpInterceptor {
   }
 
   handleRoute(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    if (request.url.includes('hero')) {
+      const heroHandler = new HeroHandler(this.dbBackendService);
+      return heroHandler.handleRoute(request, next);
+    }
+
+    if (request.url.includes('post')) {
+      const heroHandler = new PostHandler(this.dbBackendService);
+      return heroHandler.handleRoute(request, next);
+    }
+
     if (request.url.includes('user')) {
       const userHandler = new UserHandler(this.dbBackendService);
       return userHandler.handleRoute(request, next);
@@ -27,10 +38,6 @@ export class BackendInterceptor implements HttpInterceptor {
       return roleHandler.handleRoute(request, next);
     }
 
-    if (request.url.includes('hero')) {
-      const heroHandler = new HeroHandler(this.dbBackendService);
-      return heroHandler.handleRoute(request, next);
-    }
     return next.handle(request);
   }
 }
