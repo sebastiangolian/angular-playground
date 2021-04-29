@@ -18,7 +18,7 @@ export class UserModalComponent implements OnInit {
   constructor(public bsModalRef: BsModalRef) {}
 
   ngOnInit(): void {
-    if (this.model === null) {
+    if (this.model.id === '') {
       this.title = 'Add user';
       this.model = new UserModel();
       this.model.email = 'test@gmail.com';
