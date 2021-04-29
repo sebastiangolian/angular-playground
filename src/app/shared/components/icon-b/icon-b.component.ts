@@ -14,7 +14,7 @@ export class IconBComponent implements OnInit {
   @Input() title = '';
   @Output() clicked: EventEmitter<Event> = new EventEmitter();
 
-  href = '/assets/icons/';
+  href = 'assets/icons/';
 
   constructor() {}
 
