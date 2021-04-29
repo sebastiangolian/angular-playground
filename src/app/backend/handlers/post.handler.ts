@@ -18,6 +18,7 @@ export class PostHandler extends AbstractHandler implements BackendHandler {
     }
 
     if (method === 'POST' && url.includes('mock/post')) {
+      body.id = Math.random().toString(36).substring(7);
       this.db.posts.push(body);
       this.dbBackendService.set(this.db);
       return this.response200(request, { item: body });

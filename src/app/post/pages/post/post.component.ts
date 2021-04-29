@@ -1,27 +1,26 @@
+import { PostService } from './../../services/post.service';
+import { Observable, Subscription } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { HeaderService } from 'src/app/shared/services/header.service';
 import { Post } from '../../interfaces/post.interface';
-import { PostModel } from '../../models/post.model';
+import { map } from 'rxjs/operators';
 
 @Component({
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css'],
 })
 export class PostComponent implements OnInit {
-  posts: Post[] = [];
+  posts$: Observable<Post[]> = new Observable();
   isCreatedPost = false;
   updatedPost: Post | null = null;
 
-  constructor(private headerService: HeaderService) {
+  private subscription: Subscription = new Subscription();
+  constructor(private headerService: HeaderService, private postService: PostService) {
     this.headerService.set('Posts');
   }
 
   ngOnInit(): void {
-    this.posts = [
-      new PostModel('Lorem ipsum 3', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus iure officia doloremque vero est'),
-      new PostModel('Lorem ipsum 2', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus iure officia doloremque vero est'),
-      new PostModel('Lorem ipsum 1', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus iure officia doloremque vero est'),
-    ];
+    this.getPosts();
   }
 
   onOpenCreate(): void {
@@ -30,19 +29,13 @@ export class PostComponent implements OnInit {
 
   onCreate(post: Post | null): void {
     if (post) {
-      this.posts = [post, ...this.posts];
-      this.isCreatedPost = false;
+      this.subscription.add(this.createSubscription(post));
     }
   }
 
   onUpdate(post: Post | null): void {
     if (post) {
-      const posts: Post[] = [];
-      const updatePostIndex = this.posts.findIndex((result) => result.id === post.id);
-      this.posts[updatePostIndex] = post;
-      this.posts.forEach((val) => posts.push(Object.assign({}, val)));
-      this.posts = posts;
-      this.updatedPost = null;
+      this.subscription.add(this.updateSubscription(post));
     }
   }
 
@@ -51,6 +44,32 @@ export class PostComponent implements OnInit {
   }
 
   onDelete(post: Post): void {
-    this.posts = this.posts.filter((result) => result.id !== post.id);
+    this.subscription.add(this.deleteSubscription(post));
+  }
+
+  private createSubscription(post: Post): Subscription {
+    return this.postService.post(post).subscribe(() => {
+      this.getPosts();
+      this.isCreatedPost = false;
+    });
+  }
+
+  private updateSubscription(post: Post): Subscription {
+    return this.postService.update(post.id, post).subscribe(() => {
+      this.getPosts();
+      this.isCreatedPost = false;
+      this.updatedPost = null;
+    });
+  }
+
+  private deleteSubscription(post: Post): Subscription {
+    return this.postService.delete(post.id).subscribe(() => {
+      this.getPosts();
+      this.isCreatedPost = false;
+    });
+  }
+
+  private getPosts(): void {
+    this.posts$ = this.postService.get().pipe(map((apiList) => apiList.items));
   }
 }
