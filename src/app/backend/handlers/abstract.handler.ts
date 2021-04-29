@@ -19,17 +19,18 @@ export abstract class AbstractHandler {
 
     let ret: any[] = items;
     let totalItemFilter: number = items.length;
-    if (filters !== undefined) {
+
+    if (filters !== '') {
       ret = this.setFilter(ret, JSON.parse(filters));
     }
 
     totalItemFilter = ret.length;
 
-    if (sortBy !== undefined) {
+    if (sortBy !== '') {
       ret = this.setSort(ret, sortBy, order);
     }
 
-    if (limit !== undefined && page !== undefined) {
+    if (limit !== '' && page !== '') {
       let min = 0;
       if (page !== '0') {
         min = Number(limit) * (Number(page) - 1);
