@@ -1,6 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
-import { HeroService } from '../../services/hero.service';
-import { Location } from '@angular/common';
+import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import { Hero } from '../../interfaces/hero.interface';
 
 @Component({
@@ -9,21 +7,22 @@ import { Hero } from '../../interfaces/hero.interface';
   styleUrls: ['./hero-update.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-// TODO Make dump
 export class HeroUpdateComponent implements OnInit {
   @Input() hero: Hero | null = null;
+  @Output() back: EventEmitter<boolean> = new EventEmitter();
+  @Output() update: EventEmitter<Hero> = new EventEmitter();
 
-  constructor(private heroService: HeroService, private location: Location) {}
+  constructor() {}
 
   ngOnInit(): void {}
 
   goBack(): void {
-    this.location.back();
+    this.back.emit(true);
   }
 
   save(): void {
     if (this.hero) {
-      this.heroService.update(this.hero.id.toString(), this.hero).subscribe(() => this.goBack());
+      this.update.emit(this.hero);
     }
   }
 }
