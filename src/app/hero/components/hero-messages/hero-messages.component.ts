@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { HeroMessageService } from '../../services/hero-message.service';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'hero-messages',
@@ -7,5 +6,11 @@ import { HeroMessageService } from '../../services/hero-message.service';
   styleUrls: ['./hero-messages.component.css'],
 })
 export class HeroMessagesComponent {
-  constructor(public heroMessageService: HeroMessageService) {}
+  @Input() messages: string[] = [];
+  @Output() cleared: EventEmitter<boolean> = new EventEmitter();
+  constructor() {}
+
+  onClearClick(): void {
+    this.cleared.emit(true);
+  }
 }

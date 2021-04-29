@@ -11,6 +11,6 @@
     </ng-container>
   </div>
   <div class="col-12 col-md-3">
-    <hero-messages></hero-messages>
+    <hero-messages [messages]="heroMessages" (cleared)="onMessageClear()"></hero-messages>
   </div>
 </div>
