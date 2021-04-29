@@ -8,7 +8,7 @@ export const environment = {
   backendDelay: 0,
   httpRetry: 0,
   lazyLoadingImageSaveInMemory: true,
-  apiEndpoint: '',
+  apiEndpoint: 'mock',
   messageDismissible: false,
   messageSuccessTimeout: 5000,
   messageInfoTimeout: 10000,
