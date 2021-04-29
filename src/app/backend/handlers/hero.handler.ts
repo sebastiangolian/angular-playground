@@ -13,7 +13,6 @@ export class HeroHandler extends AbstractHandler implements BackendHandler {
     }
 
     if (method === 'GET' && url.includes('mock/hero/search/')) {
-      console.log(url);
       const items = this.db.heros.filter((hero) => hero.name.toLowerCase().includes(this.getIdFromUrl(url).toLowerCase()));
       const mainBody = this.getAll(items, url);
       return this.response200(request, mainBody);

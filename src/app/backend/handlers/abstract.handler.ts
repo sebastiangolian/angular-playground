@@ -16,20 +16,25 @@ export abstract class AbstractHandler {
     const limit: string = this.getParamFromUrl(url, 'limit');
     const page: string = this.getParamFromUrl(url, 'page');
     const filters: string = this.getParamFromUrl(url, 'filters');
+
     let ret: any[] = items;
     let totalItemFilter: number = items.length;
-    if (filters) {
+    if (filters !== undefined) {
       ret = this.setFilter(ret, JSON.parse(filters));
     }
 
     totalItemFilter = ret.length;
 
-    if (sortBy) {
+    if (sortBy !== undefined) {
       ret = this.setSort(ret, sortBy, order);
     }
 
-    if (limit && page) {
-      const min: number = Number(limit) * (Number(page) - 1);
+    if (limit !== undefined && page !== undefined) {
+      let min = 0;
+      if (page !== '0') {
+        min = Number(limit) * (Number(page) - 1);
+      }
+
       const max: number = min + Number(limit);
       ret = ret.filter((i: any, index: number) => index >= min && index < max);
     }

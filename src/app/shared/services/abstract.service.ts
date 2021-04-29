@@ -13,15 +13,16 @@ export abstract class AbstractService<T> {
     let url = this.url + '/list';
     const parameters: string[] = [];
 
-    if (sort) {
+    if (sort !== undefined) {
       parameters.push(`sort_by=${sort}&order=${order}`);
     }
-    if (limit && page) {
+
+    if (limit !== undefined && page !== undefined) {
       if (limit > 0 && page >= 0) {
         parameters.push('limit=' + limit + '&page=' + page);
       }
     }
-    if (filters) {
+    if (filters !== undefined) {
       if (Object.keys(filters).length > 0) {
         parameters.push('filters=' + JSON.stringify(filters));
       }
