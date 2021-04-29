@@ -4,6 +4,7 @@ import { HeroService } from '../../services/hero.service';
 import { Hero } from '../../interfaces/hero.interface';
 import { map } from 'rxjs/operators';
 import { HeroMessageService } from '../../services/hero-message.service';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './hero-dashboard.component.html',
@@ -12,11 +13,13 @@ import { HeroMessageService } from '../../services/hero-message.service';
 export class HeroDashboardComponent implements OnInit {
   topHeroes$: Observable<Hero[]> = new Observable();
   heroMessages: string[] = [];
-  constructor(private heroService: HeroService, private heroMessageService: HeroMessageService) {}
+  currentUrl = '';
+  constructor(private heroService: HeroService, private heroMessageService: HeroMessageService, private router: Router) {}
 
   ngOnInit(): void {
     this.getTopHeroes();
     this.getHeroMessages();
+    this.currentUrl = this.router.url;
   }
 
   onMessageClear(): void {

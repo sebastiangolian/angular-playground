@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Hero } from '../../interfaces/hero.interface';
 import { HeroService } from '../../services/hero.service';
 
@@ -9,11 +9,13 @@ import { HeroService } from '../../services/hero.service';
 })
 export class HeroDetailComponent implements OnInit {
   hero: Hero | null = null;
+  currentUrl = '';
 
-  constructor(private route: ActivatedRoute, private heroService: HeroService) {}
+  constructor(private route: ActivatedRoute, private heroService: HeroService, private router: Router) {}
 
   ngOnInit(): void {
     this.getHero();
+    this.currentUrl = this.router.url;
   }
 
   getHero(): void {
