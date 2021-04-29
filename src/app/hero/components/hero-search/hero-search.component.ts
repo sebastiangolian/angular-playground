@@ -9,6 +9,7 @@ import { HeroService } from '../../services/hero.service';
   templateUrl: './hero-search.component.html',
   styleUrls: ['./hero-search.component.css'],
 })
+// TODO Make dump
 export class HeroSearchComponent {
   heroes$: Observable<Hero[]>;
   private searchTerms = new Subject<string>();

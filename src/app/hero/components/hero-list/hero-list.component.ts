@@ -10,6 +10,7 @@ import { HeroService } from '../../services/hero.service';
   styleUrls: ['./hero-list.component.css'],
   changeDetection: ChangeDetectionStrategy.Default,
 })
+// TODO Make dump
 export class HeroListComponent implements OnInit {
   heroes: Hero[] = [];
 

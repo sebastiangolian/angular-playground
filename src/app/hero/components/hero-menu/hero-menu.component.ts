@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./hero-menu.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
+// TODO Make dump
 export class HeroMenuComponent implements OnInit {
   url = '';
   constructor(private router: Router) {}

@@ -9,6 +9,7 @@ import { Hero } from '../../interfaces/hero.interface';
   styleUrls: ['./hero-update.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
+// TODO Make dump
 export class HeroUpdateComponent implements OnInit {
   @Input() hero: Hero | null = null;
 
