@@ -6,7 +6,9 @@
     <app-hero-search></app-hero-search>
   </div>
   <div class="col-12 col-md-9">
-    <hero-top-heroes></hero-top-heroes>
+    <ng-container *ngIf="topHeroes$ | async as heroes">
+      <hero-top-heroes [heroes]="heroes"></hero-top-heroes>
+    </ng-container>
   </div>
   <div class="col-12 col-md-3">
     <hero-messages></hero-messages>

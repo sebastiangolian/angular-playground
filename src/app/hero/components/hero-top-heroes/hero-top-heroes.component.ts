@@ -1,6 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
 import { Hero } from '../../interfaces/hero.interface';
-import { HeroService } from '../../services/hero.service';
 
 @Component({
   selector: 'hero-top-heroes',
@@ -9,15 +8,8 @@ import { HeroService } from '../../services/hero.service';
   changeDetection: ChangeDetectionStrategy.Default,
 })
 export class HeroTopHeroesComponent implements OnInit {
-  heroes: Hero[] = [];
+  @Input() heroes: Hero[] = [];
+  constructor() {}
 
-  constructor(private heroService: HeroService) {}
-
-  ngOnInit(): void {
-    this.getHeroes();
-  }
-
-  getHeroes(): void {
-    this.heroService.get().subscribe((heroes) => (this.heroes = heroes.items.slice(1, 5)));
-  }
+  ngOnInit(): void {}
 }
