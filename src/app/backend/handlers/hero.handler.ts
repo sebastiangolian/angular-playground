@@ -24,6 +24,12 @@ export class HeroHandler extends AbstractHandler implements BackendHandler {
     }
 
     if (method === 'POST' && url.includes('mock/hero')) {
+      if (this.db.heros.length > 0) {
+        body.id = this.db.heros[this.db.heros.length - 1].id + 1;
+      } else {
+        body.id = 0;
+      }
+
       this.db.heros.push(body);
       this.dbBackendService.set(this.db);
       return this.response200(request, { item: body });

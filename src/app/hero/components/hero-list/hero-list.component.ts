@@ -1,6 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { ApiList } from 'src/app/shared/interfaces/api-list.interface';
-import { Api } from 'src/app/shared/interfaces/api.interface';
+import { Component, OnInit, ChangeDetectionStrategy, Input, EventEmitter, Output } from '@angular/core';
 import { Hero } from '../../interfaces/hero.interface';
 import { HeroService } from '../../services/hero.service';
 
@@ -8,34 +6,26 @@ import { HeroService } from '../../services/hero.service';
   selector: 'hero-list',
   templateUrl: './hero-list.component.html',
   styleUrls: ['./hero-list.component.css'],
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-// TODO Make dump
 export class HeroListComponent implements OnInit {
-  heroes: Hero[] = [];
+  @Input() heroes: Hero[] = [];
+  @Output() create: EventEmitter<Hero> = new EventEmitter();
+  @Output() delete: EventEmitter<Hero> = new EventEmitter();
 
   constructor(private heroService: HeroService) {}
 
-  ngOnInit(): void {
-    this.getHeroes();
-  }
+  ngOnInit(): void {}
 
-  getHeroes(): void {
-    this.heroService.get().subscribe((heroes: ApiList<Hero>) => (this.heroes = heroes.items));
-  }
-
-  add(name: string): void {
+  onCreate(name: string): void {
     name = name.trim();
     if (!name) {
       return;
     }
-    this.heroService.create({ name } as Hero).subscribe((hero: Api<Hero>) => {
-      this.heroes.push(hero.item);
-    });
+    this.create.emit({ name } as Hero);
   }
 
-  delete(hero: Hero): void {
-    this.heroes = this.heroes.filter((h) => h !== hero);
-    this.heroService.delete(hero.id.toString()).subscribe();
+  onDelete(hero: Hero): void {
+    this.delete.emit(hero);
   }
 }

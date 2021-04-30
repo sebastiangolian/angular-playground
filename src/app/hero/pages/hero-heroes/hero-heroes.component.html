@@ -6,7 +6,9 @@
     <app-hero-search></app-hero-search>
   </div>
   <div class="col-12 col-md-9">
-    <hero-list></hero-list>
+    <ng-container *ngIf="heroes$ | async as heroes">
+      <hero-list [heroes]="heroes" (create)="onHeroCreate($event)" (delete)="onHeroDelete($event)"></hero-list>
+    </ng-container>
   </div>
   <div class="col-12 col-md-3">
     <hero-messages></hero-messages>
