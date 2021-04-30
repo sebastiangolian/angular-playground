@@ -5,7 +5,7 @@ import { Hero } from '../../interfaces/hero.interface';
   selector: 'hero-top-heroes',
   templateUrl: './hero-top-heroes.component.html',
   styleUrls: ['./hero-top-heroes.component.css'],
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeroTopHeroesComponent implements OnInit {
   @Input() heroes: Hero[] = [];
