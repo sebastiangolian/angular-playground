@@ -9,7 +9,7 @@
 </div>
 <ul *ngIf="searchResults$ | async as results" class="list-group">
   <ng-container *ngIf="viewSearchResult">
-    <wikipedia-item *ngFor="let result of results" [result]="result" (itemSelected)="onItemSelected($event)"></wikipedia-item>
+    <wikipedia-item *ngFor="let result of results" [result]="result" (itemSelect)="onItemSelected($event)"></wikipedia-item>
   </ng-container>
 </ul>
 

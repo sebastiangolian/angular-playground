@@ -1,7 +1,7 @@
-<post-create *ngIf="isCreatedPost" (postCreated)="onCreate($event)"></post-create>
-<post-update *ngIf="updatedPost" [model]="updatedPost" (postUpdated)="onUpdate($event)"></post-update>
+<post-create *ngIf="isCreatedPost" (postCreate)="onCreate($event)"></post-create>
+<post-update *ngIf="updatedPost" [model]="updatedPost" (postUpdate)="onUpdate($event)"></post-update>
 <ng-container *ngIf="posts$ | async as posts; else loading">
   <h2 class="mb-3">Posts list ({{ posts.length }}) <button class="btn btn-dark float-right" (click)="onOpenCreate()">Add</button></h2>
-  <post-list [posts]="posts" (postEdited)="onEdit($event)" (postDeleted)="onDelete($event)"></post-list>
+  <post-list [posts]="posts" (postEdit)="onEdit($event)" (postDelete)="onDelete($event)"></post-list>
 </ng-container>
 <ng-template #loading> Loading posts... </ng-template>

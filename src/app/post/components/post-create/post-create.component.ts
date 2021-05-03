@@ -10,7 +10,7 @@ import { PostModel } from '../../models/post.model';
 })
 export class PostCreateComponent implements OnInit {
   @Input() model: Post | null = null;
-  @Output() postCreated: EventEmitter<Post | null> = new EventEmitter<Post | null>();
+  @Output() postCreate: EventEmitter<Post | null> = new EventEmitter<Post | null>();
   constructor() {}
 
   ngOnInit(): void {
@@ -21,6 +21,6 @@ export class PostCreateComponent implements OnInit {
   }
 
   onFormSubmit(post: Post | null): void {
-    this.postCreated.emit(post);
+    this.postCreate.emit(post);
   }
 }

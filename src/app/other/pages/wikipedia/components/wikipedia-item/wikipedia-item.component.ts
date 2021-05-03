@@ -9,7 +9,7 @@ import { WikipediaResultOpenSearch } from '../../interfaces/wikipedia-result-ope
 })
 export class WikipediaItemComponent implements OnInit {
   @Input() result!: WikipediaResultOpenSearch;
-  @Output() itemSelected: EventEmitter<WikipediaResultOpenSearch> = new EventEmitter<WikipediaResultOpenSearch>();
+  @Output() itemSelect: EventEmitter<WikipediaResultOpenSearch> = new EventEmitter<WikipediaResultOpenSearch>();
   active = false;
 
   constructor() {}
@@ -17,6 +17,6 @@ export class WikipediaItemComponent implements OnInit {
   ngOnInit(): void {}
 
   onClick(): void {
-    this.itemSelected.emit(this.result);
+    this.itemSelect.emit(this.result);
   }
 }

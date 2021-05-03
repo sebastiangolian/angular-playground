@@ -11,11 +11,11 @@ import { Post } from '../../interfaces/post.interface';
 export class PostFormComponent {
   @Input() model: Post | null = null;
   @Input() action = 'Add';
-  @Output() postSubmited: EventEmitter<Post | null> = new EventEmitter();
+  @Output() postSubmit: EventEmitter<Post | null> = new EventEmitter();
 
   constructor() {}
 
   onSubmit(f: NgForm): void {
-    this.postSubmited.emit(this.model);
+    this.postSubmit.emit(this.model);
   }
 }

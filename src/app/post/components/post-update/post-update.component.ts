@@ -9,12 +9,12 @@ import { Post } from '../../interfaces/post.interface';
 })
 export class PostUpdateComponent implements OnInit {
   @Input() model: Post | null = null;
-  @Output() postUpdated: EventEmitter<Post | null> = new EventEmitter<Post | null>();
+  @Output() postUpdate: EventEmitter<Post | null> = new EventEmitter<Post | null>();
   constructor() {}
 
   ngOnInit(): void {}
 
   onFormSubmit(post: Post | null): void {
-    this.postUpdated.emit(post);
+    this.postUpdate.emit(post);
   }
 }

@@ -15,7 +15,7 @@
       </button>
       <a class="navbar-brand" href="#">angular-playground</a>
       <div [collapse]="isCollapsed" class="collapse navbar-collapse" id="navbar-content">
-        <app-menu class="ml-auto mr-5" (clicked)="isCollapsed = !isCollapsed"></app-menu>
+        <app-menu class="ml-auto mr-5" (onclick)="isCollapsed = !isCollapsed"></app-menu>
         <button class="btn btn-outline-dark my-2 my-sm-0" (click)="onReset()">Clear memory</button>
       </div>
     </div>

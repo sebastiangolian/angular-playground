@@ -7,10 +7,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class HeroMessagesComponent {
   @Input() messages: string[] = [];
-  @Output() cleared: EventEmitter<boolean> = new EventEmitter();
+  @Output() clear: EventEmitter<boolean> = new EventEmitter();
   constructor() {}
 
   onClearClick(): void {
-    this.cleared.emit(true);
+    this.clear.emit(true);
   }
 }
