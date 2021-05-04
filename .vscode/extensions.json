@@ -1,10 +1,8 @@
 {
   "recommendations": [
-    "angular.ng-template",
     "cyrilletuzi.angular-schematics",
     "johnpapa.angular2",
     "ms-vscode.vscode-typescript-tslint-plugin",
-    //"esbenp.prettier-vscode",
     "aeschli.vscode-css-formatter"
   ]
 }
