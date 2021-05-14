@@ -30,12 +30,6 @@ Test project
 npm run test
 ```
 
-Test e2e project
-
-```bash
-npm run e2e
-```
-
 Lint project
 
 ```bash
