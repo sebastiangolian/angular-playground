@@ -5,7 +5,7 @@ import { JphUserModel } from '../../models/jph-user.model';
 @Component({
   selector: 'jph-user-form',
   templateUrl: './jph-user-form.component.html',
-  styleUrls: ['./jph-user-form.component.css'],
+  styleUrls: ['./jph-user-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class JphUserFormComponent implements OnInit {

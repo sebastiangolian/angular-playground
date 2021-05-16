@@ -8,7 +8,7 @@ import { UserModel } from '../../models/user.model';
 
 @Component({
   templateUrl: './user-search.component.html',
-  styleUrls: ['./user-search.component.css'],
+  styleUrls: ['./user-search.component.scss'],
 })
 export class UserSearchComponent implements OnInit, OnDestroy {
   item: User = new UserModel();

@@ -5,7 +5,7 @@ import { Post } from '../../interfaces/post.interface';
 @Component({
   selector: 'post-form',
   templateUrl: './post-form.component.html',
-  styleUrls: ['./post-form.component.css'],
+  styleUrls: ['./post-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostFormComponent {

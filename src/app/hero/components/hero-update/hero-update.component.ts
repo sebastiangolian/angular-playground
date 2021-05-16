@@ -4,7 +4,7 @@ import { Hero } from '../../interfaces/hero.interface';
 @Component({
   selector: 'hero-update',
   templateUrl: './hero-update.component.html',
-  styleUrls: ['./hero-update.component.css'],
+  styleUrls: ['./hero-update.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeroUpdateComponent implements OnInit {

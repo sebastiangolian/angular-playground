@@ -3,7 +3,7 @@ import { Component, ChangeDetectionStrategy, Input, OnChanges } from '@angular/c
 @Component({
   selector: 'modal-info',
   templateUrl: './modal-info.component.html',
-  styleUrls: ['./modal-info.component.css'],
+  styleUrls: ['./modal-info.component.scss'],
   changeDetection: ChangeDetectionStrategy.Default,
 })
 export class ModalInfoComponent implements OnChanges {

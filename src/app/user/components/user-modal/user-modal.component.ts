@@ -7,7 +7,7 @@ import { UserModel } from '../../models/user.model';
 @Component({
   selector: 'app-user-modal',
   templateUrl: './user-modal.component.html',
-  styleUrls: ['./user-modal.component.css'],
+  styleUrls: ['./user-modal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserModalComponent implements OnInit {

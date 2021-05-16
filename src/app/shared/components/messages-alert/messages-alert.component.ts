@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'messages-alert',
   templateUrl: './messages-alert.component.html',
-  styleUrls: ['./messages-alert.component.css'],
+  styleUrls: ['./messages-alert.component.scss'],
   changeDetection: ChangeDetectionStrategy.Default,
 })
 export class MessagesAlertComponent implements OnInit, OnDestroy {

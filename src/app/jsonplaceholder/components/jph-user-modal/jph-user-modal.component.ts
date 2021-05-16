@@ -6,7 +6,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 @Component({
   selector: 'jph-user-modal',
   templateUrl: './jph-user-modal.component.html',
-  styleUrls: ['./jph-user-modal.component.css'],
+  styleUrls: ['./jph-user-modal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class JphUserModalComponent implements OnInit {

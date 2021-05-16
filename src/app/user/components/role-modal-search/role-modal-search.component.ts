@@ -10,7 +10,7 @@ import { RoleService } from '../../services/role.service';
 @Component({
   selector: 'app-role-modal-search',
   templateUrl: './role-modal-search.component.html',
-  styleUrls: ['./role-modal-search.component.css'],
+  styleUrls: ['./role-modal-search.component.scss'],
 })
 export class RoleModalSearchComponent extends DataTableSearchComponent<Role> implements OnDestroy {
   model: Role = new RoleModel();

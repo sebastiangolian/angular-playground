@@ -4,7 +4,7 @@ import { WikipediaResultParse } from '../../interfaces/wikipedia-result-parse.in
 @Component({
   selector: 'wikipedia-parse-item',
   templateUrl: './wikipedia-parse-item.component.html',
-  styleUrls: ['./wikipedia-parse-item.component.css'],
+  styleUrls: ['./wikipedia-parse-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WikipediaParseItemComponent implements OnInit {

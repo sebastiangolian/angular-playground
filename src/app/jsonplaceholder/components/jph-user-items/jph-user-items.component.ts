@@ -4,7 +4,7 @@ import { JphUser } from '../../interfaces/jph-user';
 @Component({
   selector: 'jph-user-items',
   templateUrl: './jph-user-items.component.html',
-  styleUrls: ['./jph-user-items.component.css'],
+  styleUrls: ['./jph-user-items.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class JphUserItemsComponent implements OnInit {

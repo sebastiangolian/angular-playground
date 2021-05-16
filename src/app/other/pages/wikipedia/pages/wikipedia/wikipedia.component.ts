@@ -9,7 +9,7 @@ import { WikipediaResultParse } from '../../interfaces/wikipedia-result-parse.in
 @Component({
   selector: 'app-wikipedia',
   templateUrl: './wikipedia.component.html',
-  styleUrls: ['./wikipedia.component.css'],
+  styleUrls: ['./wikipedia.component.scss'],
 })
 export class WikipediaComponent implements OnInit, OnDestroy {
   @ViewChild('searchInput') searchInput!: ElementRef;

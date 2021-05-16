@@ -5,7 +5,7 @@ import { PostModel } from '../../models/post.model';
 @Component({
   selector: 'post-create',
   templateUrl: './post-create.component.html',
-  styleUrls: ['./post-create.component.css'],
+  styleUrls: ['./post-create.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostCreateComponent implements OnInit {

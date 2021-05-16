@@ -5,7 +5,7 @@ import { HeaderService } from 'src/app/shared/services/header.service';
 @Component({
   selector: 'app-leaflet',
   templateUrl: './leaflet.component.html',
-  styleUrls: ['./leaflet.component.css'],
+  styleUrls: ['./leaflet.component.scss'],
 })
 export class LeafletComponent implements AfterViewInit {
   @ViewChild('map')

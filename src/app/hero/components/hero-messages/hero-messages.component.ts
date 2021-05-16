@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
   selector: 'hero-messages',
   templateUrl: './hero-messages.component.html',
-  styleUrls: ['./hero-messages.component.css'],
+  styleUrls: ['./hero-messages.component.scss'],
 })
 export class HeroMessagesComponent {
   @Input() messages: string[] = [];

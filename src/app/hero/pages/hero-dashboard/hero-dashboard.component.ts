@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './hero-dashboard.component.html',
-  styleUrls: ['./hero-dashboard.component.css'],
+  styleUrls: ['./hero-dashboard.component.scss'],
 })
 export class HeroDashboardComponent implements OnInit {
   topHeroes$: Observable<Hero[]> = new Observable();

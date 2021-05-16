@@ -6,6 +6,9 @@
     "angular-playground": {
       "projectType": "application",
       "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
         "@schematics/angular:application": {
           "strict": true
         }
@@ -22,6 +25,7 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets",
@@ -31,7 +35,7 @@
                 "output": "/assets/icons/"
               }
             ],
-            "styles": ["src/external/bootstrap.min.css", "src/styles.css", "node_modules/leaflet/dist/leaflet.css"],
+            "styles": ["src/external/bootstrap.min.css", "src/styles.scss", "node_modules/leaflet/dist/leaflet.css"],
             "scripts": [],
             "vendorChunk": true,
             "extractLicenses": false,
@@ -94,8 +98,9 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
+            "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.css"],
+            "styles": ["src/styles.scss"],
             "scripts": []
           }
         },

@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 
 @Component({
   templateUrl: './post.component.html',
-  styleUrls: ['./post.component.css'],
+  styleUrls: ['./post.component.scss'],
 })
 export class PostComponent implements OnInit {
   posts$: Observable<Post[]> = new Observable();

@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 @Component({
   selector: 'app-modal-confirm',
   templateUrl: './modal-confirm.component.html',
-  styleUrls: ['./modal-confirm.component.css'],
+  styleUrls: ['./modal-confirm.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalConfirmComponent implements OnInit {

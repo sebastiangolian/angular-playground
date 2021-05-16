@@ -17,7 +17,7 @@ import { MessageType } from 'src/app/shared/enums/message-type.enum';
 @Component({
   selector: 'app-user',
   templateUrl: './user-datatable.component.html',
-  styleUrls: ['./user-datatable.component.css'],
+  styleUrls: ['./user-datatable.component.scss'],
 })
 export class UserDataTableComponent extends DataTableComponent<User> implements OnDestroy {
   model: User = new UserModel();

@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 
 @Component({
   templateUrl: './hero-heroes.component.html',
-  styleUrls: ['./hero-heroes.component.css'],
+  styleUrls: ['./hero-heroes.component.scss'],
 })
 export class HeroHeroesComponent implements OnInit, OnDestroy {
   currentUrl = '';

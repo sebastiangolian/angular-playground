@@ -7,7 +7,7 @@ import { Location } from '@angular/common';
 
 @Component({
   templateUrl: './hero-detail.component.html',
-  styleUrls: ['./hero-detail.component.css'],
+  styleUrls: ['./hero-detail.component.scss'],
 })
 export class HeroDetailComponent implements OnInit, OnDestroy {
   hero: Hero | null = null;

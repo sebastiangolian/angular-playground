@@ -4,7 +4,7 @@ import { WikipediaResultOpenSearch } from '../../interfaces/wikipedia-result-ope
 @Component({
   selector: 'wikipedia-item',
   templateUrl: './wikipedia-item.component.html',
-  styleUrls: ['./wikipedia-item.component.css'],
+  styleUrls: ['./wikipedia-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WikipediaItemComponent implements OnInit {

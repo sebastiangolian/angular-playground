@@ -4,7 +4,7 @@ import { Post } from '../../interfaces/post.interface';
 @Component({
   selector: 'post-update',
   templateUrl: './post-update.component.html',
-  styleUrls: ['./post-update.component.css'],
+  styleUrls: ['./post-update.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostUpdateComponent implements OnInit {

@@ -9,7 +9,7 @@ import { User } from '../../interfaces/user.interface';
 
 @Component({
   templateUrl: './user-item.component.html',
-  styleUrls: ['./user-item.component.css'],
+  styleUrls: ['./user-item.component.scss'],
 })
 export class UserItemComponent implements OnInit, OnDestroy {
   idUser = '';

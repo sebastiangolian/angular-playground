@@ -4,7 +4,7 @@ import { JphUserAddress } from '../../interfaces/jph-user';
 @Component({
   selector: 'jph-user-address',
   templateUrl: './jph-user-address.component.html',
-  styleUrls: ['./jph-user-address.component.css'],
+  styleUrls: ['./jph-user-address.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class JphUserAddressComponent implements OnInit {

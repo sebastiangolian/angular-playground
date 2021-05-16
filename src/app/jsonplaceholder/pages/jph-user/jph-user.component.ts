@@ -10,7 +10,7 @@ import { JphUserModel } from '../../models/jph-user.model';
 
 @Component({
   templateUrl: './jph-user.component.html',
-  styleUrls: ['./jph-user.component.css'],
+  styleUrls: ['./jph-user.component.scss'],
 })
 export class JphUserComponent implements OnInit, OnDestroy {
   users$: Observable<JphUser[]> = new Observable();

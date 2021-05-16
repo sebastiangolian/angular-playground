@@ -3,7 +3,7 @@ import { Component, OnInit, ChangeDetectionStrategy, Input, TemplateRef, Element
 @Component({
   selector: 'lazy-loading-item',
   templateUrl: './lazy-loading-item.component.html',
-  styleUrls: ['./lazy-loading-item.component.css'],
+  styleUrls: ['./lazy-loading-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.Default,
 })
 export class LazyLoadingItemComponent implements OnInit, OnDestroy {

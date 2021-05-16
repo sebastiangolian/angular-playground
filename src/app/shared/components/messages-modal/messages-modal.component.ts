@@ -7,7 +7,7 @@ import { MessageService } from '../../services/message.service';
 @Component({
   selector: 'messages-modal',
   templateUrl: './messages-modal.component.html',
-  styleUrls: ['./messages-modal.component.css'],
+  styleUrls: ['./messages-modal.component.scss'],
   changeDetection: ChangeDetectionStrategy.Default,
 })
 export class MessagesModalComponent implements OnInit, OnDestroy {

@@ -3,7 +3,7 @@ import { Component, OnInit, ChangeDetectionStrategy, Input, EventEmitter, Output
 @Component({
   selector: 'icon-b',
   templateUrl: './icon-b.component.html',
-  styleUrls: ['./icon-b.component.css'],
+  styleUrls: ['./icon-b.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IconBComponent implements OnInit {

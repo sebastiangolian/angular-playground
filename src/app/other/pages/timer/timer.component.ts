@@ -5,7 +5,7 @@ import { TimerService } from 'src/app/shared/services/timer.service';
 
 @Component({
   templateUrl: './timer.component.html',
-  styleUrls: ['./timer.component.css'],
+  styleUrls: ['./timer.component.scss'],
 })
 export class TimerComponent implements OnInit {
   timer$: Observable<number> = new Observable();

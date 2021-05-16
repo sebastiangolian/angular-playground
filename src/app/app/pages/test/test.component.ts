@@ -3,7 +3,7 @@ import { HeaderService } from 'src/app/shared/services/header.service';
 
 @Component({
   templateUrl: './test.component.html',
-  styleUrls: ['./test.component.css'],
+  styleUrls: ['./test.component.scss'],
 })
 export class TestComponent implements OnInit {
   constructor(private headerService: HeaderService) {
