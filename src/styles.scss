@@ -1,15 +1,2 @@
-body {
-  font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif !important;
-}
-
-.hand {
-  cursor: pointer;
-}
-
-.no-outline {
-  outline: none;
-}
-
-.left-minus-85 {
-  left: -85px !important;
-}
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/scss/bootstrap';
