@@ -44,3 +44,7 @@
 //@import "~bootstrap/scss/carousel";
 //@import "~bootstrap/scss/spinners";
 //@import "~bootstrap/scss/print";
+
+input.ng-invalid {
+  border: 1px red solid;
+}

@@ -1,19 +1,19 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientJsonpModule, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { BackendInterceptor } from '../backend/interceptors/backend.interceptor';
+import { SpinnerInterceptor } from '../shared/components/spinner/interceptors/spinner.interceptor';
+import { SharedModule } from '../shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
+import { MenuComponent } from './components/menu/menu.component';
+import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
 import { AppComponent } from './pages/app/app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { TestComponent } from './pages/test/test.component';
-import { HttpClientJsonpModule, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { BackendInterceptor } from '../backend/interceptors/backend.interceptor';
-import { SharedModule } from '../shared/shared.module';
-import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
-import { CollapseModule } from 'ngx-bootstrap/collapse';
-import { SpinnerInterceptor } from '../shared/components/spinner/interceptors/spinner.interceptor';
-import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, TestComponent, MenuComponent],
@@ -25,6 +25,7 @@ import { MenuComponent } from './components/menu/menu.component';
     HttpClientJsonpModule,
     RouterModule,
     FormsModule,
+
     SharedModule,
     CollapseModule.forRoot(),
   ],

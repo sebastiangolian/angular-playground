@@ -1,0 +1,29 @@
+<div [formGroupName]="groupName">
+  <h3>Services</h3>
+  <ng-container *ngFor="let input of inputs">
+    <div class="form-group">
+      <div class="form-check" *ngIf="input.type === 'checkbox'">
+        <input class="form-check-input" type="checkbox" value="" [id]="input.name" [formControlName]="input.name" />
+        <label class="form-check-label" [for]="input.name">{{ input.label }}</label>
+      </div>
+
+      <ng-container *ngIf="input.type === 'textbox'">
+        <ng-container *ngIf="formGroup.get(input.name) as control">
+          <label [for]="input.name">{{ input.label }}</label>
+          <input
+            type="text"
+            class="form-control"
+            [id]="input.name"
+            [formControlName]="input.name"
+            [pattern]="input.pattern"
+            [class.ng-invalid]="control.invalid && (control.dirty || control.touched)"
+          />
+          <div *ngIf="!!control.invalid && (!!control.dirty || !!control.touched)" class="text-danger">
+            <div *ngIf="!!control.errors?.required">Is required</div>
+            <div *ngIf="!!control.errors?.pattern">Invalid pattern</div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>

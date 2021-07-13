@@ -16,5 +16,10 @@
     ".husky": true,
     ".prettierrc": true,
     ".eslintrc.json": true
+  },
+  "[typescript]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
   }
 }
