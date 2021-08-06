@@ -40,7 +40,10 @@ export class FormDynamicServicesComponent implements OnInit, OnChanges {
 
   private createValidators(input: FormInput): ValidatorFn[] {
     const validators: any[] = [];
-    if (input.required) {
+    if (input.required && input.type === 'checkbox') {
+      validators.push(Validators.requiredTrue);
+    }
+    if (input.required && input.type !== 'checkbox') {
       validators.push(Validators.required);
     }
     if (input.pattern) {

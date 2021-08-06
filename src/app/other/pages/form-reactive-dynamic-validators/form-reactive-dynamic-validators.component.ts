@@ -32,7 +32,7 @@ export class FormReactiveDynamicValidatorsComponent implements OnInit {
   }
 
   onAddValidators(): void {
-    this.name.setValidators([Validators.requiredTrue, Validators.minLength(3), Validators.maxLength(25)]);
+    this.name.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(25)]);
     this.name.updateValueAndValidity();
     this.childValidators = true;
   }
