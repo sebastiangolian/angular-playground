@@ -7,12 +7,14 @@
       [class.valid]="name.valid && (name.dirty || name.touched)"
       [class.ng-invalid]="name.invalid && (name.dirty || name.touched)"
     />
-    <div *ngIf="name.invalid && (!!name.dirty || !!name.touched)" class="text-danger">
+    <div class="text-danger">
       <div *ngIf="name.errors?.required">Required</div>
       <div *ngIf="name.errors?.minlength">Min 3 characters long.</div>
       <div *ngIf="name.errors?.maxlength">Max 25 characters long.</div>
     </div>
   </div>
+
+  <form-dynamic-services [validators]="childValidators"></form-dynamic-services>
 
   <p>Form status: {{ form.status }}</p>
   <p>Form value: {{ form.value | json }}</p>

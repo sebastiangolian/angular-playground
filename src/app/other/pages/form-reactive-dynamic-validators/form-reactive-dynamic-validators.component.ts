@@ -7,6 +7,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class FormReactiveDynamicValidatorsComponent implements OnInit {
   form!: FormGroup;
+  childValidators = true;
 
   constructor(private fb: FormBuilder) {}
 
@@ -27,10 +28,12 @@ export class FormReactiveDynamicValidatorsComponent implements OnInit {
   onRemoveValidators(): void {
     this.name.clearValidators();
     this.name.updateValueAndValidity();
+    this.childValidators = false;
   }
 
   onAddValidators(): void {
-    this.name.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(25)]);
+    this.name.setValidators([Validators.requiredTrue, Validators.minLength(3), Validators.maxLength(25)]);
     this.name.updateValueAndValidity();
+    this.childValidators = true;
   }
 }
