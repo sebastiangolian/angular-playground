@@ -15,6 +15,7 @@ import { TimerComponent } from './pages/timer/timer.component';
 import { WikipediaItemComponent } from './pages/wikipedia/components/wikipedia-item/wikipedia-item.component';
 import { WikipediaParseItemComponent } from './pages/wikipedia/components/wikipedia-parse-item/wikipedia-parse-item.component';
 import { WikipediaComponent } from './pages/wikipedia/pages/wikipedia/wikipedia.component';
+import { FormReactiveDynamicValidatorsComponent } from './pages/form-reactive-dynamic-validators/form-reactive-dynamic-validators.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { WikipediaComponent } from './pages/wikipedia/pages/wikipedia/wikipedia.
     FormUserAliasesComponent,
     FormUserComponent,
     FormUserServicesComponent,
+    FormReactiveDynamicValidatorsComponent,
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, OtherRoutingModule, SharedModule],
 })
