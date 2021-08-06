@@ -1,16 +1,16 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <div class="form-group" *ngIf="form.get('name') as nameControl">
+  <div class="form-group">
     <label>Name:</label>
     <input
       formControlName="name"
       class="form-control"
-      [class.valid]="nameControl.valid && (nameControl.dirty || nameControl.touched)"
-      [class.ng-invalid]="nameControl.invalid && (nameControl.dirty || nameControl.touched)"
+      [class.valid]="name.valid && (name.dirty || name.touched)"
+      [class.ng-invalid]="name.invalid && (name.dirty || name.touched)"
     />
-    <div *ngIf="nameControl.invalid && (!!nameControl.dirty || !!nameControl.touched)" class="text-danger">
-      <div *ngIf="nameControl.errors?.required">Required</div>
-      <div *ngIf="nameControl.errors?.minlength">Min 3 characters long.</div>
-      <div *ngIf="nameControl.errors?.maxlength">Max 25 characters long.</div>
+    <div *ngIf="name.invalid && (!!name.dirty || !!name.touched)" class="text-danger">
+      <div *ngIf="name.errors?.required">Required</div>
+      <div *ngIf="name.errors?.minlength">Min 3 characters long.</div>
+      <div *ngIf="name.errors?.maxlength">Max 25 characters long.</div>
     </div>
   </div>
 
@@ -18,7 +18,9 @@
   <p>Form value: {{ form.value | json }}</p>
 
   <p>
-    <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
-    <button type="reset" class="btn btn-info">Reset</button>
+    <button type="submit" class="btn btn-primary mr-1" [disabled]="!form.valid">Submit</button>
+    <button type="reset" class="btn btn-info mr-1">Reset</button>
+    <button class="btn btn-primary mr-1" (click)="onRemoveValidators(); $event.preventDefault()">Remove dynamic validators</button>
+    <button class="btn btn-primary" (click)="onAddValidators(); $event.preventDefault()">Add dynamic validators</button>
   </p>
 </form>

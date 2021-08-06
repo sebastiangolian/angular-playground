@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   templateUrl: './form-reactive-dynamic-validators.component.html',
@@ -10,6 +10,10 @@ export class FormReactiveDynamicValidatorsComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {}
 
+  get name(): FormControl {
+    return this.form.get('name') as FormControl;
+  }
+
   ngOnInit(): void {
     this.form = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
@@ -18,5 +22,15 @@ export class FormReactiveDynamicValidatorsComponent implements OnInit {
 
   onSubmit(): void {
     console.log(this.form.value);
+  }
+
+  onRemoveValidators(): void {
+    this.name.clearValidators();
+    this.name.updateValueAndValidity();
+  }
+
+  onAddValidators(): void {
+    this.name.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(25)]);
+    this.name.updateValueAndValidity();
   }
 }
