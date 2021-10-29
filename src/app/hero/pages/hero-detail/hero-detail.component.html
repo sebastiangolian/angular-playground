@@ -6,7 +6,7 @@
     <app-hero-search></app-hero-search>
   </div>
   <div class="col-12 col-md-9">
-    <hero-update [hero]="hero" (back)="onBackUpdate()" (update)="onHeroUpdate($event)"></hero-update>
+    <hero-update *ngIf="hero" [hero]="hero" (back)="onBackUpdate()" (update)="onHeroUpdate($event)"></hero-update>
   </div>
   <div class="col-12 col-md-3">
     <hero-messages></hero-messages>
