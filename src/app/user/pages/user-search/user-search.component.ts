@@ -1,30 +1,26 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { User } from '../../interfaces/user.interface';
-import { UserService } from '../../services/user.service';
-import { HeaderService } from 'src/app/shared/services/header.service';
-import { debounceTime, tap } from 'rxjs/operators';
+import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { debounceTime, tap } from 'rxjs/operators';
+import { HeaderService } from 'src/app/shared/services/header.service';
+import { User } from '../../interfaces/user.interface';
 import { UserModel } from '../../models/user.model';
+import { UserService } from '../../services/user.service';
 
 @Component({
   templateUrl: './user-search.component.html',
   styleUrls: ['./user-search.component.scss'],
 })
-export class UserSearchComponent implements OnInit, OnDestroy {
+export class UserSearchComponent {
   item: User = new UserModel();
   caption = '';
-
-  private subscription: Subscription = new Subscription();
 
   constructor(private userService: UserService, private headerService: HeaderService) {
     this.headerService.set('User search');
   }
 
-  ngOnInit(): void {}
-
   onSearch(value: string): void {
     if (value.length > 0) {
-      this.subscription.add(this.search(value));
+      this.search(value);
     } else {
       this.item = new UserModel();
     }
@@ -46,11 +42,5 @@ export class UserSearchComponent implements OnInit, OnDestroy {
         }),
       )
       .subscribe();
-  }
-
-  ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
   }
 }

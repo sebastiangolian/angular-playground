@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { first, map } from 'rxjs/operators';
 import { WikipediaResultOpenSearch } from '../interfaces/wikipedia-result-opensearch.interface';
 import { WikipediaResultParse } from '../interfaces/wikipedia-result-parse.interface';
 
@@ -19,6 +19,7 @@ export class WikipediaService {
       .append('search', encodeURIComponent(search));
     const url = `${this.url}?${params.toString()}`;
     return this.http.jsonp<string[][]>(url, 'callback').pipe(
+      first(),
       map((val) => {
         const result: WikipediaResultOpenSearch[] = [];
         for (let i = 0; i < val[1].length; i++) {
@@ -36,6 +37,9 @@ export class WikipediaService {
   parse(page: string): Observable<WikipediaResultParse> {
     const params = new HttpParams().append('action', 'parse').append('format', 'json').append('page', decodeURIComponent(page));
     const url = `${this.url}?${params.toString()}`;
-    return this.http.jsonp<any>(url, 'callback').pipe(map((result) => result.parse));
+    return this.http.jsonp<any>(url, 'callback').pipe(
+      first(),
+      map((result) => result.parse),
+    );
   }
 }

@@ -1,28 +1,26 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { Observable, Subject, Subscription } from 'rxjs';
+import { DataTableComponent } from 'src/app/shared/classes/datatable.component';
+import { ModalConfirmService } from 'src/app/shared/components/modal-confirm/services/modal-confirm.service';
+import { MessageType } from 'src/app/shared/enums/message-type.enum';
 import { HeaderService } from 'src/app/shared/services/header.service';
 import { MessageService } from 'src/app/shared/services/message.service';
+import { RoleModalSearchComponent } from 'src/app/user/components/role-modal-search/role-modal-search.component';
+import { Role } from 'src/app/user/interfaces/role.interface';
 import { UserModalComponent } from '../../components/user-modal/user-modal.component';
 import { User } from '../../interfaces/user.interface';
 import { UserModel } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
-import { ModalConfirmService } from 'src/app/shared/components/modal-confirm/services/modal-confirm.service';
-import { RoleModalSearchComponent } from 'src/app/user/components/role-modal-search/role-modal-search.component';
-import { Role } from 'src/app/user/interfaces/role.interface';
-import { DataTableComponent } from 'src/app/shared/classes/datatable.component';
-import { MessageType } from 'src/app/shared/enums/message-type.enum';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user-datatable.component.html',
   styleUrls: ['./user-datatable.component.scss'],
 })
-export class UserDataTableComponent extends DataTableComponent<User> implements OnDestroy {
+export class UserDataTableComponent extends DataTableComponent<User> {
   model: User = new UserModel();
-  private subscription: Subscription = new Subscription();
-
   constructor(
     private headerService: HeaderService,
     private messageService: MessageService,
@@ -37,11 +35,11 @@ export class UserDataTableComponent extends DataTableComponent<User> implements 
   }
 
   onRefresh(): void {
-    this.subscription.add(this.getUsers());
+    this.getUsers();
   }
 
   onDownload(user: User): void {
-    this.subscription.add(this.downloadFile(user));
+    this.userService.downloadFile(user).subscribe();
   }
 
   onView(user: User): void {
@@ -49,109 +47,69 @@ export class UserDataTableComponent extends DataTableComponent<User> implements 
   }
 
   onEdit(user: User): void {
-    this.subscription.add(this.putUserModal(user));
-  }
-
-  onDelete(role: User): void {
-    const content = `Are you sure you want to delete the record ?`;
-    this.subscription.add(
-      this.modalConfirmService.confirm(content).subscribe((result) => {
-        if (result) {
-          this.subscription.add(this.deleteUser(role));
-        }
-      }),
-    );
-  }
-
-  onCreate(): void {
-    this.subscription.add(this.postUserModal());
-  }
-
-  onSetRole(user: User): void {
-    this.subscription.add(this.setRoleToUser(user));
-  }
-
-  ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
-  }
-
-  private getUsers(): Subscription {
-    return this.userService.get(this.limit, this.page, this.sortBy, this.order, this.filters).subscribe((ret) => {
-      this.items = ret.items;
-      this.total = ret.total;
-    });
-  }
-
-  private downloadFile(user: User): Subscription {
-    return this.userService.downloadFile(user).subscribe();
-  }
-
-  private postUserModal(): Subscription {
-    return this.userModal(new UserModel()).subscribe({
-      next: (user: User) => {
-        if (user !== null) {
-          this.postUser(user);
-        }
-      },
-      error: () => this.messageService.sendMessage('Adding a new record failed', MessageType.error),
-    });
-  }
-
-  private putUserModal(user: User): Subscription {
-    return this.userModal(user).subscribe({
+    this.userModal(user).subscribe({
       next: (modalUser: User) => {
         if (modalUser !== null) {
-          this.putUser(modalUser);
+          this.userService.update(modalUser.id, user).subscribe({
+            complete: () => {
+              this.onRefresh();
+              this.messageService.sendMessage('Record updated correctly');
+            },
+          });
         }
       },
       error: () => this.messageService.sendMessage('Update record failed', MessageType.error),
     });
   }
 
-  private postUser(user: User): Subscription {
-    return this.userService.post(user).subscribe({
-      complete: () => {
-        this.onRefresh();
-        this.messageService.sendMessage('Record added correctly');
-      },
+  onDelete(user: User): void {
+    const content = `Are you sure you want to delete the record ?`;
+    this.modalConfirmService.confirm(content).subscribe((result) => {
+      if (result) {
+        this.userService.delete(user.id).subscribe({
+          complete: () => {
+            this.onRefresh();
+            this.messageService.sendMessage('Record deleted correctly');
+          },
+        });
+      }
     });
   }
 
-  private putUser(user: User): Subscription {
-    return this.userService.update(user.id, user).subscribe({
-      complete: () => {
-        this.onRefresh();
-        this.messageService.sendMessage('Record updated correctly');
+  onCreate(): void {
+    this.userModal(new UserModel()).subscribe({
+      next: (user: User) => {
+        if (user !== null) {
+          this.userService.post(user).subscribe({
+            complete: () => {
+              this.onRefresh();
+              this.messageService.sendMessage('Record added correctly');
+            },
+          });
+        }
       },
+      error: () => this.messageService.sendMessage('Adding a new record failed', MessageType.error),
     });
   }
 
-  private deleteUser(user: User): Subscription {
-    return this.userService.delete(user.id).subscribe({
-      complete: () => {
-        this.onRefresh();
-        this.messageService.sendMessage('Record deleted correctly');
-      },
-    });
-  }
-
-  private patchUser(id: string, body: any): Subscription {
-    return this.userService.patch(id, body).subscribe({
-      complete: () => {
-        this.onRefresh();
-        this.messageService.sendMessage('Role has been assigned correctly');
-      },
-    });
-  }
-
-  private setRoleToUser(user: User): Subscription {
-    return this.getModalRole().subscribe({
+  onSetRole(user: User): void {
+    this.getModalRole().subscribe({
       next: (role: Role) => {
-        this.patchUser(user.id.toString(), { idRole: role.id });
+        this.userService.patch(user.id, { idRole: role.id }).subscribe({
+          complete: () => {
+            this.onRefresh();
+            this.messageService.sendMessage('Role has been assigned correctly');
+          },
+        });
       },
       error: () => this.messageService.sendMessage('The role was not assigned correctly', MessageType.error),
+    });
+  }
+
+  private getUsers(): Subscription {
+    return this.userService.get(this.limit, this.page, this.sortBy, this.order, this.filters).subscribe((ret) => {
+      this.items = ret.items;
+      this.total = ret.total;
     });
   }
 

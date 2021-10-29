@@ -1,6 +1,7 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Subject, Subscription } from 'rxjs';
+import { first } from 'rxjs/operators';
 import { DataTableSearchComponent } from 'src/app/shared/classes/datatable-search.component';
 import { ModalConfirmService } from 'src/app/shared/components/modal-confirm/services/modal-confirm.service';
 import { Role } from '../../interfaces/role.interface';
@@ -12,12 +13,10 @@ import { RoleService } from '../../services/role.service';
   templateUrl: './role-modal-search.component.html',
   styleUrls: ['./role-modal-search.component.scss'],
 })
-export class RoleModalSearchComponent extends DataTableSearchComponent<Role> implements OnDestroy {
+export class RoleModalSearchComponent extends DataTableSearchComponent<Role> {
   model: Role = new RoleModel();
   items: Role[] = [];
   subject: Subject<Role> = new Subject<Role>();
-
-  private subscription: Subscription = new Subscription();
 
   constructor(private roleService: RoleService, public bsModalRef: BsModalRef, private modalConfirmService: ModalConfirmService) {
     super();
@@ -25,18 +24,19 @@ export class RoleModalSearchComponent extends DataTableSearchComponent<Role> imp
   }
 
   onRefresh(): void {
-    this.subscription.add(this.getRoles());
+    this.getRoles();
   }
 
   onSelectConfirm(role: Role): void {
     const content = `Are you sure you want to assign a role?`;
-    this.subscription.add(
-      this.modalConfirmService.confirm(content).subscribe((result) => {
+    this.modalConfirmService
+      .confirm(content)
+      .pipe(first())
+      .subscribe((result) => {
         if (result) {
           this.onSelect(role);
         }
-      }),
-    );
+      });
   }
 
   onSelect(role: Role): void {
@@ -48,12 +48,6 @@ export class RoleModalSearchComponent extends DataTableSearchComponent<Role> imp
   onCancel(): void {
     this.bsModalRef.hide();
     this.subject.complete();
-  }
-
-  ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
   }
 
   private getRoles(): Subscription {
