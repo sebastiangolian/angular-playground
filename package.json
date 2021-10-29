@@ -13,10 +13,10 @@
     "test-headless": "ng test --browsers ChromeHeadless",
     "eslint:fix": "eslint src/{app,environments,assets}/**/*{.ts,.js} --fix",
     "prettier:write": "prettier --write --config ./.prettierrc --list-different \"src/{app,environments,assets}/**/*{.ts,.js,.css,.scss,.html}\"",
-    "predeploy": "ng build --prod --base-href=/angular-playground/ --outputPath=dist/angular-playground",
+    "predeploy": "ng build --configuration production --base-href=/angular-playground/ --outputPath=dist/angular-playground",
     "deploy": "gh-pages -d dist/angular-playground/",
     "clear": "rmdir /q /s node_modules",
-    "analyze": "ng build --prod --stats-json && webpack-bundle-analyzer dist/stats.json"
+    "analyze": "ng build --configuration production --stats-json && webpack-bundle-analyzer dist/stats.json"
   },
   "lint-staged": {
     "*": [
@@ -25,14 +25,14 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~12.0.0",
-    "@angular/common": "~12.0.0",
-    "@angular/compiler": "~12.0.0",
-    "@angular/core": "~12.0.0",
-    "@angular/forms": "~12.0.0",
-    "@angular/platform-browser": "~12.0.0",
-    "@angular/platform-browser-dynamic": "~12.0.0",
-    "@angular/router": "~12.0.0",
+    "@angular/animations": "~12.2.12",
+    "@angular/common": "~12.2.12",
+    "@angular/compiler": "~12.2.12",
+    "@angular/core": "~12.2.12",
+    "@angular/forms": "~12.2.12",
+    "@angular/platform-browser": "~12.2.12",
+    "@angular/platform-browser-dynamic": "~12.2.12",
+    "@angular/router": "~12.2.12",
     "@types/file-saver": "^2.0.2",
     "@types/leaflet": "^1.5.19",
     "bootstrap": "^4.6.0",
@@ -46,14 +46,14 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~12.0.0",
+    "@angular-devkit/build-angular": "~12.2.12",
     "@angular-eslint/builder": "^12.0.0",
     "@angular-eslint/eslint-plugin": "^12.0.0",
     "@angular-eslint/eslint-plugin-template": "^12.0.0",
     "@angular-eslint/schematics": "12.0.0",
     "@angular-eslint/template-parser": "^12.0.0",
-    "@angular/cli": "~12.0.0",
-    "@angular/compiler-cli": "~12.0.0",
+    "@angular/cli": "~12.2.12",
+    "@angular/compiler-cli": "~12.2.12",
     "@schematics/angular": "^12.0.0",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
