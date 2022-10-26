@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
   templateUrl: './form-reactive-dynamic-validators.component.html',
   styleUrls: ['./form-reactive-dynamic-validators.component.scss'],
 })
 export class FormReactiveDynamicValidatorsComponent implements OnInit {
-  form!: FormGroup;
+  form!: UntypedFormGroup;
   childValidators = true;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: UntypedFormBuilder) {}
 
-  get name(): FormControl {
-    return this.form.get('name') as FormControl;
+  get name(): UntypedFormControl {
+    return this.form.get('name') as UntypedFormControl;
   }
 
   ngOnInit(): void {

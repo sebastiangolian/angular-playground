@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'form-user',
@@ -7,9 +7,9 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./form-user.component.scss'],
 })
 export class FormUserComponent implements OnInit {
-  form!: FormGroup;
+  form!: UntypedFormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: UntypedFormBuilder) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -17,8 +17,8 @@ export class FormUserComponent implements OnInit {
     });
   }
 
-  get aliases(): FormArray {
-    return this.form.get('aliases') as FormArray;
+  get aliases(): UntypedFormArray {
+    return this.form.get('aliases') as UntypedFormArray;
   }
 
   addDefault(): void {

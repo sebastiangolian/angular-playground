@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { ControlContainer, FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
+import { ControlContainer, UntypedFormBuilder, UntypedFormGroup, FormGroupDirective, Validators } from '@angular/forms';
 
 @Component({
   selector: 'form-user-address',
@@ -15,11 +15,11 @@ import { ControlContainer, FormBuilder, FormGroup, FormGroupDirective, Validator
 })
 export class FormUserAddressComponent implements OnInit {
   @Input() groupName = 'address';
-  formGroup: FormGroup = this.fb.group({
+  formGroup: UntypedFormGroup = this.fb.group({
     street: ['', Validators.required],
     zip: ['', Validators.required],
   });
-  constructor(private fb: FormBuilder, private fgd: FormGroupDirective) {}
+  constructor(private fb: UntypedFormBuilder, private fgd: FormGroupDirective) {}
 
   ngOnInit() {
     this.fgd.form.addControl(this.groupName, this.formGroup);

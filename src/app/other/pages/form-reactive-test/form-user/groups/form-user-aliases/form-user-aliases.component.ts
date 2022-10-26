@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { ControlContainer, FormArray, FormBuilder, FormGroupDirective } from '@angular/forms';
+import { ControlContainer, UntypedFormArray, UntypedFormBuilder, FormGroupDirective } from '@angular/forms';
 
 @Component({
   selector: 'form-user-aliases',
@@ -15,9 +15,9 @@ import { ControlContainer, FormArray, FormBuilder, FormGroupDirective } from '@a
 })
 export class FormUserAliasesComponent implements OnInit {
   @Input() groupName = 'aliases';
-  formArray: FormArray = this.fb.array([this.fb.control('')]);
+  formArray: UntypedFormArray = this.fb.array([this.fb.control('')]);
 
-  constructor(private fb: FormBuilder, private fgd: FormGroupDirective) {}
+  constructor(private fb: UntypedFormBuilder, private fgd: FormGroupDirective) {}
 
   ngOnInit() {
     this.fgd.form.addControl(this.groupName, this.formArray);

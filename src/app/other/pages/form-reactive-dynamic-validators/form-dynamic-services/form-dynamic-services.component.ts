@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { ControlContainer, FormBuilder, FormControl, FormGroup, FormGroupDirective, ValidatorFn, Validators } from '@angular/forms';
+import { ControlContainer, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormGroupDirective, ValidatorFn, Validators } from '@angular/forms';
 
 @Component({
   selector: 'form-dynamic-services',
@@ -16,14 +16,14 @@ import { ControlContainer, FormBuilder, FormControl, FormGroup, FormGroupDirecti
 export class FormDynamicServicesComponent implements OnInit, OnChanges {
   @Input() groupName = 'services';
   @Input() validators = true;
-  formGroup: FormGroup = this.fb.group([]);
+  formGroup: UntypedFormGroup = this.fb.group([]);
   inputs: FormInput[] = [
     { name: 'isEnabled', label: 'Is active', type: 'checkbox', value: '', required: true, pattern: '' },
     { name: 'isAdmin', label: 'Is admin', type: 'checkbox', value: '', required: true, pattern: '' },
     { name: 'phone', label: 'Phone', type: 'textbox', value: '', required: true, pattern: '[0-9]*' },
   ];
 
-  constructor(private fb: FormBuilder, private fgd: FormGroupDirective) {}
+  constructor(private fb: UntypedFormBuilder, private fgd: FormGroupDirective) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     this.toogleValidation(this.validators);
@@ -31,7 +31,7 @@ export class FormDynamicServicesComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.inputs.forEach((input) => {
-      this.formGroup.addControl(input.name, new FormControl(''));
+      this.formGroup.addControl(input.name, new UntypedFormControl(''));
       this.formGroup.get(input.name)?.patchValue(input.value);
       this.formGroup.get(input.name)?.setValidators(this.createValidators(input));
     });

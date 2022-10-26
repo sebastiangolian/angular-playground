@@ -15,7 +15,9 @@
     "tslint.json": true,
     ".husky": true,
     ".prettierrc": true,
-    ".eslintrc.json": true
+    ".eslintrc.json": true,
+    ".angular": true,
+    ".vscode": true
   },
   "[typescript]": {
     "editor.codeActionsOnSave": {

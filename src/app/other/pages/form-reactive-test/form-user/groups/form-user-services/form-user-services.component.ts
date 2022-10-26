@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { ControlContainer, FormBuilder, FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
+import { ControlContainer, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormGroupDirective, Validators } from '@angular/forms';
 
 @Component({
   selector: 'form-user-services',
@@ -15,18 +15,18 @@ import { ControlContainer, FormBuilder, FormControl, FormGroup, FormGroupDirecti
 })
 export class FormUserServicesComponent implements OnInit {
   @Input() groupName = 'services';
-  formGroup: FormGroup = this.fb.group([]);
+  formGroup: UntypedFormGroup = this.fb.group([]);
   inputs: FormInput[] = [
     { name: 'isEnabled', label: 'Is active', type: 'checkbox', value: true, required: true, pattern: '' },
     { name: 'isAdmin', label: 'Is admin', type: 'checkbox', value: false, required: true, pattern: '' },
     { name: 'phone', label: 'Phone', type: 'textbox', value: '666666666', required: true, pattern: '[0-9]*' },
   ];
 
-  constructor(private fb: FormBuilder, private fgd: FormGroupDirective) {}
+  constructor(private fb: UntypedFormBuilder, private fgd: FormGroupDirective) {}
 
   ngOnInit(): void {
     this.inputs.forEach((input) => {
-      this.formGroup.addControl(input.name, new FormControl(''));
+      this.formGroup.addControl(input.name, new UntypedFormControl(''));
       this.formGroup.get(input.name)?.patchValue(input.value);
 
       const validators: any[] = [];
