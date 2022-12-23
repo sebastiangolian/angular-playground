@@ -17,7 +17,7 @@
             <th scope="col">
               <select
                 *ngIf="limitEnabled"
-                class="form-control form-control-sm float-right"
+                class="form-control form-control-sm float-end"
                 name="limit"
                 id="limit"
                 (change)="onChangeLimit(limitSelect.value)"
@@ -36,7 +36,7 @@
             <th>
               <input type="text" class="form-control form-control-sm" name="name" [(ngModel)]="model.name" #name="ngModel" />
             </th>
-            <th class="btn-group border-0 float-right">
+            <th class="btn-group border-0 float-end">
               <input type="image" class="mt-1 no-outline" src="assets/icons/search.svg" width="20" height="20" title="Search" />
               <input
                 type="image"
@@ -54,7 +54,7 @@
               <td>{{ item.id }}</td>
               <td>{{ item.name }}</td>
               <td>
-                <a class="mr-1" (click)="onSelectConfirm(item)">
+                <a class="me-1" (click)="onSelectConfirm(item)">
                   <icon-b name="plus" title="Select"></icon-b>
                 </a>
               </td>
@@ -70,8 +70,8 @@
       <div class="col-4">Total: {{ total }}</div>
       <div class="col-4 text-center">Page {{ page }} z {{ getTotalPage() }}</div>
       <div class="col-4">
-        <button class="btn btn-dark btn-sm float-right ml-1" [disabled]="total <= limit * page" (click)="onNext()">&gt;</button>
-        <button class="btn btn-dark btn-sm float-right" [disabled]="page === 1" (click)="onPrev()">&lt;</button>
+        <button class="btn btn-dark btn-sm float-end ms-1" [disabled]="total <= limit * page" (click)="onNext()">&gt;</button>
+        <button class="btn btn-dark btn-sm float-end" [disabled]="page === 1" (click)="onPrev()">&lt;</button>
       </div>
     </div>
   </div>

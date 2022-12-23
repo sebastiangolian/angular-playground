@@ -1,7 +1,7 @@
-import { environment } from 'src/environments/environment';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HeaderService } from 'src/app/shared/services/header.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,7 @@ export class AppComponent {
   isCollapsed = true;
   $header: Observable<string> = this.headerService.getWithSetTitle();
   version: string = environment.version;
-  angularVersion: string = environment.angularVersion.replace('~', '');
+  angularVersion: string = environment.angularVersion.replace('~', '').replace("^","");
 
   constructor(public headerService: HeaderService) {}
 

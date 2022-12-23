@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { SharedModule } from '../shared/shared.module';
 import { RoleModalSearchComponent } from './components/role-modal-search/role-modal-search.component';
 import { UserModalComponent } from './components/user-modal/user-modal.component';
@@ -30,5 +30,6 @@ import { UserRoutingModule } from './user-routing.module';
     NgxMaskPipe,
     BsDropdownModule.forRoot()
   ],
+  providers: [provideNgxMask()]
 })
 export class UserModule {}

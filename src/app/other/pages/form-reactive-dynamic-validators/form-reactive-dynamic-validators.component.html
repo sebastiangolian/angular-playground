@@ -20,9 +20,9 @@
   <p>Form value: {{ form.value | json }}</p>
 
   <p>
-    <button type="submit" class="btn btn-primary mr-1" [disabled]="!form.valid">Submit</button>
-    <button type="reset" class="btn btn-info mr-1">Reset</button>
-    <button class="btn btn-primary mr-1" (click)="onRemoveValidators(); $event.preventDefault()">Remove dynamic validators</button>
+    <button type="submit" class="btn btn-primary me-1" [disabled]="!form.valid">Submit</button>
+    <button type="reset" class="btn btn-info me-1">Reset</button>
+    <button class="btn btn-primary me-1" (click)="onRemoveValidators(); $event.preventDefault()">Remove dynamic validators</button>
     <button class="btn btn-primary" (click)="onAddValidators(); $event.preventDefault()">Add dynamic validators</button>
   </p>
 </form>
